@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Services - Ezeat</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-secondary-fixed": "#041550",
+                    "on-background": "#1a1b24",
+                    "on-surface-variant": "#444655",
+                    "tertiary-fixed-dim": "#ffb5a0",
+                    "on-secondary-fixed-variant": "#35437d",
+                    "on-primary-container": "#b9c4ff",
+                    "error": "#ba1a1a",
+                    "surface-container": "#eeedf9",
+                    "on-tertiary-fixed-variant": "#872000",
+                    "on-error": "#ffffff",
+                    "secondary": "#4e5b97",
+                    "error-container": "#ffdad6",
+                    "secondary-fixed-dim": "#b8c3ff",
+                    "inverse-primary": "#b8c3ff",
+                    "surface-container-lowest": "#ffffff",
+                    "on-primary-fixed": "#001355",
+                    "background": "#fbf8ff",
+                    "primary": "#002ca3",
+                    "on-secondary": "#ffffff",
+                    "on-error-container": "#93000a",
+                    "tertiary-fixed": "#ffdbd1",
+                    "tertiary": "#741a00",
+                    "secondary-fixed": "#dde1ff",
+                    "on-tertiary-fixed": "#3b0900",
+                    "inverse-surface": "#2f3039",
+                    "surface-container-high": "#e8e7f3",
+                    "outline": "#747686",
+                    "primary-fixed-dim": "#b8c3ff",
+                    "on-tertiary": "#ffffff",
+                    "primary-fixed": "#dde1ff",
+                    "outline-variant": "#c4c5d7",
+                    "on-secondary-container": "#3c4984",
+                    "surface-dim": "#dad9e5",
+                    "on-tertiary-container": "#ffb5a1",
+                    "surface-container-low": "#f3f2ff",
+                    "inverse-on-surface": "#f0effc",
+                    "tertiary-container": "#9d2700",
+                    "surface-tint": "#264fdf",
+                    "surface-variant": "#e2e1ed",
+                    "primary-container": "#1141d3",
+                    "on-surface": "#1a1b24",
+                    "surface-container-highest": "#e2e1ed",
+                    "surface": "#fbf8ff",
+                    "on-primary": "#ffffff",
+                    "secondary-container": "#aebbfe",
+                    "surface-bright": "#fbf8ff",
+                    "on-primary-fixed-variant": "#0035be"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Manrope"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(251, 248, 255, 0.7);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+        }
+        .hero-gradient {
+            background: linear-gradient(135deg, #002ca3 0%, #1141d3 100%);
+        }
+        .ghost-border {
+            border: 1px solid rgba(196, 197, 215, 0.15);
+        }
+        .ambient-shadow {
+            box-shadow: 0 8px 32px 0 rgba(26, 27, 36, 0.06);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body antialiased">
+<!-- TopNavBar -->
+<nav class="fixed top-0 left-0 right-0 w-full z-50 bg-white/70 dark:bg-slate-950/70 backdrop-blur-xl shadow-sm dark:shadow-none">
+<div class="max-w-7xl mx-auto px-8 flex justify-between items-center h-20">
+<a class="text-2xl font-bold text-blue-700 dark:text-blue-400 font-headline tracking-tight" href="#">Ezeat</a>
+<div class="hidden md:flex space-x-8 items-center">
+<a class="text-slate-600 dark:text-slate-400 font-medium hover:text-blue-600 font-label text-sm hover:bg-slate-100/50 dark:hover:bg-slate-800/50 transition-colors duration-300 px-3 py-2 rounded-DEFAULT scale-95 active:opacity-80 transition-transform" href="#">Home</a>
+<a class="text-slate-600 dark:text-slate-400 font-medium hover:text-blue-600 font-label text-sm hover:bg-slate-100/50 dark:hover:bg-slate-800/50 transition-colors duration-300 px-3 py-2 rounded-DEFAULT scale-95 active:opacity-80 transition-transform" href="#">About Us</a>
+<a class="text-blue-700 dark:text-blue-400 font-bold border-b-2 border-blue-700 pb-1 font-label text-sm scale-95 active:opacity-80 transition-transform" href="#">Services</a>
+<a class="text-slate-600 dark:text-slate-400 font-medium hover:text-blue-600 font-label text-sm hover:bg-slate-100/50 dark:hover:bg-slate-800/50 transition-colors duration-300 px-3 py-2 rounded-DEFAULT scale-95 active:opacity-80 transition-transform" href="#">Pricing</a>
+</div>
+<div class="hidden md:flex items-center space-x-4">
+<button class="font-label text-sm text-primary ghost-border px-4 py-2 rounded-lg hover:bg-surface-container-low transition-colors">EN/ES</button>
+<button class="bg-primary text-on-primary font-label text-sm px-6 py-2 rounded-lg hover:bg-primary-container transition-colors ambient-shadow">Contact Us</button>
+</div>
+<button class="md:hidden text-primary">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+</div>
+</nav>
+<main class="pt-28 pb-24">
+<!-- Hero Section -->
+<section class="max-w-7xl mx-auto px-8 mb-24">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+<div>
+<h1 class="font-headline text-5xl lg:text-6xl font-extrabold tracking-tight text-primary mb-6 leading-tight">
+                        Technical Solutions for Modern Dining.
+                    </h1>
+<p class="text-on-surface-variant text-lg lg:text-xl font-body mb-10 max-w-xl">
+                        Architected for scale. Ezeat provides a comprehensive suite of hardware and software solutions designed to streamline restaurant operations and elevate the guest experience.
+                    </p>
+<div class="flex space-x-4">
+<button class="bg-primary text-on-primary font-label text-base px-8 py-3 rounded-lg hover:bg-primary-container transition-colors ambient-shadow">View All Solutions</button>
+</div>
+</div>
+<div class="relative h-[500px] w-full rounded-xl overflow-hidden ambient-shadow">
+<img alt="Modern restaurant technology dashboard displaying data analytics on a sleek screen in a contemporary setting" class="absolute inset-0 w-full h-full object-cover" data-alt="Modern restaurant technology dashboard displaying data analytics on a sleek screen in a contemporary setting with cool blue tones" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBZb84zxuqgT1ZYRtRy23NgOFAvfrclfu-JNUgdw8OqBXw_mhpGEyMyGsuWKZRB6QV_p13Y_5cqzTkNhtiz0ccS6NnuxMt6s9th_dsxyID19BZoR-RIawXrJaWLtRosngdlh3dF-W7oXCOu1ZhqIqosSQZ0dqVpfvbOPVo7gnoOXqrlmICzeJ1cq9mOSNPm0Q9t_nqE9_C6c5791qVzClE6-hgDAFT6Ig0eQwO-r74PFL7iylRBmAOU8s6cgQavdVVHEkawCeUOyXqt"/>
+</div>
+</div>
+</section>
+<!-- Self-Service Terminals -->
+<section class="bg-surface-container-low py-24">
+<div class="max-w-7xl mx-auto px-8">
+<div class="flex flex-col lg:flex-row gap-16 items-start">
+<div class="lg:w-1/2 order-2 lg:order-1 relative">
+<div class="h-[600px] w-full rounded-xl overflow-hidden ambient-shadow bg-surface-container">
+<img alt="Sleek self-service ordering terminal in a modern fast-casual restaurant environment" class="w-full h-full object-cover" data-alt="Sleek, minimalist self-service ordering kiosk in a bright, modern fast-casual restaurant setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC7kVKpA67m77WIr_OP6QaM9OEuuAgLLF7gCo9P4QY42_Pb-Z6NU82oT-ro-O1X6wTEZr-dWnel0wnrI0oGHDXm08NDTpVAADalzFz--IW6dMDweqJhZznZsYo-avqfhghdOwP79fM9xw_LZr_BbIw0LF9-5-2NOHvYvJygIOoDTcaBQIxt2OwaAuZAvDjnw9cWfAgccA0TrzqokRGPu3EPkDRrcdLHL8N8Rnk0jo_zLWQqpIz9Rp837kO22M1Ym1qnXqNgmiuw1uIA"/>
+</div>
+<div class="absolute -bottom-8 -right-8 bg-surface-container-lowest p-6 rounded-lg ambient-shadow hidden md:block">
+<div class="flex items-center space-x-4">
+<div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="bolt">bolt</span>
+</div>
+<div>
+<p class="font-headline font-bold text-lg text-primary">Sub-second</p>
+<p class="font-label text-sm text-on-surface-variant">Transaction Speed</p>
+</div>
+</div>
+</div>
+</div>
+<div class="lg:w-1/2 order-1 lg:order-2 lg:pt-12">
+<span class="text-primary font-label text-sm font-bold uppercase tracking-wider mb-2 block">Hardware &amp; UI</span>
+<h2 class="font-headline text-4xl font-extrabold text-on-background mb-6">Self-Service Terminals</h2>
+<p class="text-on-surface-variant text-lg mb-8">
+                            Industrial-grade hardware paired with an intuitive, high-performance touch interface. Our terminals reduce wait times, increase average order value, and seamlessly sync with your kitchen display systems.
+                        </p>
+<div class="space-y-6">
+<div class="flex items-start">
+<span class="material-symbols-outlined text-primary mt-1 mr-4" data-icon="check_circle">check_circle</span>
+<div>
+<h3 class="font-headline font-bold text-lg text-on-background">Responsive Touch Displays</h3>
+<p class="text-on-surface-variant text-sm mt-1">4K resolution screens with anti-glare coating and instantaneous touch response.</p>
+</div>
+</div>
+<div class="flex items-start">
+<span class="material-symbols-outlined text-primary mt-1 mr-4" data-icon="payments">payments</span>
+<div>
+<h3 class="font-headline font-bold text-lg text-on-background">Integrated Payment Gateways</h3>
+<p class="text-on-surface-variant text-sm mt-1">NFC, EMV, and mobile wallet compatibility natively built-in.</p>
+</div>
+</div>
+<div class="flex items-start">
+<span class="material-symbols-outlined text-primary mt-1 mr-4" data-icon="sync">sync</span>
+<div>
+<h3 class="font-headline font-bold text-lg text-on-background">Real-Time Menu Sync</h3>
+<p class="text-on-surface-variant text-sm mt-1">Instantly reflect price changes and out-of-stock items across all locations.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Custom Integration -->
+<section class="py-24">
+<div class="max-w-7xl mx-auto px-8">
+<div class="flex flex-col lg:flex-row gap-16 items-center">
+<div class="lg:w-1/2">
+<span class="text-primary font-label text-sm font-bold uppercase tracking-wider mb-2 block">Developer Platform</span>
+<h2 class="font-headline text-4xl font-extrabold text-on-background mb-6">Custom API Integration</h2>
+<p class="text-on-surface-variant text-lg mb-8">
+                            Connect Ezeat to your existing tech stack. Our robust RESTful APIs and webhooks allow you to build custom workflows, pull data into your own ERP, or connect third-party delivery services.
+                        </p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="bg-surface-container-low p-6 rounded-lg ghost-border">
+<span class="material-symbols-outlined text-primary mb-4 text-3xl" data-icon="code">code</span>
+<h3 class="font-headline font-bold text-lg mb-2">Comprehensive Docs</h3>
+<p class="text-sm text-on-surface-variant">Detailed guides and interactive API references for quick implementation.</p>
+</div>
+<div class="bg-surface-container-low p-6 rounded-lg ghost-border">
+<span class="material-symbols-outlined text-primary mb-4 text-3xl" data-icon="security">security</span>
+<h3 class="font-headline font-bold text-lg mb-2">Enterprise Security</h3>
+<p class="text-sm text-on-surface-variant">OAuth 2.0 authentication and end-to-end encryption for all data transfers.</p>
+</div>
+</div>
+</div>
+<div class="lg:w-1/2">
+<div class="bg-inverse-surface rounded-xl p-8 ambient-shadow relative overflow-hidden">
+<div class="absolute top-0 left-0 w-full h-8 bg-inverse-surface/90 border-b border-outline/30 flex items-center px-4 space-x-2">
+<div class="w-3 h-3 rounded-full bg-error"></div>
+<div class="w-3 h-3 rounded-full bg-tertiary-fixed-dim"></div>
+<div class="w-3 h-3 rounded-full bg-secondary-fixed-dim"></div>
+</div>
+<pre class="text-on-secondary font-mono text-sm mt-8 overflow-x-auto"><code>
+POST /v1/orders
+Host: api.ezeat.com
+Authorization: Bearer sk_live_...
+Content-Type: application/json
+
+{
+  "location_id": "loc_123",
+  "items": [
+    {
+      "item_id": "item_456",
+      "quantity": 2,
+      "modifiers": ["mod_789"]
+    }
+  ],
+  "payment_method": "pm_card_visa"
+}
+                            </code></pre>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Real-Time Analytics -->
+<section class="bg-surface-container-low py-24">
+<div class="max-w-7xl mx-auto px-8">
+<div class="text-center max-w-3xl mx-auto mb-16">
+<span class="text-primary font-label text-sm font-bold uppercase tracking-wider mb-2 block">Data Intelligence</span>
+<h2 class="font-headline text-4xl font-extrabold text-on-background mb-6">Real-Time Analytics Dashboard</h2>
+<p class="text-on-surface-variant text-lg">
+                        Make informed decisions with actionable insights. Monitor sales, track inventory levels, and analyze customer behavior across all your locations from a single, unified interface.
+                    </p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<!-- Feature Card 1 -->
+<div class="bg-surface-container-lowest p-8 rounded-xl ambient-shadow flex flex-col items-center text-center">
+<div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center text-primary mb-6">
+<span class="material-symbols-outlined text-3xl" data-icon="monitoring">monitoring</span>
+</div>
+<h3 class="font-headline font-bold text-xl mb-3">Live Sales Tracking</h3>
+<p class="text-on-surface-variant text-sm">Monitor revenue and order volume in real-time. Identify peak hours and top-performing menu items instantly.</p>
+</div>
+<!-- Feature Card 2 -->
+<div class="bg-surface-container-lowest p-8 rounded-xl ambient-shadow flex flex-col items-center text-center">
+<div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center text-primary mb-6">
+<span class="material-symbols-outlined text-3xl" data-icon="inventory">inventory</span>
+</div>
+<h3 class="font-headline font-bold text-xl mb-3">Predictive Inventory</h3>
+<p class="text-on-surface-variant text-sm">Automated alerts for low stock and AI-driven forecasting to minimize waste and ensure availability.</p>
+</div>
+<!-- Feature Card 3 -->
+<div class="bg-surface-container-lowest p-8 rounded-xl ambient-shadow flex flex-col items-center text-center">
+<div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center text-primary mb-6">
+<span class="material-symbols-outlined text-3xl" data-icon="group">group</span>
+</div>
+<h3 class="font-headline font-bold text-xl mb-3">Customer Demographics</h3>
+<p class="text-on-surface-variant text-sm">Understand your audience. Track visit frequency, average spend, and preferences to tailor marketing efforts.</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-slate-50 dark:bg-slate-900 w-full border-t border-slate-200/50 dark:border-slate-800/50 tonal-shift surface-container-low flat no shadows">
+<div class="max-w-7xl mx-auto px-8 py-12 grid grid-cols-1 md:grid-cols-4 gap-8">
+<div>
+<a class="text-xl font-bold text-slate-900 dark:text-white font-headline" href="#">Ezeat</a>
+<p class="mt-4 text-slate-500 dark:text-slate-400 font-body text-sm">© 2024 Ezeat. All rights reserved.</p>
+</div>
+<div>
+<h4 class="font-bold text-slate-900 dark:text-white mb-4 font-headline">Company</h4>
+<ul class="space-y-2">
+<li><a class="text-slate-500 dark:text-slate-400 hover:text-blue-600 font-label text-sm hover:translate-x-1 transition-transform duration-200 opacity-100 hover:opacity-80 inline-block" href="#">Home</a></li>
+<li><a class="text-slate-500 dark:text-slate-400 hover:text-blue-600 font-label text-sm hover:translate-x-1 transition-transform duration-200 opacity-100 hover:opacity-80 inline-block" href="#">About Us</a></li>
+<li><a class="text-blue-600 dark:text-blue-400 underline font-label text-sm hover:translate-x-1 transition-transform duration-200 opacity-100 hover:opacity-80 inline-block" href="#">Services</a></li>
+<li><a class="text-slate-500 dark:text-slate-400 hover:text-blue-600 font-label text-sm hover:translate-x-1 transition-transform duration-200 opacity-100 hover:opacity-80 inline-block" href="#">Pricing</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold text-slate-900 dark:text-white mb-4 font-headline">Support</h4>
+<ul class="space-y-2">
+<li><a class="text-slate-500 dark:text-slate-400 hover:text-blue-600 font-label text-sm hover:translate-x-1 transition-transform duration-200 opacity-100 hover:opacity-80 inline-block" href="#">Contact Us</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold text-slate-900 dark:text-white mb-4 font-headline">Legal</h4>
+<ul class="space-y-2">
+<li><a class="text-slate-500 dark:text-slate-400 hover:text-blue-600 font-label text-sm hover:translate-x-1 transition-transform duration-200 opacity-100 hover:opacity-80 inline-block" href="#">Privacy Policy</a></li>
+<li><a class="text-slate-500 dark:text-slate-400 hover:text-blue-600 font-label text-sm hover:translate-x-1 transition-transform duration-200 opacity-100 hover:opacity-80 inline-block" href="#">Terms of Service</a></li>
+</ul>
+</div>
+</div>
+</footer>
+</body></html>

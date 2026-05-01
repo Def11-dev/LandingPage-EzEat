@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Flexible Enterprise Pricing - Ezeat</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-fixed": "#041550",
+                        "on-background": "#1a1b24",
+                        "on-surface-variant": "#444655",
+                        "tertiary-fixed-dim": "#ffb5a0",
+                        "on-secondary-fixed-variant": "#35437d",
+                        "on-primary-container": "#b9c4ff",
+                        "error": "#ba1a1a",
+                        "surface-container": "#eeedf9",
+                        "on-tertiary-fixed-variant": "#872000",
+                        "on-error": "#ffffff",
+                        "secondary": "#4e5b97",
+                        "error-container": "#ffdad6",
+                        "secondary-fixed-dim": "#b8c3ff",
+                        "inverse-primary": "#b8c3ff",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-fixed": "#001355",
+                        "background": "#fbf8ff",
+                        "primary": "#002ca3",
+                        "on-secondary": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "tertiary-fixed": "#ffdbd1",
+                        "tertiary": "#741a00",
+                        "secondary-fixed": "#dde1ff",
+                        "on-tertiary-fixed": "#3b0900",
+                        "inverse-surface": "#2f3039",
+                        "surface-container-high": "#e8e7f3",
+                        "outline": "#747686",
+                        "primary-fixed-dim": "#b8c3ff",
+                        "on-tertiary": "#ffffff",
+                        "primary-fixed": "#dde1ff",
+                        "outline-variant": "#c4c5d7",
+                        "on-secondary-container": "#3c4984",
+                        "surface-dim": "#dad9e5",
+                        "on-tertiary-container": "#ffb5a1",
+                        "surface-container-low": "#f3f2ff",
+                        "inverse-on-surface": "#f0effc",
+                        "tertiary-container": "#9d2700",
+                        "surface-tint": "#264fdf",
+                        "surface-variant": "#e2e1ed",
+                        "primary-container": "#1141d3",
+                        "on-surface": "#1a1b24",
+                        "surface-container-highest": "#e2e1ed",
+                        "surface": "#fbf8ff",
+                        "on-primary": "#ffffff",
+                        "secondary-container": "#aebbfe",
+                        "surface-bright": "#fbf8ff",
+                        "on-primary-fixed-variant": "#0035be"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Manrope", "sans-serif"],
+                        "body": ["Inter", "sans-serif"],
+                        "label": ["Inter", "sans-serif"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined[data-weight="fill"] {
+            font-variation-settings: 'FILL' 1;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body antialiased selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopNavBar Shared Component -->
+<nav aria-label="Main Navigation" class="bg-white/70 dark:bg-slate-950/70 backdrop-blur-xl fixed top-0 left-0 right-0 w-full z-50 shadow-sm dark:shadow-none">
+<div class="max-w-7xl mx-auto px-8 flex justify-between items-center h-20">
+<!-- Brand -->
+<a class="text-2xl font-bold text-blue-700 dark:text-blue-400 font-headline tracking-tight flex items-center gap-2" href="/">
+                Ezeat
+            </a>
+<!-- Navigation Links (Web) -->
+<div class="hidden md:flex items-center gap-8">
+<a class="text-slate-600 dark:text-slate-400 font-medium hover:text-blue-600 hover:bg-slate-100/50 dark:hover:bg-slate-800/50 transition-colors duration-300 px-3 py-2 rounded-lg" href="/home">Home</a>
+<a class="text-slate-600 dark:text-slate-400 font-medium hover:text-blue-600 hover:bg-slate-100/50 dark:hover:bg-slate-800/50 transition-colors duration-300 px-3 py-2 rounded-lg" href="/about">About Us</a>
+<a class="text-slate-600 dark:text-slate-400 font-medium hover:text-blue-600 hover:bg-slate-100/50 dark:hover:bg-slate-800/50 transition-colors duration-300 px-3 py-2 rounded-lg" href="/services">Services</a>
+<a aria-current="page" class="text-blue-700 dark:text-blue-400 font-bold border-b-2 border-blue-700 pb-1 px-3 py-2" href="/pricing">Pricing</a>
+</div>
+<!-- Actions -->
+<div class="flex items-center gap-4">
+<button class="text-slate-600 dark:text-slate-400 font-medium hover:text-blue-600 text-sm hidden sm:block">EN/ES</button>
+<a class="bg-primary text-on-primary px-6 py-2.5 rounded-lg font-medium scale-95 active:opacity-80 transition-transform shadow-[0_8px_32px_rgba(26,27,36,0.06)] hover:-translate-y-0.5 duration-300" href="/contact">Contact Us</a>
+</div>
+</div>
+</nav>
+<!-- Main Content -->
+<main class="pt-32 pb-24">
+<!-- Hero Section -->
+<section class="max-w-7xl mx-auto px-8 mb-24 relative z-10">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+<div class="max-w-2xl">
+<h1 class="font-headline text-5xl md:text-6xl font-bold tracking-tight text-on-background mb-6 leading-tight">
+                        Flexible <span class="text-primary">Enterprise</span> Pricing
+                    </h1>
+<p class="font-body text-xl text-on-surface-variant mb-10 leading-relaxed">
+                        Scale your corporate dining experience with transparent, predictable pricing. Choose the plan that aligns with your architectural growth.
+                    </p>
+<div class="flex flex-col sm:flex-row gap-4">
+<button class="bg-primary text-on-primary px-8 py-4 rounded-lg font-medium shadow-[0_8px_32px_rgba(26,27,36,0.06)] hover:-translate-y-0.5 transition-transform duration-300 flex justify-center items-center gap-2">
+                            Contact Sales
+                            <span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</button>
+<button class="border border-outline-variant/30 text-primary bg-surface px-8 py-4 rounded-lg font-medium hover:bg-surface-container-low transition-colors duration-300 flex justify-center items-center">
+                            View Full Feature Matrix
+                        </button>
+</div>
+</div>
+<div class="relative h-[400px] w-full rounded-xl overflow-hidden shadow-2xl z-0">
+<img alt="Modern corporate office interior with sleek architectural lines and soft natural lighting" class="absolute inset-0 w-full h-full object-cover" data-alt="Modern corporate office interior with sleek architectural lines, high-end furniture, soft natural lighting, conveying professionalism and scale" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD2Xzu8LB8ZjSTS6ylGPlyQSkHD4gE-QNho_TLpv2jd1hZwZ8NJZQJvl2o7TEtbdHu1yUglHNtg7r-nJc16hAKVc0Aym81dPP38XoyY-Whd3aNB0HHsf0aEQ9skuAkNM4k9eRNbguIVC0e5gRh7sm2Q4jjOPbtVZc0v18qlisXZgUPcSkdhSov_LfAIoRQhmNxllVgZo4_NlYGTSsmPFSGtxRp5otTaCq277hxdKjzMpRi27nBMTo1LODk3T9kZzIZyJfbKe_ZVcYoF"/>
+<div class="absolute inset-0 bg-gradient-to-tr from-primary/20 to-transparent"></div>
+</div>
+</div>
+</section>
+<!-- Pricing Cards Section -->
+<section class="bg-surface-container-low py-24 relative">
+<div class="max-w-7xl mx-auto px-8 relative z-10">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-start relative">
+<!-- Starter Card -->
+<div class="bg-surface-container-lowest rounded-xl p-8 shadow-[0_4px_24px_rgba(26,27,36,0.04)] border border-transparent hover:border-outline-variant/30 transition-all duration-300 flex flex-col h-full mt-4">
+<div class="mb-8">
+<h3 class="font-headline text-2xl font-bold text-on-background mb-2">Starter</h3>
+<p class="font-body text-on-surface-variant text-sm">For growing teams requiring essential dining management.</p>
+</div>
+<div class="mb-8">
+<div class="flex items-baseline gap-1">
+<span class="font-headline text-4xl font-bold text-on-background">$499</span>
+<span class="font-body text-on-surface-variant text-sm">/mo</span>
+</div>
+</div>
+<ul class="space-y-4 mb-10 flex-grow font-body text-on-background text-sm">
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary text-xl" data-icon="check_circle" data-weight="fill">check_circle</span>
+                                Up to 500 active users
+                            </li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary text-xl" data-icon="check_circle" data-weight="fill">check_circle</span>
+                                Standard reporting dashboard
+                            </li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary text-xl" data-icon="check_circle" data-weight="fill">check_circle</span>
+                                Email support (24h SLA)
+                            </li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary text-xl" data-icon="check_circle" data-weight="fill">check_circle</span>
+                                Basic vendor integration
+                            </li>
+</ul>
+<button class="w-full border border-outline-variant/30 text-primary bg-surface px-6 py-3 rounded-lg font-medium hover:bg-surface-container-low transition-colors duration-300">
+                            Get Started
+                        </button>
+</div>
+<!-- Professional Card (Most Popular) -->
+<div class="bg-primary-container rounded-xl p-8 shadow-[0_12px_48px_rgba(0,44,163,0.15)] flex flex-col h-full relative transform md:-translate-y-8 z-20">
+<div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-surface text-primary font-bold text-xs px-4 py-1.5 rounded-full shadow-sm tracking-wider uppercase">
+                            Most Popular
+                        </div>
+<div class="mb-8 text-on-primary">
+<h3 class="font-headline text-2xl font-bold mb-2">Professional</h3>
+<p class="font-body text-on-primary/80 text-sm">Comprehensive tools for mid-market corporate campuses.</p>
+</div>
+<div class="mb-8 text-on-primary">
+<div class="flex items-baseline gap-1">
+<span class="font-headline text-5xl font-bold">$999</span>
+<span class="font-body text-on-primary/80 text-sm">/mo</span>
+</div>
+</div>
+<ul class="space-y-4 mb-10 flex-grow font-body text-on-primary text-sm">
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-on-primary text-xl" data-icon="check_circle" data-weight="fill">check_circle</span>
+                                Up to 2,500 active users
+                            </li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-on-primary text-xl" data-icon="check_circle" data-weight="fill">check_circle</span>
+<strong>Advanced Analytics</strong> &amp; Insights
+                            </li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-on-primary text-xl" data-icon="check_circle" data-weight="fill">check_circle</span>
+                                Priority Support (4h SLA)
+                            </li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-on-primary text-xl" data-icon="check_circle" data-weight="fill">check_circle</span>
+<strong>Custom Branding</strong> options
+                            </li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-on-primary text-xl" data-icon="check_circle" data-weight="fill">check_circle</span>
+                                Multi-location management
+                            </li>
+</ul>
+<button class="w-full bg-surface text-primary px-6 py-4 rounded-lg font-bold shadow-lg hover:-translate-y-0.5 transition-transform duration-300">
+                            Start Free Trial
+                        </button>
+</div>
+<!-- Enterprise Card -->
+<div class="bg-surface-container-lowest rounded-xl p-8 shadow-[0_4px_24px_rgba(26,27,36,0.04)] border border-transparent hover:border-outline-variant/30 transition-all duration-300 flex flex-col h-full mt-4 relative overflow-hidden">
+<div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-surface-container-high to-transparent rounded-bl-full opacity-50 pointer-events-none"></div>
+<div class="mb-8">
+<h3 class="font-headline text-2xl font-bold text-on-background mb-2">Enterprise</h3>
+<p class="font-body text-on-surface-variant text-sm">Bespoke architecture for global organizational networks.</p>
+</div>
+<div class="mb-8">
+<div class="flex items-baseline gap-1">
+<span class="font-headline text-4xl font-bold text-on-background">Custom</span>
+</div>
+</div>
+<ul class="space-y-4 mb-10 flex-grow font-body text-on-background text-sm">
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary text-xl" data-icon="check_circle" data-weight="fill">check_circle</span>
+                                Unlimited users
+                            </li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary text-xl" data-icon="check_circle" data-weight="fill">check_circle</span>
+                                Dedicated Success Manager
+                            </li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary text-xl" data-icon="check_circle" data-weight="fill">check_circle</span>
+                                24/7 Phone &amp; Email Support
+                            </li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary text-xl" data-icon="check_circle" data-weight="fill">check_circle</span>
+                                Full API Access &amp; Custom Integrations
+                            </li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary text-xl" data-icon="check_circle" data-weight="fill">check_circle</span>
+                                On-premise deployment options
+                            </li>
+</ul>
+<button class="w-full bg-primary text-on-primary px-6 py-3 rounded-lg font-medium shadow-[0_4px_16px_rgba(26,27,36,0.06)] hover:-translate-y-0.5 transition-transform duration-300">
+                            Contact Sales
+                        </button>
+</div>
+</div>
+</div>
+</section>
+<!-- FAQ Section -->
+<section class="max-w-4xl mx-auto px-8 py-24">
+<div class="text-center mb-16">
+<h2 class="font-headline text-3xl font-bold text-on-background mb-4">Enterprise Questions</h2>
+<p class="font-body text-on-surface-variant">Common inquiries about scaling with Ezeat.</p>
+</div>
+<div class="space-y-6">
+<!-- FAQ Item 1 -->
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-sm border border-outline-variant/10">
+<h4 class="font-headline text-lg font-bold text-on-background mb-2 flex items-center justify-between cursor-pointer">
+                        How long does Enterprise implementation take?
+                        <span class="material-symbols-outlined text-outline" data-icon="expand_more">expand_more</span>
+</h4>
+<p class="font-body text-on-surface-variant text-sm mt-4">
+                        Implementation timelines vary based on architectural complexity, but typically range from 4 to 8 weeks. Our dedicated deployment team works directly with your IT and facilities departments to ensure a seamless rollout.
+                    </p>
+</div>
+<!-- FAQ Item 2 -->
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-sm border border-outline-variant/10">
+<h4 class="font-headline text-lg font-bold text-on-background mb-2 flex items-center justify-between cursor-pointer">
+                        What level of custom branding is available?
+                        <span class="material-symbols-outlined text-outline" data-icon="expand_more">expand_more</span>
+</h4>
+<p class="font-body text-on-surface-variant text-sm mt-4">
+                        The Professional and Enterprise tiers offer extensive whitelabeling. You can customize the app icon, primary colorways, typography, and splash screens to match your corporate identity completely.
+                    </p>
+</div>
+<!-- FAQ Item 3 -->
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-sm border border-outline-variant/10">
+<h4 class="font-headline text-lg font-bold text-on-background mb-2 flex items-center justify-between cursor-pointer">
+                        Do you offer volume discounts for large campuses?
+                        <span class="material-symbols-outlined text-outline" data-icon="expand_more">expand_more</span>
+</h4>
+<p class="font-body text-on-surface-variant text-sm mt-4">
+                        Yes. Our Custom Enterprise plans are designed to scale economically. Contact our sales team to discuss tiered pricing based on active user volume and multi-site deployments.
+                    </p>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer Shared Component -->
+<footer class="bg-slate-50 dark:bg-slate-900 w-full border-t border-slate-200/50 dark:border-slate-800/50 flat no shadows">
+<div class="max-w-7xl mx-auto px-8 py-12 grid grid-cols-1 md:grid-cols-4 gap-8">
+<div class="md:col-span-1">
+<a class="text-xl font-bold text-slate-900 dark:text-white font-['Inter'] tracking-normal mb-4 block" href="/">Ezeat</a>
+<p class="text-sm text-slate-500 dark:text-slate-400 font-['Inter'] tracking-normal mt-4">
+                    © 2024 Ezeat. All rights reserved.
+                </p>
+</div>
+<div class="md:col-span-3 grid grid-cols-2 sm:grid-cols-3 gap-8">
+<div>
+<h5 class="font-bold text-slate-900 dark:text-white font-['Inter'] text-sm mb-4">Navigation</h5>
+<ul class="space-y-3 flex flex-col">
+<li><a class="text-slate-500 dark:text-slate-400 hover:text-blue-600 font-['Inter'] text-sm tracking-normal opacity-100 hover:opacity-80 hover:translate-x-1 transition-transform duration-200 inline-block" href="/home">Home</a></li>
+<li><a class="text-slate-500 dark:text-slate-400 hover:text-blue-600 font-['Inter'] text-sm tracking-normal opacity-100 hover:opacity-80 hover:translate-x-1 transition-transform duration-200 inline-block" href="/about">About Us</a></li>
+<li><a class="text-slate-500 dark:text-slate-400 hover:text-blue-600 font-['Inter'] text-sm tracking-normal opacity-100 hover:opacity-80 hover:translate-x-1 transition-transform duration-200 inline-block" href="/services">Services</a></li>
+<li><a class="text-blue-600 dark:text-blue-400 underline font-['Inter'] text-sm tracking-normal opacity-100 hover:opacity-80 hover:translate-x-1 transition-transform duration-200 inline-block" href="/pricing">Pricing</a></li>
+</ul>
+</div>
+<div>
+<h5 class="font-bold text-slate-900 dark:text-white font-['Inter'] text-sm mb-4">Support</h5>
+<ul class="space-y-3 flex flex-col">
+<li><a class="text-slate-500 dark:text-slate-400 hover:text-blue-600 font-['Inter'] text-sm tracking-normal opacity-100 hover:opacity-80 hover:translate-x-1 transition-transform duration-200 inline-block" href="/contact">Contact Us</a></li>
+</ul>
+</div>
+<div>
+<h5 class="font-bold text-slate-900 dark:text-white font-['Inter'] text-sm mb-4">Legal</h5>
+<ul class="space-y-3 flex flex-col">
+<li><a class="text-slate-500 dark:text-slate-400 hover:text-blue-600 font-['Inter'] text-sm tracking-normal opacity-100 hover:opacity-80 hover:translate-x-1 transition-transform duration-200 inline-block" href="/privacy">Privacy Policy</a></li>
+<li><a class="text-slate-500 dark:text-slate-400 hover:text-blue-600 font-['Inter'] text-sm tracking-normal opacity-100 hover:opacity-80 hover:translate-x-1 transition-transform duration-200 inline-block" href="/terms">Terms of Service</a></li>
+</ul>
+</div>
+</div>
+</div>
+</footer>
+</body></html>

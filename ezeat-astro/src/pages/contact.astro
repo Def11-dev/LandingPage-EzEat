@@ -1,0 +1,300 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const contactOptions = [
+  {
+    icon: 'mail',
+    title: 'Email Us',
+    value: 'hello@ezeat.com',
+    href: 'mailto:hello@ezeat.com',
+  },
+  {
+    icon: 'phone',
+    title: 'Call Us',
+    value: '+1 (800) 392-3280',
+    href: 'tel:+18003923280',
+  },
+  {
+    icon: 'location_on',
+    title: 'Headquarters',
+    value: '350 5th Ave, New York, NY 10118',
+    href: '#',
+  },
+];
+---
+
+<Layout
+  title="Contact Us — Ezeat"
+  description="Get in touch with the Ezeat team. Request a demo, ask about enterprise pricing, or simply say hello."
+>
+
+  <!-- ─── Hero ──────────────────────────────────────────────────── -->
+  <section class="pt-16 pb-20 bg-surface relative overflow-hidden">
+    <div class="absolute -top-24 -right-24 w-[500px] h-[500px] rounded-full bg-primary/4 pointer-events-none"></div>
+    <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+      <div class="max-w-2xl" data-animate="fade-up">
+        <div class="inline-flex items-center gap-2 bg-surface-container-highest px-4 py-2 rounded-full mb-6">
+          <span class="material-symbols-outlined text-primary text-base leading-none">chat</span>
+          <span class="text-sm font-label font-medium text-on-surface">Let's Talk</span>
+        </div>
+        <h1 class="font-headline text-5xl md:text-6xl font-extrabold tracking-tight text-on-background leading-[1.05] mb-5">
+          Get In <span class="text-primary">Touch</span>
+        </h1>
+        <p class="text-xl text-on-surface-variant font-body leading-relaxed">
+          Whether you're ready to deploy or just exploring, our team is here to help. Reach out and we'll get back to you within one business day.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Contact Grid ──────────────────────────────────────────── -->
+  <section class="pb-24 bg-surface">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-5 gap-12">
+
+        <!-- Form (wider) -->
+        <div class="lg:col-span-3" data-animate="slide-right">
+          <div class="bg-surface-container-lowest rounded-xl p-8 md:p-10 shadow-[0_8px_32px_rgba(26,27,36,0.05)] border border-outline-variant/10">
+            <h2 class="font-headline text-2xl font-bold text-on-background mb-2">Send a Message</h2>
+            <p class="text-on-surface-variant text-sm font-body mb-8">Fill out the form and we'll reach out within 24 hours.</p>
+
+            <!-- Tip: connect to Netlify Forms (add data-netlify="true") or Formspree (action="https://formspree.io/f/YOUR_ID") -->
+            <form
+              id="contact-form"
+              class="space-y-5"
+              novalidate
+            >
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                <!-- First name -->
+                <div class="space-y-1.5">
+                  <label for="firstName" class="text-sm font-label font-medium text-on-surface">First Name <span class="text-error">*</span></label>
+                  <input
+                    id="firstName"
+                    name="firstName"
+                    type="text"
+                    required
+                    placeholder="María"
+                    class="w-full bg-surface-container-low border border-outline-variant/25 rounded-lg px-4 py-3 text-on-surface font-body text-sm placeholder:text-on-surface-variant/50 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/30 transition-all"
+                  />
+                </div>
+                <!-- Last name -->
+                <div class="space-y-1.5">
+                  <label for="lastName" class="text-sm font-label font-medium text-on-surface">Last Name <span class="text-error">*</span></label>
+                  <input
+                    id="lastName"
+                    name="lastName"
+                    type="text"
+                    required
+                    placeholder="García"
+                    class="w-full bg-surface-container-low border border-outline-variant/25 rounded-lg px-4 py-3 text-on-surface font-body text-sm placeholder:text-on-surface-variant/50 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/30 transition-all"
+                  />
+                </div>
+              </div>
+
+              <!-- Email -->
+              <div class="space-y-1.5">
+                <label for="email" class="text-sm font-label font-medium text-on-surface">Work Email <span class="text-error">*</span></label>
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  required
+                  placeholder="maria@company.com"
+                  class="w-full bg-surface-container-low border border-outline-variant/25 rounded-lg px-4 py-3 text-on-surface font-body text-sm placeholder:text-on-surface-variant/50 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/30 transition-all"
+                />
+              </div>
+
+              <!-- Company -->
+              <div class="space-y-1.5">
+                <label for="company" class="text-sm font-label font-medium text-on-surface">Company</label>
+                <input
+                  id="company"
+                  name="company"
+                  type="text"
+                  placeholder="Acme Corp"
+                  class="w-full bg-surface-container-low border border-outline-variant/25 rounded-lg px-4 py-3 text-on-surface font-body text-sm placeholder:text-on-surface-variant/50 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/30 transition-all"
+                />
+              </div>
+
+              <!-- Interest -->
+              <div class="space-y-1.5">
+                <label for="interest" class="text-sm font-label font-medium text-on-surface">I'm interested in</label>
+                <select
+                  id="interest"
+                  name="interest"
+                  class="w-full bg-surface-container-low border border-outline-variant/25 rounded-lg px-4 py-3 text-on-surface font-body text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/30 transition-all appearance-none cursor-pointer"
+                >
+                  <option value="">Select an option…</option>
+                  <option value="demo">Requesting a Demo</option>
+                  <option value="pricing">Enterprise Pricing</option>
+                  <option value="kiosks">Self-Service Kiosks</option>
+                  <option value="api">API Integration</option>
+                  <option value="analytics">Analytics Dashboard</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+
+              <!-- Message -->
+              <div class="space-y-1.5">
+                <label for="message" class="text-sm font-label font-medium text-on-surface">Message <span class="text-error">*</span></label>
+                <textarea
+                  id="message"
+                  name="message"
+                  required
+                  rows="5"
+                  placeholder="Tell us about your project, number of locations, timeline, or any questions you have…"
+                  class="w-full bg-surface-container-low border border-outline-variant/25 rounded-lg px-4 py-3 text-on-surface font-body text-sm placeholder:text-on-surface-variant/50 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/30 transition-all resize-none"
+                ></textarea>
+              </div>
+
+              <!-- Submit -->
+              <div id="form-error" class="hidden text-sm text-error font-body bg-error-container/30 px-4 py-3 rounded-lg border border-error/20">
+                Please fill in all required fields.
+              </div>
+
+              <button
+                type="submit"
+                id="submit-btn"
+                class="w-full bg-primary text-on-primary px-8 py-4 rounded-lg font-label font-semibold text-base shadow-[0_8px_24px_rgba(0,44,163,0.18)] hover:bg-primary-container hover:-translate-y-px transition-all duration-200 flex items-center justify-center gap-2"
+              >
+                <span id="btn-text">Send Message</span>
+                <span class="material-symbols-outlined text-xl leading-none" id="btn-icon">send</span>
+              </button>
+
+              <!-- Success state -->
+              <div id="form-success" class="hidden text-sm font-body bg-surface-container-low text-on-surface px-5 py-4 rounded-xl border border-outline-variant/20 flex items-start gap-3">
+                <span class="material-symbols-outlined text-primary text-xl leading-none shrink-0 mt-0.5">check_circle</span>
+                <div>
+                  <p class="font-semibold text-on-background">Message sent successfully!</p>
+                  <p class="text-on-surface-variant mt-0.5">We'll get back to you within one business day.</p>
+                </div>
+              </div>
+
+            </form>
+          </div>
+        </div>
+
+        <!-- Sidebar info -->
+        <div class="lg:col-span-2 space-y-8" data-animate="slide-left">
+          <!-- Contact options -->
+          <div class="space-y-4">
+            <h3 class="font-headline font-bold text-lg text-on-background">Contact Information</h3>
+            {contactOptions.map(opt => (
+              <a
+                href={opt.href}
+                class="flex items-start gap-4 p-4 rounded-xl bg-surface-container-low border border-outline-variant/10 hover:border-primary/25 hover:bg-surface-container hover:shadow-[0_4px_16px_rgba(26,27,36,0.04)] transition-all group"
+              >
+                <div class="w-10 h-10 bg-primary/8 rounded-lg flex items-center justify-center text-primary shrink-0 group-hover:bg-primary/15 transition-colors">
+                  <span class="material-symbols-outlined text-lg leading-none">{opt.icon}</span>
+                </div>
+                <div>
+                  <p class="text-xs font-label font-semibold text-on-surface-variant uppercase tracking-wide">{opt.title}</p>
+                  <p class="text-sm font-body text-on-surface mt-0.5">{opt.value}</p>
+                </div>
+              </a>
+            ))}
+          </div>
+
+          <!-- Response time -->
+          <div class="p-6 rounded-xl bg-surface-container-highest border border-outline-variant/10">
+            <div class="flex items-center gap-3 mb-3">
+              <span class="material-symbols-outlined text-primary leading-none">schedule</span>
+              <span class="font-headline font-bold text-on-background">Response Times</span>
+            </div>
+            <div class="space-y-2 font-body text-sm">
+              {[
+                { plan: 'Starter', time: '24 hours' },
+                { plan: 'Professional', time: '4 hours' },
+                { plan: 'Enterprise', time: 'Dedicated manager' },
+              ].map(r => (
+                <div class="flex justify-between items-center py-1.5 border-b border-outline-variant/10 last:border-0">
+                  <span class="text-on-surface-variant">{r.plan}</span>
+                  <span class="font-medium text-on-surface">{r.time}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <!-- Trust badges -->
+          <div class="p-6 rounded-xl bg-primary border-0">
+            <h3 class="font-headline font-bold text-on-primary mb-4">Trusted by Teams Worldwide</h3>
+            <div class="grid grid-cols-2 gap-4">
+              {[
+                { icon: 'verified_user', label: 'SOC 2 Certified' },
+                { icon: 'lock',         label: 'End-to-End Encrypted' },
+                { icon: 'support_agent', label: '24/7 Enterprise' },
+                { icon: 'language',     label: 'Global Reach' },
+              ].map(b => (
+                <div class="flex items-center gap-2">
+                  <span class="material-symbols-outlined text-on-primary/70 text-base leading-none">{b.icon}</span>
+                  <span class="text-on-primary/80 text-xs font-label">{b.label}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<script>
+  const form      = document.getElementById('contact-form') as HTMLFormElement;
+  const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement;
+  const btnText   = document.getElementById('btn-text') as HTMLElement;
+  const btnIcon   = document.getElementById('btn-icon') as HTMLElement;
+  const errorMsg  = document.getElementById('form-error') as HTMLElement;
+  const successEl = document.getElementById('form-success') as HTMLElement;
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    // Basic validation
+    const required = form.querySelectorAll('[required]');
+    let valid = true;
+    required.forEach((field) => {
+      const input = field as HTMLInputElement | HTMLTextAreaElement;
+      if (!input.value.trim()) {
+        valid = false;
+        input.classList.add('border-error', 'focus:border-error');
+      } else {
+        input.classList.remove('border-error', 'focus:border-error');
+      }
+    });
+
+    if (!valid) {
+      errorMsg?.classList.remove('hidden');
+      return;
+    }
+
+    errorMsg?.classList.add('hidden');
+
+    // Loading state
+    submitBtn.disabled = true;
+    btnText.textContent = 'Sending…';
+    btnIcon.textContent = 'hourglass_empty';
+
+    try {
+      const res = await fetch('/api/contact', { method: 'POST', body: new FormData(form) });
+      if (!res.ok) throw new Error('send failed');
+      submitBtn.classList.add('hidden');
+      successEl?.classList.remove('hidden');
+      form.reset();
+    } catch {
+      btnText.textContent = 'Send Message';
+      btnIcon.textContent = 'send';
+      submitBtn.disabled = false;
+      errorMsg.textContent = 'Something went wrong. Please try again.';
+      errorMsg?.classList.remove('hidden');
+    }
+  });
+
+  // Remove error highlight on input
+  form?.querySelectorAll('input, textarea').forEach(field => {
+    field.addEventListener('input', () => {
+      (field as HTMLElement).classList.remove('border-error');
+    });
+  });
+</script>

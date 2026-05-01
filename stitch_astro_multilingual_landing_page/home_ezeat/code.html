@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Ezeat - Architectural Precision in Labor Efficiency</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-fixed": "#041550",
+                        "on-background": "#1a1b24",
+                        "on-surface-variant": "#444655",
+                        "tertiary-fixed-dim": "#ffb5a0",
+                        "on-secondary-fixed-variant": "#35437d",
+                        "on-primary-container": "#b9c4ff",
+                        "error": "#ba1a1a",
+                        "surface-container": "#eeedf9",
+                        "on-tertiary-fixed-variant": "#872000",
+                        "on-error": "#ffffff",
+                        "secondary": "#4e5b97",
+                        "error-container": "#ffdad6",
+                        "secondary-fixed-dim": "#b8c3ff",
+                        "inverse-primary": "#b8c3ff",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-fixed": "#001355",
+                        "background": "#fbf8ff",
+                        "primary": "#002ca3",
+                        "on-secondary": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "tertiary-fixed": "#ffdbd1",
+                        "tertiary": "#741a00",
+                        "secondary-fixed": "#dde1ff",
+                        "on-tertiary-fixed": "#3b0900",
+                        "inverse-surface": "#2f3039",
+                        "surface-container-high": "#e8e7f3",
+                        "outline": "#747686",
+                        "primary-fixed-dim": "#b8c3ff",
+                        "on-tertiary": "#ffffff",
+                        "primary-fixed": "#dde1ff",
+                        "outline-variant": "#c4c5d7",
+                        "on-secondary-container": "#3c4984",
+                        "surface-dim": "#dad9e5",
+                        "on-tertiary-container": "#ffb5a1",
+                        "surface-container-low": "#f3f2ff",
+                        "inverse-on-surface": "#f0effc",
+                        "tertiary-container": "#9d2700",
+                        "surface-tint": "#264fdf",
+                        "surface-variant": "#e2e1ed",
+                        "primary-container": "#1141d3",
+                        "on-surface": "#1a1b24",
+                        "surface-container-highest": "#e2e1ed",
+                        "surface": "#fbf8ff",
+                        "on-primary": "#ffffff",
+                        "secondary-container": "#aebbfe",
+                        "surface-bright": "#fbf8ff",
+                        "on-primary-fixed-variant": "#0035be"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Manrope", "sans-serif"],
+                        "body": ["Inter", "sans-serif"],
+                        "label": ["Inter", "sans-serif"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.fill {
+            font-variation-settings: 'FILL' 1;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body antialiased selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopNavBar -->
+<nav class="fixed top-0 left-0 right-0 w-full z-50 bg-white/70 backdrop-blur-xl shadow-sm transition-transform duration-300">
+<div class="max-w-7xl mx-auto px-8 flex justify-between items-center h-20">
+<div class="text-2xl font-bold text-primary font-headline tracking-tight">
+                Ezeat
+            </div>
+<div class="hidden md:flex space-x-8 items-center">
+<a class="text-primary font-bold border-b-2 border-primary pb-1 font-headline text-lg" href="#">Home</a>
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-300 font-headline text-lg" href="#">About Us</a>
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-300 font-headline text-lg" href="#">Services</a>
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-300 font-headline text-lg" href="#">Pricing</a>
+</div>
+<div class="flex items-center space-x-4">
+<button class="hidden md:block text-primary font-label text-sm hover:bg-surface-container-highest px-3 py-1 rounded-full transition-colors duration-300">
+                    EN/ES
+                </button>
+<button class="bg-primary text-on-primary font-label font-medium px-6 py-2 rounded-lg hover:bg-primary-container transition-colors shadow-[0_8px_32px_rgba(26,27,36,0.06)] scale-95 active:opacity-80">
+                    Contact Us
+                </button>
+</div>
+</div>
+</nav>
+<main class="pt-20">
+<!-- Hero Section -->
+<section class="relative min-h-[921px] bg-surface flex items-center pt-16 pb-24 overflow-hidden">
+<!-- Subtle background gradient -->
+<div class="absolute inset-0 bg-gradient-to-br from-surface to-surface-container-low opacity-50 -z-10"></div>
+<div class="max-w-7xl mx-auto px-8 w-full">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+<div class="lg:col-span-7 space-y-8 z-10">
+<div class="inline-flex items-center space-x-2 bg-surface-container-highest px-4 py-1.5 rounded-full">
+<span class="material-symbols-outlined text-primary text-sm">precision_manufacturing</span>
+<span class="text-sm font-label font-medium text-on-surface">The New Standard in Automation</span>
+</div>
+<h1 class="text-5xl md:text-6xl lg:text-[4.5rem] leading-[1.1] font-headline font-extrabold text-on-background tracking-tight">
+                            Architectural Precision in <span class="text-primary">Labor Efficiency</span>
+</h1>
+<p class="text-xl md:text-2xl text-on-surface-variant font-body max-w-2xl leading-relaxed">
+                            Engineering the future of dining through meticulously designed self-service kiosks and intelligent payment terminals. Built for scale, designed for flow.
+                        </p>
+<div class="flex flex-col sm:flex-row gap-4 pt-4">
+<button class="bg-primary text-on-primary px-8 py-4 rounded-lg font-label font-medium text-lg shadow-[0_8px_32px_rgba(26,27,36,0.06)] hover:bg-primary-container transition-colors flex items-center justify-center space-x-2">
+<span>Explore Solutions</span>
+<span class="material-symbols-outlined text-xl">arrow_forward</span>
+</button>
+<button class="border border-outline-variant/30 bg-surface-container-lowest text-on-surface px-8 py-4 rounded-lg font-label font-medium text-lg hover:border-primary/50 transition-colors flex items-center justify-center space-x-2">
+<span>View Technical Specs</span>
+</button>
+</div>
+</div>
+<div class="lg:col-span-5 relative">
+<!-- Asymmetric Image Layout -->
+<div class="relative w-full aspect-[4/5] rounded-xl overflow-hidden shadow-[0_24px_48px_rgba(26,27,36,0.08)] bg-surface-container-highest">
+<img alt="Modern payment terminal" class="w-full h-full object-cover" data-alt="Sleek, modern self-service payment kiosk in a brightly lit, minimalist high-end restaurant setting with architectural lines" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCNm5N7HSNrXJnbE9ccYyd3ulRhp5Is_RHDb93gdzCoxb6iufKtz2Z_qI2KTwqfBgmQknWDS5BJ6for7JK-8IDa03PZoJ9NcPVffWB_gMyoBXZD_nRo4yfE0gApP-6fvXCeVmKICpYRRf9VDn2kqfTPvpx9KAECETZUOF5lwench_zCjKXkyZyjST5XfBCnMAWsTF_E35xReyNqTxj1OlCsTawnHL694KHQOz6l4V7V9xg61Xy2ciWCrzpnZE7YyAKXdRe-GTm27vM2"/>
+</div>
+<!-- Floating secondary element -->
+<div class="absolute -bottom-8 -left-12 w-48 p-6 bg-surface-container-lowest rounded-lg shadow-[0_16px_32px_rgba(26,27,36,0.06)] border border-outline-variant/15 hidden md:block">
+<div class="flex items-center space-x-3 mb-2">
+<span class="material-symbols-outlined text-primary text-2xl fill">speed</span>
+<span class="font-headline font-bold text-on-surface">99.9%</span>
+</div>
+<p class="text-sm font-body text-on-surface-variant">Uptime SLA guaranteed for enterprise deployments</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- About Us Summary (Tonal Shift) -->
+<section class="py-24 bg-surface-container-low">
+<div class="max-w-7xl mx-auto px-8">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+<div class="order-2 md:order-1 relative">
+<div class="aspect-square rounded-xl overflow-hidden shadow-[0_16px_32px_rgba(26,27,36,0.04)]">
+<img alt="Engineering team" class="w-full h-full object-cover" data-alt="Diverse engineering team working collaboratively around a sleek technical blueprint in a modern, well-lit architectural office" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDNxuACfrLh59UEai1SUpKIDqhrVkmQjmsbl5d7qNgRJdKgJ1SF4ONT2-LIYIx7ZbKgVDUkubtGlBKb2Zveu5cwhe1yHyxMQ1Kezfk48XOKG0yxPJvtQCGCddEMQtzDLn8quVu9uoi5wKRUHfdUDRrkf-qZ-wRizc__ytqaceptSVeVXTE5-JIRvu-56cEkIbIdgJwEpP3nkSizCYM2YmvGulFXAtRFxlXtuoiDwvs4GC0SUHfmR9DXz1MohnuFsYGqbbiggntj4Cos"/>
+</div>
+</div>
+<div class="order-1 md:order-2 space-y-6">
+<h2 class="text-sm font-label tracking-widest text-primary uppercase font-bold">The Foundation</h2>
+<h3 class="text-4xl md:text-5xl font-headline font-bold text-on-background leading-tight">
+                            Engineered for the Modern Dining Architecture
+                        </h3>
+<p class="text-lg text-on-surface-variant font-body leading-relaxed">
+                            At Ezeat, we don't just build hardware; we construct digital dining ecosystems. Born from a need for reliability in high-volume environments, our team of industrial designers and systems engineers create solutions that seamlessly blend into your spatial design while drastically reducing labor overhead.
+                        </p>
+<div class="pt-4">
+<a class="inline-flex items-center space-x-2 text-primary font-label font-semibold hover:text-primary-container transition-colors" href="#">
+<span>Read Our Full Story</span>
+<span class="material-symbols-outlined">arrow_right_alt</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Services Overview (Bento Grid Style) -->
+<section class="py-24 bg-surface">
+<div class="max-w-7xl mx-auto px-8">
+<div class="mb-16 md:flex md:justify-between md:items-end">
+<div class="max-w-2xl">
+<h2 class="text-sm font-label tracking-widest text-primary uppercase font-bold mb-3">Capabilities</h2>
+<h3 class="text-4xl md:text-5xl font-headline font-bold text-on-background leading-tight">
+                            Systematic Solutions
+                        </h3>
+</div>
+<div class="mt-6 md:mt-0">
+<button class="px-6 py-2 border border-outline-variant/30 rounded-lg text-on-surface font-label hover:bg-surface-container-low transition-colors">
+                            View All Services
+                        </button>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Featured Service (Larger) -->
+<div class="md:col-span-2 bg-surface-container-highest rounded-xl p-8 md:p-12 relative overflow-hidden group shadow-[0_4px_12px_rgba(26,27,36,0.02)] hover:shadow-[0_12px_24px_rgba(26,27,36,0.04)] transition-shadow">
+<div class="relative z-10 max-w-md space-y-4">
+<div class="w-12 h-12 bg-primary rounded-lg flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-on-primary">point_of_sale</span>
+</div>
+<h4 class="text-2xl font-headline font-bold text-on-surface">Architectural Kiosks</h4>
+<p class="text-on-surface-variant font-body">
+                                Freestanding and wall-mounted self-service terminals designed with industrial precision to withstand high-traffic environments while maintaining a sleek, unobtrusive profile.
+                            </p>
+</div>
+<div class="absolute right-0 bottom-0 w-1/2 h-full opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-[200px] absolute -bottom-10 -right-10">point_of_sale</span>
+</div>
+</div>
+<!-- Standard Service 1 -->
+<div class="bg-surface-container-low rounded-xl p-8 space-y-4 shadow-[0_4px_12px_rgba(26,27,36,0.02)] border border-outline-variant/10">
+<div class="w-10 h-10 bg-surface-container-highest rounded-lg flex items-center justify-center mb-4 border border-outline-variant/20">
+<span class="material-symbols-outlined text-primary">credit_card</span>
+</div>
+<h4 class="text-xl font-headline font-bold text-on-surface">Integrated Payments</h4>
+<p class="text-on-surface-variant font-body text-sm">
+                            Frictionless, secure transaction routing with sub-second processing speeds, engineered for absolute reliability.
+                        </p>
+</div>
+<!-- Standard Service 2 -->
+<div class="bg-surface-container-low rounded-xl p-8 space-y-4 shadow-[0_4px_12px_rgba(26,27,36,0.02)] border border-outline-variant/10">
+<div class="w-10 h-10 bg-surface-container-highest rounded-lg flex items-center justify-center mb-4 border border-outline-variant/20">
+<span class="material-symbols-outlined text-primary">monitoring</span>
+</div>
+<h4 class="text-xl font-headline font-bold text-on-surface">Telemetry Hub</h4>
+<p class="text-on-surface-variant font-body text-sm">
+                            Real-time hardware diagnostics and usage analytics delivered through a centralized, high-contrast dashboard.
+                        </p>
+</div>
+<!-- Standard Service 3 -->
+<div class="md:col-span-2 bg-surface-container-low rounded-xl p-8 flex items-center justify-between shadow-[0_4px_12px_rgba(26,27,36,0.02)] border border-outline-variant/10">
+<div class="space-y-2 max-w-lg">
+<div class="flex items-center space-x-3 mb-2">
+<div class="w-8 h-8 bg-surface-container-highest rounded flex items-center justify-center border border-outline-variant/20">
+<span class="material-symbols-outlined text-primary text-sm">api</span>
+</div>
+<h4 class="text-lg font-headline font-bold text-on-surface">API &amp; POS Integration</h4>
+</div>
+<p class="text-on-surface-variant font-body text-sm">
+                                Seamless hooks into existing structural software ecosystems, ensuring data flows without interruption.
+                            </p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Section (High Contrast) -->
+<section class="py-24 bg-surface-container-highest border-t border-outline-variant/10">
+<div class="max-w-4xl mx-auto px-8 text-center space-y-8">
+<h2 class="text-4xl md:text-5xl font-headline font-bold text-on-background tracking-tight">
+                    Ready to Streamline Your Architecture?
+                </h2>
+<p class="text-xl text-on-surface-variant font-body max-w-2xl mx-auto">
+                    Partner with Ezeat to deploy enterprise-grade automation that respects your operational design and maximizes labor efficiency.
+                </p>
+<div class="flex flex-col sm:flex-row justify-center gap-4 pt-6">
+<button class="bg-primary text-on-primary px-8 py-4 rounded-lg font-label font-medium text-lg shadow-[0_8px_32px_rgba(26,27,36,0.06)] hover:bg-primary-container transition-colors">
+                        Request Enterprise Demo
+                    </button>
+<button class="border border-outline-variant/30 bg-surface text-on-surface px-8 py-4 rounded-lg font-label font-medium text-lg hover:border-primary/50 transition-colors">
+                        Contact Sales
+                    </button>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-low w-full border-t border-outline-variant/10 py-12">
+<div class="max-w-7xl mx-auto px-8 grid grid-cols-1 md:grid-cols-4 gap-8">
+<div class="space-y-4">
+<div class="text-xl font-bold text-on-background font-headline">
+                    Ezeat
+                </div>
+<p class="text-sm text-on-surface-variant font-body">
+                    Architectural precision in labor efficiency.
+                </p>
+</div>
+<div class="flex flex-col space-y-3">
+<a class="text-sm font-body text-on-surface-variant hover:text-primary hover:translate-x-1 transition-transform duration-200" href="#">Home</a>
+<a class="text-sm font-body text-on-surface-variant hover:text-primary hover:translate-x-1 transition-transform duration-200" href="#">About Us</a>
+<a class="text-sm font-body text-on-surface-variant hover:text-primary hover:translate-x-1 transition-transform duration-200" href="#">Services</a>
+</div>
+<div class="flex flex-col space-y-3">
+<a class="text-sm font-body text-on-surface-variant hover:text-primary hover:translate-x-1 transition-transform duration-200" href="#">Pricing</a>
+<a class="text-sm font-body text-on-surface-variant hover:text-primary hover:translate-x-1 transition-transform duration-200" href="#">Contact Us</a>
+</div>
+<div class="flex flex-col space-y-3">
+<a class="text-sm font-body text-on-surface-variant hover:text-primary hover:translate-x-1 transition-transform duration-200" href="#">Privacy Policy</a>
+<a class="text-sm font-body text-on-surface-variant hover:text-primary hover:translate-x-1 transition-transform duration-200" href="#">Terms of Service</a>
+</div>
+</div>
+<div class="max-w-7xl mx-auto px-8 pt-8 mt-8 border-t border-outline-variant/10 flex flex-col md:flex-row justify-between items-center">
+<p class="text-sm font-body text-on-surface-variant">
+                © 2024 Ezeat. All rights reserved.
+            </p>
+</div>
+</footer>
+</body></html>

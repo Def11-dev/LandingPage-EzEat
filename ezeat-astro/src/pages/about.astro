@@ -1,0 +1,150 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const heroImg = 'https://lh3.googleusercontent.com/aida-public/AB6AXuDgOGqjcanHFE4VRr2WJoIhjZ48XiljIRiTJqrGZkNvEOsZzti1Y5iPzmr64izXTOUST0q5JfzeKbQV3vuUSNGTJ-11Qu_fvjg5KtQk__orO84vyYFJNPCufiwCkoyyq7G7dmOvnhueXpuiOb-7-h9UJtfgxjG29YpllRk5oH6-rEC7II51d_QD17DaggI0p6EAwcs4JUVoZmqbr-xTAxZrqZBH_RE7RDWuh0RpZCmfaxx6DJ_Ze-UpCNoyVt2bpRMuZB4Uz2Xx_5hm';
+
+const values = [
+  {
+    icon: 'precision_manufacturing',
+    title: 'Industrial-grade Materials',
+    body: 'We select technology stacks with the same care an architect chooses steel and concrete. Durability and long-term viability are paramount.',
+  },
+  {
+    icon: 'speed',
+    title: 'Operational Efficiency',
+    body: 'Friction is a flaw in design. Our systems are engineered to minimize latency and maximize throughput, ensuring seamless interaction at scale.',
+  },
+  {
+    icon: 'architecture',
+    title: 'Structural Precision',
+    body: 'Every interface, every database query is designed with clear intent. We favor robust simplicity over fragile complexity.',
+  },
+];
+
+const milestones = [
+  { year: '2018', event: 'Founded in response to labor inefficiencies in high-volume dining.' },
+  { year: '2020', event: 'First enterprise deployment — 50 locations across 3 states.' },
+  { year: '2022', event: 'Launched real-time telemetry and API integration platform.' },
+  { year: '2024', event: '500+ locations, processing over 2M transactions per month.' },
+];
+---
+
+<Layout
+  title="About Us — Ezeat"
+  description="Learn how Ezeat engineers the future of dining through architectural precision and industrial-grade technology."
+>
+
+  <!-- ─── Hero ──────────────────────────────────────────────────── -->
+  <section class="py-24 md:py-32 bg-surface relative overflow-hidden">
+    <div class="absolute top-0 right-0 w-[500px] h-[500px] rounded-full bg-primary/4 -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-6 lg:px-8 grid md:grid-cols-2 gap-16 items-center">
+      <div class="space-y-8" data-animate="slide-right">
+        <div class="inline-flex items-center gap-2 bg-surface-container-highest px-4 py-2 rounded-full">
+          <span class="material-symbols-outlined text-primary text-base leading-none">corporate_fare</span>
+          <span class="text-sm font-label font-medium text-on-surface">Our Story</span>
+        </div>
+        <h1 class="font-headline text-5xl md:text-6xl font-extrabold tracking-tight text-primary leading-[1.05]">
+          Engineering the Future of Service.
+        </h1>
+        <p class="font-body text-lg text-on-surface-variant max-w-lg leading-relaxed">
+          We believe that technology should possess the same architectural integrity as the physical spaces it inhabits. We build digital infrastructure that feels substantial, permanent, and inherently reliable.
+        </p>
+        <div class="flex gap-4 pt-2">
+          <a href="/contact" class="bg-primary text-on-primary px-6 py-3 rounded-lg font-label font-medium shadow-[0_8px_24px_rgba(0,44,163,0.18)] hover:bg-primary-container hover:-translate-y-px transition-all duration-200">
+            Work With Us
+          </a>
+          <a href="/services" class="border border-outline-variant/30 text-on-surface px-6 py-3 rounded-lg font-label font-medium hover:bg-surface-container-low transition-colors">
+            Our Solutions
+          </a>
+        </div>
+      </div>
+
+      <div class="relative h-[420px] md:h-[520px] w-full" data-animate="slide-left">
+        <div class="rounded-xl overflow-hidden shadow-[0_16px_48px_rgba(26,27,36,0.08)] h-full bg-surface-container-low">
+          <img
+            src={heroImg}
+            alt="Abstract modern architectural structure with geometric precision"
+            class="w-full h-full object-cover"
+            loading="eager"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-on-background/10 to-transparent rounded-xl pointer-events-none"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Timeline ─────────────────────────────────────────────── -->
+  <section class="py-20 bg-primary">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <h2 class="text-center text-2xl font-headline font-bold text-on-primary mb-12" data-animate="fade-up">
+        Our Journey
+      </h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-0 relative" data-stagger>
+        {milestones.map((m, i) => (
+          <div class="relative pl-8 pr-6 pb-8 lg:pb-0 border-l-2 border-on-primary/20 lg:border-l-0 lg:border-t-2 lg:pl-0 lg:pt-8">
+            <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-on-primary border-2 border-primary lg:-left-0 lg:-top-[9px] lg:left-0"></div>
+            <span class="font-headline font-extrabold text-2xl text-on-primary/50 block mb-2 lg:mt-4">{m.year}</span>
+            <p class="font-body text-sm text-on-primary/80 leading-relaxed">{m.event}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Vision / Values ──────────────────────────────────────── -->
+  <section class="py-24 bg-surface-container-low">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="max-w-3xl mb-16" data-animate="fade-up">
+        <h2 class="font-headline text-3xl md:text-4xl font-bold text-on-background mb-5">
+          Architectural Integrity in Code
+        </h2>
+        <p class="font-body text-lg text-on-surface-variant leading-relaxed">
+          Our history is rooted in a fundamental dissatisfaction with transient digital experiences. We set out to design systems that mirror the permanence and reliability of industrial engineering. Every component we create is subjected to rigorous operational testing, ensuring a foundation that scales without compromise.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8" data-stagger>
+        {values.map(v => (
+          <div class="bg-surface-container-lowest p-8 rounded-xl relative overflow-hidden group shadow-[0_4px_16px_rgba(26,27,36,0.03)] hover:shadow-[0_12px_32px_rgba(26,27,36,0.07)] transition-all duration-300 hover:-translate-y-1">
+            <!-- Accent bar on hover -->
+            <div class="absolute top-0 left-0 w-1 h-full bg-primary origin-bottom scale-y-0 group-hover:scale-y-100 transition-transform duration-300 rounded-r"></div>
+            <span class="material-symbols-outlined text-4xl text-primary mb-6 block leading-none">{v.icon}</span>
+            <h3 class="font-headline text-xl font-bold text-on-background mb-3">{v.title}</h3>
+            <p class="font-body text-on-surface-variant leading-relaxed">{v.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Mission Statement ─────────────────────────────────────── -->
+  <section class="py-32 bg-surface">
+    <div class="max-w-4xl mx-auto px-6 lg:px-8 text-center space-y-8" data-animate="scale-in">
+      <span class="material-symbols-outlined text-5xl text-primary/80 block mx-auto leading-none">foundation</span>
+      <blockquote class="font-headline text-3xl md:text-4xl font-bold text-on-background leading-tight">
+        "We are not merely building software; we are constructing the digital infrastructure that will bear the weight of tomorrow's services."
+      </blockquote>
+      <div class="w-16 h-1 bg-primary mx-auto rounded-full"></div>
+      <p class="text-on-surface-variant font-body text-lg max-w-xl mx-auto">
+        This is why every decision — from material selection to API architecture — is made with permanence in mind.
+      </p>
+    </div>
+  </section>
+
+  <!-- ─── Team CTA ──────────────────────────────────────────────── -->
+  <section class="py-16 bg-surface-container-highest border-t border-outline-variant/10">
+    <div class="max-w-4xl mx-auto px-6 lg:px-8 text-center" data-animate="fade-up">
+      <h2 class="text-3xl font-headline font-bold text-on-background mb-4">
+        Want to Build With Us?
+      </h2>
+      <p class="text-on-surface-variant font-body mb-8 max-w-xl mx-auto">
+        We're always looking for engineers and designers who believe technology should be built to last.
+      </p>
+      <a href="/contact" class="bg-primary text-on-primary px-8 py-4 rounded-lg font-label font-medium text-lg shadow-[0_8px_24px_rgba(0,44,163,0.18)] hover:bg-primary-container hover:-translate-y-px transition-all duration-200 inline-block">
+        Get In Touch
+      </a>
+    </div>
+  </section>
+
+</Layout>

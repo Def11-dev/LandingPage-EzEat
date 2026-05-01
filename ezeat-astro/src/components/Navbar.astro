@@ -1,0 +1,111 @@
+---
+const navLinks = [
+  { href: '/',         label: 'Inicio' },
+  { href: '/about',    label: 'Nosotros' },
+  { href: '/services', label: 'Soluciones' },
+  { href: '/pricing',  label: 'Precios' },
+];
+
+const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
+---
+
+<nav id="navbar" class="fixed top-0 left-0 right-0 w-full z-50 transition-all duration-300 bg-surface/80 backdrop-blur-xl shadow-sm border-b border-outline-variant/20">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8 flex justify-between items-center h-20">
+
+    <!-- Brand -->
+    <a href="/" class="text-2xl font-bold text-primary font-headline tracking-tight hover:opacity-80 transition-opacity">
+      Ezeat
+    </a>
+
+    <!-- Desktop Nav -->
+    <div class="hidden md:flex items-center space-x-1">
+      {navLinks.map(link => {
+        const isActive = currentPath === link.href || (link.href !== '/' && currentPath.startsWith(link.href));
+        return (
+          <a
+            href={link.href}
+            class={`px-4 py-2 rounded-lg font-headline font-medium text-base transition-all duration-200 ${
+              isActive
+                ? 'text-primary border-b-2 border-primary pb-[6px]'
+                : 'text-on-surface-variant hover:text-primary hover:bg-surface-container-low'
+            }`}
+          >
+            {link.label}
+          </a>
+        );
+      })}
+    </div>
+
+    <!-- Actions -->
+    <div class="flex items-center gap-3">
+      <a
+        href="/contact"
+        class="hidden md:inline-flex bg-primary text-on-primary font-label font-medium px-6 py-2.5 rounded-lg hover:bg-primary-container transition-all duration-200 shadow-[0_8px_32px_rgba(26,27,36,0.08)] hover:-translate-y-px items-center gap-2"
+      >
+        Contacto
+      </a>
+
+      <!-- Mobile menu button -->
+      <button
+        id="menu-btn"
+        class="md:hidden p-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-colors"
+        aria-label="Toggle menu"
+        aria-expanded="false"
+      >
+        <span class="material-symbols-outlined" id="menu-icon">menu</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div
+    id="mobile-menu"
+    class="hidden md:hidden bg-surface-container-lowest border-t border-outline-variant/10 px-6 py-4 space-y-1"
+  >
+    {navLinks.map(link => {
+      const isActive = currentPath === link.href || (link.href !== '/' && currentPath.startsWith(link.href));
+      return (
+        <a
+          href={link.href}
+          class={`block px-4 py-3 rounded-lg font-headline font-medium transition-colors ${
+            isActive
+              ? 'text-primary bg-surface-container-low'
+              : 'text-on-surface-variant hover:text-primary hover:bg-surface-container-low'
+          }`}
+        >
+          {link.label}
+        </a>
+      );
+    })}
+    <a
+      href="/contact"
+      class="block mt-3 bg-primary text-on-primary font-label font-medium px-6 py-3 rounded-lg text-center hover:bg-primary-container transition-colors"
+    >
+      Contacto
+    </a>
+  </div>
+</nav>
+
+<script>
+  const btn = document.getElementById('menu-btn');
+  const menu = document.getElementById('mobile-menu');
+  const icon = document.getElementById('menu-icon');
+
+  btn?.addEventListener('click', () => {
+    const isOpen = menu?.classList.toggle('hidden') === false;
+    if (icon) icon.textContent = isOpen ? 'close' : 'menu';
+    btn.setAttribute('aria-expanded', String(isOpen));
+  });
+
+  // Scroll shadow
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 10) {
+      navbar?.classList.add('shadow-md');
+      navbar?.classList.remove('shadow-sm');
+    } else {
+      navbar?.classList.remove('shadow-md');
+      navbar?.classList.add('shadow-sm');
+    }
+  });
+</script>

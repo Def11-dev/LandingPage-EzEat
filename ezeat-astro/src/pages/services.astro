@@ -1,0 +1,234 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const heroImg     = 'https://lh3.googleusercontent.com/aida-public/AB6AXuBZb84zxuqgT1ZYRtRy23NgOFAvfrclfu-JNUgdw8OqBXw_mhpGEyMyGsuWKZRB6QV_p13Y_5cqzTkNhtiz0ccS6NnuxMt6s9th_dsxyID19BZoR-RIawXrJaWLtRosngdlh3dF-W7oXCOu1ZhqIqosSQZ0dqVpfvbOPVo7gnoOXqrlmICzeJ1cq9mOSNPm0Q9t_nqE9_C6c5791qVzClE6-hgDAFT6Ig0eQwO-r74PFL7iylRBmAOU8s6cgQavdVVHEkawCeUOyXqt';
+const terminalImg = 'https://lh3.googleusercontent.com/aida-public/AB6AXuC7kVKpA67m77WIr_OP6QaM9OEuuAgLLF7gCo9P4QY42_Pb-Z6NU82oT-ro-O1X6wTEZr-dWnel0wnrI0oGHDXm08NDTpVAADalzFz--IW6dMDweqJhZznZsYo-avqfhghdOwP79fM9xw_LZr_BbIw0LF9-5-2NOHvYvJygIOoDTcaBQIxt2OwaAuZAvDjnw9cWfAgccA0TrzqokRGPu3EPkDRrcdLHL8N8Rnk0jo_zLWQqpIz9Rp837kO22M1Ym1qnXqNgmiuw1uIA';
+
+const analyticsCards = [
+  {
+    icon: 'monitoring',
+    title: 'Live Sales Tracking',
+    body: 'Monitor revenue and order volume in real-time. Identify peak hours and top-performing menu items instantly.',
+  },
+  {
+    icon: 'inventory',
+    title: 'Predictive Inventory',
+    body: 'Automated alerts for low stock and AI-driven forecasting to minimize waste and ensure availability.',
+  },
+  {
+    icon: 'group',
+    title: 'Customer Demographics',
+    body: 'Understand your audience. Track visit frequency, average spend, and preferences to tailor marketing efforts.',
+  },
+];
+---
+
+<Layout
+  title="Services — Ezeat"
+  description="Discover Ezeat's full suite of hardware and software solutions: self-service terminals, payment integration, custom APIs, and real-time analytics."
+>
+
+  <!-- ─── Hero ──────────────────────────────────────────────────── -->
+  <section class="pt-16 pb-24 bg-surface relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-surface to-surface-container-low opacity-50 pointer-events-none"></div>
+    <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+
+        <div class="space-y-8" data-animate="slide-right">
+          <div class="inline-flex items-center gap-2 bg-surface-container-highest px-4 py-2 rounded-full">
+            <span class="material-symbols-outlined text-primary text-base leading-none">engineering</span>
+            <span class="text-sm font-label font-medium text-on-surface">Full-Stack Dining Tech</span>
+          </div>
+          <h1 class="font-headline text-5xl lg:text-6xl font-extrabold tracking-tight text-primary leading-[1.05]">
+            Technical Solutions for Modern Dining.
+          </h1>
+          <p class="text-on-surface-variant text-xl font-body leading-relaxed max-w-xl">
+            Architected for scale. Ezeat provides a comprehensive suite of hardware and software solutions designed to streamline restaurant operations and elevate the guest experience.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4">
+            <a href="/contact" class="bg-primary text-on-primary font-label font-medium px-8 py-4 rounded-lg shadow-[0_8px_32px_rgba(0,44,163,0.2)] hover:bg-primary-container hover:-translate-y-px transition-all duration-200 text-center">
+              Schedule a Demo
+            </a>
+            <a href="/pricing" class="border border-outline-variant/30 text-on-surface font-label font-medium px-8 py-4 rounded-lg hover:bg-surface-container-low transition-colors text-center">
+              View Pricing
+            </a>
+          </div>
+        </div>
+
+        <div class="relative h-[480px]" data-animate="slide-left">
+          <div class="w-full h-full rounded-xl overflow-hidden shadow-[0_24px_48px_rgba(26,27,36,0.09)] bg-surface-container-low">
+            <img
+              src={heroImg}
+              alt="Modern restaurant analytics dashboard on sleek screen"
+              class="w-full h-full object-cover"
+              loading="eager"
+            />
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Self-Service Terminals ────────────────────────────────── -->
+  <section class="bg-surface-container-low py-24">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="flex flex-col lg:flex-row gap-16 items-center">
+
+        <!-- Image -->
+        <div class="lg:w-1/2 relative" data-animate="slide-right">
+          <div class="h-[560px] w-full rounded-xl overflow-hidden shadow-[0_20px_48px_rgba(26,27,36,0.08)] bg-surface-container">
+            <img
+              src={terminalImg}
+              alt="Sleek self-service ordering kiosk in a modern fast-casual restaurant"
+              class="w-full h-full object-cover"
+              loading="lazy"
+            />
+          </div>
+          <!-- Floating badge -->
+          <div class="absolute -bottom-6 -right-6 bg-surface-container-lowest p-5 rounded-xl shadow-[0_12px_32px_rgba(26,27,36,0.08)] border border-outline-variant/10 hidden md:flex items-center gap-4 animate-float">
+            <div class="w-11 h-11 bg-primary/10 rounded-full flex items-center justify-center text-primary shrink-0">
+              <span class="material-symbols-outlined text-xl leading-none">bolt</span>
+            </div>
+            <div>
+              <p class="font-headline font-bold text-lg text-primary leading-tight">Sub-second</p>
+              <p class="font-label text-xs text-on-surface-variant">Transaction Speed</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Text -->
+        <div class="lg:w-1/2 lg:pt-6" data-animate="slide-left">
+          <span class="text-primary font-label text-sm font-bold uppercase tracking-wider mb-3 block">Hardware & UI</span>
+          <h2 class="font-headline text-4xl font-extrabold text-on-background mb-5 leading-tight">
+            Self-Service Terminals
+          </h2>
+          <p class="text-on-surface-variant text-lg mb-8 leading-relaxed">
+            Industrial-grade hardware paired with an intuitive, high-performance touch interface. Our terminals reduce wait times, increase average order value, and seamlessly sync with your kitchen display systems.
+          </p>
+          <div class="space-y-6" data-stagger>
+            {[
+              { icon: 'check_circle', title: 'Responsive Touch Displays', body: '4K resolution screens with anti-glare coating and instantaneous touch response.' },
+              { icon: 'payments', title: 'Integrated Payment Gateways', body: 'NFC, EMV, and mobile wallet compatibility natively built-in.' },
+              { icon: 'sync', title: 'Real-Time Menu Sync', body: 'Instantly reflect price changes and out-of-stock items across all locations.' },
+            ].map(f => (
+              <div class="flex items-start gap-4">
+                <span class="material-symbols-outlined text-primary mt-0.5 leading-none shrink-0">{f.icon}</span>
+                <div>
+                  <h3 class="font-headline font-bold text-lg text-on-background">{f.title}</h3>
+                  <p class="text-on-surface-variant text-sm mt-1 leading-relaxed">{f.body}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Custom API Integration ───────────────────────────────── -->
+  <section id="api" class="py-24 bg-surface">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="flex flex-col lg:flex-row gap-16 items-center">
+
+        <!-- Text -->
+        <div class="lg:w-1/2" data-animate="slide-right">
+          <span class="text-primary font-label text-sm font-bold uppercase tracking-wider mb-3 block">Developer Platform</span>
+          <h2 class="font-headline text-4xl font-extrabold text-on-background mb-5 leading-tight">
+            Custom API Integration
+          </h2>
+          <p class="text-on-surface-variant text-lg mb-8 leading-relaxed">
+            Connect Ezeat to your existing tech stack. Our robust RESTful APIs and webhooks allow you to build custom workflows, pull data into your own ERP, or connect third-party delivery services.
+          </p>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-5" data-stagger>
+            {[
+              { icon: 'code', title: 'Comprehensive Docs', body: 'Detailed guides and interactive API references for quick implementation.' },
+              { icon: 'security', title: 'Enterprise Security', body: 'OAuth 2.0 authentication and end-to-end encryption for all data transfers.' },
+              { icon: 'webhook', title: 'Webhooks & Events', body: 'Real-time event streaming for order updates, inventory changes, and payments.' },
+              { icon: 'terminal', title: 'SDKs & Libraries', body: 'Official SDKs for Node.js, Python, and Java to accelerate integration.' },
+            ].map(c => (
+              <div class="bg-surface-container-low p-5 rounded-xl border border-outline-variant/15 hover:border-primary/25 hover:shadow-[0_6px_20px_rgba(26,27,36,0.05)] transition-all">
+                <span class="material-symbols-outlined text-primary text-2xl mb-3 block leading-none">{c.icon}</span>
+                <h3 class="font-headline font-bold text-base mb-1">{c.title}</h3>
+                <p class="text-sm text-on-surface-variant leading-relaxed">{c.body}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- Code block -->
+        <div class="lg:w-1/2" data-animate="slide-left">
+          <div class="bg-inverse-surface rounded-xl overflow-hidden shadow-[0_20px_48px_rgba(26,27,36,0.12)]">
+            <!-- Terminal header -->
+            <div class="flex items-center gap-2 px-5 py-3 bg-black/20 border-b border-white/5">
+              <div class="w-3 h-3 rounded-full bg-error/80"></div>
+              <div class="w-3 h-3 rounded-full bg-tertiary-fixed-dim/80"></div>
+              <div class="w-3 h-3 rounded-full bg-secondary-fixed-dim/80"></div>
+              <span class="ml-auto font-mono text-xs text-white/30">POST /v1/orders</span>
+            </div>
+            <pre class="text-inverse-on-surface font-mono text-sm p-6 overflow-x-auto leading-relaxed"><code><span class="text-secondary-container">POST</span> /v1/orders
+<span class="text-on-surface-variant">Host:</span> api.ezeat.com
+<span class="text-on-surface-variant">Authorization:</span> Bearer sk_live_...
+<span class="text-on-surface-variant">Content-Type:</span> application/json
+
+&#123;
+  <span class="text-primary-fixed-dim">"location_id"</span>: <span class="text-tertiary-fixed">"loc_123"</span>,
+  <span class="text-primary-fixed-dim">"items"</span>: [
+    &#123;
+      <span class="text-primary-fixed-dim">"item_id"</span>:  <span class="text-tertiary-fixed">"item_456"</span>,
+      <span class="text-primary-fixed-dim">"quantity"</span>: <span class="text-secondary-container">2</span>,
+      <span class="text-primary-fixed-dim">"modifiers"</span>: [<span class="text-tertiary-fixed">"mod_789"</span>]
+    &#125;
+  ],
+  <span class="text-primary-fixed-dim">"payment_method"</span>: <span class="text-tertiary-fixed">"pm_card_visa"</span>
+&#125;</code></pre>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Real-Time Analytics ───────────────────────────────────── -->
+  <section class="bg-surface-container-low py-24">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-16" data-animate="fade-up">
+        <span class="text-primary font-label text-sm font-bold uppercase tracking-wider mb-3 block">Data Intelligence</span>
+        <h2 class="font-headline text-4xl font-extrabold text-on-background mb-5 leading-tight">
+          Real-Time Analytics Dashboard
+        </h2>
+        <p class="text-on-surface-variant text-lg leading-relaxed">
+          Make informed decisions with actionable insights. Monitor sales, track inventory levels, and analyze customer behavior across all your locations from a single, unified interface.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8" data-stagger>
+        {analyticsCards.map(card => (
+          <div class="bg-surface-container-lowest p-8 rounded-xl shadow-[0_4px_20px_rgba(26,27,36,0.04)] flex flex-col items-center text-center hover:shadow-[0_12px_32px_rgba(26,27,36,0.08)] hover:-translate-y-1 transition-all duration-300">
+            <div class="w-16 h-16 bg-primary/8 rounded-full flex items-center justify-center text-primary mb-6">
+              <span class="material-symbols-outlined text-3xl leading-none">{card.icon}</span>
+            </div>
+            <h3 class="font-headline font-bold text-xl mb-3">{card.title}</h3>
+            <p class="text-on-surface-variant text-sm leading-relaxed">{card.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── CTA ───────────────────────────────────────────────────── -->
+  <section class="py-20 bg-surface-container-highest border-t border-outline-variant/10">
+    <div class="max-w-3xl mx-auto px-6 text-center" data-animate="fade-up">
+      <h2 class="text-3xl md:text-4xl font-headline font-bold text-on-background mb-4">
+        Ready to See It In Action?
+      </h2>
+      <p class="text-on-surface-variant font-body mb-8 text-lg">
+        Book a live demo and let our team walk you through a deployment tailored to your environment.
+      </p>
+      <a href="/contact" class="bg-primary text-on-primary px-8 py-4 rounded-lg font-label font-medium text-lg shadow-[0_8px_24px_rgba(0,44,163,0.18)] hover:bg-primary-container hover:-translate-y-px transition-all duration-200 inline-block">
+        Book a Demo
+      </a>
+    </div>
+  </section>
+
+</Layout>
