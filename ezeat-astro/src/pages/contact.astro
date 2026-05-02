@@ -277,7 +277,14 @@ const contactOptions = [
     btnIcon.textContent = 'hourglass_empty';
 
     try {
-      const res = await fetch('/api/contact', { method: 'POST', body: new FormData(form) });
+      const endpoint = import.meta.env.PUBLIC_FORMSPREE_ID
+        ? `https://formspree.io/f/${import.meta.env.PUBLIC_FORMSPREE_ID}`
+        : 'https://formspree.io/f/REPLACE_WITH_YOUR_ID';
+      const res = await fetch(endpoint, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { Accept: 'application/json' },
+      });
       if (!res.ok) throw new Error('send failed');
       submitBtn.classList.add('hidden');
       successEl?.classList.remove('hidden');

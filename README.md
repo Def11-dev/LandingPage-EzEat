@@ -1,10 +1,10 @@
 # Ezeat Landing Page
 
-Static marketing site + restaurant diagnostic quiz, built with [Astro 6](https://astro.build) + Tailwind CSS. Contact form sends emails via [Resend](https://resend.com).
+Static marketing site + restaurant diagnostic quiz, built with [Astro 5](https://astro.build) + Tailwind CSS. Contact form sends emails via [Formspree](https://formspree.io) (no backend needed).
 
 ## Requirements
 
-- Node.js ≥ 18.20
+- Node.js ≥ 18.17
 - A free [Resend](https://resend.com) account (for email)
 
 ## Setup
@@ -19,10 +19,7 @@ Edit `.env`:
 
 | Variable | Description |
 |---|---|
-| `RESEND_API_KEY` | From resend.com → API Keys |
-| `CONTACT_EMAIL` | Where form submissions are delivered |
-
-> **Domain note:** Resend requires a verified sender domain. During development you can use the shared `onboarding@resend.dev` address by changing `from` in `src/pages/api/contact.ts`.
+| `PUBLIC_FORMSPREE_ID` | ID de tu formulario en [formspree.io](https://formspree.io) (gratis) |
 
 ## Development
 
@@ -37,14 +34,14 @@ npm run build
 npm run preview  # serves the built output
 ```
 
-## Deploy
+## Deploy (Netlify)
 
-The site uses Astro **hybrid** mode — all pages are pre-rendered (static), only `/api/contact` runs server-side. Deploy anywhere that supports Node.js:
-
-- **Vercel / Netlify** — connect the repo, set env vars in dashboard, done.
-- **Self-host** — `npm run build` then `node dist/server/entry.mjs`.
-
-For pure-static hosts (GitHub Pages) replace the API route with [Formspree](https://formspree.io): set the form `action` to your Formspree endpoint and remove `src/pages/api/contact.ts`.
+1. Conecta el repo en Netlify
+2. Configura el build:
+   - Base directory: `ezeat-astro`
+   - Build command: `npm run build`
+   - Publish directory: `dist`
+3. En **Environment variables** agrega `PUBLIC_FORMSPREE_ID`
 
 ## Project structure
 

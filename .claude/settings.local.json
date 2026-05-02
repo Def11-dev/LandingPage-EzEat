@@ -3,7 +3,9 @@
     "allow": [
       "Bash(npm install *)",
       "Bash(npx astro *)",
-      "mcp__Claude_Preview__preview_start"
+      "mcp__Claude_Preview__preview_start",
+      "Bash(npm remove *)",
+      "Bash(del \"D:\\\\Ezeat-landingpage\\\\ezeat-astro\\\\src\\\\pages\\\\api\\\\contact.ts\")"
     ]
   }
 }
