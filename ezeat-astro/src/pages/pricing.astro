@@ -1,273 +1,270 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-const heroImg = 'https://lh3.googleusercontent.com/aida-public/AB6AXuD2Xzu8LB8ZjSTS6ylGPlyQSkHD4gE-QNho_TLpv2jd1hZwZ8NJZQJvl2o7TEtbdHu1yUglHNtg7r-nJc16hAKVc0Aym81dPP38XoyY-Whd3aNB0HHsf0aEQ9skuAkNM4k9eRNbguIVC0e5gRh7sm2Q4jjOPbtVZc0v18qlisXZgUPcSkdhSov_LfAIoRQhmNxllVgZo4_NlYGTSsmPFSGtxRp5otTaCq277hxdKjzMpRi27nBMTo1LODk3T9kZzIZyJfbKe_ZVcYoF';
-
-const plans = [
-  {
-    name: 'Starter',
-    price: '$499',
-    period: '/mo',
-    desc: 'For growing teams requiring essential dining management.',
-    features: [
-      'Up to 500 active users',
-      'Standard reporting dashboard',
-      'Email support (24h SLA)',
-      'Basic vendor integration',
-    ],
-    cta: 'Get Started',
-    ctaHref: '/contact',
-    highlight: false,
-  },
-  {
-    name: 'Professional',
-    price: '$999',
-    period: '/mo',
-    desc: 'Comprehensive tools for mid-market corporate campuses.',
-    features: [
-      'Up to 2,500 active users',
-      'Advanced Analytics & Insights',
-      'Priority Support (4h SLA)',
-      'Custom Branding options',
-      'Multi-location management',
-    ],
-    cta: 'Start Free Trial',
-    ctaHref: '/contact',
-    highlight: true,
-    badge: 'Most Popular',
-  },
-  {
-    name: 'Enterprise',
-    price: 'Custom',
-    period: '',
-    desc: 'Bespoke architecture for global organizational networks.',
-    features: [
-      'Unlimited users',
-      'Dedicated Success Manager',
-      '24/7 Phone & Email Support',
-      'Full API Access & Custom Integrations',
-      'On-premise deployment options',
-    ],
-    cta: 'Contact Sales',
-    ctaHref: '/contact',
-    highlight: false,
-  },
-];
-
-const faqs = [
-  {
-    q: 'How long does Enterprise implementation take?',
-    a: 'Implementation timelines vary based on architectural complexity, but typically range from 4 to 8 weeks. Our dedicated deployment team works directly with your IT and facilities departments to ensure a seamless rollout.',
-  },
-  {
-    q: 'What level of custom branding is available?',
-    a: 'The Professional and Enterprise tiers offer extensive whitelabeling. You can customize the app icon, primary colorways, typography, and splash screens to match your corporate identity completely.',
-  },
-  {
-    q: 'Do you offer volume discounts for large campuses?',
-    a: 'Yes. Our Custom Enterprise plans are designed to scale economically. Contact our sales team to discuss tiered pricing based on active user volume and multi-site deployments.',
-  },
-  {
-    q: 'Is there a free trial available?',
-    a: 'The Professional plan includes a 14-day free trial with full feature access. No credit card required to start.',
-  },
+const modules = [
+  { id: 'pos_basic',    label: 'POS Básico',              price: 599,  icon: 'point_of_sale',  category: 'operativa' },
+  { id: 'pos_smart',    label: 'POS Inteligente',         price: 1200, icon: 'tablet_android',  category: 'operativa' },
+  { id: 'kds',          label: 'KDS - Pantallas de Cocina',price: 450,  icon: 'kitchen',         category: 'operativa' },
+  { id: 'kioscos',      label: 'Kioskos de Autoservicio', price: 1000, icon: 'smart_display',   category: 'addons' },
+  { id: 'inventory',    label: 'Inventarios con IA',      price: 750,  icon: 'inventory_2',    category: 'addons' },
+  { id: 'delivery',     label: 'Delivery Integrado',      price: 400,  icon: 'delivery_dining', category: 'addons' },
+  { id: 'finance_ai',   label: 'IA Financiera',           price: 1250, icon: 'account_balance', category: 'addons' },
+  { id: 'roomservice',  label: 'Room Service (Hoteles)',  price: 1500, icon: 'room_service',    category: 'addons' },
 ];
 ---
 
 <Layout
-  title="Pricing — Ezeat"
-  description="Flexible enterprise pricing plans for Ezeat. Choose from Starter, Professional, or Enterprise tiers tailored to your scale."
+  title="Precios — EzEat"
+  description="Simula tu configuración EzEat. Elige módulos, número de sucursales y obtén tu inversión mensual estimada al instante."
 >
 
   <!-- ─── Hero ──────────────────────────────────────────────────── -->
-  <section class="pt-16 pb-24 bg-surface relative overflow-hidden">
-    <div class="absolute inset-0 bg-gradient-to-br from-surface to-surface-container-low opacity-50 pointer-events-none"></div>
-    <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
+  <section class="pt-16 pb-12 bg-surface">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8 text-center" data-animate="fade-up">
+      <div class="inline-flex items-center gap-2 bg-surface-container-highest px-4 py-2 rounded-full mb-6">
+        <span class="material-symbols-outlined text-primary text-base leading-none">construction</span>
+        <span class="text-sm font-label font-medium text-on-surface">Build Your Own OS</span>
+      </div>
+      <h1 class="font-headline text-5xl md:text-6xl font-bold tracking-tight text-on-background leading-[1.05] mb-5">
+        Arma tu <span class="text-primary">EzEat ideal.</span>
+      </h1>
+      <p class="font-body text-xl text-on-surface-variant max-w-2xl mx-auto">
+        Sin paquetes. Sin sorpresas. Activa solo los módulos que necesitas y ve tu inversión en tiempo real.
+      </p>
 
-        <div class="max-w-xl space-y-8" data-animate="slide-right">
-          <div class="inline-flex items-center gap-2 bg-surface-container-highest px-4 py-2 rounded-full">
-            <span class="material-symbols-outlined text-primary text-base leading-none">payments</span>
-            <span class="text-sm font-label font-medium text-on-surface">Transparent Pricing</span>
-          </div>
-          <h1 class="font-headline text-5xl md:text-6xl font-bold tracking-tight text-on-background leading-[1.05]">
-            Flexible{' '}
-            <span class="text-primary">Enterprise</span>{' '}
-            Pricing
-          </h1>
-          <p class="font-body text-xl text-on-surface-variant leading-relaxed">
-            Scale your corporate dining experience with transparent, predictable pricing. Choose the plan that aligns with your architectural growth.
-          </p>
-          <div class="flex flex-col sm:flex-row gap-4">
-            <a
-              href="/contact"
-              class="bg-primary text-on-primary px-8 py-4 rounded-lg font-label font-medium shadow-[0_8px_32px_rgba(0,44,163,0.2)] hover:bg-primary-container hover:-translate-y-px transition-all duration-200 flex justify-center items-center gap-2"
-            >
-              Contact Sales
-              <span class="material-symbols-outlined text-xl leading-none">arrow_forward</span>
-            </a>
-            <button class="border border-outline-variant/30 text-primary bg-surface px-8 py-4 rounded-lg font-label font-medium hover:bg-surface-container-low transition-colors">
-              View Full Feature Matrix
-            </button>
-          </div>
-        </div>
-
-        <div class="relative h-[380px]" data-animate="slide-left">
-          <div class="w-full h-full rounded-xl overflow-hidden shadow-[0_24px_48px_rgba(26,27,36,0.09)]">
-            <img
-              src={heroImg}
-              alt="Modern corporate office with architectural precision"
-              class="w-full h-full object-cover"
-              loading="eager"
-            />
-            <div class="absolute inset-0 bg-gradient-to-tr from-primary/15 to-transparent pointer-events-none"></div>
-          </div>
-        </div>
-
+      <!-- Pre-selection banner (shown if diagnostic was completed) -->
+      <div id="diag-banner" class="hidden mt-8 inline-flex items-center gap-3 bg-primary/8 border border-primary/20 px-5 py-3 rounded-xl">
+        <span class="material-symbols-outlined text-primary text-xl leading-none">auto_awesome</span>
+        <span class="text-sm font-body text-on-surface">Basado en tu diagnóstico, hemos pre-seleccionado estas herramientas para ti.</span>
       </div>
     </div>
   </section>
 
-  <!-- ─── Pricing Cards ─────────────────────────────────────────── -->
-  <section class="bg-surface-container-low py-24">
+  <!-- ─── Simulator ─────────────────────────────────────────────── -->
+  <section class="pb-24 bg-surface">
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-5 gap-10 items-start">
 
-      <div class="text-center mb-16" data-animate="fade-up">
-        <h2 class="font-headline text-3xl font-bold text-on-background mb-3">Choose Your Plan</h2>
-        <p class="text-on-surface-variant font-body">All plans include a 14-day free trial on Professional tier. No credit card required.</p>
-      </div>
+        <!-- Left: Control panel -->
+        <div class="lg:col-span-3 space-y-8">
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-start" data-stagger>
-        {plans.map(plan => (
-          <div class={`relative flex flex-col h-full rounded-xl p-8 transition-all duration-300 ${
-            plan.highlight
-              ? 'bg-primary-container shadow-[0_20px_56px_rgba(0,44,163,0.18)] md:-translate-y-6 z-10'
-              : 'bg-surface-container-lowest shadow-[0_4px_24px_rgba(26,27,36,0.04)] border border-transparent hover:border-outline-variant/25 hover:shadow-[0_12px_32px_rgba(26,27,36,0.07)] hover:-translate-y-1 mt-0 md:mt-4'
-          }`}>
-
-            {plan.badge && (
-              <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-surface-container-lowest text-primary font-bold text-xs px-4 py-1.5 rounded-full shadow-sm tracking-wider uppercase">
-                {plan.badge}
+          <!-- Step 1: Branches -->
+          <div class="bg-surface-container-lowest rounded-xl p-7 border border-outline-variant/10" data-animate="slide-right">
+            <h2 class="font-headline text-lg font-bold text-on-background mb-1">Paso 1: ¿Cuántas sucursales?</h2>
+            <p class="text-on-surface-variant text-sm font-body mb-5">Multiplica el costo base por ubicación.</p>
+            <div class="flex items-center gap-4">
+              <button id="branches-dec" class="w-10 h-10 rounded-full border border-outline-variant/25 flex items-center justify-center text-on-surface hover:bg-surface-container-low transition-colors font-bold text-lg">−</button>
+              <div class="flex-1 text-center">
+                <span id="branches-val" class="font-headline font-extrabold text-4xl text-primary">1</span>
+                <span class="text-on-surface-variant font-body text-sm ml-2">sucursal(es)</span>
               </div>
-            )}
-
-            <div class="mb-6">
-              <h3 class={`font-headline text-2xl font-bold mb-2 ${plan.highlight ? 'text-on-primary' : 'text-on-background'}`}>
-                {plan.name}
-              </h3>
-              <p class={`text-sm font-body ${plan.highlight ? 'text-on-primary/75' : 'text-on-surface-variant'}`}>
-                {plan.desc}
-              </p>
+              <button id="branches-inc" class="w-10 h-10 rounded-full border border-outline-variant/25 flex items-center justify-center text-on-surface hover:bg-surface-container-low transition-colors font-bold text-lg">+</button>
             </div>
-
-            <div class="mb-8">
-              <div class="flex items-baseline gap-1">
-                <span class={`font-headline font-bold ${plan.highlight ? 'text-5xl text-on-primary' : 'text-4xl text-on-background'}`}>
-                  {plan.price}
-                </span>
-                {plan.period && (
-                  <span class={`text-sm font-body ${plan.highlight ? 'text-on-primary/70' : 'text-on-surface-variant'}`}>
-                    {plan.period}
-                  </span>
-                )}
-              </div>
-            </div>
-
-            <ul class="space-y-3.5 mb-10 flex-grow font-body text-sm" data-stagger>
-              {plan.features.map(f => (
-                <li class={`flex items-start gap-3 ${plan.highlight ? 'text-on-primary' : 'text-on-background'}`}>
-                  <span class={`material-symbols-outlined text-lg leading-none shrink-0 fill mt-0.5 ${plan.highlight ? 'text-on-primary' : 'text-primary'}`}>
-                    check_circle
-                  </span>
-                  <span set:html={f} />
-                </li>
-              ))}
-            </ul>
-
-            <a
-              href={plan.ctaHref}
-              class={`w-full py-3.5 px-6 rounded-lg font-label font-semibold text-center block transition-all duration-200 hover:-translate-y-px ${
-                plan.highlight
-                  ? 'bg-surface-container-lowest text-primary shadow-lg hover:bg-surface-container-low'
-                  : plan.name === 'Enterprise'
-                    ? 'bg-primary text-on-primary shadow-[0_4px_16px_rgba(0,44,163,0.14)] hover:bg-primary-container'
-                    : 'border border-outline-variant/30 text-primary hover:bg-surface-container-low'
-              }`}
-            >
-              {plan.cta}
-            </a>
-
+            <p id="fleet-msg" class="hidden mt-4 text-xs font-body text-primary bg-primary/8 px-4 py-2.5 rounded-lg">
+              ¿Tienes más de 5 sucursales? <a href="/contact" class="font-semibold underline">Hablemos de un precio especial para flotas.</a>
+            </p>
           </div>
-        ))}
-      </div>
-    </div>
-  </section>
 
-  <!-- ─── FAQ ───────────────────────────────────────────────────── -->
-  <section class="max-w-4xl mx-auto px-6 lg:px-8 py-24">
-    <div class="text-center mb-14" data-animate="fade-up">
-      <h2 class="font-headline text-3xl font-bold text-on-background mb-3">Enterprise Questions</h2>
-      <p class="font-body text-on-surface-variant">Common inquiries about scaling with Ezeat.</p>
-    </div>
+          <!-- Step 2: Core -->
+          <div class="bg-surface-container-lowest rounded-xl p-7 border border-outline-variant/10" data-animate="slide-right">
+            <h2 class="font-headline text-lg font-bold text-on-background mb-1">Paso 2: Elige tu operativa</h2>
+            <p class="text-on-surface-variant text-sm font-body mb-5">Los módulos esenciales para tu operación diaria.</p>
+            <div class="space-y-3" id="modules-operativa"></div>
+          </div>
 
-    <div class="space-y-4" data-stagger>
-      {faqs.map((faq, i) => (
-        <div class="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant/10 group hover:border-primary/20 transition-colors">
-          <button
-            class="w-full text-left flex items-start justify-between gap-4 cursor-pointer"
-            aria-expanded="false"
-            data-faq-btn
-          >
-            <span class="font-headline text-lg font-bold text-on-background">{faq.q}</span>
-            <span class="material-symbols-outlined text-outline shrink-0 mt-0.5 transition-transform duration-200 group-[.open]:rotate-180 leading-none" data-faq-icon>
-              expand_more
-            </span>
-          </button>
-          <div class="overflow-hidden max-h-0 transition-all duration-300 ease-in-out" data-faq-answer>
-            <p class="font-body text-on-surface-variant text-sm mt-4 leading-relaxed">{faq.a}</p>
+          <!-- Step 3: Add-ons -->
+          <div class="bg-surface-container-lowest rounded-xl p-7 border border-outline-variant/10" data-animate="slide-right">
+            <h2 class="font-headline text-lg font-bold text-on-background mb-1">Paso 3: Añade superpoderes</h2>
+            <p class="text-on-surface-variant text-sm font-body mb-5">Módulos para escalar y diferenciarte.</p>
+            <div class="space-y-3" id="modules-addons"></div>
+          </div>
+
+        </div>
+
+        <!-- Right: Floating summary -->
+        <div class="lg:col-span-2 lg:sticky lg:top-24" data-animate="slide-left">
+          <div class="bg-surface-container-lowest rounded-xl border border-outline-variant/15 shadow-[0_16px_48px_rgba(26,27,36,0.07)] overflow-hidden">
+            <div class="bg-primary px-7 py-5">
+              <h3 class="font-headline font-bold text-on-primary text-lg">Tu Configuración EzEat</h3>
+              <p class="text-on-primary/70 text-sm font-body mt-0.5">Resumen en tiempo real</p>
+            </div>
+            <div class="p-7">
+              <div id="summary-list" class="space-y-2 mb-6 min-h-[80px]">
+                <p class="text-on-surface-variant text-sm font-body italic">Selecciona módulos para comenzar...</p>
+              </div>
+              <div class="border-t border-outline-variant/15 pt-5 mb-6">
+                <div class="flex justify-between items-center mb-1">
+                  <span class="text-sm font-label text-on-surface-variant">Módulos seleccionados × <span id="summary-branches">1</span> sucursal(es)</span>
+                </div>
+                <div class="flex justify-between items-end mt-3">
+                  <span class="text-sm font-label font-medium text-on-surface-variant">Inversión mensual estimada</span>
+                </div>
+                <div class="mt-2">
+                  <span id="total-price" class="font-headline font-extrabold text-4xl text-primary transition-all duration-300">$0</span>
+                  <span class="text-on-surface-variant font-body text-sm ml-1">/mes MXN</span>
+                </div>
+              </div>
+              <a
+                href="/contact"
+                id="cta-demo"
+                class="w-full bg-primary text-on-primary py-4 rounded-lg font-label font-semibold text-base shadow-[0_8px_24px_rgba(0,44,163,0.18)] hover:bg-primary-container hover:-translate-y-px transition-all duration-200 flex items-center justify-center gap-2"
+              >
+                Solicitar Demo con este Plan
+                <span class="material-symbols-outlined text-xl leading-none">calendar_month</span>
+              </a>
+              <p class="text-center text-xs text-on-surface-variant font-body mt-4">Sin tarjeta de crédito · Demo gratuita</p>
+            </div>
           </div>
         </div>
-      ))}
+
+      </div>
     </div>
   </section>
 
-  <!-- ─── CTA ───────────────────────────────────────────────────── -->
+  <!-- Mobile sticky bar -->
+  <div id="mobile-sticky" class="lg:hidden fixed bottom-0 left-0 right-0 bg-surface-container-lowest border-t border-outline-variant/15 shadow-[0_-8px_24px_rgba(26,27,36,0.1)] px-5 py-4 flex items-center justify-between z-50">
+    <div>
+      <p class="text-xs font-label text-on-surface-variant">Inversión estimada</p>
+      <p id="mobile-price" class="font-headline font-bold text-xl text-primary">$0<span class="text-sm font-body text-on-surface-variant">/mes</span></p>
+    </div>
+    <a href="/contact" class="bg-primary text-on-primary px-6 py-3 rounded-lg font-label font-semibold text-sm shadow-[0_4px_16px_rgba(0,44,163,0.2)] hover:-translate-y-px transition-all">
+      Solicitar Demo
+    </a>
+  </div>
+
+  <!-- ─── CTA final ──────────────────────────────────────────────── -->
   <section class="py-16 bg-surface-container-highest border-t border-outline-variant/10">
     <div class="max-w-3xl mx-auto px-6 text-center" data-animate="fade-up">
-      <h2 class="text-3xl font-headline font-bold text-on-background mb-4">
-        Still have questions?
-      </h2>
-      <p class="text-on-surface-variant font-body mb-8">
-        Our sales team is ready to build a custom plan that fits your operational architecture.
-      </p>
+      <h2 class="text-3xl font-headline font-bold text-on-background mb-4">¿Tienes preguntas?</h2>
+      <p class="text-on-surface-variant font-body mb-8">Nuestro equipo te ayuda a armar la configuración perfecta para tu operación.</p>
       <a href="/contact" class="bg-primary text-on-primary px-8 py-4 rounded-lg font-label font-medium text-lg shadow-[0_8px_24px_rgba(0,44,163,0.18)] hover:bg-primary-container hover:-translate-y-px transition-all duration-200 inline-block">
-        Talk to Sales
+        Hablar con un especialista
       </a>
     </div>
   </section>
 
 </Layout>
 
-<script>
-  // FAQ accordion
-  document.querySelectorAll('[data-faq-btn]').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const card   = btn.closest('.group') as HTMLElement;
-      const answer = card?.querySelector('[data-faq-answer]') as HTMLElement;
-      const icon   = btn.querySelector('[data-faq-icon]') as HTMLElement;
+<script define:vars={{ modules }}>
+  // ── State ─────────────────────────────────────────────────────────
+  let branches = 1;
+  const selected = new Set();
 
-      const isOpen = card?.classList.contains('open');
+  // ── Pre-select from diagnostic ────────────────────────────────────
+  const REC_MAP = {
+    kioscos: 'kioscos', analytics: 'kioscos', roomservice: 'roomservice',
+    inventory: 'inventory', delivery: 'delivery', pos: 'pos_smart',
+  };
+  let diagRecs = [];
+  try {
+    const stored = localStorage.getItem('ezeat_recs');
+    const storedBranches = localStorage.getItem('ezeat_branches');
+    if (stored) diagRecs = JSON.parse(stored);
+    if (storedBranches) {
+      const b = parseInt(storedBranches);
+      if (!isNaN(b)) branches = Math.max(1, b === '1' ? 1 : b === '2-5' ? 3 : b === '6-20' ? 10 : 20);
+    }
+  } catch {}
 
-      // Close all
-      document.querySelectorAll('[data-faq-answer]').forEach((el) => {
-        (el as HTMLElement).style.maxHeight = '0';
+  // ── Render module cards ────────────────────────────────────────────
+  function renderModules() {
+    ['operativa', 'addons'].forEach(cat => {
+      const container = document.getElementById(`modules-${cat}`);
+      if (!container) return;
+      const mods = modules.filter(m => m.category === cat);
+      container.innerHTML = mods.map(m => {
+        const isSelected = selected.has(m.id);
+        return `
+          <button
+            data-module="${m.id}"
+            data-price="${m.price}"
+            class="module-btn w-full flex items-center gap-4 p-4 rounded-xl border ${isSelected ? 'border-primary bg-primary/5 shadow-[0_4px_12px_rgba(0,44,163,0.1)]' : 'border-outline-variant/15 bg-surface-container-low hover:border-primary/30'} transition-all duration-200 text-left group"
+          >
+            <div class="w-10 h-10 ${isSelected ? 'bg-primary/15' : 'bg-primary/8'} rounded-lg flex items-center justify-center text-primary shrink-0 transition-colors">
+              <span class="material-symbols-outlined text-lg leading-none">${m.icon}</span>
+            </div>
+            <div class="flex-1">
+              <span class="font-body font-semibold text-on-surface text-sm block">${m.label}</span>
+              <span class="text-xs text-on-surface-variant font-body">$${m.price.toLocaleString()} MXN/sucursal</span>
+            </div>
+            <div class="w-6 h-6 rounded-full border-2 ${isSelected ? 'border-primary bg-primary flex items-center justify-center' : 'border-outline-variant/40'} shrink-0 transition-all">
+              ${isSelected ? '<span class="material-symbols-outlined text-on-primary text-sm leading-none">check</span>' : ''}
+            </div>
+          </button>
+        `;
+      }).join('');
+
+      // Attach listeners
+      container.querySelectorAll('.module-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const id = btn.dataset.module;
+          if (selected.has(id)) selected.delete(id);
+          else selected.add(id);
+          renderModules();
+          updateSummary();
+        });
       });
-      document.querySelectorAll('.group').forEach(c => c.classList.remove('open'));
-
-      if (!isOpen && answer) {
-        answer.style.maxHeight = answer.scrollHeight + 'px';
-        card?.classList.add('open');
-      }
     });
+  }
+
+  function updateSummary() {
+    const summaryList = document.getElementById('summary-list');
+    const totalEl = document.getElementById('total-price');
+    const mobileEl = document.getElementById('mobile-price');
+    const branchesEl = document.getElementById('summary-branches');
+
+    if (branchesEl) branchesEl.textContent = String(branches);
+
+    const selectedMods = modules.filter(m => selected.has(m.id));
+    const total = selectedMods.reduce((s, m) => s + m.price, 0) * branches;
+
+    if (summaryList) {
+      if (selectedMods.length === 0) {
+        summaryList.innerHTML = '<p class="text-on-surface-variant text-sm font-body italic">Selecciona módulos para comenzar...</p>';
+      } else {
+        summaryList.innerHTML = selectedMods.map(m => `
+          <div class="flex justify-between items-center text-sm font-body">
+            <span class="text-on-surface">${m.label}</span>
+            <span class="text-on-surface-variant">$${(m.price * branches).toLocaleString()}</span>
+          </div>
+        `).join('');
+      }
+    }
+
+    const formatted = `$${total.toLocaleString()}`;
+    if (totalEl) totalEl.textContent = formatted;
+    if (mobileEl) mobileEl.innerHTML = `${formatted}<span class="text-sm font-body text-on-surface-variant">/mes</span>`;
+  }
+
+  // ── Branch controls ───────────────────────────────────────────────
+  const branchesVal = document.getElementById('branches-val');
+  const fleetMsg = document.getElementById('fleet-msg');
+
+  document.getElementById('branches-dec')?.addEventListener('click', () => {
+    if (branches > 1) { branches--; updateBranchUI(); }
   });
+  document.getElementById('branches-inc')?.addEventListener('click', () => {
+    branches++;
+    updateBranchUI();
+  });
+
+  function updateBranchUI() {
+    if (branchesVal) branchesVal.textContent = String(branches);
+    if (fleetMsg) fleetMsg.classList.toggle('hidden', branches <= 5);
+    updateSummary();
+  }
+
+  // ── Init ──────────────────────────────────────────────────────────
+  // Pre-select from diagnostic
+  if (diagRecs.length > 0) {
+    document.getElementById('diag-banner')?.classList.remove('hidden');
+    diagRecs.forEach(rec => {
+      const mapped = REC_MAP[rec];
+      if (mapped) selected.add(mapped);
+    });
+  }
+
+  if (branchesVal) branchesVal.textContent = String(branches);
+  renderModules();
+  updateSummary();
 </script>

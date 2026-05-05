@@ -6,61 +6,66 @@ const terminalImg = 'https://lh3.googleusercontent.com/aida-public/AB6AXuC7kVKpA
 
 const questions = [
   {
-    id: 'locations',
-    text: '¿Cuántas ubicaciones tiene tu restaurante?',
+    id: 'type',
+    step: '01',
+    text: '¿Qué tipo de experiencia ofreces?',
     options: [
-      { value: '1',   label: '1 sola ubicación',    icon: 'store' },
-      { value: '2-5', label: '2 a 5 ubicaciones',   icon: 'storefront' },
-      { value: '6-20',label: '6 a 20 ubicaciones',  icon: 'location_city' },
-      { value: '20+', label: 'Más de 20 ubicaciones',icon: 'corporate_fare' },
+      { value: 'hotel',     label: 'Hotel',          sub: 'Hospedaje con servicios F&B',    icon: 'hotel' },
+      { value: 'restaurant',label: 'Restaurante',    sub: 'Servicio a mesa o casual',        icon: 'restaurant' },
+      { value: 'fastfood',  label: 'Fast Food',      sub: 'Autoservicio y orden rápida',     icon: 'storefront' },
+      { value: 'cafe',      label: 'Cafetería / Bar',sub: 'Bebidas, snacks y ambiente',      icon: 'local_cafe' },
     ],
   },
   {
-    id: 'challenge',
-    text: '¿Cuál es tu mayor reto operativo hoy?',
+    id: 'branches',
+    step: '02',
+    text: '¿Cuál es el alcance actual de tu marca?',
     options: [
-      { value: 'wait',   label: 'Tiempos de espera altos',        icon: 'hourglass_empty' },
-      { value: 'errors', label: 'Errores frecuentes en pedidos',   icon: 'error_outline' },
-      { value: 'labor',  label: 'Costos laborales elevados',       icon: 'payments' },
-      { value: 'data',   label: 'Falta de datos e informes',       icon: 'bar_chart' },
+      { value: '1',    label: '1 local',          sub: 'Empezando o consolidando',        icon: 'store' },
+      { value: '2-5',  label: '2 a 5 sucursales', sub: 'En expansión regional',           icon: 'storefront' },
+      { value: '6-20', label: '6 a 20 sucursales',sub: 'Cadena en crecimiento',           icon: 'location_city' },
+      { value: '20+',  label: 'Más de 20',        sub: 'Operación multi-marca o franquicia',icon: 'corporate_fare' },
     ],
   },
   {
-    id: 'orders',
-    text: '¿Cómo gestionas los pedidos actualmente?',
+    id: 'pain',
+    step: '03',
+    text: '¿Dónde sientes que se escapa más rentabilidad?',
     options: [
-      { value: 'cashier', label: 'Caja con empleado',         icon: 'point_of_sale' },
-      { value: 'waiter',  label: 'Mesero en mesa',            icon: 'restaurant' },
-      { value: 'app',     label: 'App propia o delivery',     icon: 'smartphone' },
-      { value: 'none',    label: 'Sin sistema definido',      icon: 'help_outline' },
+      { value: 'mermas',      label: 'Mermas e inventario',      sub: 'Pérdidas de insumos y stock',      icon: 'inventory_2' },
+      { value: 'commissions', label: 'Comisiones de delivery',   sub: 'Rappi, Uber y similares te comen margen', icon: 'local_shipping' },
+      { value: 'queues',      label: 'Tiempos de espera',        sub: 'Filas que alejan clientes',          icon: 'hourglass_empty' },
+      { value: 'data',        label: 'Falta de datos',           sub: 'Tomas decisiones "a ojo"',          icon: 'bar_chart' },
     ],
   },
   {
-    id: 'employees',
-    text: '¿Cuántos empleados de atención al cliente por turno?',
+    id: 'channel',
+    step: '04',
+    text: '¿Cuál es el canal de venta preferido de tus clientes?',
     options: [
-      { value: '1-3',  label: '1 a 3 empleados',    icon: 'person' },
-      { value: '4-8',  label: '4 a 8 empleados',    icon: 'group' },
-      { value: '9-20', label: '9 a 20 empleados',   icon: 'groups' },
-      { value: '20+',  label: 'Más de 20 empleados',icon: 'supervisor_account' },
+      { value: 'inperson', label: 'Presencial',         sub: 'La mayoría viene al local',          icon: 'table_restaurant' },
+      { value: 'apps',     label: 'Apps de delivery',   sub: 'Rappi, Uber Eats, DiDi Food',       icon: 'delivery_dining' },
+      { value: 'web',      label: 'Sitio web propio',   sub: 'Pedidos online directos',            icon: 'language' },
+      { value: 'all',      label: 'Todos los canales',  sub: 'Omnicanal o quiero serlo',           icon: 'hub' },
     ],
   },
   {
-    id: 'tracking',
-    text: '¿Cómo llevas el control de ventas y datos?',
+    id: 'tech',
+    step: '05',
+    text: '¿Cómo describirías la relación de tu equipo con la tecnología?',
     options: [
-      { value: 'yes',    label: 'Sistema digital completo', icon: 'dashboard' },
-      { value: 'partial',label: 'Solo parcialmente',        icon: 'analytics' },
-      { value: 'manual', label: 'Manual (hojas / Excel)',   icon: 'table_chart' },
-      { value: 'no',     label: 'No llevamos control',      icon: 'block' },
+      { value: 'digital',  label: 'Muy digital',          sub: 'Adoptamos herramientas sin problema', icon: 'devices' },
+      { value: 'basic',    label: 'Básica pero funcional', sub: 'Usamos lo necesario',               icon: 'smartphone' },
+      { value: 'low',      label: 'Poca experiencia',      sub: 'Necesitamos algo muy intuitivo',    icon: 'touch_app' },
+      { value: 'paper',    label: 'Papel y pluma',         sub: 'Todo es manual por ahora',          icon: 'edit_note' },
     ],
   },
 ];
 ---
 
 <Layout
-  title="EzEat · Diagnóstico de eficiencia para tu restaurante"
-  description="Descubre qué tecnología necesita tu restaurante para escalar. Diagnóstico gratuito en 60 segundos con EzEat."
+  title="EzEat · El sistema operativo inteligente para HORECAs"
+  description="EzEat: el primer sistema operativo inteligente para HORECAs. Diagnóstico gratuito en 60 segundos."
 >
 
 <!-- ═══════════════════════════════════════════════
@@ -76,23 +81,25 @@ const questions = [
 
       <!-- Text -->
       <div class="lg:col-span-7 space-y-8">
+        <!-- Social proof cintillo -->
         <div data-animate="fade-up" class="inline-flex items-center gap-2 bg-surface-container-highest px-4 py-2 rounded-full">
           <span class="material-symbols-outlined text-primary text-base leading-none">bolt</span>
-          <span class="text-sm font-label font-medium text-on-surface">Diagnóstico gratuito · 60 segundos</span>
+          <span class="text-sm font-label font-medium text-on-surface">Diseñado para la nueva generación de fundadores gastronómicos.</span>
         </div>
 
         <h1 data-animate="fade-up" style="transition-delay:0.1s"
           class="text-5xl md:text-6xl lg:text-[4rem] leading-[1.08] font-headline font-extrabold text-on-background tracking-tight">
-          Descubre qué tecnología necesita tu restaurante para
+          EzEat: El primer sistema operativo
           <span class="text-primary relative">
-            escalar
+            inteligente
             <span class="absolute -bottom-1 left-0 right-0 h-[3px] bg-primary/25 rounded-full"></span>
           </span>
+          para HORECAs.
         </h1>
 
         <p data-animate="fade-up" style="transition-delay:0.2s"
           class="text-xl md:text-2xl text-on-surface-variant font-body max-w-2xl leading-relaxed">
-          Responde 5 preguntas rápidas y obtén un diagnóstico personalizado de las soluciones Ezeat más adecuadas para tu operación.
+          No todos los negocios crecen igual. Diseñemos la tecnología que el tuyo necesita hoy para escalar mañana.
         </p>
 
         <div data-animate="fade-up" style="transition-delay:0.3s" class="flex flex-col sm:flex-row gap-4 pt-2">
@@ -100,7 +107,7 @@ const questions = [
             id="btn-start"
             class="bg-primary text-on-primary px-8 py-4 rounded-lg font-label font-semibold text-lg shadow-[0_8px_32px_rgba(0,44,163,0.25)] hover:bg-primary-container hover:-translate-y-px transition-all duration-200 flex items-center justify-center gap-2"
           >
-            Comenzar diagnóstico
+            Inicia tu Diagnóstico de Eficiencia
             <span class="material-symbols-outlined text-xl leading-none">arrow_forward</span>
           </button>
           <a href="/services"
@@ -113,19 +120,16 @@ const questions = [
       <!-- Image -->
       <div class="lg:col-span-5 relative" data-animate="slide-left" style="transition-delay:0.2s">
         <div class="relative w-full aspect-[4/5] rounded-xl overflow-hidden shadow-[0_32px_64px_rgba(26,27,36,0.1)]">
-          <img src={heroImg} alt="Kiosco de autoservicio Ezeat en restaurante moderno" class="w-full h-full object-cover" loading="eager" />
+          <img src={heroImg} alt="Kiosco de autoservicio EzEat en restaurante moderno" class="w-full h-full object-cover" loading="eager" />
           <div class="absolute inset-0 bg-gradient-to-t from-on-background/10 to-transparent pointer-events-none"></div>
         </div>
-
-        <!-- Floating badge -->
         <div class="animate-float absolute -bottom-6 -left-10 w-56 p-5 bg-surface-container-lowest rounded-xl shadow-[0_16px_40px_rgba(26,27,36,0.1)] border border-outline-variant/15 hidden lg:block">
           <div class="flex items-center gap-3 mb-2">
             <span class="material-symbols-outlined text-primary text-2xl fill leading-none">speed</span>
             <span class="font-headline font-bold text-on-surface text-lg">40%</span>
           </div>
-          <p class="text-xs font-body text-on-surface-variant leading-snug">Reducción promedio en costos laborales con Ezeat</p>
+          <p class="text-xs font-body text-on-surface-variant leading-snug">Reducción promedio en costos laborales con EzEat</p>
         </div>
-
         <div class="absolute -top-4 -right-4 px-4 py-2 bg-primary rounded-xl shadow-lg hidden lg:flex items-center gap-2">
           <span class="material-symbols-outlined text-on-primary text-sm leading-none fill">verified</span>
           <span class="text-on-primary text-xs font-label font-semibold">500+ restaurantes</span>
@@ -165,7 +169,7 @@ const questions = [
     <!-- Progress -->
     <div class="mb-10">
       <div class="flex justify-between items-center mb-3">
-        <span class="text-sm font-label font-medium text-on-surface-variant" id="question-counter">Pregunta 1 de 5</span>
+        <span class="text-sm font-label font-medium text-on-surface-variant" id="question-counter">Paso 1 de 5</span>
         <button id="btn-quiz-close" class="text-on-surface-variant hover:text-on-surface transition-colors p-1 rounded">
           <span class="material-symbols-outlined text-xl leading-none">close</span>
         </button>
@@ -175,25 +179,30 @@ const questions = [
       </div>
     </div>
 
-    <!-- Questions (one rendered per question, shown/hidden by JS) -->
     {questions.map((q, qi) => (
       <div data-question={qi} class={qi === 0 ? 'quiz-question' : 'quiz-question hidden'}>
+        <div class="inline-flex items-center gap-2 mb-4">
+          <span class="text-xs font-label font-bold text-primary bg-primary/8 px-2.5 py-1 rounded-full uppercase tracking-wider">Paso {q.step}</span>
+        </div>
         <h2 class="font-headline text-3xl md:text-4xl font-extrabold text-on-background mb-2 leading-tight">
           {q.text}
         </h2>
-        <p class="text-on-surface-variant font-body mb-8 text-base">Selecciona la opción que mejor describe tu situación.</p>
+        <p class="text-on-surface-variant font-body mb-8 text-base">Selecciona la opción que mejor describe tu operación.</p>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {q.options.map(opt => (
             <button
               data-q={q.id}
               data-v={opt.value}
-              class="quiz-option group flex items-center gap-4 p-5 bg-surface-container-lowest rounded-xl border border-outline-variant/15 hover:border-primary/40 hover:bg-surface-container-low hover:shadow-[0_8px_24px_rgba(0,44,163,0.08)] transition-all duration-200 text-left w-full"
+              class="quiz-option group flex items-start gap-4 p-5 bg-surface-container-lowest rounded-xl border border-outline-variant/15 hover:border-primary/40 hover:bg-surface-container-low hover:shadow-[0_8px_24px_rgba(0,44,163,0.08)] transition-all duration-200 text-left w-full"
             >
-              <div class="w-11 h-11 bg-primary/8 rounded-lg flex items-center justify-center text-primary shrink-0 group-hover:bg-primary/15 transition-colors">
+              <div class="w-11 h-11 bg-primary/8 rounded-lg flex items-center justify-center text-primary shrink-0 group-hover:bg-primary/15 transition-colors mt-0.5">
                 <span class="material-symbols-outlined text-xl leading-none">{opt.icon}</span>
               </div>
-              <span class="font-body font-medium text-on-surface text-sm leading-snug">{opt.label}</span>
+              <div>
+                <span class="font-body font-semibold text-on-surface text-sm block leading-snug">{opt.label}</span>
+                <span class="font-body text-on-surface-variant text-xs mt-0.5 block leading-snug">{opt.sub}</span>
+              </div>
             </button>
           ))}
         </div>
@@ -218,21 +227,45 @@ const questions = [
 <section id="stage-results" class="hidden min-h-screen bg-surface py-20">
   <div class="max-w-4xl mx-auto px-6">
 
-    <!-- Header -->
-    <div class="text-center mb-16" data-animate="fade-up">
-      <div class="inline-flex items-center gap-2 bg-surface-container-highest px-4 py-2 rounded-full mb-6">
+    <!-- Efficiency Score gauge -->
+    <div class="text-center mb-12" data-animate="fade-up">
+      <div class="inline-flex items-center gap-2 bg-surface-container-highest px-4 py-2 rounded-full mb-8">
         <span class="material-symbols-outlined text-primary text-base leading-none fill">check_circle</span>
         <span class="text-sm font-label font-medium text-on-surface">Diagnóstico completado</span>
       </div>
-      <h2 class="font-headline text-4xl md:text-5xl font-extrabold text-on-background mb-4 leading-tight">
-        Tu diagnóstico está <span class="text-primary">listo</span>
+
+      <!-- Radial gauge -->
+      <div class="flex flex-col items-center mb-6">
+        <div class="relative w-48 h-48">
+          <svg class="w-full h-full -rotate-90" viewBox="0 0 120 120">
+            <circle cx="60" cy="60" r="52" fill="none" stroke="currentColor" stroke-width="8" class="text-surface-container-highest"/>
+            <circle
+              id="gauge-circle"
+              cx="60" cy="60" r="52" fill="none"
+              stroke="currentColor" stroke-width="8"
+              stroke-linecap="round"
+              stroke-dasharray="326.73"
+              stroke-dashoffset="326.73"
+              class="text-primary transition-all duration-1000 ease-out"
+            />
+          </svg>
+          <div class="absolute inset-0 flex flex-col items-center justify-center">
+            <span id="score-display" class="font-headline font-extrabold text-4xl text-on-background">0%</span>
+            <span class="text-xs font-label text-on-surface-variant mt-1">eficiencia actual</span>
+          </div>
+        </div>
+      </div>
+
+      <h2 class="font-headline text-3xl md:text-4xl font-extrabold text-on-background mb-3 leading-tight">
+        Tu operación está al <span id="score-headline" class="text-primary">—%</span> de su potencial.
       </h2>
-      <p class="text-on-surface-variant font-body text-lg max-w-xl mx-auto">
-        Basado en tus respuestas, estas son las soluciones Ezeat más adecuadas para tu restaurante.
+      <p id="score-hook" class="text-on-surface-variant font-body text-lg max-w-xl mx-auto mb-2">
+        Con EzEat, puedes llegar al <span class="font-bold text-primary">95%</span>.
       </p>
+      <p id="pain-text" class="text-on-surface-variant font-body text-base max-w-xl mx-auto"></p>
     </div>
 
-    <!-- Result cards — rendered by JS -->
+    <!-- Result cards -->
     <div id="result-cards" class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-14"></div>
 
     <!-- CTAs -->
@@ -248,94 +281,178 @@ const questions = [
       </button>
     </div>
 
-    <!-- Terminal image at bottom -->
-    <div class="mt-20 relative h-64 rounded-xl overflow-hidden shadow-[0_16px_40px_rgba(26,27,36,0.08)]">
-      <img src={terminalImg} alt="Kiosco de autoservicio Ezeat" class="w-full h-full object-cover object-top" loading="lazy" />
-      <div class="absolute inset-0 bg-gradient-to-t from-on-background/40 to-transparent flex items-end p-8">
-        <p class="text-on-primary font-headline font-bold text-2xl">Tecnología que escala con tu negocio.</p>
-      </div>
-    </div>
+  </div>
+</section>
 
+
+<!-- ═══════════════════════════════════════════════
+     TRES PILARES DE VALOR
+═══════════════════════════════════════════════ -->
+<section class="py-24 bg-surface-container-low">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="text-center max-w-2xl mx-auto mb-16" data-animate="fade-up">
+      <span class="text-primary font-label text-sm font-bold uppercase tracking-wider mb-3 block">Por qué somos diferentes</span>
+      <h2 class="font-headline text-3xl md:text-4xl font-bold text-on-background">
+        Más allá de un POS. Esto es un OS.
+      </h2>
+    </div>
+    <div class="grid md:grid-cols-3 gap-8" data-stagger>
+      {[
+        {
+          icon: 'auto_awesome',
+          title: 'Inteligencia de Datos',
+          body: 'De datos brutos a Estados Financieros con IA en segundos. Deja de tomar decisiones "a ojo".',
+        },
+        {
+          icon: 'extension',
+          title: 'Modularidad Total',
+          body: 'Paga solo por lo que usas. Escala funciones conforme abres sucursales. Sin ataduras.',
+        },
+        {
+          icon: 'hub',
+          title: 'Omnicanalidad',
+          body: 'Tu local, tu web y tus apps de delivery en una sola pantalla. Un cerebro digital, todos tus canales.',
+        },
+      ].map(p => (
+        <div class="bg-surface-container-lowest p-8 rounded-xl group shadow-[0_4px_16px_rgba(26,27,36,0.03)] hover:shadow-[0_12px_32px_rgba(26,27,36,0.07)] transition-all duration-300 hover:-translate-y-1 relative overflow-hidden">
+          <div class="absolute top-0 left-0 w-1 h-full bg-primary origin-bottom scale-y-0 group-hover:scale-y-100 transition-transform duration-300 rounded-r"></div>
+          <div class="w-14 h-14 bg-primary/8 rounded-xl flex items-center justify-center text-primary mb-6 group-hover:bg-primary/15 transition-colors">
+            <span class="material-symbols-outlined text-3xl leading-none">{p.icon}</span>
+          </div>
+          <h3 class="font-headline text-xl font-bold text-on-background mb-3">{p.title}</h3>
+          <p class="font-body text-on-surface-variant leading-relaxed">{p.body}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════
+     CONFIANZA / AUTORIDAD
+═══════════════════════════════════════════════ -->
+<section class="py-24 bg-surface">
+  <div class="max-w-4xl mx-auto px-6 lg:px-8 text-center" data-animate="scale-in">
+    <span class="material-symbols-outlined text-5xl text-primary/80 block mx-auto leading-none mb-8">foundation</span>
+    <p class="font-label text-sm font-bold uppercase tracking-wider text-primary mb-4">Infraestructura para escalar</p>
+    <blockquote class="font-headline text-3xl md:text-4xl font-bold text-on-background leading-tight mb-6">
+      "Construimos EzEat porque la tecnología para restaurantes no debería ser un obstáculo, sino un motor."
+    </blockquote>
+    <div class="w-16 h-1 bg-primary mx-auto rounded-full mb-8"></div>
+    <p class="text-on-surface-variant font-body text-lg max-w-xl mx-auto">
+      EzEat no es solo software. Es la infraestructura digital que tus operaciones necesitan para crecer sin límites.
+    </p>
+    <div class="mt-10">
+      <button
+        onclick="document.getElementById('btn-start')?.click(); window.scrollTo({top:0,behavior:'smooth'});"
+        class="bg-primary text-on-primary px-8 py-4 rounded-lg font-label font-semibold text-lg shadow-[0_8px_32px_rgba(0,44,163,0.25)] hover:bg-primary-container hover:-translate-y-px transition-all duration-200 inline-flex items-center gap-2"
+      >
+        Inicia tu Diagnóstico de Eficiencia
+        <span class="material-symbols-outlined text-xl leading-none">arrow_forward</span>
+      </button>
+    </div>
   </div>
 </section>
 
 </Layout>
 
 <script>
-  // ── Data ────────────────────────────────────────────────────────
-  type SolutionKey = 'kioscos' | 'analytics' | 'payments' | 'api';
+  type SolutionKey = 'kioscos' | 'analytics' | 'roomservice' | 'inventory' | 'delivery' | 'pos';
 
   const SOLUTIONS: Record<SolutionKey, { icon: string; title: string; desc: string; href: string }> = {
     kioscos: {
       icon: 'point_of_sale',
-      title: 'Kioscos de Autoservicio',
-      desc: 'Terminales de pedido autónomo que reducen los tiempos de espera hasta un 60% y aumentan el ticket promedio.',
+      title: 'Kioskos de Autoservicio',
+      desc: 'Reduce filas hasta un 60% y aumenta el ticket promedio. Tecnología que vende sola.',
       href: '/services',
     },
     analytics: {
       icon: 'monitoring',
-      title: 'Dashboard de Analytics',
-      desc: 'Visualiza ventas, inventario y comportamiento de clientes en tiempo real desde un solo panel centralizado.',
+      title: 'Analítica Avanzada con IA',
+      desc: 'KPIs en tiempo real de todas tus sucursales. De datos brutos a decisiones financieras en segundos.',
       href: '/services',
     },
-    payments: {
-      icon: 'credit_card',
-      title: 'Integración de Pagos',
-      desc: 'Procesamiento en menos de 1 segundo con soporte para NFC, QR, tarjetas y wallets digitales.',
+    roomservice: {
+      icon: 'room_service',
+      title: 'Room Service Digital',
+      desc: 'Pedidos directos a la habitación desde el móvil del huésped. Sin llamadas, sin errores.',
       href: '/services',
     },
-    api: {
-      icon: 'api',
-      title: 'API & Integración POS',
-      desc: 'Conecta Ezeat con tu stack tecnológico actual sin interrupciones ni migraciones complicadas.',
+    inventory: {
+      icon: 'inventory_2',
+      title: 'Inventarios con IA',
+      desc: 'Elimina mermas y robos hormiga. Alertas automáticas y pronósticos de compra inteligentes.',
+      href: '/services',
+    },
+    delivery: {
+      icon: 'delivery_dining',
+      title: 'Delivery Integrado',
+      desc: 'Un solo tablero para Rappi, Uber Eats y pedidos propios. Reduce comisiones con canal directo.',
+      href: '/services',
+    },
+    pos: {
+      icon: 'tablet_android',
+      title: 'POS Inteligente',
+      desc: 'El corazón digital de tu operación. Rápido, intuitivo y conectado con toda tu infraestructura.',
       href: '/services',
     },
   };
 
-  const WEIGHTS: Record<string, Record<string, Partial<Record<SolutionKey, number>>>> = {
-    locations: {
-      '1':    { kioscos: 1 },
-      '2-5':  { kioscos: 1, analytics: 1 },
-      '6-20': { kioscos: 1, analytics: 2, api: 2 },
-      '20+':  { kioscos: 1, analytics: 3, api: 3 },
-    },
-    challenge: {
-      wait:   { kioscos: 3 },
-      errors: { kioscos: 2, payments: 2 },
-      labor:  { kioscos: 3 },
-      data:   { analytics: 3 },
-    },
-    orders: {
-      cashier: { kioscos: 2, payments: 1 },
-      waiter:  { kioscos: 2 },
-      app:     { api: 3 },
-      none:    { kioscos: 3, payments: 2 },
-    },
-    employees: {
-      '1-3':  { payments: 1 },
-      '4-8':  { kioscos: 2 },
-      '9-20': { kioscos: 3, analytics: 1 },
-      '20+':  { kioscos: 3, analytics: 2 },
-    },
-    tracking: {
-      yes:     { api: 2 },
-      partial: { analytics: 2, api: 1 },
-      manual:  { analytics: 3 },
-      no:      { analytics: 3, payments: 1 },
-    },
+  const PAIN_LABELS: Record<string, string> = {
+    mermas: 'mermas e inventario',
+    commissions: 'comisiones de delivery',
+    queues: 'tiempos de espera y filas',
+    data: 'falta de datos para tomar decisiones',
   };
 
-  // ── State ────────────────────────────────────────────────────────
+  function calcScore(answers: Record<string, string>): number {
+    let score = 95;
+    if (answers.tech === 'paper') score -= 25;
+    if (answers.pain === 'commissions' || answers.pain === 'mermas') score -= 15;
+    const branches = answers.branches;
+    if ((branches === '2-5' || branches === '6-20' || branches === '20+') && answers.tech !== 'digital') score -= 10;
+    return Math.max(40, Math.min(85, score));
+  }
+
+  function getRecommendations(answers: Record<string, string>): SolutionKey[] {
+    const scores: Partial<Record<SolutionKey, number>> = {};
+    const add = (k: SolutionKey, pts: number) => { scores[k] = (scores[k] ?? 0) + pts; };
+
+    if (answers.type === 'hotel') { add('roomservice', 3); add('kioscos', 1); }
+    if (answers.type === 'fastfood') { add('kioscos', 3); add('pos', 1); }
+    if (answers.type === 'restaurant') { add('kioscos', 2); add('analytics', 1); }
+    if (answers.type === 'cafe') { add('pos', 2); add('analytics', 1); }
+
+    if (answers.pain === 'mermas') { add('inventory', 3); add('analytics', 1); }
+    if (answers.pain === 'commissions') { add('delivery', 3); add('kioscos', 1); }
+    if (answers.pain === 'queues') { add('kioscos', 3); }
+    if (answers.pain === 'data') { add('analytics', 3); }
+
+    if (answers.tech === 'paper') { add('pos', 3); }
+    if (answers.tech === 'low') { add('pos', 2); }
+
+    if (answers.channel === 'apps') { add('delivery', 2); }
+    if (answers.channel === 'all') { add('delivery', 1); add('analytics', 1); }
+
+    const branches = answers.branches;
+    if (branches === '6-20' || branches === '20+') { add('analytics', 2); }
+
+    return (Object.entries(scores) as [SolutionKey, number][])
+      .sort(([, a], [, b]) => b - a)
+      .slice(0, 3)
+      .map(([k]) => k);
+  }
+
+  // ── State ─────────────────────────────────────────────────────────
   let currentQ = 0;
   const answers: Record<string, string> = {};
   const TOTAL = 5;
 
-  // ── Elements ─────────────────────────────────────────────────────
+  // ── Elements ──────────────────────────────────────────────────────
   const stageHero    = document.getElementById('stage-hero')!;
   const stageStats   = document.getElementById('stage-hero-stats')!;
   const stageQuiz    = document.getElementById('stage-quiz')!;
   const stageResults = document.getElementById('stage-results')!;
-
   const progressBar  = document.getElementById('progress-bar')!;
   const questionCounter = document.getElementById('question-counter')!;
   const btnStart     = document.getElementById('btn-start')!;
@@ -343,10 +460,8 @@ const questions = [
   const btnRestart   = document.getElementById('btn-restart')!;
   const btnClose     = document.getElementById('btn-quiz-close')!;
   const resultCards  = document.getElementById('result-cards')!;
-
   const allQuestions = document.querySelectorAll<HTMLElement>('.quiz-question');
 
-  // ── Helpers ──────────────────────────────────────────────────────
   function showStage(stage: 'hero' | 'quiz' | 'results') {
     stageHero.classList.toggle('hidden', stage !== 'hero');
     stageStats.classList.toggle('hidden', stage !== 'hero');
@@ -358,7 +473,7 @@ const questions = [
   function updateProgress() {
     const pct = ((currentQ + 1) / TOTAL) * 100;
     progressBar.style.width = `${pct}%`;
-    questionCounter.textContent = `Pregunta ${currentQ + 1} de ${TOTAL}`;
+    questionCounter.textContent = `Paso ${currentQ + 1} de ${TOTAL}`;
     (btnBack as HTMLButtonElement).classList.toggle('hidden', currentQ === 0);
   }
 
@@ -367,31 +482,54 @@ const questions = [
     updateProgress();
   }
 
-  function computeScores(): Record<SolutionKey, number> {
-    const scores: Record<SolutionKey, number> = { kioscos: 0, analytics: 0, payments: 0, api: 0 };
-    for (const [qId, val] of Object.entries(answers)) {
-      const w = WEIGHTS[qId]?.[val] ?? {};
-      for (const [sol, pts] of Object.entries(w)) {
-        scores[sol as SolutionKey] += pts as number;
-      }
-    }
-    return scores;
+  function animateScore(target: number) {
+    const circumference = 326.73;
+    const circle = document.getElementById('gauge-circle')!;
+    const display = document.getElementById('score-display')!;
+    const headline = document.getElementById('score-headline')!;
+
+    let current = 0;
+    const step = target / 60;
+    const interval = setInterval(() => {
+      current = Math.min(current + step, target);
+      const offset = circumference * (1 - current / 100);
+      circle.style.strokeDashoffset = String(offset);
+      display.textContent = `${Math.round(current)}%`;
+      headline.textContent = `${Math.round(current)}%`;
+      if (current >= target) clearInterval(interval);
+    }, 16);
   }
 
   function renderResults() {
-    const scores = computeScores();
-    const ranked = (Object.entries(scores) as [SolutionKey, number][])
-      .sort(([, a], [, b]) => b - a)
-      .slice(0, 3);
+    const score = calcScore(answers);
+    const recs = getRecommendations(answers);
+    const painLabel = PAIN_LABELS[answers.pain] ?? 'operaciones manuales';
 
-    resultCards.innerHTML = ranked.map(([key], i) => {
+    // Update hook text
+    const painText = document.getElementById('pain-text')!;
+    painText.textContent = `Estás perdiendo margen en ${painLabel}. Con EzEat, puedes llegar al 95%.`;
+
+    // Animate gauge after a short delay
+    setTimeout(() => animateScore(score), 300);
+
+    // Save recommendations to localStorage for pricing page pre-selection
+    const recMap: Record<SolutionKey, string> = {
+      kioscos: 'kioscos', analytics: 'analytics', roomservice: 'roomservice',
+      inventory: 'inventory', delivery: 'delivery', pos: 'pos',
+    };
+    try {
+      localStorage.setItem('ezeat_recs', JSON.stringify(recs));
+      localStorage.setItem('ezeat_branches', answers.branches ?? '1');
+    } catch {}
+
+    resultCards.innerHTML = recs.map((key, i) => {
       const s = SOLUTIONS[key];
       const isTop = i === 0;
       return `
         <div class="flex flex-col rounded-xl p-7 ${isTop
           ? 'bg-primary shadow-[0_20px_48px_rgba(0,44,163,0.2)] md:-translate-y-3 relative'
           : 'bg-surface-container-lowest border border-outline-variant/10 shadow-[0_4px_16px_rgba(26,27,36,0.04)]'}">
-          ${isTop ? '<div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-surface-container-lowest text-primary font-bold text-xs px-4 py-1.5 rounded-full shadow-sm uppercase tracking-wider">Recomendado</div>' : ''}
+          ${isTop ? '<div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-surface-container-lowest text-primary font-bold text-xs px-4 py-1.5 rounded-full shadow-sm uppercase tracking-wider">Recomendado #1</div>' : ''}
           <div class="w-12 h-12 ${isTop ? 'bg-on-primary/15' : 'bg-primary/8'} rounded-lg flex items-center justify-center ${isTop ? 'text-on-primary' : 'text-primary'} mb-5">
             <span class="material-symbols-outlined text-2xl leading-none">${s.icon}</span>
           </div>
@@ -405,7 +543,6 @@ const questions = [
     }).join('');
   }
 
-  // ── Event listeners ───────────────────────────────────────────────
   function clearSelections() {
     document.querySelectorAll<HTMLElement>('.quiz-option').forEach(b => {
       b.classList.remove('border-primary', 'bg-primary/5', 'shadow-[0_4px_16px_rgba(0,44,163,0.12)]');
@@ -422,16 +559,18 @@ const questions = [
   btnClose.addEventListener('click', () => showStage('hero'));
 
   btnBack.addEventListener('click', () => {
-    if (currentQ > 0) {
-      currentQ--;
-      showQuestion(currentQ);
-    }
+    if (currentQ > 0) { currentQ--; showQuestion(currentQ); }
   });
 
   btnRestart.addEventListener('click', () => {
     Object.keys(answers).forEach(k => delete answers[k]);
     currentQ = 0;
     clearSelections();
+    // Reset gauge
+    const circle = document.getElementById('gauge-circle');
+    if (circle) (circle as SVGCircleElement).style.strokeDashoffset = '326.73';
+    const display = document.getElementById('score-display');
+    if (display) display.textContent = '0%';
     showStage('hero');
   });
 
@@ -441,7 +580,6 @@ const questions = [
       const v = btn.dataset.v!;
       answers[q] = v;
 
-      // Visual feedback
       const siblings = btn.closest('.grid')?.querySelectorAll('.quiz-option');
       siblings?.forEach(s => s.classList.remove('border-primary', 'bg-primary/5', 'shadow-[0_4px_16px_rgba(0,44,163,0.12)]'));
       btn.classList.add('border-primary', 'bg-primary/5', 'shadow-[0_4px_16px_rgba(0,44,163,0.12)]');

@@ -4,28 +4,28 @@ import Layout from '../layouts/Layout.astro';
 const contactOptions = [
   {
     icon: 'mail',
-    title: 'Email Us',
+    title: 'Escríbenos',
     value: 'hello@ezeat.com',
     href: 'mailto:hello@ezeat.com',
   },
   {
-    icon: 'phone',
-    title: 'Call Us',
-    value: '+1 (800) 392-3280',
-    href: 'tel:+18003923280',
+    icon: 'chat',
+    title: 'WhatsApp Business',
+    value: '+52 (81) 1234-5678',
+    href: 'https://wa.me/528112345678',
   },
   {
     icon: 'location_on',
-    title: 'Headquarters',
-    value: '350 5th Ave, New York, NY 10118',
+    title: 'Sede',
+    value: 'Monterrey, Nuevo León · México',
     href: '#',
   },
 ];
 ---
 
 <Layout
-  title="Contact Us — Ezeat"
-  description="Get in touch with the Ezeat team. Request a demo, ask about enterprise pricing, or simply say hello."
+  title="Contacto — EzEat"
+  description="Hablemos de tu crecimiento. El equipo EzEat está listo para diseñar el sistema operativo ideal para tu restaurante u hotel."
 >
 
   <!-- ─── Hero ──────────────────────────────────────────────────── -->
@@ -35,13 +35,13 @@ const contactOptions = [
       <div class="max-w-2xl" data-animate="fade-up">
         <div class="inline-flex items-center gap-2 bg-surface-container-highest px-4 py-2 rounded-full mb-6">
           <span class="material-symbols-outlined text-primary text-base leading-none">chat</span>
-          <span class="text-sm font-label font-medium text-on-surface">Let's Talk</span>
+          <span class="text-sm font-label font-medium text-on-surface">Estamos aquí para ti</span>
         </div>
         <h1 class="font-headline text-5xl md:text-6xl font-extrabold tracking-tight text-on-background leading-[1.05] mb-5">
-          Get In <span class="text-primary">Touch</span>
+          Hablemos de tu <span class="text-primary">crecimiento.</span>
         </h1>
         <p class="text-xl text-on-surface-variant font-body leading-relaxed">
-          Whether you're ready to deploy or just exploring, our team is here to help. Reach out and we'll get back to you within one business day.
+          Ya sea que estés listo para implementar o solo quieras explorar el ecosistema, nuestro equipo está aquí para diseñar tu sistema ideal.
         </p>
       </div>
     </div>
@@ -55,135 +55,90 @@ const contactOptions = [
         <!-- Form (wider) -->
         <div class="lg:col-span-3" data-animate="slide-right">
           <div class="bg-surface-container-lowest rounded-xl p-8 md:p-10 shadow-[0_8px_32px_rgba(26,27,36,0.05)] border border-outline-variant/10">
-            <h2 class="font-headline text-2xl font-bold text-on-background mb-2">Send a Message</h2>
-            <p class="text-on-surface-variant text-sm font-body mb-8">Fill out the form and we'll reach out within 24 hours.</p>
+            <h2 class="font-headline text-2xl font-bold text-on-background mb-2">Cuéntanos sobre tu proyecto</h2>
+            <p class="text-on-surface-variant text-sm font-body mb-8">Nos ponemos en contacto contigo en menos de 24 horas.</p>
 
-            <!-- Tip: connect to Netlify Forms (add data-netlify="true") or Formspree (action="https://formspree.io/f/YOUR_ID") -->
-            <form
-              id="contact-form"
-              class="space-y-5"
-              novalidate
-            >
+            <form id="contact-form" class="space-y-5" novalidate>
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                <!-- First name -->
                 <div class="space-y-1.5">
-                  <label for="firstName" class="text-sm font-label font-medium text-on-surface">First Name <span class="text-error">*</span></label>
-                  <input
-                    id="firstName"
-                    name="firstName"
-                    type="text"
-                    required
-                    placeholder="María"
-                    class="w-full bg-surface-container-low border border-outline-variant/25 rounded-lg px-4 py-3 text-on-surface font-body text-sm placeholder:text-on-surface-variant/50 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/30 transition-all"
-                  />
+                  <label for="nombre" class="text-sm font-label font-medium text-on-surface">Nombre <span class="text-error">*</span></label>
+                  <input id="nombre" name="nombre" type="text" required placeholder="María"
+                    class="w-full bg-surface-container-low border border-outline-variant/25 rounded-lg px-4 py-3 text-on-surface font-body text-sm placeholder:text-on-surface-variant/50 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/30 transition-all" />
                 </div>
-                <!-- Last name -->
                 <div class="space-y-1.5">
-                  <label for="lastName" class="text-sm font-label font-medium text-on-surface">Last Name <span class="text-error">*</span></label>
-                  <input
-                    id="lastName"
-                    name="lastName"
-                    type="text"
-                    required
-                    placeholder="García"
-                    class="w-full bg-surface-container-low border border-outline-variant/25 rounded-lg px-4 py-3 text-on-surface font-body text-sm placeholder:text-on-surface-variant/50 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/30 transition-all"
-                  />
+                  <label for="apellidos" class="text-sm font-label font-medium text-on-surface">Apellidos <span class="text-error">*</span></label>
+                  <input id="apellidos" name="apellidos" type="text" required placeholder="García Reyes"
+                    class="w-full bg-surface-container-low border border-outline-variant/25 rounded-lg px-4 py-3 text-on-surface font-body text-sm placeholder:text-on-surface-variant/50 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/30 transition-all" />
                 </div>
               </div>
 
-              <!-- Email -->
               <div class="space-y-1.5">
-                <label for="email" class="text-sm font-label font-medium text-on-surface">Work Email <span class="text-error">*</span></label>
-                <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  required
-                  placeholder="maria@company.com"
-                  class="w-full bg-surface-container-low border border-outline-variant/25 rounded-lg px-4 py-3 text-on-surface font-body text-sm placeholder:text-on-surface-variant/50 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/30 transition-all"
-                />
+                <label for="email" class="text-sm font-label font-medium text-on-surface">Email Corporativo / Personal <span class="text-error">*</span></label>
+                <input id="email" name="email" type="email" required placeholder="maria@mirestaurante.com"
+                  class="w-full bg-surface-container-low border border-outline-variant/25 rounded-lg px-4 py-3 text-on-surface font-body text-sm placeholder:text-on-surface-variant/50 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/30 transition-all" />
               </div>
 
-              <!-- Company -->
               <div class="space-y-1.5">
-                <label for="company" class="text-sm font-label font-medium text-on-surface">Company</label>
-                <input
-                  id="company"
-                  name="company"
-                  type="text"
-                  placeholder="Acme Corp"
-                  class="w-full bg-surface-container-low border border-outline-variant/25 rounded-lg px-4 py-3 text-on-surface font-body text-sm placeholder:text-on-surface-variant/50 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/30 transition-all"
-                />
+                <label for="negocio" class="text-sm font-label font-medium text-on-surface">Nombre de tu Restaurante u Hotel</label>
+                <input id="negocio" name="negocio" type="text" placeholder="Ej. Grupo Gastronómico Soleil"
+                  class="w-full bg-surface-container-low border border-outline-variant/25 rounded-lg px-4 py-3 text-on-surface font-body text-sm placeholder:text-on-surface-variant/50 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/30 transition-all" />
               </div>
 
-              <!-- Interest -->
               <div class="space-y-1.5">
-                <label for="interest" class="text-sm font-label font-medium text-on-surface">I'm interested in</label>
-                <select
-                  id="interest"
-                  name="interest"
-                  class="w-full bg-surface-container-low border border-outline-variant/25 rounded-lg px-4 py-3 text-on-surface font-body text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/30 transition-all appearance-none cursor-pointer"
-                >
-                  <option value="">Select an option…</option>
-                  <option value="demo">Requesting a Demo</option>
-                  <option value="pricing">Enterprise Pricing</option>
-                  <option value="kiosks">Self-Service Kiosks</option>
-                  <option value="api">API Integration</option>
-                  <option value="analytics">Analytics Dashboard</option>
-                  <option value="other">Other</option>
+                <label for="modulo" class="text-sm font-label font-medium text-on-surface">Módulo de interés</label>
+                <select id="modulo" name="modulo"
+                  class="w-full bg-surface-container-low border border-outline-variant/25 rounded-lg px-4 py-3 text-on-surface font-body text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/30 transition-all appearance-none cursor-pointer">
+                  <option value="">Selecciona un módulo…</option>
+                  <option value="pos">POS Inteligente</option>
+                  <option value="kioscos">Kioskos de Autoservicio</option>
+                  <option value="inventory">Inventarios con IA</option>
+                  <option value="delivery">Delivery Integrado</option>
+                  <option value="roomservice">Room Service (Hoteles)</option>
+                  <option value="kds">KDS - Pantallas de Cocina</option>
+                  <option value="finance">IA Financiera</option>
+                  <option value="demo">Demo General</option>
+                  <option value="enterprise">Plan Enterprise</option>
                 </select>
               </div>
 
-              <!-- Message -->
               <div class="space-y-1.5">
-                <label for="message" class="text-sm font-label font-medium text-on-surface">Message <span class="text-error">*</span></label>
-                <textarea
-                  id="message"
-                  name="message"
-                  required
-                  rows="5"
-                  placeholder="Tell us about your project, number of locations, timeline, or any questions you have…"
+                <label for="message" class="text-sm font-label font-medium text-on-surface">Cuéntanos sobre tu proyecto <span class="text-error">*</span></label>
+                <textarea id="message" name="message" required rows="4"
+                  placeholder="¿Cuántas sucursales tienes? ¿Cuál es tu mayor reto operativo hoy?"
                   class="w-full bg-surface-container-low border border-outline-variant/25 rounded-lg px-4 py-3 text-on-surface font-body text-sm placeholder:text-on-surface-variant/50 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/30 transition-all resize-none"
                 ></textarea>
               </div>
 
-              <!-- Submit -->
               <div id="form-error" class="hidden text-sm text-error font-body bg-error-container/30 px-4 py-3 rounded-lg border border-error/20">
-                Please fill in all required fields.
+                Por favor completa todos los campos requeridos.
               </div>
 
-              <button
-                type="submit"
-                id="submit-btn"
-                class="w-full bg-primary text-on-primary px-8 py-4 rounded-lg font-label font-semibold text-base shadow-[0_8px_24px_rgba(0,44,163,0.18)] hover:bg-primary-container hover:-translate-y-px transition-all duration-200 flex items-center justify-center gap-2"
-              >
-                <span id="btn-text">Send Message</span>
+              <button type="submit" id="submit-btn"
+                class="w-full bg-primary text-on-primary px-8 py-4 rounded-lg font-label font-semibold text-base shadow-[0_8px_24px_rgba(0,44,163,0.18)] hover:bg-primary-container hover:-translate-y-px transition-all duration-200 flex items-center justify-center gap-2">
+                <span id="btn-text">Enviar mensaje</span>
                 <span class="material-symbols-outlined text-xl leading-none" id="btn-icon">send</span>
               </button>
 
-              <!-- Success state -->
               <div id="form-success" class="hidden text-sm font-body bg-surface-container-low text-on-surface px-5 py-4 rounded-xl border border-outline-variant/20 flex items-start gap-3">
                 <span class="material-symbols-outlined text-primary text-xl leading-none shrink-0 mt-0.5">check_circle</span>
                 <div>
-                  <p class="font-semibold text-on-background">Message sent successfully!</p>
-                  <p class="text-on-surface-variant mt-0.5">We'll get back to you within one business day.</p>
+                  <p class="font-semibold text-on-background">¡Mensaje enviado!</p>
+                  <p class="text-on-surface-variant mt-0.5">Te contactamos en menos de 24 horas.</p>
                 </div>
               </div>
-
             </form>
           </div>
         </div>
 
         <!-- Sidebar info -->
         <div class="lg:col-span-2 space-y-8" data-animate="slide-left">
+
           <!-- Contact options -->
           <div class="space-y-4">
-            <h3 class="font-headline font-bold text-lg text-on-background">Contact Information</h3>
+            <h3 class="font-headline font-bold text-lg text-on-background">Información de contacto</h3>
             {contactOptions.map(opt => (
-              <a
-                href={opt.href}
-                class="flex items-start gap-4 p-4 rounded-xl bg-surface-container-low border border-outline-variant/10 hover:border-primary/25 hover:bg-surface-container hover:shadow-[0_4px_16px_rgba(26,27,36,0.04)] transition-all group"
-              >
+              <a href={opt.href}
+                class="flex items-start gap-4 p-4 rounded-xl bg-surface-container-low border border-outline-variant/10 hover:border-primary/25 hover:bg-surface-container hover:shadow-[0_4px_16px_rgba(26,27,36,0.04)] transition-all group">
                 <div class="w-10 h-10 bg-primary/8 rounded-lg flex items-center justify-center text-primary shrink-0 group-hover:bg-primary/15 transition-colors">
                   <span class="material-symbols-outlined text-lg leading-none">{opt.icon}</span>
                 </div>
@@ -195,17 +150,17 @@ const contactOptions = [
             ))}
           </div>
 
-          <!-- Response time -->
+          <!-- Response times -->
           <div class="p-6 rounded-xl bg-surface-container-highest border border-outline-variant/10">
             <div class="flex items-center gap-3 mb-3">
               <span class="material-symbols-outlined text-primary leading-none">schedule</span>
-              <span class="font-headline font-bold text-on-background">Response Times</span>
+              <span class="font-headline font-bold text-on-background">Tiempos de respuesta</span>
             </div>
             <div class="space-y-2 font-body text-sm">
               {[
-                { plan: 'Starter', time: '24 hours' },
-                { plan: 'Professional', time: '4 hours' },
-                { plan: 'Enterprise', time: 'Dedicated manager' },
+                { plan: 'Consultoría Inicial', time: '24 horas' },
+                { plan: 'Soporte Técnico',     time: '4 horas' },
+                { plan: 'Cuentas Enterprise',  time: 'Atención dedicada' },
               ].map(r => (
                 <div class="flex justify-between items-center py-1.5 border-b border-outline-variant/10 last:border-0">
                   <span class="text-on-surface-variant">{r.plan}</span>
@@ -217,13 +172,13 @@ const contactOptions = [
 
           <!-- Trust badges -->
           <div class="p-6 rounded-xl bg-primary border-0">
-            <h3 class="font-headline font-bold text-on-primary mb-4">Trusted by Teams Worldwide</h3>
+            <h3 class="font-headline font-bold text-on-primary mb-4">Tu operación en buenas manos</h3>
             <div class="grid grid-cols-2 gap-4">
               {[
-                { icon: 'verified_user', label: 'SOC 2 Certified' },
-                { icon: 'lock',         label: 'End-to-End Encrypted' },
-                { icon: 'support_agent', label: '24/7 Enterprise' },
-                { icon: 'language',     label: 'Global Reach' },
+                { icon: 'cloud',          label: 'Infraestructura en la Nube' },
+                { icon: 'lock',           label: 'Seguridad de Datos' },
+                { icon: 'extension',      label: 'Modularidad Total' },
+                { icon: 'support_agent',  label: 'Soporte Experto' },
               ].map(b => (
                 <div class="flex items-center gap-2">
                   <span class="material-symbols-outlined text-on-primary/70 text-base leading-none">{b.icon}</span>
@@ -251,7 +206,6 @@ const contactOptions = [
   form?.addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    // Basic validation
     const required = form.querySelectorAll('[required]');
     let valid = true;
     required.forEach((field) => {
@@ -264,16 +218,11 @@ const contactOptions = [
       }
     });
 
-    if (!valid) {
-      errorMsg?.classList.remove('hidden');
-      return;
-    }
-
+    if (!valid) { errorMsg?.classList.remove('hidden'); return; }
     errorMsg?.classList.add('hidden');
 
-    // Loading state
     submitBtn.disabled = true;
-    btnText.textContent = 'Sending…';
+    btnText.textContent = 'Enviando…';
     btnIcon.textContent = 'hourglass_empty';
 
     try {
@@ -290,15 +239,14 @@ const contactOptions = [
       successEl?.classList.remove('hidden');
       form.reset();
     } catch {
-      btnText.textContent = 'Send Message';
+      btnText.textContent = 'Enviar mensaje';
       btnIcon.textContent = 'send';
       submitBtn.disabled = false;
-      errorMsg.textContent = 'Something went wrong. Please try again.';
+      errorMsg.textContent = 'Algo salió mal. Por favor intenta de nuevo.';
       errorMsg?.classList.remove('hidden');
     }
   });
 
-  // Remove error highlight on input
   form?.querySelectorAll('input, textarea').forEach(field => {
     field.addEventListener('input', () => {
       (field as HTMLElement).classList.remove('border-error');
