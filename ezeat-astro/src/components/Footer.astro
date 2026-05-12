@@ -1,68 +1,89 @@
 ---
 const currentYear = new Date().getFullYear();
+
+const products = [
+  { href: '/services', label: 'Soluciones' },
+  { href: '/pricing',  label: 'Precios' },
+  { href: '/contact',  label: 'Contacto' },
+  { href: '/contact',  label: 'Agendar demo' },
+];
+
+const company = [
+  { href: '/about',   label: 'Nosotros' },
+  { href: '/contact', label: 'Contacto' },
+];
 ---
 
-<footer class="bg-surface-container-low border-t border-outline-variant/10 pt-16 pb-8">
+<footer class="bg-surface-container-lowest border-t border-outline-variant/15 pt-14 pb-0">
   <div class="max-w-7xl mx-auto px-6 lg:px-8">
-    <div class="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
 
-      <!-- Brand -->
-      <div class="space-y-4">
-        <a href="/" class="text-xl font-bold text-on-background font-headline block">Ezeat</a>
-        <p class="text-sm text-on-surface-variant font-body leading-relaxed">
-          Architectural precision in labor efficiency. Engineering the future of dining.
+    <!-- Main grid -->
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-10 pb-12">
+
+      <!-- Brand — col-span-2 -->
+      <div class="md:col-span-2 space-y-5">
+        <!-- Logo -->
+        <a href="/" class="inline-flex items-center gap-2.5 group">
+          <div class="w-9 h-9 rounded-xl bg-primary flex items-center justify-center shrink-0">
+            <span class="material-symbols-outlined text-on-primary text-lg leading-none">restaurant</span>
+          </div>
+          <span class="font-headline font-extrabold text-xl text-on-surface tracking-tight">EzEat</span>
+        </a>
+
+        <!-- Description -->
+        <p class="text-on-surface-variant font-body text-sm leading-relaxed max-w-sm">
+          El primer sistema operativo inteligente para Hoteles, Restaurantes y Cafeterías que crece contigo.
         </p>
-        <div class="flex gap-3 pt-2">
-          <a href="#" aria-label="LinkedIn" class="w-9 h-9 rounded-full bg-surface-container-highest flex items-center justify-center text-on-surface-variant hover:text-primary hover:bg-primary/10 transition-colors">
-            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+
+        <!-- Contact info -->
+        <div class="space-y-2 text-sm font-body text-on-surface-variant">
+          <div class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-base leading-none text-primary/70">mail</span>
+            <a href="mailto:hello@ezeat.com" class="hover:text-primary transition-colors">hello@ezeat.com</a>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-base leading-none text-primary/70">location_on</span>
+            <span>Monterrey, Nuevo León · México</span>
+          </div>
+        </div>
+
+        <!-- Social links -->
+        <div class="flex gap-3 pt-1">
+          <a href="#" aria-label="LinkedIn"
+            class="w-9 h-9 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant hover:text-primary hover:bg-primary/10 transition-all">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+            </svg>
           </a>
-          <a href="#" aria-label="Twitter" class="w-9 h-9 rounded-full bg-surface-container-highest flex items-center justify-center text-on-surface-variant hover:text-primary hover:bg-primary/10 transition-colors">
-            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          <a href="#" aria-label="Twitter / X"
+            class="w-9 h-9 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant hover:text-primary hover:bg-primary/10 transition-all">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+            </svg>
           </a>
         </div>
       </div>
 
-      <!-- Company -->
+      <!-- Productos -->
       <div class="space-y-4">
-        <h4 class="text-sm font-headline font-bold text-on-background uppercase tracking-wider">Company</h4>
-        <nav class="flex flex-col space-y-2">
-          {[
-            { href: '/',         label: 'Home' },
-            { href: '/about',    label: 'About Us' },
-            { href: '/services', label: 'Services' },
-            { href: '/pricing',  label: 'Pricing' },
-          ].map(link => (
-            <a href={link.href} class="text-sm font-body text-on-surface-variant hover:text-primary hover:translate-x-1 transition-all duration-200 inline-block">
+        <h4 class="font-headline font-semibold text-on-surface text-sm">Productos</h4>
+        <nav class="flex flex-col space-y-2.5">
+          {products.map(link => (
+            <a href={link.href}
+              class="text-sm font-body text-on-surface-variant hover:text-primary hover:translate-x-0.5 transition-all duration-200 inline-block">
               {link.label}
             </a>
           ))}
         </nav>
       </div>
 
-      <!-- Support -->
+      <!-- Compañía -->
       <div class="space-y-4">
-        <h4 class="text-sm font-headline font-bold text-on-background uppercase tracking-wider">Support</h4>
-        <nav class="flex flex-col space-y-2">
-          {[
-            { href: '/contact', label: 'Contact Us' },
-            { href: '/pricing', label: 'Enterprise Plans' },
-          ].map(link => (
-            <a href={link.href} class="text-sm font-body text-on-surface-variant hover:text-primary hover:translate-x-1 transition-all duration-200 inline-block">
-              {link.label}
-            </a>
-          ))}
-        </nav>
-      </div>
-
-      <!-- Legal -->
-      <div class="space-y-4">
-        <h4 class="text-sm font-headline font-bold text-on-background uppercase tracking-wider">Legal</h4>
-        <nav class="flex flex-col space-y-2">
-          {[
-            { href: '#', label: 'Privacy Policy' },
-            { href: '#', label: 'Terms of Service' },
-          ].map(link => (
-            <a href={link.href} class="text-sm font-body text-on-surface-variant hover:text-primary hover:translate-x-1 transition-all duration-200 inline-block">
+        <h4 class="font-headline font-semibold text-on-surface text-sm">Compañía</h4>
+        <nav class="flex flex-col space-y-2.5">
+          {company.map(link => (
+            <a href={link.href}
+              class="text-sm font-body text-on-surface-variant hover:text-primary hover:translate-x-0.5 transition-all duration-200 inline-block">
               {link.label}
             </a>
           ))}
@@ -72,13 +93,14 @@ const currentYear = new Date().getFullYear();
     </div>
 
     <!-- Bottom bar -->
-    <div class="border-t border-outline-variant/10 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
-      <p class="text-sm font-body text-on-surface-variant">
-        © {currentYear} Ezeat. All rights reserved.
+    <div class="border-t border-outline-variant/10 py-6 flex flex-col sm:flex-row justify-between items-center gap-3">
+      <p class="text-xs font-body text-on-surface-variant">
+        © {currentYear} EzEat. Todos los derechos reservados.
       </p>
-      <p class="text-sm font-body text-on-surface-variant">
-        Built with <span class="text-primary font-medium">Astro</span> · Designed with precision.
+      <p class="text-xs font-body text-on-surface-variant">
+        Hecho con <span class="text-primary font-medium">♥</span> en Monterrey
       </p>
     </div>
+
   </div>
 </footer>

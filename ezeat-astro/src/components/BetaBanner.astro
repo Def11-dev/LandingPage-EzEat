@@ -1,0 +1,41 @@
+<!-- Beta announcement banner — dismissible via localStorage -->
+<div
+  id="beta-banner"
+  class="relative z-[60] bg-primary text-on-primary"
+>
+  <div class="max-w-7xl mx-auto px-4 py-2.5 flex items-center justify-center gap-3 text-sm font-body">
+    <span class="font-medium">
+      🚀 <strong>Beta abierta</strong> — Primeros 20 clientes obtienen <strong>30% off por 6 meses</strong>
+    </span>
+    <a
+      href="/contact"
+      class="inline-flex items-center gap-1 font-semibold underline underline-offset-2 hover:opacity-80 transition-opacity"
+    >
+      Asegurar lugar
+      <span class="material-symbols-outlined text-sm leading-none">arrow_forward</span>
+    </a>
+    <button
+      id="beta-banner-close"
+      aria-label="Cerrar banner"
+      class="absolute right-4 top-1/2 -translate-y-1/2 p-1 rounded hover:bg-white/20 transition-colors"
+    >
+      <span class="material-symbols-outlined text-base leading-none">close</span>
+    </button>
+  </div>
+</div>
+
+<script>
+  const STORAGE_KEY = 'ezeat-beta-banner-dismissed';
+  const banner = document.getElementById('beta-banner');
+  const closeBtn = document.getElementById('beta-banner-close');
+
+  // Hide immediately if previously dismissed
+  if (localStorage.getItem(STORAGE_KEY) === '1') {
+    banner?.remove();
+  }
+
+  closeBtn?.addEventListener('click', () => {
+    localStorage.setItem(STORAGE_KEY, '1');
+    banner?.remove();
+  });
+</script>

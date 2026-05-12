@@ -1,6 +1,7 @@
 ---
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
+import BetaBanner from '../components/BetaBanner.astro';
 
 interface Props {
   title: string;
@@ -9,12 +10,12 @@ interface Props {
 
 const {
   title,
-  description = 'Ezeat — Architectural precision in labor efficiency. Engineering the future of dining through self-service kiosks and intelligent payment terminals.',
+  description = 'EzEat — El primer sistema operativo inteligente para Hoteles, Restaurantes y Cafeterías. POS, Inventarios con IA, Kioskos de Autoservicio y más.',
 } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en" class="scroll-smooth">
+<html lang="es" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -93,6 +94,7 @@ const {
   </head>
 
   <body class="bg-background text-on-background font-body antialiased selection:bg-primary-container selection:text-on-primary-container">
+    <BetaBanner />
     <Navbar />
     <main class="pt-20">
       <slot />

@@ -1,9 +1,10 @@
 ---
 const navLinks = [
   { href: '/',         label: 'Inicio' },
-  { href: '/about',    label: 'Nosotros' },
   { href: '/services', label: 'Soluciones' },
   { href: '/pricing',  label: 'Precios' },
+  { href: '/about',    label: 'Nosotros' },
+  { href: '/contact',  label: 'Contacto' },
 ];
 
 const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
@@ -42,7 +43,7 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
         href="/contact"
         class="hidden md:inline-flex bg-primary text-on-primary font-label font-medium px-6 py-2.5 rounded-lg hover:bg-primary-container transition-all duration-200 shadow-[0_8px_32px_rgba(26,27,36,0.08)] hover:-translate-y-px items-center gap-2"
       >
-        Contacto
+        Agendar demo
       </a>
 
       <!-- Mobile menu button -->
