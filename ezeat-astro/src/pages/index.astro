@@ -74,7 +74,7 @@ const questions = [
 <section id="stage-hero" class="relative min-h-[90vh] bg-surface flex items-center pt-8 pb-24 overflow-hidden">
   <div class="absolute inset-0 bg-gradient-to-br from-surface via-surface to-surface-container-low opacity-60 pointer-events-none"></div>
   <div class="absolute -top-32 -right-32 w-[600px] h-[600px] rounded-full bg-primary/5 pointer-events-none"></div>
-  <div class="absolute -bottom-24 -left-24 w-[400px] h-[400px] rounded-full bg-primary/3 pointer-events-none"></div>
+  <div class="absolute -bottom-24 -left-24 w-[400px] h-[400px] rounded-full bg-primary/5 pointer-events-none"></div>
 
   <div class="max-w-7xl mx-auto px-6 lg:px-8 w-full relative z-10">
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
@@ -321,6 +321,124 @@ const questions = [
           </div>
           <h3 class="font-headline text-xl font-bold text-on-background mb-3">{p.title}</h3>
           <p class="font-body text-on-surface-variant leading-relaxed">{p.body}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════
+     STATS STRIP
+═══════════════════════════════════════════════ -->
+<section class="py-14 bg-primary">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center" data-stagger>
+      {[
+        { value: '+30%',  label: 'Aumento en ticket promedio' },
+        { value: '-45%',  label: 'Reducción de mermas' },
+        { value: '24/7',  label: 'Soporte humano' },
+        { value: '98%',   label: 'Satisfacción de clientes' },
+      ].map(s => (
+        <div>
+          <div class="font-headline font-extrabold text-4xl md:text-5xl text-on-primary mb-1">{s.value}</div>
+          <div class="text-sm font-body text-on-primary/70">{s.label}</div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════
+     BENEFICIOS
+═══════════════════════════════════════════════ -->
+<section class="py-24 bg-surface-container-low">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="text-center max-w-2xl mx-auto mb-16" data-animate="fade-up">
+      <span class="text-primary font-label text-sm font-bold uppercase tracking-wider mb-3 block">¿Por qué EzEat?</span>
+      <h2 class="font-headline text-3xl md:text-4xl font-bold text-on-background">
+        Construido para tu realidad operativa
+      </h2>
+    </div>
+    <div class="grid md:grid-cols-3 gap-8" data-stagger>
+      {[
+        {
+          icon: 'bolt',
+          title: 'Activa solo lo que necesitas',
+          body: 'Empieza con el módulo esencial y agrega funciones conforme tu operación escala. Sin paquetes inflados, sin pagar por lo que no usas.',
+        },
+        {
+          icon: 'shield',
+          title: 'Datos seguros y soberanos',
+          body: 'Encriptación end-to-end, backups automáticos y cumplimiento de normativas. Tu información nunca sale de tus manos.',
+        },
+        {
+          icon: 'trending_up',
+          title: 'Decisiones con IA',
+          body: 'Predicciones de demanda, alertas de inventario y reportes financieros automáticos. De datos brutos a insights accionables en segundos.',
+        },
+      ].map(b => (
+        <div class="bg-surface-container-lowest p-8 rounded-xl border border-outline-variant/10 group hover:border-primary/25 hover:shadow-[0_12px_32px_rgba(43,73,243,0.08)] transition-all duration-300 hover:-translate-y-1">
+          <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center text-primary mb-5 group-hover:bg-primary/20 transition-colors">
+            <span class="material-symbols-outlined text-2xl leading-none">{b.icon}</span>
+          </div>
+          <h3 class="font-headline text-xl font-bold text-on-background mb-3">{b.title}</h3>
+          <p class="font-body text-on-surface-variant leading-relaxed text-sm">{b.body}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════
+     TESTIMONIOS
+═══════════════════════════════════════════════ -->
+<section class="py-24 bg-surface">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="text-center max-w-2xl mx-auto mb-16" data-animate="fade-up">
+      <span class="text-primary font-label text-sm font-bold uppercase tracking-wider mb-3 block">Lo que dicen nuestros clientes</span>
+      <h2 class="font-headline text-3xl md:text-4xl font-bold text-on-background">
+        Resultados reales, no promesas
+      </h2>
+    </div>
+    <div class="grid md:grid-cols-3 gap-8" data-stagger>
+      {[
+        {
+          name: 'Carlos Mendoza',
+          role: 'Dueño',
+          business: 'Cadena de Fast Food — CDMX',
+          quote: 'Redujimos las mermas en un 38% el primer trimestre. El módulo de inventarios con IA fue un parteaguas para nuestra operación.',
+          initial: 'C',
+        },
+        {
+          name: 'Mariana Quintero',
+          role: 'Gerente de Operaciones',
+          business: 'Restaurante de Autor — Monterrey',
+          quote: 'El POS inteligente nos dio visibilidad total del negocio en tiempo real. Ahora tomamos decisiones con datos, no con corazonadas.',
+          initial: 'M',
+        },
+        {
+          name: 'Andrés Rivera',
+          role: 'Director',
+          business: 'Hotel Boutique — Guadalajara',
+          quote: 'El Room Service digital cambió la experiencia de nuestros huéspedes. Los pedidos son más rápidos y los errores prácticamente desaparecieron.',
+          initial: 'A',
+        },
+      ].map(t => (
+        <div class="bg-surface-container-lowest p-8 rounded-xl border border-outline-variant/10 flex flex-col">
+          <span class="material-symbols-outlined text-primary text-3xl leading-none mb-4 fill">format_quote</span>
+          <p class="font-body text-on-surface-variant leading-relaxed text-sm flex-grow mb-6">"{t.quote}"</p>
+          <div class="flex items-center gap-3 pt-4 border-t border-outline-variant/10">
+            <div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-on-primary font-headline font-bold text-sm shrink-0">
+              {t.initial}
+            </div>
+            <div>
+              <p class="font-headline font-semibold text-on-background text-sm">{t.name}</p>
+              <p class="text-xs font-body text-on-surface-variant">{t.role} · {t.business}</p>
+            </div>
+          </div>
         </div>
       ))}
     </div>

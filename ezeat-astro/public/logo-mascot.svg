@@ -1,0 +1,30 @@
+<svg viewBox="0 0 340 360" xmlns="http://www.w3.org/2000/svg" fill="none">
+  <!-- Head circle -->
+  <circle cx="170" cy="52" r="42" stroke="#2B49F3" stroke-width="10"/>
+  <!-- Eyes -->
+  <ellipse cx="154" cy="46" rx="7" ry="9" fill="#2B49F3"/>
+  <ellipse cx="186" cy="46" rx="7" ry="9" fill="#2B49F3"/>
+  <!-- Nose bump -->
+  <path d="M170,54 Q164,62 170,66 Q176,62 170,54" fill="#2B49F3"/>
+  <!-- Smile -->
+  <path d="M154,74 Q170,88 186,74" stroke="#2B49F3" stroke-width="5" stroke-linecap="round"/>
+
+  <!-- Left bracket arm -->
+  <polyline points="95,130 38,210 95,290" stroke="#2B49F3" stroke-width="17" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Right bracket arm -->
+  <polyline points="245,130 302,210 245,290" stroke="#2B49F3" stroke-width="17" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- EZ -->
+  <text x="170" y="196" font-family="'Arial Black','Helvetica Neue',Arial,sans-serif" font-weight="900" font-size="58" fill="#2B49F3" text-anchor="middle" dominant-baseline="middle">EZ</text>
+  <!-- eat -->
+  <text x="170" y="258" font-family="'Arial Black','Helvetica Neue',Arial,sans-serif" font-weight="900" font-size="58" fill="#2B49F3" text-anchor="middle" dominant-baseline="middle">eat</text>
+
+  <!-- Left leg -->
+  <path d="M148,292 Q140,316 132,332" stroke="#2B49F3" stroke-width="11" stroke-linecap="round"/>
+  <!-- Left foot -->
+  <path d="M132,332 Q118,338 112,334" stroke="#2B49F3" stroke-width="11" stroke-linecap="round"/>
+  <!-- Right leg -->
+  <path d="M192,292 Q200,316 208,332" stroke="#2B49F3" stroke-width="11" stroke-linecap="round"/>
+  <!-- Right foot -->
+  <path d="M208,332 Q222,338 228,334" stroke="#2B49F3" stroke-width="11" stroke-linecap="round"/>
+</svg>
