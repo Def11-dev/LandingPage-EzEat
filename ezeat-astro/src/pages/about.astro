@@ -1,8 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-const heroImg = 'https://lh3.googleusercontent.com/aida-public/AB6AXuDgOGqjcanHFE4VRr2WJoIhjZ48XiljIRiTJqrGZkNvEOsZzti1Y5iPzmr64izXTOUST0q5JfzeKbQV3vuUSNGTJ-11Qu_fvjg5KtQk__orO84vyYFJNPCufiwCkoyyq7G7dmOvnhueXpuiOb-7-h9UJtfgxjG29YpllRk5oH6-rEC7II51d_QD17DaggI0p6EAwcs4JUVoZmqbr-xTAxZrqZBH_RE7RDWuh0RpZCmfaxx6DJ_Ze-UpCNoyVt2bpRMuZB4Uz2Xx_5hm';
-
 const promises = [
   {
     icon: 'bolt',
@@ -27,61 +25,60 @@ const promises = [
   description="EzEat nació de la experiencia real en el sector HORECA. Conoce la historia detrás del primer sistema operativo inteligente para restaurantes y hoteles."
 >
 
-  <!-- ─── Hero Story ─────────────────────────────────────────────── -->
-  <section class="py-24 md:py-32 bg-surface relative overflow-hidden">
-    <div class="absolute top-0 right-0 w-[500px] h-[500px] rounded-full bg-primary/4 -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
-
+  <!-- Hero -->
+  <section class="pt-16 pb-24 flex items-center" style="background: linear-gradient(135deg, #0f1729 0%, #141d3d 50%, #1a2450 100%);">
     <div class="max-w-7xl mx-auto px-6 lg:px-8 grid md:grid-cols-2 gap-16 items-center">
       <div class="space-y-8" data-animate="slide-right">
-        <div class="inline-flex items-center gap-2 bg-surface-container-highest px-4 py-2 rounded-full">
-          <span class="material-symbols-outlined text-primary text-base leading-none">restaurant</span>
-          <span class="text-sm font-label font-medium text-on-surface">De la Operación a la Innovación</span>
+        <div class="inline-flex items-center gap-2 bg-white/10 border border-white/20 px-4 py-2 rounded-full">
+          <span class="material-symbols-outlined text-[#b0beff] text-base leading-none">restaurant</span>
+          <span class="text-sm font-label font-medium text-white/90">De la Operación a la Innovación</span>
         </div>
-        <h1 class="font-headline text-5xl md:text-6xl font-extrabold tracking-tight text-on-background leading-[1.05]">
+        <h1 class="font-headline text-5xl md:text-6xl font-extrabold tracking-tight text-white leading-[1.05]">
           No somos solo código, somos
-          <span class="text-primary">restauranteros.</span>
+          <span class="text-[#b0beff]">restauranteros.</span>
         </h1>
-        <p class="font-body text-lg text-on-surface-variant max-w-lg leading-relaxed">
+        <p class="font-body text-lg text-white/70 max-w-lg leading-relaxed">
           Entendemos el caos porque hemos estado ahí. EzEat nació de la frustración de ver cómo la tecnología, en lugar de ayudar, se convertía en un obstáculo. Decidimos dejar de usar sistemas desconectados para construir el primer cerebro digital que realmente entiende el ritmo de un HORECA.
         </p>
         <div class="flex gap-4 pt-2">
-          <a href="/contact" class="bg-primary text-on-primary px-6 py-3 rounded-lg font-label font-medium shadow-[0_8px_24px_rgba(0,44,163,0.18)] hover:bg-primary-container hover:-translate-y-px transition-all duration-200">
+          <a href="/contact" class="bg-primary text-white px-6 py-3 rounded-lg font-label font-semibold shadow-[0_8px_24px_rgba(43,73,243,0.4)] hover:brightness-110 hover:-translate-y-px transition-all duration-200">
             Hablemos de tu negocio
           </a>
-          <a href="/services" class="border border-outline-variant/30 text-on-surface px-6 py-3 rounded-lg font-label font-medium hover:bg-surface-container-low transition-colors">
+          <a href="/services" class="bg-white/10 border border-white/20 text-white px-6 py-3 rounded-lg font-label font-medium hover:bg-white/20 transition-colors">
             Ver soluciones
           </a>
         </div>
       </div>
 
-      <div class="relative h-[420px] md:h-[520px] w-full" data-animate="slide-left">
-        <div class="rounded-xl overflow-hidden shadow-[0_16px_48px_rgba(26,27,36,0.08)] h-full bg-surface-container-low">
+      <!-- Mascot -->
+      <div class="flex items-center justify-center" data-animate="slide-left">
+        <div class="relative">
+          <div class="absolute inset-0 rounded-full bg-[#b0beff]/20 blur-3xl scale-110 pointer-events-none"></div>
           <img
-            src={heroImg}
-            alt="Ambiente de restaurante moderno con tecnología EzEat"
-            class="w-full h-full object-cover"
+            src="/EZ eat (7).png"
+            alt="EzEat mascot"
+            class="relative w-72 md:w-96 h-auto drop-shadow-2xl"
             loading="eager"
           />
-          <div class="absolute inset-0 bg-gradient-to-t from-on-background/10 to-transparent rounded-xl pointer-events-none"></div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ─── Ecosistema de Innovación ──────────────────────────────── -->
-  <section class="py-20 bg-primary">
+  <!-- Ecosistema de Innovación -->
+  <section class="py-20" style="background: linear-gradient(135deg, #0f1729 0%, #141d3d 60%, #1a2450 100%);">
     <div class="max-w-4xl mx-auto px-6 lg:px-8 text-center" data-animate="fade-up">
-      <span class="material-symbols-outlined text-on-primary/60 text-5xl block mb-6 leading-none">school</span>
-      <h2 class="font-headline text-3xl md:text-4xl font-bold text-on-primary mb-6 leading-tight">
+      <span class="material-symbols-outlined text-[#b0beff] text-5xl block mb-6 leading-none">school</span>
+      <h2 class="font-headline text-3xl md:text-4xl font-bold text-white mb-6 leading-tight">
         El Diferenciador: Nacidos en la innovación.
       </h2>
-      <p class="font-body text-on-primary/85 text-lg leading-relaxed max-w-2xl mx-auto">
-        Nacido en el ecosistema de emprendimiento del <span class="font-bold text-on-primary">Tecnológico de Monterrey</span>, EzEat combina la metodología de innovación más avanzada con la experiencia operativa del mundo real. No estamos construyendo un software para hoy; estamos diseñando la infraestructura para los negocios que dominarán la industria mañana.
+      <p class="font-body text-white/70 text-lg leading-relaxed max-w-2xl mx-auto">
+        Nacido en el ecosistema de emprendimiento del <span class="font-bold text-white">Tecnológico de Monterrey</span>, EzEat combina la metodología de innovación más avanzada con la experiencia operativa del mundo real. No estamos construyendo un software para hoy; estamos diseñando la infraestructura para los negocios que dominarán la industria mañana.
       </p>
     </div>
   </section>
 
-  <!-- ─── Nuestras Promesas ─────────────────────────────────────── -->
+  <!-- Nuestras Promesas -->
   <section class="py-24 bg-surface-container-low">
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
       <div class="max-w-3xl mb-16" data-animate="fade-up">
@@ -96,10 +93,10 @@ const promises = [
 
       <div class="grid md:grid-cols-3 gap-8" data-stagger>
         {promises.map(p => (
-          <div class="bg-surface-container-lowest p-8 rounded-xl relative overflow-hidden group shadow-[0_4px_16px_rgba(26,27,36,0.03)] hover:shadow-[0_12px_32px_rgba(26,27,36,0.07)] transition-all duration-300 hover:-translate-y-1">
+          <div class="bg-white p-8 rounded-2xl border border-outline-variant/15 relative overflow-hidden group shadow-sm hover:shadow-[0_12px_32px_rgba(26,27,36,0.07)] transition-all duration-300 hover:-translate-y-1">
             <div class="absolute top-0 left-0 w-1 h-full bg-primary origin-bottom scale-y-0 group-hover:scale-y-100 transition-transform duration-300 rounded-r"></div>
-            <div class="w-14 h-14 bg-primary/8 rounded-xl flex items-center justify-center text-primary mb-6 group-hover:bg-primary/15 transition-colors">
-              <span class="material-symbols-outlined text-3xl leading-none">{p.icon}</span>
+            <div class="w-14 h-14 bg-primary rounded-xl flex items-center justify-center text-white mb-6">
+              <span class="material-symbols-outlined text-2xl leading-none">{p.icon}</span>
             </div>
             <h3 class="font-headline text-xl font-bold text-on-background mb-3">{p.title}</h3>
             <p class="font-body text-on-surface-variant leading-relaxed">{p.body}</p>
@@ -109,7 +106,7 @@ const promises = [
     </div>
   </section>
 
-  <!-- ─── Why EzEat Grid ───────────────────────────────────────── -->
+  <!-- ¿Por qué EzEat? -->
   <section class="py-24 bg-surface">
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
       <div class="text-center max-w-2xl mx-auto mb-16" data-animate="fade-up">
@@ -136,8 +133,8 @@ const promises = [
             body: 'Filosofía "paga por lo que usas". Empieza con lo básico y agrega módulos conforme escala tu operación.',
           },
         ].map(c => (
-          <div class="text-center p-8 rounded-xl bg-surface-container-low hover:bg-surface-container hover:shadow-[0_8px_24px_rgba(26,27,36,0.05)] transition-all">
-            <div class="w-16 h-16 bg-primary/8 rounded-full flex items-center justify-center text-primary mx-auto mb-6">
+          <div class="text-center p-8 rounded-2xl bg-surface-container-low hover:bg-surface-container border border-outline-variant/10 hover:shadow-[0_8px_24px_rgba(26,27,36,0.05)] transition-all">
+            <div class="w-16 h-16 bg-primary rounded-xl flex items-center justify-center text-white mx-auto mb-6">
               <span class="material-symbols-outlined text-3xl leading-none">{c.icon}</span>
             </div>
             <h3 class="font-headline font-bold text-xl mb-3 text-on-background">{c.title}</h3>
@@ -148,7 +145,7 @@ const promises = [
     </div>
   </section>
 
-  <!-- ─── Visión Quote ──────────────────────────────────────────── -->
+  <!-- Visión Quote -->
   <section class="py-32 bg-surface-container-low">
     <div class="max-w-4xl mx-auto px-6 lg:px-8 text-center space-y-8" data-animate="scale-in">
       <div class="w-16 h-1 bg-primary mx-auto rounded-full"></div>
@@ -162,19 +159,20 @@ const promises = [
     </div>
   </section>
 
-  <!-- ─── El Factor Humano ──────────────────────────────────────── -->
-  <section class="py-16 bg-surface border-t border-outline-variant/10">
+  <!-- El Factor Humano -->
+  <section class="py-16 bg-surface-container-low">
     <div class="max-w-4xl mx-auto px-6 lg:px-8" data-animate="fade-up">
-      <div class="bg-primary rounded-2xl p-10 md:p-14 text-center">
-        <span class="material-symbols-outlined text-on-primary/60 text-5xl block mb-6 leading-none">groups</span>
-        <h2 class="text-3xl font-headline font-bold text-on-primary mb-4">
+      <div class="rounded-2xl px-10 py-14 text-center" style="background: linear-gradient(135deg, #0f1729 0%, #141d3d 60%, #1a2450 100%);">
+        <span class="material-symbols-outlined text-white/50 text-5xl block mb-6 leading-none">groups</span>
+        <h2 class="text-3xl font-headline font-bold text-white mb-4">
           Un equipo joven con hambre de cambiar las reglas.
         </h2>
-        <p class="text-on-primary/85 font-body mb-8 max-w-xl mx-auto leading-relaxed">
+        <p class="text-white/70 font-body mb-8 max-w-xl mx-auto leading-relaxed">
           Somos una startup en beta perpetua: ágil, obsesionada con el cliente y siempre en mejora constante. Cada semana lanzamos mejoras, no comunicados de prensa.
         </p>
-        <a href="/contact" class="bg-surface-container-lowest text-primary px-8 py-4 rounded-lg font-label font-medium text-lg shadow-lg hover:bg-surface-container-low hover:-translate-y-px transition-all duration-200 inline-block">
+        <a href="/contact" class="inline-flex items-center gap-2 bg-primary text-white px-8 py-4 rounded-xl font-label font-semibold text-base shadow-[0_8px_24px_rgba(43,73,243,0.4)] hover:brightness-110 hover:-translate-y-px transition-all duration-200">
           Únete al ecosistema EzEat
+          <span class="material-symbols-outlined text-xl leading-none">arrow_forward</span>
         </a>
       </div>
     </div>
