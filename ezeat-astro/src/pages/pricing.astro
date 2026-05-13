@@ -87,9 +87,20 @@ const row2 = [
     addons: [],
     note: null,
     cta: 'Solicitar cotización',
-    ctaHref: '/contact',
+    ctaHref: '#corporativo-simulator',
     popular: false,
   },
+];
+
+const modules = [
+  { id: 'pos_basic',    label: 'POS Básico',               price: 599,  icon: 'point_of_sale',  category: 'operativa' },
+  { id: 'pos_smart',    label: 'POS Inteligente',           price: 1200, icon: 'tablet_android',  category: 'operativa' },
+  { id: 'kds',          label: 'KDS - Pantallas de Cocina', price: 450,  icon: 'kitchen',         category: 'operativa' },
+  { id: 'kioscos',      label: 'Kioskos de Autoservicio',   price: 1000, icon: 'smart_display',   category: 'addons' },
+  { id: 'inventory',    label: 'Inventarios con IA',        price: 750,  icon: 'inventory_2',     category: 'addons' },
+  { id: 'delivery',     label: 'Delivery Integrado',        price: 400,  icon: 'delivery_dining', category: 'addons' },
+  { id: 'finance_ai',   label: 'IA Financiera',             price: 1250, icon: 'account_balance', category: 'addons' },
+  { id: 'roomservice',  label: 'Room Service (Hoteles)',    price: 1500, icon: 'room_service',    category: 'addons' },
 ];
 ---
 
@@ -265,16 +276,177 @@ const row2 = [
     </div>
   </section>
 
-  <!-- A la carta -->
-  <section class="py-12 bg-surface border-t border-outline-variant/10">
-    <div class="max-w-xl mx-auto px-6 text-center" data-animate="fade-up">
-      <p class="text-on-surface-variant font-body text-base mb-5">¿Necesitas algo distinto? Configura módulo por módulo.</p>
-      <a href="/pricing/alacarta"
-        class="inline-flex items-center gap-2 border border-outline-variant/30 text-on-surface font-label font-medium px-7 py-3 rounded-lg hover:border-primary/40 hover:text-primary transition-all duration-200">
-        Ir al modo A la carta
-        <span class="material-symbols-outlined text-base leading-none">arrow_forward</span>
-      </a>
+  <!-- Corporativo Simulator (hidden until "Solicitar cotización" is clicked) -->
+  <section id="corporativo-simulator" class="hidden pb-24 bg-surface-container-low border-t border-outline-variant/10">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8 pt-16">
+
+      <div class="text-center mb-12" data-animate="fade-up">
+        <div class="inline-flex items-center gap-2 bg-surface-container-highest px-4 py-2 rounded-full mb-4">
+          <span class="material-symbols-outlined text-primary text-base leading-none">construction</span>
+          <span class="text-sm font-label font-medium text-on-surface">Corporativo — Cotización a medida</span>
+        </div>
+        <h2 class="font-headline text-4xl font-bold text-on-background mb-3">Configura tu plan corporativo.</h2>
+        <p class="text-on-surface-variant font-body text-lg max-w-xl mx-auto">Selecciona los módulos que necesitas y te enviamos una propuesta personalizada.</p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-5 gap-10 items-start">
+
+        <!-- Left -->
+        <div class="lg:col-span-3 space-y-8">
+          <div class="bg-surface-container-lowest rounded-xl p-7 border border-outline-variant/10">
+            <h3 class="font-headline text-lg font-bold text-on-background mb-1">Paso 1: ¿Cuántas sucursales?</h3>
+            <p class="text-on-surface-variant text-sm font-body mb-5">Multiplica el costo base por ubicación.</p>
+            <div class="flex items-center gap-4">
+              <button id="branches-dec" class="w-10 h-10 rounded-full border border-outline-variant/25 flex items-center justify-center text-on-surface hover:bg-surface-container-low transition-colors font-bold text-lg">−</button>
+              <div class="flex-1 text-center">
+                <span id="branches-val" class="font-headline font-extrabold text-4xl text-primary">1</span>
+                <span class="text-on-surface-variant font-body text-sm ml-2">sucursal(es)</span>
+              </div>
+              <button id="branches-inc" class="w-10 h-10 rounded-full border border-outline-variant/25 flex items-center justify-center text-on-surface hover:bg-surface-container-low transition-colors font-bold text-lg">+</button>
+            </div>
+            <p id="fleet-msg" class="hidden mt-4 text-xs font-body text-primary bg-primary/8 px-4 py-2.5 rounded-lg">
+              ¿Tienes más de 5 sucursales? <a href="/contact" class="font-semibold underline">Hablemos de un precio especial para flotas.</a>
+            </p>
+          </div>
+
+          <div class="bg-surface-container-lowest rounded-xl p-7 border border-outline-variant/10">
+            <h3 class="font-headline text-lg font-bold text-on-background mb-1">Paso 2: Elige tu operativa</h3>
+            <p class="text-on-surface-variant text-sm font-body mb-5">Los módulos esenciales para tu operación diaria.</p>
+            <div class="space-y-3" id="modules-operativa"></div>
+          </div>
+
+          <div class="bg-surface-container-lowest rounded-xl p-7 border border-outline-variant/10">
+            <h3 class="font-headline text-lg font-bold text-on-background mb-1">Paso 3: Añade superpoderes</h3>
+            <p class="text-on-surface-variant text-sm font-body mb-5">Módulos para escalar y diferenciarte.</p>
+            <div class="space-y-3" id="modules-addons"></div>
+          </div>
+        </div>
+
+        <!-- Right: Summary -->
+        <div class="lg:col-span-2 lg:sticky lg:top-24">
+          <div class="bg-surface-container-lowest rounded-xl border border-outline-variant/15 shadow-[0_16px_48px_rgba(26,27,36,0.07)] overflow-hidden">
+            <div class="bg-primary px-7 py-5">
+              <h3 class="font-headline font-bold text-on-primary text-lg">Tu Configuración Corporativa</h3>
+              <p class="text-on-primary/70 text-sm font-body mt-0.5">Resumen en tiempo real</p>
+            </div>
+            <div class="p-7">
+              <div id="summary-list" class="space-y-2 mb-6 min-h-[80px]">
+                <p class="text-on-surface-variant text-sm font-body italic">Selecciona módulos para comenzar...</p>
+              </div>
+              <div class="border-t border-outline-variant/15 pt-5 mb-6">
+                <div class="flex justify-between items-center mb-1">
+                  <span class="text-sm font-label text-on-surface-variant">Módulos × <span id="summary-branches">1</span> sucursal(es)</span>
+                </div>
+                <div class="mt-3">
+                  <span id="total-price" class="font-headline font-extrabold text-4xl text-primary transition-all duration-300">$0</span>
+                  <span class="text-on-surface-variant font-body text-sm ml-1">/mes MXN est.</span>
+                </div>
+              </div>
+              <a href="/contact" class="w-full bg-primary text-on-primary py-4 rounded-lg font-label font-semibold text-base shadow-[0_8px_24px_rgba(0,44,163,0.18)] hover:brightness-110 hover:-translate-y-px transition-all duration-200 flex items-center justify-center gap-2">
+                Solicitar cotización formal
+                <span class="material-symbols-outlined text-xl leading-none">send</span>
+              </a>
+              <p class="text-center text-xs text-on-surface-variant font-body mt-4">Sin compromiso · Respuesta en 24 hrs</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
     </div>
   </section>
 
+  <!-- Mobile sticky (simulator) -->
+  <div id="mobile-sticky" class="hidden lg:hidden fixed bottom-0 left-0 right-0 bg-surface-container-lowest border-t border-outline-variant/15 shadow-[0_-8px_24px_rgba(26,27,36,0.1)] px-5 py-4 flex items-center justify-between z-50">
+    <div>
+      <p class="text-xs font-label text-on-surface-variant">Estimado corporativo</p>
+      <p id="mobile-price" class="font-headline font-bold text-xl text-primary">$0<span class="text-sm font-body text-on-surface-variant">/mes</span></p>
+    </div>
+    <a href="/contact" class="bg-primary text-on-primary px-6 py-3 rounded-lg font-label font-semibold text-sm">
+      Solicitar cotización
+    </a>
+  </div>
+
 </Layout>
+
+<script define:vars={{ modules }}>
+  let branches = 1;
+  const selected = new Set();
+
+  // Reveal simulator when clicking Solicitar cotización on Corporativo card
+  document.querySelectorAll('a[href="#corporativo-simulator"]').forEach(btn => {
+    btn.addEventListener('click', e => {
+      e.preventDefault();
+      const sim = document.getElementById('corporativo-simulator');
+      const mobileSticky = document.getElementById('mobile-sticky');
+      sim?.classList.remove('hidden');
+      mobileSticky?.classList.remove('hidden');
+      setTimeout(() => sim?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50);
+    });
+  });
+
+  function renderModules() {
+    ['operativa', 'addons'].forEach(cat => {
+      const container = document.getElementById(`modules-${cat}`);
+      if (!container) return;
+      const mods = modules.filter(m => m.category === cat);
+      container.innerHTML = mods.map(m => {
+        const isSel = selected.has(m.id);
+        return `
+          <button data-module="${m.id}" data-price="${m.price}"
+            class="module-btn w-full flex items-center gap-4 p-4 rounded-xl border ${isSel ? 'border-primary bg-primary/5 shadow-[0_4px_12px_rgba(0,44,163,0.1)]' : 'border-outline-variant/15 bg-surface-container-low hover:border-primary/30'} transition-all duration-200 text-left">
+            <div class="w-10 h-10 ${isSel ? 'bg-primary/15' : 'bg-primary/8'} rounded-lg flex items-center justify-center text-primary shrink-0">
+              <span class="material-symbols-outlined text-lg leading-none">${m.icon}</span>
+            </div>
+            <div class="flex-1">
+              <span class="font-body font-semibold text-on-surface text-sm block">${m.label}</span>
+              <span class="text-xs text-on-surface-variant font-body">$${m.price.toLocaleString()} MXN/sucursal</span>
+            </div>
+            <div class="w-6 h-6 rounded-full border-2 ${isSel ? 'border-primary bg-primary flex items-center justify-center' : 'border-outline-variant/40'} shrink-0">
+              ${isSel ? '<span class="material-symbols-outlined text-on-primary text-sm leading-none">check</span>' : ''}
+            </div>
+          </button>`;
+      }).join('');
+      container.querySelectorAll('.module-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const id = btn.dataset.module;
+          if (selected.has(id)) selected.delete(id); else selected.add(id);
+          renderModules(); updateSummary();
+        });
+      });
+    });
+  }
+
+  function updateSummary() {
+    const summaryList = document.getElementById('summary-list');
+    const totalEl = document.getElementById('total-price');
+    const mobileEl = document.getElementById('mobile-price');
+    const branchesEl = document.getElementById('summary-branches');
+    if (branchesEl) branchesEl.textContent = String(branches);
+    const selMods = modules.filter(m => selected.has(m.id));
+    const total = selMods.reduce((s, m) => s + m.price, 0) * branches;
+    if (summaryList) {
+      summaryList.innerHTML = selMods.length === 0
+        ? '<p class="text-on-surface-variant text-sm font-body italic">Selecciona módulos para comenzar...</p>'
+        : selMods.map(m => `<div class="flex justify-between items-center text-sm font-body"><span class="text-on-surface">${m.label}</span><span class="text-on-surface-variant">$${(m.price * branches).toLocaleString()}</span></div>`).join('');
+    }
+    const fmt = `$${total.toLocaleString()}`;
+    if (totalEl) totalEl.textContent = fmt;
+    if (mobileEl) mobileEl.innerHTML = `${fmt}<span class="text-sm font-body text-on-surface-variant">/mes</span>`;
+  }
+
+  document.getElementById('branches-dec')?.addEventListener('click', () => {
+    if (branches > 1) { branches--; updateBranchUI(); }
+  });
+  document.getElementById('branches-inc')?.addEventListener('click', () => { branches++; updateBranchUI(); });
+
+  function updateBranchUI() {
+    const val = document.getElementById('branches-val');
+    const msg = document.getElementById('fleet-msg');
+    if (val) val.textContent = String(branches);
+    if (msg) msg.classList.toggle('hidden', branches <= 5);
+    updateSummary();
+  }
+
+  renderModules();
+  updateSummary();
+</script>
