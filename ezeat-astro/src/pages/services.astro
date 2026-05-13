@@ -163,7 +163,7 @@ const sections = [
       {
         icon: 'event',
         name: 'Sistema de Reservaciones',
-        desc: 'Reservas en línea 24/7, confirmación automática y menos no-shows con recordatorios.',
+        desc: 'Optimiza la rotación de mesas y reduce ausencias con confirmaciones automáticas.',
         price: 'Desde $329',
         priceNote: null,
         status: 'roadmap', ia: false,
@@ -171,18 +171,42 @@ const sections = [
       {
         icon: 'format_list_numbered',
         name: 'Gestión de Colas',
-        desc: 'Lista de espera virtual con avisos por SMS o correo. Sin filas físicas en la entrada.',
+        desc: 'Cuando no hay mesas disponibles, el cliente se anota y le avisas cuando es su turno.',
         price: 'Desde $349',
-        priceNote: null,
+        priceNote: 'hasta cierto volumen',
         status: 'roadmap', ia: false,
       },
       {
         icon: 'call',
         name: 'Pedidos por Llamada con IA',
-        desc: 'Agente de voz IA que atiende llamadas 24/7, toma el pedido y lo envía directo al KDS.',
+        desc: 'Los pedidos llegan automáticamente al KDS sin que tu equipo levante el teléfono.',
         price: 'Desde $889',
         priceNote: null,
         status: 'roadmap', ia: true,
+      },
+    ],
+  },
+  {
+    num: '04',
+    id: 'proximamente',
+    label: 'Próximamente',
+    title: 'El futuro del ecosistema EzEat.',
+    modules: [
+      {
+        icon: 'smartphone',
+        name: 'EzEat App (Marketplace)',
+        desc: 'Nuestro destino final: una app única donde tus clientes descubren tu negocio.',
+        price: 'gratis',
+        priceNote: null,
+        status: 'roadmap', ia: false,
+      },
+      {
+        icon: 'pedal_bike',
+        name: 'EzEat Delivery',
+        desc: 'Los repartidores cobran 100% del envío, calibrado por calificación. Conectado a EzEat App, con visión a Last Mile Delivery.',
+        price: 'modelo por envío',
+        priceNote: null,
+        status: 'roadmap', ia: false,
       },
     ],
   },
@@ -260,9 +284,13 @@ const statusMeta: Record<string, { label: string; cls: string; icon: string }> =
                     <!-- Price + CTA -->
                     <div class="flex items-end justify-between mt-5 pt-4 border-t border-outline-variant/10">
                       <div>
-                        <p class="text-sm font-body text-on-surface">
-                          Desde <span class="font-headline font-bold text-on-background">{mod.price}</span> <span class="text-on-surface-variant">/mes</span>
-                        </p>
+                        {mod.price === 'gratis' || mod.price === 'modelo por envío' ? (
+                          <p class="text-sm font-headline font-bold text-on-background">{mod.price}</p>
+                        ) : (
+                          <p class="text-sm font-body text-on-surface">
+                            Desde <span class="font-headline font-bold text-on-background">{mod.price}</span> <span class="text-on-surface-variant">/mes</span>
+                          </p>
+                        )}
                         {mod.priceNote && <p class="text-xs text-on-surface-variant font-body mt-0.5">{mod.priceNote}</p>}
                       </div>
                       <a href="/contact" class="text-sm font-label font-semibold text-primary hover:gap-2 flex items-center gap-1 transition-all">
@@ -280,19 +308,20 @@ const statusMeta: Record<string, { label: string; cls: string; icon: string }> =
   </section>
 
   <!-- Bottom CTA -->
-  <section class="py-20" style="background: #0f1729;">
-    <div class="max-w-3xl mx-auto px-6 text-center" data-animate="fade-up">
-      <span class="material-symbols-outlined text-[#b0beff] text-5xl block mb-6 leading-none">auto_awesome</span>
-      <h2 class="text-3xl md:text-4xl font-headline font-bold text-white mb-4">
-        ¿No sabes por dónde empezar?
-      </h2>
-      <p class="text-white/70 font-body mb-8 text-lg max-w-xl mx-auto">
-        Deja que nuestra IA diseñe tu configuración ideal basada en el perfil de tu negocio.
-      </p>
-      <a href="/" class="inline-flex items-center gap-2 bg-primary text-white px-8 py-4 rounded-xl font-label font-semibold text-base shadow-[0_8px_24px_rgba(43,73,243,0.4)] hover:brightness-110 hover:-translate-y-px transition-all duration-200">
-        <span class="material-symbols-outlined text-xl leading-none">restart_alt</span>
-        Volver al Diagnóstico
-      </a>
+  <section class="py-16 bg-surface-container-low">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8" data-animate="fade-up">
+      <div class="rounded-2xl px-10 py-14 text-center" style="background: linear-gradient(135deg, #0f1729 0%, #141d3d 60%, #1a2450 100%);">
+        <h2 class="text-3xl md:text-4xl font-headline font-bold text-white mb-3">
+          ¿No sabes por dónde empezar?
+        </h2>
+        <p class="text-white/60 font-body mb-8 text-base max-w-md mx-auto">
+          Te ayudamos a armar tu stack ideal en una sesión sin costo.
+        </p>
+        <a href="/contact" class="inline-flex items-center gap-2 bg-primary text-white px-8 py-4 rounded-xl font-label font-semibold text-base shadow-[0_8px_24px_rgba(43,73,243,0.4)] hover:brightness-110 hover:-translate-y-px transition-all duration-200">
+          Hablar con un experto
+          <span class="material-symbols-outlined text-xl leading-none">arrow_forward</span>
+        </a>
+      </div>
     </div>
   </section>
 
