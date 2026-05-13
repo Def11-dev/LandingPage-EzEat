@@ -1,25 +1,18 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-const contactOptions = [
-  {
-    icon: 'mail',
-    title: 'Escríbenos',
-    value: 'hello@ezeat.com',
-    href: 'mailto:hello@ezeat.com',
-  },
-  {
-    icon: 'chat',
-    title: 'WhatsApp Business',
-    value: '+52 (81) 1234-5678',
-    href: 'https://wa.me/528112345678',
-  },
-  {
-    icon: 'location_on',
-    title: 'Sede',
-    value: 'Monterrey, Nuevo León · México',
-    href: '#',
-  },
+const modules = [
+  'POS Básico', 'POS Inteligente',
+  'Integración de Pagos', 'Kioskos de Autoservicio',
+  'Pedidos en Línea', 'KDS — Pantallas de Cocina',
+  'Sistema de Lealtad', 'Comanda Digital de Meseros',
+  'Control de Inventarios', 'Compras y Proveedores',
+  'Analítica Avanzada', 'Gestión de Personal',
+  'Integración de Delivery', 'Room Service Hotelero',
+  'Facturación Electrónica', 'Estados Financieros con IA',
+  'Pedidos por WhatsApp con IA', 'Sistema de Reservaciones',
+  'Gestión de Colas', 'Pedidos por Llamada con IA',
+  'EzEat App (Marketplace)', 'EzEat Delivery',
 ];
 ---
 
@@ -28,93 +21,100 @@ const contactOptions = [
   description="Hablemos de tu crecimiento. El equipo EzEat está listo para diseñar el sistema operativo ideal para tu restaurante u hotel."
 >
 
-  <!-- ─── Hero ──────────────────────────────────────────────────── -->
-  <section class="pt-16 pb-20 bg-surface relative overflow-hidden">
-    <div class="absolute -top-24 -right-24 w-[500px] h-[500px] rounded-full bg-primary/4 pointer-events-none"></div>
-    <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
-      <div class="max-w-2xl" data-animate="fade-up">
-        <div class="inline-flex items-center gap-2 bg-surface-container-highest px-4 py-2 rounded-full mb-6">
-          <span class="material-symbols-outlined text-primary text-base leading-none">chat</span>
-          <span class="text-sm font-label font-medium text-on-surface">Estamos aquí para ti</span>
-        </div>
-        <h1 class="font-headline text-5xl md:text-6xl font-extrabold tracking-tight text-on-background leading-[1.05] mb-5">
-          Hablemos de tu <span class="text-primary">crecimiento.</span>
-        </h1>
-        <p class="text-xl text-on-surface-variant font-body leading-relaxed">
-          Ya sea que estés listo para implementar o solo quieras explorar el ecosistema, nuestro equipo está aquí para diseñar tu sistema ideal.
-        </p>
-      </div>
+  <!-- Hero -->
+  <section class="pt-16 pb-20 flex items-center justify-center" style="background: linear-gradient(135deg, #0f1729 0%, #141d3d 50%, #1a2450 100%);">
+    <div class="max-w-3xl mx-auto px-6 text-center" data-animate="fade-up">
+      <h1 class="font-headline text-5xl md:text-6xl font-extrabold tracking-tight text-white leading-[1.05]">
+        Hablemos de tu <span class="text-[#b0beff]">crecimiento</span>
+      </h1>
+      <p class="mt-5 text-lg text-white/70 font-body max-w-xl mx-auto">
+        Cuéntanos sobre tu negocio y diseñamos contigo el stack tecnológico perfecto.
+      </p>
     </div>
   </section>
 
-  <!-- ─── Contact Grid ──────────────────────────────────────────── -->
-  <section class="pb-24 bg-surface">
+  <!-- Content -->
+  <section class="py-16 bg-surface-container-low">
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
-      <div class="grid grid-cols-1 lg:grid-cols-5 gap-12">
+      <div class="grid grid-cols-1 lg:grid-cols-5 gap-10 items-start">
 
-        <!-- Form (wider) -->
+        <!-- Form -->
         <div class="lg:col-span-3" data-animate="slide-right">
-          <div class="bg-surface-container-lowest rounded-xl p-8 md:p-10 shadow-[0_8px_32px_rgba(26,27,36,0.05)] border border-outline-variant/10">
-            <h2 class="font-headline text-2xl font-bold text-on-background mb-2">Cuéntanos sobre tu proyecto</h2>
-            <p class="text-on-surface-variant text-sm font-body mb-8">Nos ponemos en contacto contigo en menos de 24 horas.</p>
+          <div class="bg-white rounded-2xl p-8 md:p-10 shadow-sm border border-outline-variant/15">
+            <h2 class="font-headline text-2xl font-bold text-on-background mb-8">Cuéntanos sobre ti</h2>
 
-            <form id="contact-form" class="space-y-5" novalidate>
+            <form id="contact-form" class="space-y-6" novalidate>
+              <!-- Row 1 -->
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
                 <div class="space-y-1.5">
-                  <label for="nombre" class="text-sm font-label font-medium text-on-surface">Nombre <span class="text-error">*</span></label>
-                  <input id="nombre" name="nombre" type="text" required placeholder="María"
-                    class="w-full bg-surface-container-low border border-outline-variant/25 rounded-lg px-4 py-3 text-on-surface font-body text-sm placeholder:text-on-surface-variant/50 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/30 transition-all" />
+                  <label for="nombre" class="text-sm font-label font-medium text-on-surface">Nombre completo <span class="text-error">*</span></label>
+                  <input id="nombre" name="nombre" type="text" required placeholder="Tu nombre"
+                    class="w-full bg-white border border-outline-variant/30 rounded-xl px-4 py-3 text-on-surface font-body text-sm placeholder:text-on-surface-variant/50 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/30 transition-all" />
                 </div>
                 <div class="space-y-1.5">
-                  <label for="apellidos" class="text-sm font-label font-medium text-on-surface">Apellidos <span class="text-error">*</span></label>
-                  <input id="apellidos" name="apellidos" type="text" required placeholder="García Reyes"
-                    class="w-full bg-surface-container-low border border-outline-variant/25 rounded-lg px-4 py-3 text-on-surface font-body text-sm placeholder:text-on-surface-variant/50 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/30 transition-all" />
+                  <label for="email" class="text-sm font-label font-medium text-on-surface">Correo electrónico <span class="text-error">*</span></label>
+                  <input id="email" name="email" type="email" required placeholder="tu@empresa.com"
+                    class="w-full bg-white border border-outline-variant/30 rounded-xl px-4 py-3 text-on-surface font-body text-sm placeholder:text-on-surface-variant/50 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/30 transition-all" />
                 </div>
               </div>
 
-              <div class="space-y-1.5">
-                <label for="email" class="text-sm font-label font-medium text-on-surface">Email Corporativo / Personal <span class="text-error">*</span></label>
-                <input id="email" name="email" type="email" required placeholder="maria@mirestaurante.com"
-                  class="w-full bg-surface-container-low border border-outline-variant/25 rounded-lg px-4 py-3 text-on-surface font-body text-sm placeholder:text-on-surface-variant/50 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/30 transition-all" />
+              <!-- Row 2 -->
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                <div class="space-y-1.5">
+                  <label for="negocio" class="text-sm font-label font-medium text-on-surface">Nombre del negocio <span class="text-error">*</span></label>
+                  <input id="negocio" name="negocio" type="text" required placeholder="Restaurante, hotel, café..."
+                    class="w-full bg-white border border-outline-variant/30 rounded-xl px-4 py-3 text-on-surface font-body text-sm placeholder:text-on-surface-variant/50 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/30 transition-all" />
+                </div>
+                <div class="space-y-1.5">
+                  <label for="sucursales" class="text-sm font-label font-medium text-on-surface">Número de sucursales <span class="text-error">*</span></label>
+                  <div class="relative">
+                    <select id="sucursales" name="sucursales" required
+                      class="w-full bg-white border border-outline-variant/30 rounded-xl px-4 py-3 text-on-surface font-body text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/30 transition-all appearance-none cursor-pointer">
+                      <option value="">Selecciona una opción</option>
+                      <option value="1">1 local</option>
+                      <option value="2-5">2 a 5 sucursales</option>
+                      <option value="6-20">6 a 20 sucursales</option>
+                      <option value="20+">Más de 20</option>
+                    </select>
+                    <span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-base pointer-events-none">expand_more</span>
+                  </div>
+                </div>
               </div>
 
-              <div class="space-y-1.5">
-                <label for="negocio" class="text-sm font-label font-medium text-on-surface">Nombre de tu Restaurante u Hotel</label>
-                <input id="negocio" name="negocio" type="text" placeholder="Ej. Grupo Gastronómico Soleil"
-                  class="w-full bg-surface-container-low border border-outline-variant/25 rounded-lg px-4 py-3 text-on-surface font-body text-sm placeholder:text-on-surface-variant/50 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/30 transition-all" />
+              <!-- Modules -->
+              <div class="space-y-3">
+                <div>
+                  <p class="text-sm font-label font-medium text-on-surface">Módulos de interés</p>
+                  <p class="text-xs font-body text-on-surface-variant mt-0.5">Selecciona los que te interesan.</p>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                  {modules.map((mod, i) => (
+                    <label class="flex items-center gap-3 border border-outline-variant/20 rounded-xl px-4 py-3 cursor-pointer hover:border-primary/40 hover:bg-primary/3 transition-all has-[:checked]:border-primary has-[:checked]:bg-primary/5">
+                      <input type="checkbox" name="modulos" value={mod} class="sr-only peer" />
+                      <span class="w-5 h-5 rounded-full border-2 border-outline-variant/40 peer-checked:border-primary peer-checked:bg-primary flex items-center justify-center shrink-0 transition-all">
+                        <span class="w-2 h-2 rounded-full bg-white hidden peer-checked:block"></span>
+                      </span>
+                      <span class="text-sm font-body text-on-surface">{mod}</span>
+                    </label>
+                  ))}
+                </div>
               </div>
 
+              <!-- Message -->
               <div class="space-y-1.5">
-                <label for="modulo" class="text-sm font-label font-medium text-on-surface">Módulo de interés</label>
-                <select id="modulo" name="modulo"
-                  class="w-full bg-surface-container-low border border-outline-variant/25 rounded-lg px-4 py-3 text-on-surface font-body text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/30 transition-all appearance-none cursor-pointer">
-                  <option value="">Selecciona un módulo…</option>
-                  <option value="pos">POS Inteligente</option>
-                  <option value="kioscos">Kioskos de Autoservicio</option>
-                  <option value="inventory">Inventarios con IA</option>
-                  <option value="delivery">Delivery Integrado</option>
-                  <option value="roomservice">Room Service (Hoteles)</option>
-                  <option value="kds">KDS - Pantallas de Cocina</option>
-                  <option value="finance">IA Financiera</option>
-                  <option value="demo">Demo General</option>
-                  <option value="enterprise">Plan Enterprise</option>
-                </select>
-              </div>
-
-              <div class="space-y-1.5">
-                <label for="message" class="text-sm font-label font-medium text-on-surface">Cuéntanos sobre tu proyecto <span class="text-error">*</span></label>
-                <textarea id="message" name="message" required rows="4"
-                  placeholder="¿Cuántas sucursales tienes? ¿Cuál es tu mayor reto operativo hoy?"
-                  class="w-full bg-surface-container-low border border-outline-variant/25 rounded-lg px-4 py-3 text-on-surface font-body text-sm placeholder:text-on-surface-variant/50 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/30 transition-all resize-none"
+                <label for="message" class="text-sm font-label font-medium text-on-surface">Cuéntanos más <span class="text-on-surface-variant font-normal">(opcional)</span></label>
+                <textarea id="message" name="message" rows="4"
+                  placeholder="Tus retos, metas, lo que sea importante..."
+                  class="w-full bg-white border border-outline-variant/30 rounded-xl px-4 py-3 text-on-surface font-body text-sm placeholder:text-on-surface-variant/50 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/30 transition-all resize-none"
                 ></textarea>
               </div>
 
-              <div id="form-error" class="hidden text-sm text-error font-body bg-error-container/30 px-4 py-3 rounded-lg border border-error/20">
+              <div id="form-error" class="hidden text-sm text-error font-body bg-error-container/30 px-4 py-3 rounded-xl border border-error/20">
                 Por favor completa todos los campos requeridos.
               </div>
 
               <button type="submit" id="submit-btn"
-                class="w-full bg-primary text-on-primary px-8 py-4 rounded-lg font-label font-semibold text-base shadow-[0_8px_24px_rgba(0,44,163,0.18)] hover:bg-primary-container hover:-translate-y-px transition-all duration-200 flex items-center justify-center gap-2">
+                class="w-full bg-primary text-on-primary px-8 py-4 rounded-xl font-label font-semibold text-base shadow-[0_8px_24px_rgba(43,73,243,0.25)] hover:brightness-110 hover:-translate-y-px transition-all duration-200 flex items-center justify-center gap-2">
                 <span id="btn-text">Enviar mensaje</span>
                 <span class="material-symbols-outlined text-xl leading-none" id="btn-icon">send</span>
               </button>
@@ -130,65 +130,70 @@ const contactOptions = [
           </div>
         </div>
 
-        <!-- Sidebar info -->
-        <div class="lg:col-span-2 space-y-8" data-animate="slide-left">
+        <!-- Sidebar -->
+        <div class="lg:col-span-2 space-y-5" data-animate="slide-left">
 
-          <!-- Contact options -->
-          <div class="space-y-4">
-            <h3 class="font-headline font-bold text-lg text-on-background">Información de contacto</h3>
-            {contactOptions.map(opt => (
-              <a href={opt.href}
-                class="flex items-start gap-4 p-4 rounded-xl bg-surface-container-low border border-outline-variant/10 hover:border-primary/25 hover:bg-surface-container hover:shadow-[0_4px_16px_rgba(26,27,36,0.04)] transition-all group">
-                <div class="w-10 h-10 bg-primary/8 rounded-lg flex items-center justify-center text-primary shrink-0 group-hover:bg-primary/15 transition-colors">
-                  <span class="material-symbols-outlined text-lg leading-none">{opt.icon}</span>
-                </div>
-                <div>
-                  <p class="text-xs font-label font-semibold text-on-surface-variant uppercase tracking-wide">{opt.title}</p>
-                  <p class="text-sm font-body text-on-surface mt-0.5">{opt.value}</p>
-                </div>
-              </a>
-            ))}
-          </div>
-
-          <!-- Response times -->
-          <div class="p-6 rounded-xl bg-surface-container-highest border border-outline-variant/10">
-            <div class="flex items-center gap-3 mb-3">
-              <span class="material-symbols-outlined text-primary leading-none">schedule</span>
-              <span class="font-headline font-bold text-on-background">Tiempos de respuesta</span>
+          <!-- Response times (dark card) -->
+          <div class="rounded-2xl p-6" style="background: #0f1729;">
+            <div class="flex items-center gap-2 mb-4">
+              <span class="material-symbols-outlined text-white/70 text-base leading-none">schedule</span>
+              <span class="font-headline font-semibold text-white text-sm">Tiempos de respuesta</span>
             </div>
-            <div class="space-y-2 font-body text-sm">
+            <div class="space-y-3">
               {[
-                { plan: 'Consultoría Inicial', time: '24 horas' },
-                { plan: 'Soporte Técnico',     time: '4 horas' },
-                { plan: 'Cuentas Enterprise',  time: 'Atención dedicada' },
+                { plan: 'Plan Standard', time: '24 horas' },
+                { plan: 'Plan Pro',      time: '4 horas' },
               ].map(r => (
-                <div class="flex justify-between items-center py-1.5 border-b border-outline-variant/10 last:border-0">
-                  <span class="text-on-surface-variant">{r.plan}</span>
-                  <span class="font-medium text-on-surface">{r.time}</span>
+                <div class="flex justify-between items-center bg-white/8 rounded-xl px-4 py-3">
+                  <span class="font-body font-medium text-white text-sm">{r.plan}</span>
+                  <span class="font-label font-semibold text-primary text-sm">{r.time}</span>
                 </div>
               ))}
             </div>
           </div>
 
-          <!-- Trust badges -->
-          <div class="p-6 rounded-xl bg-primary border-0">
-            <h3 class="font-headline font-bold text-on-primary mb-4">Tu operación en buenas manos</h3>
+          <!-- WhatsApp Business -->
+          <div class="rounded-2xl p-5 bg-[#dcfce7] border border-[#bbf7d0] flex items-start gap-4">
+            <div class="w-11 h-11 bg-[#16a34a] rounded-xl flex items-center justify-center shrink-0">
+              <span class="material-symbols-outlined text-white text-xl leading-none">chat</span>
+            </div>
+            <div>
+              <p class="font-headline font-bold text-[#15803d] text-sm">WhatsApp Business</p>
+              <p class="text-[#166534] text-xs font-body mt-0.5">Respuesta inmediata en horario laboral</p>
+            </div>
+          </div>
+
+          <!-- Contact info -->
+          <div class="bg-white rounded-2xl p-5 border border-outline-variant/15 space-y-3">
+            <div class="flex items-center gap-3">
+              <span class="material-symbols-outlined text-primary text-base leading-none">mail</span>
+              <span class="text-sm font-body text-on-surface">hola@ezeat.com.mx</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="material-symbols-outlined text-primary text-base leading-none">location_on</span>
+              <span class="text-sm font-body text-on-surface">Ciudad de México, México</span>
+            </div>
+          </div>
+
+          <!-- Trust box -->
+          <div class="rounded-2xl p-6" style="background: #0f1729;">
+            <h3 class="font-headline font-bold text-white mb-4">Tu operación en buenas manos</h3>
             <div class="grid grid-cols-2 gap-4">
               {[
-                { icon: 'cloud',          label: 'Infraestructura en la Nube' },
-                { icon: 'lock',           label: 'Seguridad de Datos' },
-                { icon: 'extension',      label: 'Modularidad Total' },
-                { icon: 'support_agent',  label: 'Soporte Experto' },
+                { icon: 'cloud',         label: 'Infraestructura en la Nube' },
+                { icon: 'lock',          label: 'Seguridad de Datos' },
+                { icon: 'extension',     label: 'Modularidad Total' },
+                { icon: 'support_agent', label: 'Soporte Experto' },
               ].map(b => (
                 <div class="flex items-center gap-2">
-                  <span class="material-symbols-outlined text-on-primary/70 text-base leading-none">{b.icon}</span>
-                  <span class="text-on-primary/80 text-xs font-label">{b.label}</span>
+                  <span class="material-symbols-outlined text-white/60 text-base leading-none">{b.icon}</span>
+                  <span class="text-white/80 text-xs font-label">{b.label}</span>
                 </div>
               ))}
             </div>
           </div>
-        </div>
 
+        </div>
       </div>
     </div>
   </section>
@@ -205,26 +210,22 @@ const contactOptions = [
 
   form?.addEventListener('submit', async (e) => {
     e.preventDefault();
-
     const required = form.querySelectorAll('[required]');
     let valid = true;
     required.forEach((field) => {
-      const input = field as HTMLInputElement | HTMLTextAreaElement;
+      const input = field as HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement;
       if (!input.value.trim()) {
         valid = false;
-        input.classList.add('border-error', 'focus:border-error');
+        input.classList.add('border-error');
       } else {
-        input.classList.remove('border-error', 'focus:border-error');
+        input.classList.remove('border-error');
       }
     });
-
     if (!valid) { errorMsg?.classList.remove('hidden'); return; }
     errorMsg?.classList.add('hidden');
-
     submitBtn.disabled = true;
     btnText.textContent = 'Enviando…';
     btnIcon.textContent = 'hourglass_empty';
-
     try {
       const endpoint = import.meta.env.PUBLIC_FORMSPREE_ID
         ? `https://formspree.io/f/${import.meta.env.PUBLIC_FORMSPREE_ID}`
@@ -247,9 +248,18 @@ const contactOptions = [
     }
   });
 
-  form?.querySelectorAll('input, textarea').forEach(field => {
+  form?.querySelectorAll('input, textarea, select').forEach(field => {
     field.addEventListener('input', () => {
       (field as HTMLElement).classList.remove('border-error');
+    });
+  });
+
+  // Checkbox circle toggle visual
+  document.querySelectorAll('input[type="checkbox"][name="modulos"]').forEach(cb => {
+    cb.addEventListener('change', (e) => {
+      const input = e.target as HTMLInputElement;
+      const dot = input.closest('label')?.querySelector('span > span') as HTMLElement;
+      if (dot) dot.classList.toggle('hidden', !input.checked);
     });
   });
 </script>
