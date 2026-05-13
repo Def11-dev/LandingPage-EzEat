@@ -1,220 +1,295 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-const blocks = [
+const sections = [
   {
-    id: 'front',
-    category: 'Bloque 1',
-    title: 'Operación Impecable',
-    subtitle: 'Front of House',
-    focus: 'Velocidad y experiencia del cliente.',
-    icon: 'restaurant',
-    features: [
+    num: '01',
+    id: 'operacion',
+    label: 'Operación',
+    title: 'Lo que sucede frente al cliente y en cocina.',
+    modules: [
       {
-        id: 'pos',
         icon: 'point_of_sale',
-        title: 'Transacciones sin fricción',
-        desc: 'POS Básico o Inteligente según tu operación. El corazón de cada venta.',
-        badge: 'Más Popular',
-        badgeColor: 'bg-primary text-on-primary',
-        tags: ['restaurantes', 'fastfood', 'hoteles'],
+        name: 'POS Básico',
+        desc: 'Una interfaz limpia para cobrar y mandar a cocina. Ideal para el dueño que está ahí todo el día y solo quiere que el negocio camine.',
+        price: 'Desde $349',
+        priceNote: null,
+        status: 'listo', ia: false,
       },
       {
-        id: 'kioscos',
+        icon: 'tablet_android',
+        name: 'POS Inteligente',
+        desc: 'Permisos por usuario: el cajero solo cobra; el gerente hace descuentos, cancelaciones y ve el arqueo en vivo. Conectado con Inventarios y Analítica IA.',
+        price: 'Desde $989',
+        priceNote: null,
+        status: 'listo', ia: true,
+      },
+      {
+        icon: 'credit_card',
+        name: 'Integración de Pagos',
+        desc: 'Procesa cobros directamente desde el POS sin terminales aparte ni conciliaciones manuales.',
+        price: '≈ 4% por transacción',
+        priceNote: null,
+        status: 'listo', ia: false,
+      },
+      {
         icon: 'smart_display',
-        title: 'Reduce filas hasta un 60%',
-        desc: 'Kioskos de autoservicio que venden solos y aumentan el ticket promedio.',
-        badge: 'AI-Powered',
-        badgeColor: 'bg-tertiary/10 text-tertiary',
-        tags: ['fastfood', 'restaurantes'],
+        name: 'Kioskos de Autoservicio',
+        desc: 'Pedidos autogestionados por el cliente con upsell visual integrado.',
+        price: 'Desde $489',
+        priceNote: '+ hardware',
+        status: 'listo', ia: false,
       },
       {
-        id: 'menu',
-        icon: 'menu_book',
-        title: 'Tu carta siempre actualizada',
-        desc: 'Menú digital sincronizado en tiempo real en cualquier pantalla o dispositivo.',
-        badge: null,
-        tags: ['restaurantes', 'hoteles', 'fastfood'],
+        icon: 'language',
+        name: 'Pedidos en Línea',
+        desc: 'Menú digital, carrito y checkout propios. Todo lo que vendes se queda contigo.',
+        price: 'Desde $349',
+        priceNote: null,
+        status: 'listo', ia: false,
       },
       {
-        id: 'roomservice',
-        icon: 'room_service',
-        title: 'Pedidos directos a la habitación',
-        desc: 'Room Service sin llamadas ni papeleos. El huésped ordena desde su móvil.',
-        badge: 'Especial Hoteles',
-        badgeColor: 'bg-secondary/10 text-secondary',
-        tags: ['hoteles'],
-      },
-    ],
-  },
-  {
-    id: 'back',
-    category: 'Bloque 2',
-    title: 'Control Total',
-    subtitle: 'Back of House',
-    focus: 'Eficiencia interna y ahorro de costos.',
-    icon: 'admin_panel_settings',
-    features: [
-      {
-        id: 'inventory',
-        icon: 'inventory_2',
-        title: 'Elimina mermas y robos hormiga',
-        desc: 'Inventarios con IA: alertas automáticas y pronósticos de compra inteligentes.',
-        badge: 'AI-Powered',
-        badgeColor: 'bg-tertiary/10 text-tertiary',
-        tags: ['restaurantes', 'hoteles', 'fastfood'],
-      },
-      {
-        id: 'kds',
         icon: 'kitchen',
-        title: 'Adiós a los tickets perdidos',
-        desc: 'KDS (Pantallas de Cocina): flujo de órdenes claro, sin papel ni caos en la línea.',
-        badge: null,
-        tags: ['restaurantes', 'fastfood', 'hoteles'],
+        name: 'KDS — Pantallas de Cocina',
+        desc: 'El corazón del ecosistema EzEat. Sincroniza órdenes de POS, kioskos, comanda digital y delivery en una sola pantalla.',
+        price: 'Desde $349',
+        priceNote: '+ hardware',
+        status: 'listo', ia: false,
       },
       {
-        id: 'staff',
-        icon: 'badge',
-        title: 'Tu equipo, en un estándar pro',
-        desc: 'Gestión de personal: horarios, rendimiento y accesos desde un solo panel.',
-        badge: 'BETA',
-        badgeColor: 'bg-warning/10 text-warning',
-        tags: ['restaurantes', 'hoteles'],
+        icon: 'stylus_note',
+        name: 'Comanda Digital de Meseros',
+        desc: "Movilidad total para el equipo de piso. Al dar 'Enviar', la orden aparece instantáneamente en cocina.",
+        price: 'Desde $150',
+        priceNote: null,
+        status: 'beta', ia: false,
+      },
+      {
+        icon: 'room_service',
+        name: 'Room Service Hotelero',
+        desc: 'Menú digital del hotel, pago directo o cargo a cuenta y conexión al PMS.',
+        price: 'Desde $2,899',
+        priceNote: 'plan completo hotel',
+        status: 'beta', ia: false,
       },
     ],
   },
   {
-    id: 'growth',
-    category: 'Bloque 3',
-    title: 'Crecimiento e Inteligencia',
-    subtitle: 'Strategy',
-    focus: 'Escalar el negocio con datos.',
-    icon: 'trending_up',
-    features: [
+    num: '02',
+    id: 'control',
+    label: 'Control',
+    title: 'Lo que protege tus márgenes y procesos.',
+    modules: [
       {
-        id: 'analytics',
-        icon: 'monitoring',
-        title: 'KPIs en tiempo real, multi-sucursal',
-        desc: 'Analítica avanzada: ventas, margen, desempeño de productos y comportamiento de clientes.',
-        badge: 'AI-Powered',
-        badgeColor: 'bg-tertiary/10 text-tertiary',
-        tags: ['restaurantes', 'hoteles', 'fastfood'],
+        icon: 'inventory_2',
+        name: 'Control de Inventarios',
+        desc: 'Predice mermas, sugiere recetas y optimiza tu costo de venta. Incluye Compras y Proveedores.',
+        price: 'Desde $749',
+        priceNote: 'incluye Compras',
+        status: 'beta', ia: true,
       },
       {
-        id: 'delivery',
+        icon: 'shopping_cart',
+        name: 'Compras y Proveedores',
+        desc: 'Órdenes automáticas, comparación de precios y kardex digital. Empaquetado junto a Inventarios.',
+        price: 'Desde $749',
+        priceNote: 'incluye Inventarios',
+        status: 'beta', ia: true,
+      },
+      {
+        icon: 'bar_chart',
+        name: 'Analítica Avanzada',
+        desc: 'Alertas inteligentes, comparativas y forecast con IA por canal de venta.',
+        price: 'Desde $449',
+        priceNote: null,
+        status: 'beta', ia: true,
+      },
+      {
+        icon: 'people',
+        name: 'Gestión de Personal',
+        desc: 'Asesoramiento 24/7 para resolver dudas y operar el sistema en cualquier sucursal.',
+        price: 'Desde $49',
+        priceNote: 'varía por sucursal',
+        status: 'beta', ia: false,
+      },
+      {
+        icon: 'receipt_long',
+        name: 'Facturación Electrónica',
+        desc: 'Resuelve uno de los grandes dolores de la industria con facturación 100% automatizada.',
+        price: 'Desde $329',
+        priceNote: null,
+        status: 'roadmap', ia: false,
+      },
+      {
+        icon: 'description',
+        name: 'Estados Financieros con IA',
+        desc: 'Genera estados financieros a partir de datos en bruto, con explicaciones automáticas por línea.',
+        price: 'Desde $1,150',
+        priceNote: null,
+        status: 'roadmap', ia: true,
+      },
+    ],
+  },
+  {
+    num: '03',
+    id: 'crecimiento',
+    label: 'Crecimiento',
+    title: 'Lo que impulsa tus ventas y la lealtad.',
+    modules: [
+      {
+        icon: 'favorite',
+        name: 'Sistema de Lealtad',
+        desc: 'Convierte visitantes en clientes recurrentes con cupones, niveles y promociones automáticas.',
+        price: 'Desde $345',
+        priceNote: null,
+        status: 'listo', ia: false,
+      },
+      {
         icon: 'delivery_dining',
-        title: 'Un tablero para Rappi, Uber y propios',
-        desc: 'Integración de delivery: centraliza tus pedidos externos y reduce comisiones con canal directo.',
-        badge: 'Más Popular',
-        badgeColor: 'bg-primary text-on-primary',
-        tags: ['restaurantes', 'fastfood'],
+        name: 'Integración de Delivery',
+        desc: 'Centraliza todas tus apps de delivery sin pagar comisiones extra de software.',
+        price: 'Desde $549',
+        priceNote: null,
+        status: 'beta', ia: false,
       },
       {
-        id: 'finance',
-        icon: 'account_balance',
-        title: 'Contabilidad automática desde tu operación',
-        desc: 'Estados Financieros con IA: de transacciones a P&L en segundos, sin contadores de hojas de cálculo.',
-        badge: 'Coming Soon',
-        badgeColor: 'bg-outline/10 text-on-surface-variant',
-        tags: ['restaurantes', 'hoteles', 'fastfood'],
+        icon: 'chat',
+        name: 'Pedidos por WhatsApp con IA',
+        desc: 'Chatbot conversacional que toma pedidos completos por WhatsApp y los envía a cocina.',
+        price: 'Desde $949',
+        priceNote: 'o por conversión',
+        status: 'roadmap', ia: true,
+      },
+      {
+        icon: 'event',
+        name: 'Sistema de Reservaciones',
+        desc: 'Reservas en línea 24/7, confirmación automática y menos no-shows con recordatorios.',
+        price: 'Desde $329',
+        priceNote: null,
+        status: 'roadmap', ia: false,
+      },
+      {
+        icon: 'format_list_numbered',
+        name: 'Gestión de Colas',
+        desc: 'Lista de espera virtual con avisos por SMS o correo. Sin filas físicas en la entrada.',
+        price: 'Desde $349',
+        priceNote: null,
+        status: 'roadmap', ia: false,
+      },
+      {
+        icon: 'call',
+        name: 'Pedidos por Llamada con IA',
+        desc: 'Agente de voz IA que atiende llamadas 24/7, toma el pedido y lo envía directo al KDS.',
+        price: 'Desde $889',
+        priceNote: null,
+        status: 'roadmap', ia: true,
       },
     ],
   },
 ];
+
+const statusMeta: Record<string, { label: string; cls: string; icon: string }> = {
+  listo:   { label: 'Listo',        cls: 'bg-[#dcfce7] text-[#16a34a]',  icon: 'check_circle' },
+  beta:    { label: 'Beta / Pronto', cls: 'bg-[#fff7ed] text-[#ea580c]', icon: 'schedule' },
+  roadmap: { label: 'Roadmap',      cls: 'bg-[#eff6ff] text-[#2563eb]',  icon: 'rocket_launch' },
+};
 ---
 
 <Layout
   title="Soluciones — EzEat"
-  description="El ecosistema modular de EzEat: elige solo lo que necesitas para tu restaurante, hotel o fast food. Operación, control y crecimiento inteligente."
+  description="El ecosistema modular de EzEat: elige solo lo que necesitas para tu restaurante, hotel o fast food."
 >
 
-  <!-- ─── Hero ──────────────────────────────────────────────────── -->
-  <section class="pt-16 pb-16 bg-surface relative overflow-hidden">
-    <div class="absolute inset-0 bg-gradient-to-br from-surface to-surface-container-low opacity-50 pointer-events-none"></div>
-    <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10 text-center max-w-3xl mx-auto">
-      <div class="inline-flex items-center gap-2 bg-surface-container-highest px-4 py-2 rounded-full mb-6" data-animate="fade-up">
-        <span class="material-symbols-outlined text-primary text-base leading-none">extension</span>
-        <span class="text-sm font-label font-medium text-on-surface">El Ecosistema Modular</span>
+  <!-- Hero -->
+  <section class="pt-16 pb-20 flex items-center justify-center" style="background: linear-gradient(135deg, #0f1729 0%, #141d3d 50%, #1a2450 100%);">
+    <div class="max-w-3xl mx-auto px-6 text-center" data-animate="fade-up">
+      <div class="inline-flex items-center gap-2 bg-white/10 border border-white/20 px-4 py-2 rounded-full mb-6">
+        <span class="material-symbols-outlined text-[#b0beff] text-base leading-none">auto_awesome</span>
+        <span class="text-sm font-label font-medium text-white/90">Catálogo modular</span>
       </div>
-      <h1 class="font-headline text-5xl md:text-6xl font-extrabold tracking-tight text-on-background leading-[1.05] mb-5" data-animate="fade-up">
-        Arma tu operación <span class="text-primary">a la carta.</span>
+      <h1 class="font-headline text-5xl md:text-6xl font-extrabold tracking-tight text-white leading-[1.05] mb-5">
+        Una solución para cada <span class="text-[#b0beff]">momento de tu operación</span>
       </h1>
-      <p class="text-on-surface-variant text-xl font-body leading-relaxed mb-10" data-animate="fade-up">
-        Sin paquetes inflados. Elige solo los módulos que tu negocio necesita hoy y agrega más conforme escalas.
+      <p class="text-lg text-white/70 font-body max-w-xl mx-auto">
+        Operación, control y crecimiento. Activa módulos individualmente y combínalos como tu negocio lo necesite.
       </p>
-
-      <!-- Filter bar -->
-      <div class="flex flex-wrap justify-center gap-3" id="filter-bar" data-animate="fade-up">
-        {['Todas', 'Restaurantes', 'Hoteles', 'Fast Food'].map((f, i) => (
-          <button
-            data-filter={f === 'Todas' ? 'all' : f.toLowerCase().replace(' ', '')}
-            class={`filter-btn px-5 py-2.5 rounded-full font-label font-medium text-sm transition-all duration-200 border ${i === 0 ? 'bg-primary text-on-primary border-primary shadow-[0_4px_12px_rgba(0,44,163,0.2)]' : 'bg-surface-container-lowest text-on-surface border-outline-variant/20 hover:border-primary/40 hover:bg-surface-container-low'}`}
-          >
-            {f}
-          </button>
-        ))}
-      </div>
     </div>
   </section>
 
-  <!-- ─── Feature Blocks ───────────────────────────────────────── -->
-  <section class="pb-24 bg-surface">
-    <div class="max-w-7xl mx-auto px-6 lg:px-8 space-y-20">
-      {blocks.map(block => (
-        <div class="space-y-8" data-block={block.id}>
-          <!-- Block header -->
-          <div class="flex flex-col sm:flex-row sm:items-center gap-4 pb-4 border-b border-outline-variant/15" data-animate="fade-up">
-            <div class="flex items-center gap-4">
-              <div class="w-12 h-12 bg-primary/8 rounded-xl flex items-center justify-center text-primary">
-                <span class="material-symbols-outlined text-2xl leading-none">{block.icon}</span>
-              </div>
-              <div>
-                <p class="text-xs font-label font-bold text-primary uppercase tracking-wider">{block.category}</p>
-                <h2 class="font-headline text-2xl font-bold text-on-background">{block.title} <span class="text-on-surface-variant font-normal text-lg">— {block.subtitle}</span></h2>
-              </div>
+  <!-- Sections -->
+  <section class="pb-24 bg-surface-container-low">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8 pt-16 space-y-20">
+      {sections.map(sec => {
+        return (
+          <div id={sec.id} data-animate="fade-up">
+            <!-- Section header -->
+            <div class="mb-8">
+              <p class="text-primary font-label font-bold text-sm tracking-widest uppercase mb-2">{sec.num} · {sec.label.toUpperCase()}</p>
+              <h2 class="font-headline text-3xl md:text-4xl font-bold text-on-background">{sec.title}</h2>
             </div>
-            <p class="text-on-surface-variant font-body text-sm sm:ml-auto italic">{block.focus}</p>
-          </div>
 
-          <!-- Feature cards -->
-          <div class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6" data-stagger>
-            {block.features.map(f => (
-              <div
-                class="feature-card flex flex-col bg-surface-container-lowest rounded-xl border border-outline-variant/10 p-6 hover:border-primary/30 hover:shadow-[0_8px_24px_rgba(26,27,36,0.07)] hover:-translate-y-1 transition-all duration-300 group relative"
-                data-tags={f.tags.join(',')}
-              >
-                {f.badge && (
-                  <span class={`absolute top-4 right-4 text-xs font-label font-bold px-2.5 py-1 rounded-full ${f.badgeColor}`}>
-                    {f.badge}
-                  </span>
-                )}
-                <div class="w-12 h-12 bg-primary/8 rounded-xl flex items-center justify-center text-primary mb-5 group-hover:bg-primary/15 transition-colors">
-                  <span class="material-symbols-outlined text-2xl leading-none">{f.icon}</span>
-                </div>
-                <h3 class="font-headline font-bold text-base text-on-background mb-2 pr-16">{f.title}</h3>
-                <p class="font-body text-on-surface-variant text-sm leading-relaxed flex-grow">{f.desc}</p>
-                <a href="/contact" class="mt-5 inline-flex items-center gap-1 text-xs font-label font-semibold text-primary hover:gap-2 transition-all">
-                  Agregar al plan <span class="material-symbols-outlined text-sm leading-none">add_circle</span>
-                </a>
-              </div>
-            ))}
+            <!-- Module cards -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5" data-stagger>
+              {sec.modules.map(mod => {
+                const sm = statusMeta[mod.status];
+                return (
+                  <div class="bg-white rounded-2xl border border-outline-variant/15 p-6 flex flex-col hover:shadow-[0_8px_32px_rgba(26,27,36,0.08)] hover:-translate-y-1 transition-all duration-300">
+                    <!-- Top: icon + badges -->
+                    <div class="flex items-start justify-between mb-4">
+                      <div class="w-12 h-12 bg-primary rounded-xl flex items-center justify-center shrink-0">
+                        <span class="material-symbols-outlined text-white text-2xl leading-none">{mod.icon}</span>
+                      </div>
+                      <div class="flex flex-col items-end gap-1.5">
+                        <span class={`inline-flex items-center gap-1 text-[11px] font-label font-semibold px-2.5 py-1 rounded-full ${sm.cls}`}>
+                          <span class="material-symbols-outlined text-[11px] leading-none">{sm.icon}</span>
+                          {sm.label}
+                        </span>
+                        {mod.ia && (
+                          <span class="inline-flex items-center gap-1 text-[11px] font-label font-semibold px-2.5 py-1 rounded-full bg-[#eff6ff] text-primary">
+                            <span class="material-symbols-outlined text-[11px] leading-none">auto_awesome</span>
+                            IA
+                          </span>
+                        )}
+                      </div>
+                    </div>
+
+                    <!-- Name + desc -->
+                    <h3 class="font-headline font-bold text-on-background text-lg mb-2">{mod.name}</h3>
+                    <p class="font-body text-on-surface-variant text-sm leading-relaxed flex-1">{mod.desc}</p>
+
+                    <!-- Price + CTA -->
+                    <div class="flex items-end justify-between mt-5 pt-4 border-t border-outline-variant/10">
+                      <div>
+                        <p class="text-sm font-body text-on-surface">
+                          Desde <span class="font-headline font-bold text-on-background">{mod.price}</span> <span class="text-on-surface-variant">/mes</span>
+                        </p>
+                        {mod.priceNote && <p class="text-xs text-on-surface-variant font-body mt-0.5">{mod.priceNote}</p>}
+                      </div>
+                      <a href="/contact" class="text-sm font-label font-semibold text-primary hover:gap-2 flex items-center gap-1 transition-all">
+                        Cotizar <span class="material-symbols-outlined text-base leading-none">arrow_forward</span>
+                      </a>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
           </div>
-        </div>
-      ))}
+        );
+      })}
     </div>
   </section>
 
-  <!-- ─── Bottom CTA Banner ─────────────────────────────────────── -->
-  <section class="py-20 bg-primary">
-    <div class="max-w-4xl mx-auto px-6 lg:px-8 text-center" data-animate="fade-up">
-      <span class="material-symbols-outlined text-on-primary/60 text-5xl block mb-6 leading-none">auto_awesome</span>
-      <h2 class="text-3xl md:text-4xl font-headline font-bold text-on-primary mb-4">
+  <!-- Bottom CTA -->
+  <section class="py-20" style="background: #0f1729;">
+    <div class="max-w-3xl mx-auto px-6 text-center" data-animate="fade-up">
+      <span class="material-symbols-outlined text-[#b0beff] text-5xl block mb-6 leading-none">auto_awesome</span>
+      <h2 class="text-3xl md:text-4xl font-headline font-bold text-white mb-4">
         ¿No sabes por dónde empezar?
       </h2>
-      <p class="text-on-primary/85 font-body mb-8 text-lg max-w-xl mx-auto">
+      <p class="text-white/70 font-body mb-8 text-lg max-w-xl mx-auto">
         Deja que nuestra IA diseñe tu configuración ideal basada en el perfil de tu negocio.
       </p>
-      <a href="/" class="bg-surface-container-lowest text-primary px-8 py-4 rounded-lg font-label font-medium text-lg shadow-lg hover:bg-surface-container-low hover:-translate-y-px transition-all duration-200 inline-flex items-center gap-2">
+      <a href="/" class="inline-flex items-center gap-2 bg-primary text-white px-8 py-4 rounded-xl font-label font-semibold text-base shadow-[0_8px_24px_rgba(43,73,243,0.4)] hover:brightness-110 hover:-translate-y-px transition-all duration-200">
         <span class="material-symbols-outlined text-xl leading-none">restart_alt</span>
         Volver al Diagnóstico
       </a>
@@ -222,30 +297,3 @@ const blocks = [
   </section>
 
 </Layout>
-
-<script>
-  const filterBtns = document.querySelectorAll<HTMLButtonElement>('.filter-btn');
-  const featureCards = document.querySelectorAll<HTMLElement>('.feature-card');
-
-  filterBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const filter = btn.dataset.filter!;
-
-      // Update active button style
-      filterBtns.forEach(b => {
-        b.classList.remove('bg-primary', 'text-on-primary', 'border-primary', 'shadow-[0_4px_12px_rgba(0,44,163,0.2)]');
-        b.classList.add('bg-surface-container-lowest', 'text-on-surface', 'border-outline-variant/20');
-      });
-      btn.classList.add('bg-primary', 'text-on-primary', 'border-primary', 'shadow-[0_4px_12px_rgba(0,44,163,0.2)]');
-      btn.classList.remove('bg-surface-container-lowest', 'text-on-surface', 'border-outline-variant/20');
-
-      // Show/hide cards
-      featureCards.forEach(card => {
-        const tags = card.dataset.tags?.split(',') ?? [];
-        const matches = filter === 'all' || tags.includes(filter);
-        card.style.display = matches ? '' : 'none';
-        card.style.opacity = matches ? '1' : '0';
-      });
-    });
-  });
-</script>
