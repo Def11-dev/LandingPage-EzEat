@@ -99,18 +99,28 @@ const row2 = [
 >
 
   <!-- Hero -->
-  <section class="pt-16 pb-12 bg-surface">
-    <div class="max-w-7xl mx-auto px-6 lg:px-8 text-center" data-animate="fade-up">
-      <div class="inline-flex items-center gap-2 bg-surface-container-highest px-4 py-2 rounded-full mb-6">
-        <span class="material-symbols-outlined text-primary text-base leading-none">sell</span>
-        <span class="text-sm font-label font-medium text-on-surface">Planes para cada etapa</span>
+  <section class="pt-16 pb-16 flex items-center justify-center" style="background: linear-gradient(135deg, #0f1729 0%, #141d3d 50%, #1a2450 100%);">
+    <div class="max-w-3xl mx-auto px-6 text-center" data-animate="fade-up">
+      <div class="inline-flex items-center gap-2 bg-white/10 border border-white/20 px-4 py-2 rounded-full mb-6">
+        <span class="material-symbols-outlined text-[#b0beff] text-base leading-none">auto_awesome</span>
+        <span class="text-sm font-label font-medium text-white/90">Precios transparentes</span>
       </div>
-      <h1 class="font-headline text-5xl md:text-6xl font-bold tracking-tight text-on-background leading-[1.05] mb-5">
-        El plan <span class="text-primary">correcto</span> para ti.
+      <h1 class="font-headline text-5xl md:text-6xl font-bold tracking-tight text-white leading-[1.05] mb-5">
+        Elige un plan o <span class="text-[#b0beff]">arma el tuyo</span>
       </h1>
-      <p class="font-body text-xl text-on-surface-variant max-w-2xl mx-auto">
-        Sin contratos forzosos. Cambia de plan cuando crezcas.
+      <p class="font-body text-lg text-white/70 max-w-xl mx-auto mb-8">
+        Planes pensados para cada tipo de negocio. Si prefieres, configura módulos uno por uno.
       </p>
+      <!-- Tab switcher -->
+      <div class="inline-flex items-center bg-white/10 border border-white/15 rounded-full p-1 gap-1">
+        <span class="px-5 py-2 rounded-full bg-white font-label font-medium text-sm text-on-surface cursor-default">
+          Planes preconfigurados
+        </span>
+        <a href="/pricing/alacarta"
+          class="px-5 py-2 rounded-full font-label font-medium text-sm text-white/60 hover:text-white transition-colors">
+          A la carta
+        </a>
+      </div>
     </div>
   </section>
 

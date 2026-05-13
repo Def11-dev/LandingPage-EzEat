@@ -1,15 +1,40 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 
+const categories = [
+  { id: 'operacion',   label: 'Operación' },
+  { id: 'control',     label: 'Control' },
+  { id: 'crecimiento', label: 'Crecimiento' },
+  { id: 'proximamente', label: 'Próximamente' },
+];
+
 const modules = [
-  { id: 'pos_basic',    label: 'POS Básico',               price: 599,  icon: 'point_of_sale',  category: 'operativa' },
-  { id: 'pos_smart',    label: 'POS Inteligente',           price: 1200, icon: 'tablet_android',  category: 'operativa' },
-  { id: 'kds',          label: 'KDS - Pantallas de Cocina', price: 450,  icon: 'kitchen',         category: 'operativa' },
-  { id: 'kioscos',      label: 'Kioskos de Autoservicio',   price: 1000, icon: 'smart_display',   category: 'addons' },
-  { id: 'inventory',    label: 'Inventarios con IA',        price: 750,  icon: 'inventory_2',     category: 'addons' },
-  { id: 'delivery',     label: 'Delivery Integrado',        price: 400,  icon: 'delivery_dining', category: 'addons' },
-  { id: 'finance_ai',   label: 'IA Financiera',             price: 1250, icon: 'account_balance', category: 'addons' },
-  { id: 'roomservice',  label: 'Room Service (Hoteles)',    price: 1500, icon: 'room_service',    category: 'addons' },
+  // OPERACIÓN
+  { id: 'pos_basic',   label: 'POS Básico',                  desc: 'Punto de venta sencillo para empezar tu negocio.',                  price: 349,  priceFmt: '$349',   unit: '/mes/suc.', icon: 'point_of_sale',        status: 'listo',   ia: false, category: 'operacion',   default: true  },
+  { id: 'pos_smart',   label: 'POS Inteligente',              desc: 'Punto de venta centralizado para todas tus sucursales.',             price: 989,  priceFmt: '$989',   unit: '/mes/suc.', icon: 'tablet_android',       status: 'listo',   ia: true,  category: 'operacion',   default: false },
+  { id: 'payments',    label: 'Integración de Pagos',         desc: 'Pagos con tarjeta y digitales conectados al sistema.',              price: 0,    priceFmt: '≈ 4%',   unit: 'por transacción', icon: 'credit_card',   status: 'listo',   ia: false, category: 'operacion',   default: false },
+  { id: 'kioscos',     label: 'Kioskos de Autoservicio',      desc: 'Reduce filas y aumenta el ticket promedio.',                        price: 489,  priceFmt: '$489',   unit: '/mes/suc.', icon: 'smart_display',        status: 'listo',   ia: false, category: 'operacion',   default: false },
+  { id: 'pedidos_web', label: 'Pedidos en Línea',             desc: 'Tu propia web y app de pedidos sin comisiones abusivas.',           price: 349,  priceFmt: '$349',   unit: '/mes/suc.', icon: 'language',             status: 'listo',   ia: false, category: 'operacion',   default: false },
+  { id: 'kds',         label: 'KDS — Pantallas de Cocina',    desc: 'Adiós tickets de papel. Mide tiempos de preparación.',             price: 349,  priceFmt: '$349',   unit: '/mes/suc.', icon: 'kitchen',              status: 'listo',   ia: false, category: 'operacion',   default: false },
+  { id: 'comanda',     label: 'Comanda Digital de Meseros',   desc: 'Toma pedidos en mesa y envía directo al KDS.',                     price: 150,  priceFmt: '$150',   unit: '/mes/suc.', icon: 'stylus_note',          status: 'beta',    ia: false, category: 'operacion',   default: false },
+  { id: 'roomservice', label: 'Room Service Hotelero',        desc: 'Pedidos desde la habitación vía QR o NFC.',                        price: 2899, priceFmt: '$2,899', unit: '/mes/suc.', icon: 'room_service',         status: 'beta',    ia: false, category: 'operacion',   default: false },
+  // CONTROL
+  { id: 'inventory',   label: 'Control de Inventarios',       desc: 'Stock en tiempo real y alertas inteligentes.',                      price: 749,  priceFmt: '$749',   unit: '/mes/suc.', icon: 'inventory_2',          status: 'beta',    ia: true,  category: 'control',     default: false },
+  { id: 'compras',     label: 'Compras y Proveedores',        desc: 'Te avisa cuándo y a quién comprar antes de quedarte sin stock.',    price: 749,  priceFmt: '$749',   unit: '/mes/suc.', icon: 'shopping_cart',        status: 'beta',    ia: true,  category: 'control',     default: false },
+  { id: 'analytics',   label: 'Analítica Avanzada',           desc: 'Dashboards en vivo con KPIs por sucursal y producto.',             price: 449,  priceFmt: '$449',   unit: '/mes/suc.', icon: 'bar_chart',            status: 'beta',    ia: true,  category: 'control',     default: false },
+  { id: 'personal',    label: 'Gestión de Personal',          desc: 'Capacitación y operación simple para equipos no técnicos.',        price: 49,   priceFmt: '$49',    unit: '/mes/suc.', icon: 'people',               status: 'beta',    ia: false, category: 'control',     default: false },
+  { id: 'facturacion', label: 'Facturación Electrónica',      desc: 'El cliente escanea su ticket y se factura solo.',                  price: 329,  priceFmt: '$329',   unit: '/mes/suc.', icon: 'receipt_long',         status: 'roadmap', ia: false, category: 'control',     default: false },
+  { id: 'finance_ai',  label: 'Estados Financieros con IA',  desc: 'Balances, P&L y flujo de efectivo en segundos.',                  price: 1150, priceFmt: '$1,150', unit: '/mes/suc.', icon: 'description',          status: 'roadmap', ia: true,  category: 'control',     default: false },
+  // CRECIMIENTO
+  { id: 'loyalty',     label: 'Sistema de Lealtad',           desc: 'Recompensas, puntos y campañas personalizadas.',                   price: 345,  priceFmt: '$345',   unit: '/mes/suc.', icon: 'favorite',             status: 'listo',   ia: false, category: 'crecimiento', default: false },
+  { id: 'delivery',    label: 'Integración de Delivery',      desc: 'Rappi, Uber Eats, DiDi y tu flotilla en un solo tablero.',        price: 549,  priceFmt: '$549',   unit: '/mes/suc.', icon: 'delivery_dining',      status: 'beta',    ia: false, category: 'crecimiento', default: false },
+  { id: 'whatsapp_ai', label: 'Pedidos por WhatsApp con IA',  desc: 'El cliente pide por WhatsApp y llega directo al KDS.',            price: 949,  priceFmt: '$949',   unit: '/mes/suc.', icon: 'chat',                 status: 'roadmap', ia: true,  category: 'crecimiento', default: false },
+  { id: 'reservas',    label: 'Sistema de Reservaciones',     desc: 'Reservas en línea 24/7 y menos no-shows.',                        price: 329,  priceFmt: '$329',   unit: '/mes/suc.', icon: 'event',                status: 'roadmap', ia: false, category: 'crecimiento', default: false },
+  { id: 'colas',       label: 'Gestión de Colas',             desc: 'Lista de espera virtual con avisos por SMS/correo.',              price: 349,  priceFmt: '$349',   unit: '/mes/suc.', icon: 'format_list_numbered', status: 'roadmap', ia: false, category: 'crecimiento', default: false },
+  { id: 'llamada_ai',  label: 'Pedidos por Llamada con IA',   desc: 'Atención 24/7 multillamada con agente de voz IA.',               price: 889,  priceFmt: '$889',          unit: '/mes/suc.',      icon: 'call',                 status: 'roadmap', ia: true,  category: 'crecimiento',  default: false },
+  // PRÓXIMAMENTE
+  { id: 'app_mkt',    label: 'EzEat App (Marketplace)',      desc: 'Marketplace donde encuentras todos los restaurantes.',            price: 0,    priceFmt: 'gratis',        unit: '',               icon: 'smartphone',           status: 'roadmap', ia: false, category: 'proximamente', default: false },
+  { id: 'delivery_net',label: 'EzEat Delivery',              desc: 'Red de repartidores con calificación y pago directo.',           price: 0,    priceFmt: 'modelo por envío', unit: '',            icon: 'pedal_bike',           status: 'roadmap', ia: false, category: 'proximamente', default: false },
 ];
 ---
 
@@ -19,204 +44,262 @@ const modules = [
 >
 
   <!-- Hero -->
-  <section class="pt-16 pb-12 bg-surface">
-    <div class="max-w-7xl mx-auto px-6 lg:px-8 text-center" data-animate="fade-up">
-      <a href="/pricing" class="inline-flex items-center gap-1.5 text-sm font-body text-on-surface-variant hover:text-primary transition-colors mb-6">
-        <span class="material-symbols-outlined text-base leading-none">arrow_back</span>
-        Ver planes fijos
-      </a>
-      <div class="inline-flex items-center gap-2 bg-surface-container-highest px-4 py-2 rounded-full mb-6">
-        <span class="material-symbols-outlined text-primary text-base leading-none">construction</span>
-        <span class="text-sm font-label font-medium text-on-surface">Build Your Own OS</span>
+  <section class="pt-16 pb-16 flex items-center justify-center" style="background: linear-gradient(135deg, #0f1729 0%, #141d3d 50%, #1a2450 100%);">
+    <div class="max-w-3xl mx-auto px-6 text-center" data-animate="fade-up">
+      <div class="inline-flex items-center gap-2 bg-white/10 border border-white/20 px-4 py-2 rounded-full mb-6">
+        <span class="material-symbols-outlined text-[#b0beff] text-base leading-none">auto_awesome</span>
+        <span class="text-sm font-label font-medium text-white/90">Precios transparentes</span>
       </div>
-      <h1 class="font-headline text-5xl md:text-6xl font-bold tracking-tight text-on-background leading-[1.05] mb-5">
-        Arma tu <span class="text-primary">EzEat ideal.</span>
+      <h1 class="font-headline text-5xl md:text-6xl font-bold tracking-tight text-white leading-[1.05] mb-5">
+        Elige un plan o <span class="text-[#b0beff]">arma el tuyo</span>
       </h1>
-      <p class="font-body text-xl text-on-surface-variant max-w-2xl mx-auto">
-        Sin paquetes. Sin sorpresas. Activa solo los módulos que necesitas y ve tu inversión en tiempo real.
+      <p class="font-body text-lg text-white/70 max-w-xl mx-auto mb-8">
+        Planes pensados para cada tipo de negocio. Si prefieres, configura módulos uno por uno.
       </p>
-      <div id="diag-banner" class="hidden mt-8 inline-flex items-center gap-3 bg-primary/8 border border-primary/20 px-5 py-3 rounded-xl">
-        <span class="material-symbols-outlined text-primary text-xl leading-none">auto_awesome</span>
-        <span class="text-sm font-body text-on-surface">Basado en tu diagnóstico, hemos pre-seleccionado estas herramientas para ti.</span>
+      <!-- Tab switcher -->
+      <div class="inline-flex items-center bg-white/10 border border-white/15 rounded-full p-1 gap-1">
+        <a href="/pricing"
+          class="px-5 py-2 rounded-full font-label font-medium text-sm text-white/60 hover:text-white transition-colors">
+          Planes preconfigurados
+        </a>
+        <span class="px-5 py-2 rounded-full bg-white font-label font-medium text-sm text-on-surface cursor-default">
+          A la carta
+        </span>
       </div>
     </div>
   </section>
 
-  <!-- Simulator -->
-  <section class="pb-24 bg-surface">
-    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+  <!-- Builder -->
+  <section class="pb-32 bg-surface-container-low">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8 pt-12">
       <div class="grid grid-cols-1 lg:grid-cols-5 gap-10 items-start">
 
-        <!-- Left: Control panel -->
-        <div class="lg:col-span-3 space-y-8">
+        <!-- Left: modules -->
+        <div class="lg:col-span-3 space-y-10">
 
-          <div class="bg-surface-container-lowest rounded-xl p-7 border border-outline-variant/10" data-animate="slide-right">
-            <h2 class="font-headline text-lg font-bold text-on-background mb-1">Paso 1: ¿Cuántas sucursales?</h2>
-            <p class="text-on-surface-variant text-sm font-body mb-5">Multiplica el costo base por ubicación.</p>
-            <div class="flex items-center gap-4">
-              <button id="branches-dec" class="w-10 h-10 rounded-full border border-outline-variant/25 flex items-center justify-center text-on-surface hover:bg-surface-container-low transition-colors font-bold text-lg">−</button>
-              <div class="flex-1 text-center">
-                <span id="branches-val" class="font-headline font-extrabold text-4xl text-primary">1</span>
-                <span class="text-on-surface-variant font-body text-sm ml-2">sucursal(es)</span>
+          <!-- Sucursales -->
+          <div class="bg-white rounded-2xl p-6 border border-outline-variant/15 shadow-sm" data-animate="fade-up">
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 bg-primary/8 rounded-xl flex items-center justify-center text-primary shrink-0">
+                <span class="material-symbols-outlined text-xl leading-none">corporate_fare</span>
               </div>
-              <button id="branches-inc" class="w-10 h-10 rounded-full border border-outline-variant/25 flex items-center justify-center text-on-surface hover:bg-surface-container-low transition-colors font-bold text-lg">+</button>
+              <div class="flex-1">
+                <h2 class="font-headline text-base font-bold text-on-background">Número de sucursales</h2>
+                <p class="text-on-surface-variant text-sm font-body mt-0.5">El precio se multiplica por sucursal activa.</p>
+              </div>
+              <div class="flex items-center gap-3">
+                <button id="branches-dec" class="w-9 h-9 rounded-full border border-outline-variant/25 flex items-center justify-center text-on-surface hover:bg-surface-container-low transition-colors font-bold text-lg leading-none">−</button>
+                <span id="branches-val" class="font-headline font-extrabold text-2xl text-on-background w-8 text-center">1</span>
+                <button id="branches-inc" class="w-9 h-9 rounded-full border border-outline-variant/25 flex items-center justify-center text-on-surface hover:bg-surface-container-low transition-colors font-bold text-lg leading-none">+</button>
+              </div>
             </div>
             <p id="fleet-msg" class="hidden mt-4 text-xs font-body text-primary bg-primary/8 px-4 py-2.5 rounded-lg">
-              ¿Tienes más de 5 sucursales? <a href="/contact" class="font-semibold underline">Hablemos de un precio especial para flotas.</a>
+              ¿Más de 5 sucursales? <a href="/contact" class="font-semibold underline">Hablemos de un precio especial para flotas.</a>
             </p>
           </div>
 
-          <div class="bg-surface-container-lowest rounded-xl p-7 border border-outline-variant/10" data-animate="slide-right">
-            <h2 class="font-headline text-lg font-bold text-on-background mb-1">Paso 2: Elige tu operativa</h2>
-            <p class="text-on-surface-variant text-sm font-body mb-5">Los módulos esenciales para tu operación diaria.</p>
-            <div class="space-y-3" id="modules-operativa"></div>
-          </div>
-
-          <div class="bg-surface-container-lowest rounded-xl p-7 border border-outline-variant/10" data-animate="slide-right">
-            <h2 class="font-headline text-lg font-bold text-on-background mb-1">Paso 3: Añade superpoderes</h2>
-            <p class="text-on-surface-variant text-sm font-body mb-5">Módulos para escalar y diferenciarte.</p>
-            <div class="space-y-3" id="modules-addons"></div>
-          </div>
+          <!-- Module groups -->
+          {categories.map(cat => (
+            <div data-animate="fade-up">
+              <p class="text-xs font-label font-semibold tracking-widest text-primary uppercase mb-4">{cat.label}</p>
+              <div class="space-y-3" id={`cat-${cat.id}`}></div>
+            </div>
+          ))}
 
         </div>
 
-        <!-- Right: Floating summary -->
-        <div class="lg:col-span-2 lg:sticky lg:top-24" data-animate="slide-left">
-          <div class="bg-surface-container-lowest rounded-xl border border-outline-variant/15 shadow-[0_16px_48px_rgba(26,27,36,0.07)] overflow-hidden">
-            <div class="bg-primary px-7 py-5">
-              <h3 class="font-headline font-bold text-on-primary text-lg">Tu Configuración EzEat</h3>
-              <p class="text-on-primary/70 text-sm font-body mt-0.5">Resumen en tiempo real</p>
+        <!-- Right: summary -->
+        <div class="lg:col-span-2 lg:sticky lg:top-24" data-animate="fade-up">
+          <div class="bg-white rounded-2xl border border-outline-variant/15 shadow-[0_8px_32px_rgba(26,27,36,0.08)] overflow-hidden">
+            <div class="px-7 py-5 border-b border-outline-variant/10 flex items-center gap-3">
+              <span class="material-symbols-outlined text-primary text-xl leading-none">auto_awesome</span>
+              <h3 class="font-headline font-bold text-on-background text-base">Resumen de Inversión</h3>
             </div>
             <div class="p-7">
-              <div id="summary-list" class="space-y-2 mb-6 min-h-[80px]">
-                <p class="text-on-surface-variant text-sm font-body italic">Selecciona módulos para comenzar...</p>
+              <!-- Total -->
+              <div class="mb-5">
+                <span id="total-price" class="font-headline font-extrabold text-5xl text-primary">$349</span>
               </div>
-              <div class="border-t border-outline-variant/15 pt-5 mb-6">
-                <div class="flex justify-between items-center mb-1">
-                  <span class="text-sm font-label text-on-surface-variant">Módulos seleccionados × <span id="summary-branches">1</span> sucursal(es)</span>
+              <p id="total-sub" class="text-sm font-body text-on-surface-variant mb-6">MXN / mes · 1 sucursal</p>
+
+              <!-- Category breakdown -->
+              <div id="summary-breakdown" class="space-y-4 mb-6"></div>
+
+              <!-- Subtotals -->
+              <div class="border-t border-outline-variant/10 pt-5 space-y-2 mb-6">
+                <div class="flex justify-between text-sm font-body text-on-surface-variant">
+                  <span>Subtotal por sucursal</span>
+                  <span id="subtotal-val">$349</span>
                 </div>
-                <div class="flex justify-between items-end mt-3">
-                  <span class="text-sm font-label font-medium text-on-surface-variant">Inversión mensual estimada</span>
+                <div class="flex justify-between text-sm font-body text-on-surface-variant">
+                  <span>Sucursales</span>
+                  <span id="branches-x">× 1</span>
                 </div>
-                <div class="mt-2">
-                  <span id="total-price" class="font-headline font-extrabold text-4xl text-primary transition-all duration-300">$0</span>
-                  <span class="text-on-surface-variant font-body text-sm ml-1">/mes MXN</span>
+                <div class="flex justify-between text-sm font-label font-semibold text-on-surface pt-1">
+                  <span>Total mensual</span>
+                  <span id="total-monthly" class="text-primary">$349</span>
+                </div>
+                <div class="flex justify-between text-sm font-label font-medium text-[#16a34a]">
+                  <span>Ahorro anual (10%)</span>
+                  <span id="annual-saving">–$419</span>
                 </div>
               </div>
-              <a href="/contact" id="cta-demo"
-                class="w-full bg-primary text-on-primary py-4 rounded-lg font-label font-semibold text-base shadow-[0_8px_24px_rgba(0,44,163,0.18)] hover:brightness-110 hover:-translate-y-px transition-all duration-200 flex items-center justify-center gap-2">
-                Solicitar Demo con este Plan
-                <span class="material-symbols-outlined text-xl leading-none">calendar_month</span>
+
+              <a href="/contact" class="w-full bg-primary text-on-primary py-4 rounded-xl font-label font-semibold text-base shadow-[0_8px_24px_rgba(43,73,243,0.25)] hover:brightness-110 hover:-translate-y-px transition-all duration-200 flex items-center justify-center">
+                Agendar demo
               </a>
-              <p class="text-center text-xs text-on-surface-variant font-body mt-4">Sin tarjeta de crédito · Demo gratuita</p>
+              <p class="text-center text-xs text-on-surface-variant font-body mt-4">Sin tarjeta de crédito · Cancela cuando quieras</p>
             </div>
           </div>
         </div>
 
+      </div>
+    </div>
+  </section>
+
+  <!-- Trust badges -->
+  <section class="py-8 bg-surface-container-low border-t border-outline-variant/10">
+    <div class="max-w-3xl mx-auto px-6">
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        {[
+          { icon: 'verified_user', label: 'Sin plazos forzosos' },
+          { icon: 'headset_mic',   label: 'Soporte 24/7' },
+          { icon: 'sync',          label: 'Actualizaciones incluidas' },
+        ].map(b => (
+          <div class="flex items-center gap-3 bg-white border border-outline-variant/15 rounded-xl px-5 py-4">
+            <span class="material-symbols-outlined text-primary text-xl leading-none">{b.icon}</span>
+            <span class="font-body font-medium text-on-surface text-sm">{b.label}</span>
+          </div>
+        ))}
       </div>
     </div>
   </section>
 
   <!-- Mobile sticky -->
-  <div id="mobile-sticky" class="lg:hidden fixed bottom-0 left-0 right-0 bg-surface-container-lowest border-t border-outline-variant/15 shadow-[0_-8px_24px_rgba(26,27,36,0.1)] px-5 py-4 flex items-center justify-between z-50">
+  <div class="lg:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-outline-variant/15 shadow-[0_-8px_24px_rgba(26,27,36,0.1)] px-5 py-4 flex items-center justify-between z-50">
     <div>
       <p class="text-xs font-label text-on-surface-variant">Inversión estimada</p>
-      <p id="mobile-price" class="font-headline font-bold text-xl text-primary">$0<span class="text-sm font-body text-on-surface-variant">/mes</span></p>
+      <p id="mobile-price" class="font-headline font-bold text-xl text-primary">$349<span class="text-sm font-body text-on-surface-variant">/mes</span></p>
     </div>
-    <a href="/contact" class="bg-primary text-on-primary px-6 py-3 rounded-lg font-label font-semibold text-sm shadow-[0_4px_16px_rgba(0,44,163,0.2)] hover:-translate-y-px transition-all">
-      Solicitar Demo
+    <a href="/contact" class="bg-primary text-on-primary px-6 py-3 rounded-xl font-label font-semibold text-sm shadow-[0_4px_16px_rgba(43,73,243,0.2)] hover:-translate-y-px transition-all">
+      Agendar demo
     </a>
   </div>
 
 </Layout>
 
+<style>
+  .toggle-input:checked + .toggle-track { background-color: #2b49f3; }
+  .toggle-input:checked + .toggle-track .toggle-thumb { transform: translateX(20px); }
+</style>
+
 <script define:vars={{ modules }}>
   let branches = 1;
-  const selected = new Set();
+  const selected = new Set(modules.filter(m => m.default).map(m => m.id));
 
-  const REC_MAP = {
-    kioscos: 'kioscos', analytics: 'kioscos', roomservice: 'roomservice',
-    inventory: 'inventory', delivery: 'delivery', pos: 'pos_smart',
+  const statusMeta = {
+    listo:   { label: 'Listo',        cls: 'bg-[#dcfce7] text-[#16a34a]' },
+    beta:    { label: 'Beta / Pronto', cls: 'bg-[#fff7ed] text-[#ea580c]' },
+    roadmap: { label: 'Roadmap',      cls: 'bg-[#eff6ff] text-[#2563eb]' },
   };
-  let diagRecs = [];
-  try {
-    const stored = localStorage.getItem('ezeat_recs');
-    const storedBranches = localStorage.getItem('ezeat_branches');
-    if (stored) diagRecs = JSON.parse(stored);
-    if (storedBranches) {
-      const b = parseInt(storedBranches);
-      if (!isNaN(b)) branches = Math.max(1, b === '1' ? 1 : b === '2-5' ? 3 : b === '6-20' ? 10 : 20);
-    }
-  } catch {}
 
   function renderModules() {
-    ['operativa', 'addons'].forEach(cat => {
-      const container = document.getElementById(`modules-${cat}`);
+    ['operacion', 'control', 'crecimiento', 'proximamente'].forEach(cat => {
+      const container = document.getElementById(`cat-${cat}`);
       if (!container) return;
       const mods = modules.filter(m => m.category === cat);
       container.innerHTML = mods.map(m => {
-        const isSelected = selected.has(m.id);
+        const isSel = selected.has(m.id);
+        const sm = statusMeta[m.status] || statusMeta.listo;
         return `
-          <button data-module="${m.id}" data-price="${m.price}"
-            class="module-btn w-full flex items-center gap-4 p-4 rounded-xl border ${isSelected ? 'border-primary bg-primary/5 shadow-[0_4px_12px_rgba(0,44,163,0.1)]' : 'border-outline-variant/15 bg-surface-container-low hover:border-primary/30'} transition-all duration-200 text-left group">
-            <div class="w-10 h-10 ${isSelected ? 'bg-primary/15' : 'bg-primary/8'} rounded-lg flex items-center justify-center text-primary shrink-0 transition-colors">
-              <span class="material-symbols-outlined text-lg leading-none">${m.icon}</span>
+          <div class="bg-white rounded-xl border ${isSel ? 'border-primary' : 'border-outline-variant/20'} p-4 flex items-start gap-3 transition-all duration-200">
+            <div class="w-10 h-10 ${isSel ? 'bg-primary text-on-primary' : 'bg-surface-container text-on-surface-variant'} rounded-xl flex items-center justify-center shrink-0 mt-0.5 transition-colors">
+              <span class="material-symbols-outlined text-xl leading-none">${m.icon}</span>
             </div>
-            <div class="flex-1">
-              <span class="font-body font-semibold text-on-surface text-sm block">${m.label}</span>
-              <span class="text-xs text-on-surface-variant font-body">$${m.price.toLocaleString()} MXN/sucursal</span>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-start justify-between gap-2">
+                <div class="flex-1 min-w-0">
+                  <div class="flex items-center gap-1.5 flex-wrap">
+                    <span class="font-body font-semibold text-on-surface text-sm">${m.label}</span>
+                    <span class="text-[10px] font-label font-semibold px-2 py-0.5 rounded-full ${sm.cls}">${sm.label}</span>
+                    ${m.ia ? '<span class="text-[10px] font-label font-semibold px-2 py-0.5 rounded-full bg-[#eff6ff] text-primary">IA</span>' : ''}
+                  </div>
+                  <p class="text-xs font-body text-on-surface-variant mt-0.5 leading-snug">${m.desc}</p>
+                </div>
+                <label class="shrink-0 cursor-pointer relative w-11 h-6 mt-0.5">
+                  <input type="checkbox" data-module="${m.id}" data-price="${m.price}" ${isSel ? 'checked' : ''} class="module-toggle sr-only">
+                  <div class="w-11 h-6 rounded-full transition-colors duration-200 ${isSel ? 'bg-primary' : 'bg-gray-200'}">
+                    <div class="absolute top-0.5 left-0.5 w-5 h-5 bg-white rounded-full shadow transition-transform duration-200 ${isSel ? 'translate-x-5' : 'translate-x-0'}"></div>
+                  </div>
+                </label>
+              </div>
+              <div class="mt-1.5 text-right">
+                <span class="font-headline font-bold text-on-background text-sm">${m.priceFmt}</span>
+                <span class="text-[11px] text-on-surface-variant font-body ml-0.5">${m.unit}</span>
+              </div>
             </div>
-            <div class="w-6 h-6 rounded-full border-2 ${isSelected ? 'border-primary bg-primary flex items-center justify-center' : 'border-outline-variant/40'} shrink-0 transition-all">
-              ${isSelected ? '<span class="material-symbols-outlined text-on-primary text-sm leading-none">check</span>' : ''}
-            </div>
-          </button>`;
+          </div>`;
       }).join('');
-      container.querySelectorAll('.module-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-          const id = btn.dataset.module;
-          if (selected.has(id)) selected.delete(id); else selected.add(id);
-          renderModules(); updateSummary();
+      container.querySelectorAll('.module-toggle').forEach(input => {
+        input.addEventListener('change', () => {
+          const id = input.dataset.module;
+          if (input.checked) selected.add(id); else selected.delete(id);
+          renderModules();
+          updateSummary();
         });
       });
     });
   }
 
   function updateSummary() {
-    const summaryList = document.getElementById('summary-list');
-    const totalEl = document.getElementById('total-price');
+    const selMods = modules.filter(m => selected.has(m.id) && m.price > 0);
+    const subtotal = selMods.reduce((s, m) => s + m.price, 0);
+    const total = subtotal * branches;
+    const annualSaving = Math.round(total * 12 * 0.10);
+    const fmt = n => '$' + n.toLocaleString('es-MX');
+
+    document.getElementById('total-price').textContent = fmt(total);
+    document.getElementById('total-sub').textContent = `MXN / mes · ${branches} sucursal${branches > 1 ? 'es' : ''}`;
+    document.getElementById('subtotal-val').textContent = fmt(subtotal);
+    document.getElementById('branches-x').textContent = `× ${branches}`;
+    document.getElementById('total-monthly').textContent = fmt(total);
+    document.getElementById('annual-saving').textContent = `–${fmt(annualSaving)}`;
     const mobileEl = document.getElementById('mobile-price');
-    const branchesEl = document.getElementById('summary-branches');
-    if (branchesEl) branchesEl.textContent = String(branches);
-    const selectedMods = modules.filter(m => selected.has(m.id));
-    const total = selectedMods.reduce((s, m) => s + m.price, 0) * branches;
-    if (summaryList) {
-      summaryList.innerHTML = selectedMods.length === 0
-        ? '<p class="text-on-surface-variant text-sm font-body italic">Selecciona módulos para comenzar...</p>'
-        : selectedMods.map(m => `<div class="flex justify-between items-center text-sm font-body"><span class="text-on-surface">${m.label}</span><span class="text-on-surface-variant">$${(m.price * branches).toLocaleString()}</span></div>`).join('');
-    }
-    const formatted = `$${total.toLocaleString()}`;
-    if (totalEl) totalEl.textContent = formatted;
-    if (mobileEl) mobileEl.innerHTML = `${formatted}<span class="text-sm font-body text-on-surface-variant">/mes</span>`;
+    if (mobileEl) mobileEl.innerHTML = `${fmt(total)}<span class="text-sm font-body text-on-surface-variant">/mes</span>`;
+
+    // Category breakdown
+    const breakdown = document.getElementById('summary-breakdown');
+    const catLabels = { operacion: 'Operación', control: 'Control', crecimiento: 'Crecimiento', proximamente: 'Próximamente' };
+    let html = '';
+    ['operacion', 'control', 'crecimiento', 'proximamente'].forEach(cat => {
+      const catMods = selMods.filter(m => m.category === cat);
+      if (!catMods.length) return;
+      html += `<div>
+        <p class="text-[10px] font-label font-semibold tracking-widest text-on-surface-variant uppercase mb-2">${catLabels[cat]}</p>
+        <div class="space-y-1.5">
+          ${catMods.map(m => `
+            <div class="flex justify-between text-sm font-body">
+              <span class="flex items-center gap-1.5 text-on-surface"><span class="material-symbols-outlined text-primary text-sm leading-none fill">check</span>${m.label}</span>
+              <span class="text-on-surface-variant">${fmt(m.price * branches)}</span>
+            </div>`).join('')}
+        </div>
+      </div>`;
+    });
+    if (!html) html = '<p class="text-sm font-body text-on-surface-variant italic">Activa módulos para ver el resumen...</p>';
+    breakdown.innerHTML = html;
   }
 
   document.getElementById('branches-dec')?.addEventListener('click', () => {
-    if (branches > 1) { branches--; updateBranchUI(); }
+    if (branches > 1) { branches--; updateBranchDisplay(); }
   });
-  document.getElementById('branches-inc')?.addEventListener('click', () => { branches++; updateBranchUI(); });
+  document.getElementById('branches-inc')?.addEventListener('click', () => { branches++; updateBranchDisplay(); });
 
-  function updateBranchUI() {
-    const branchesVal = document.getElementById('branches-val');
-    const fleetMsg = document.getElementById('fleet-msg');
-    if (branchesVal) branchesVal.textContent = String(branches);
-    if (fleetMsg) fleetMsg.classList.toggle('hidden', branches <= 5);
+  function updateBranchDisplay() {
+    document.getElementById('branches-val').textContent = String(branches);
+    document.getElementById('fleet-msg')?.classList.toggle('hidden', branches <= 5);
     updateSummary();
   }
 
-  if (diagRecs.length > 0) {
-    document.getElementById('diag-banner')?.classList.remove('hidden');
-    diagRecs.forEach(rec => { const mapped = REC_MAP[rec]; if (mapped) selected.add(mapped); });
-  }
-  const branchesVal = document.getElementById('branches-val');
-  if (branchesVal) branchesVal.textContent = String(branches);
-  renderModules(); updateSummary();
+  renderModules();
+  updateSummary();
 </script>
