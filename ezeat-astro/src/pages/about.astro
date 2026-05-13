@@ -145,33 +145,57 @@ const promises = [
     </div>
   </section>
 
-  <!-- Visión Quote -->
-  <section class="py-32 bg-surface-container-low">
-    <div class="max-w-4xl mx-auto px-6 lg:px-8 text-center space-y-8" data-animate="scale-in">
-      <div class="w-16 h-1 bg-primary mx-auto rounded-full"></div>
-      <blockquote class="font-headline text-3xl md:text-5xl font-bold text-on-background leading-tight">
-        "Construimos el sistema operativo que nos hubiera gustado tener cuando empezamos."
-      </blockquote>
-      <div class="w-16 h-1 bg-primary mx-auto rounded-full"></div>
-      <p class="text-on-surface-variant font-body text-lg max-w-xl mx-auto">
-        — Equipo EzEat
-      </p>
+  <!-- Timeline -->
+  <section class="py-24 bg-surface">
+    <div class="max-w-4xl mx-auto px-6 lg:px-8">
+      <div class="text-center mb-16" data-animate="fade-up">
+        <span class="text-primary font-label text-sm font-bold uppercase tracking-wider mb-3 block">Nuestra historia</span>
+        <h2 class="font-headline text-3xl md:text-4xl font-bold text-on-background">
+          El camino hasta aquí
+        </h2>
+      </div>
+
+      <div class="relative" data-animate="fade-up">
+        <!-- Vertical line -->
+        <div class="absolute left-1/2 -translate-x-px top-0 bottom-0 w-0.5 bg-outline-variant/30"></div>
+
+        <div class="space-y-12">
+          {[
+            { year: '2023', side: 'left', title: 'El Origen', body: 'Nace EzEat de la necesidad real: demasiados sistemas, poca integración. Un grupo de restauranteros y desarrolladores decide construir algo diferente.', future: false },
+            { year: '2024', side: 'right', title: 'Primeros Clientes', body: 'Lanzamos el MVP con los primeros restaurantes en CDMX. Validamos el modelo modular y empezamos a construir el ecosistema.', future: false },
+            { year: '2025', side: 'left', title: 'Beta y Escalamiento', body: 'Lanzamiento de la versión inteligente de EzEat, enfocada en marcas establecidas y Quick Service Restaurants (QSR).', future: false },
+            { year: 'Futuro', side: 'right', title: 'Ecosistema EzEat', body: 'Evolución hacia un marketplace integral y un sistema de delivery local propio para reducir costos y devolverle el margen al restaurantero.', future: true },
+          ].map(item => (
+            <div class={`relative flex items-start gap-8 ${item.side === 'right' ? 'flex-row-reverse' : ''}`}>
+              <!-- Content -->
+              <div class={`w-[calc(50%-2rem)] ${item.side === 'right' ? 'text-left' : 'text-right'}`}>
+                <p class={`font-headline font-bold text-xl mb-1 ${item.future ? 'text-primary' : 'text-on-background'}`}>{item.year}</p>
+                <h3 class="font-headline font-bold text-on-background mb-2">{item.title}</h3>
+                <p class="font-body text-on-surface-variant text-sm leading-relaxed">{item.body}</p>
+              </div>
+              <!-- Dot -->
+              <div class="absolute left-1/2 -translate-x-1/2 top-1 w-4 h-4 rounded-full bg-primary border-4 border-white shadow-sm shrink-0"></div>
+              <!-- Spacer -->
+              <div class="w-[calc(50%-2rem)]"></div>
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- El Factor Humano -->
-  <section class="py-16 bg-surface-container-low">
+  <!-- Construyamos juntos -->
+  <section class="py-16 bg-surface">
     <div class="max-w-4xl mx-auto px-6 lg:px-8" data-animate="fade-up">
       <div class="rounded-2xl px-10 py-14 text-center" style="background: linear-gradient(135deg, #0f1729 0%, #141d3d 60%, #1a2450 100%);">
-        <span class="material-symbols-outlined text-white/50 text-5xl block mb-6 leading-none">groups</span>
-        <h2 class="text-3xl font-headline font-bold text-white mb-4">
-          Un equipo joven con hambre de cambiar las reglas.
+        <h2 class="text-3xl md:text-4xl font-headline font-bold text-white mb-4">
+          Construyamos juntos
         </h2>
         <p class="text-white/70 font-body mb-8 max-w-xl mx-auto leading-relaxed">
-          Somos una startup en beta perpetua: ágil, obsesionada con el cliente y siempre en mejora constante. Cada semana lanzamos mejoras, no comunicados de prensa.
+          Nos encantaría conocer tu negocio y mostrarte cómo EzEat puede ayudarte.
         </p>
         <a href="/contact" class="inline-flex items-center gap-2 bg-primary text-white px-8 py-4 rounded-xl font-label font-semibold text-base shadow-[0_8px_24px_rgba(43,73,243,0.4)] hover:brightness-110 hover:-translate-y-px transition-all duration-200">
-          Únete al ecosistema EzEat
+          Conversemos
           <span class="material-symbols-outlined text-xl leading-none">arrow_forward</span>
         </a>
       </div>
