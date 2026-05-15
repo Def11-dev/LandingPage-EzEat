@@ -1,63 +1,69 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-const heroImg    = 'https://lh3.googleusercontent.com/aida-public/AB6AXuCNm5N7HSNrXJnbE9ccYyd3ulRhp5Is_RHDb93gdzCoxb6iufKtz2Z_qI2KTwqfBgmQknWDS5BJ6for7JK-8IDa03PZoJ9NcPVffWB_gMyoBXZD_nRo4yfE0gApP-6fvXCeVmKICpYRRf9VDn2kqfTPvpx9KAECETZUOF5lwench_zCjKXkyZyjST5XfBCnMAWsTF_E35xReyNqTxj1OlCsTawnHL694KHQOz6l4V7V9xg61Xy2ciWCrzpnZE7YyAKXdRe-GTm27vM2';
-const terminalImg = 'https://lh3.googleusercontent.com/aida-public/AB6AXuC7kVKpA67m77WIr_OP6QaM9OEuuAgLLF7gCo9P4QY42_Pb-Z6NU82oT-ro-O1X6wTEZr-dWnel0wnrI0oGHDXm08NDTpVAADalzFz--IW6dMDweqJhZznZsYo-avqfhghdOwP79fM9xw_LZr_BbIw0LF9-5-2NOHvYvJygIOoDTcaBQIxt2OwaAuZAvDjnw9cWfAgccA0TrzqokRGPu3EPkDRrcdLHL8N8Rnk0jo_zLWQqpIz9Rp837kO22M1Ym1qnXqNgmiuw1uIA';
-
 const questions = [
   {
     id: 'type',
-    step: '01',
-    text: '¿Qué tipo de experiencia ofreces?',
+    multi: false,
+    text: '¿Qué tipo de negocio operas?',
+    sub: 'Personalizamos las recomendaciones según tu modelo.',
     options: [
-      { value: 'hotel',     label: 'Hotel',          sub: 'Hospedaje con servicios F&B',    icon: 'hotel' },
-      { value: 'restaurant',label: 'Restaurante',    sub: 'Servicio a mesa o casual',        icon: 'restaurant' },
-      { value: 'fastfood',  label: 'Fast Food',      sub: 'Autoservicio y orden rápida',     icon: 'storefront' },
-      { value: 'cafe',      label: 'Cafetería / Bar',sub: 'Bebidas, snacks y ambiente',      icon: 'local_cafe' },
+      { value: 'restaurante',  label: 'Restaurante tradicional', sub: 'Mesas, meseros, sobremesa',        icon: 'restaurant' },
+      { value: 'qsr',          label: 'Comida rápida (QSR)',     sub: 'Mostrador, alta rotación',          icon: 'storefront' },
+      { value: 'cafe',         label: 'Café / Cafetería',        sub: 'Tickets pequeños y constantes',     icon: 'local_cafe' },
+      { value: 'hotel',        label: 'Hotel / Motel',           sub: 'Room service y eventos',            icon: 'hotel' },
+      { value: 'dark_kitchen', label: 'Dark Kitchen',            sub: '100% delivery',                    icon: 'delivery_dining' },
+      { value: 'foodtruck',    label: 'Food Truck / Pop-up',     sub: 'Operación en movimiento',           icon: 'local_shipping' },
     ],
   },
   {
     id: 'branches',
-    step: '02',
-    text: '¿Cuál es el alcance actual de tu marca?',
+    multi: false,
+    text: '¿Cuántas sucursales operas?',
+    sub: 'Esto nos ayuda a dimensionar tu operación.',
     options: [
-      { value: '1',    label: '1 local',          sub: 'Empezando o consolidando',        icon: 'store' },
-      { value: '2-5',  label: '2 a 5 sucursales', sub: 'En expansión regional',           icon: 'storefront' },
-      { value: '6-20', label: '6 a 20 sucursales',sub: 'Cadena en crecimiento',           icon: 'location_city' },
-      { value: '20+',  label: 'Más de 20',        sub: 'Operación multi-marca o franquicia',icon: 'corporate_fare' },
+      { value: '1',    label: '1 sucursal',          sub: 'Iniciando operación',       icon: 'store' },
+      { value: '2-5',  label: '2 a 5 sucursales',    sub: 'En crecimiento',            icon: 'domain' },
+      { value: '6-15', label: '6 a 15 sucursales',   sub: 'Marca consolidada',         icon: 'location_city' },
+      { value: '15+',  label: 'Más de 15',           sub: 'Operación multi-región',    icon: 'corporate_fare' },
     ],
   },
   {
     id: 'pain',
-    step: '03',
-    text: '¿Dónde sientes que se escapa más rentabilidad?',
+    multi: true,
+    text: '¿Cuáles son tus principales dolores operativos?',
+    sub: 'Selecciona todos los que apliquen.',
     options: [
-      { value: 'mermas',      label: 'Mermas e inventario',      sub: 'Pérdidas de insumos y stock',      icon: 'inventory_2' },
-      { value: 'commissions', label: 'Comisiones de delivery',   sub: 'Rappi, Uber y similares te comen margen', icon: 'local_shipping' },
-      { value: 'queues',      label: 'Tiempos de espera',        sub: 'Filas que alejan clientes',          icon: 'hourglass_empty' },
-      { value: 'data',        label: 'Falta de datos',           sub: 'Tomas decisiones "a ojo"',          icon: 'bar_chart' },
+      { value: 'queues',    label: 'Filas lentas',           sub: 'Clientes esperando demasiado', icon: 'schedule' },
+      { value: 'inventory', label: 'Mermas e inventario',    sub: 'Pérdidas y desabasto',         icon: 'inventory_2' },
+      { value: 'retention', label: 'Baja recompra',          sub: 'Clientes que no vuelven',      icon: 'trending_down' },
+      { value: 'delivery',  label: 'Caos con delivery',      sub: 'Múltiples apps, cero control', icon: 'local_shipping' },
+      { value: 'staff',     label: 'Equipo desalineado',     sub: 'Rotación y capacitación',      icon: 'group' },
+      { value: 'noshows',   label: 'No-shows y mesas vacías',sub: 'Reservas que no llegan',       icon: 'event_busy' },
     ],
   },
   {
-    id: 'channel',
-    step: '04',
-    text: '¿Cuál es el canal de venta preferido de tus clientes?',
+    id: 'current_tech',
+    multi: false,
+    text: '¿Cómo gestionas tu operación hoy?',
+    sub: 'Selecciona la opción que mejor te describa.',
     options: [
-      { value: 'inperson', label: 'Presencial',         sub: 'La mayoría viene al local',          icon: 'table_restaurant' },
-      { value: 'apps',     label: 'Apps de delivery',   sub: 'Rappi, Uber Eats, DiDi Food',       icon: 'delivery_dining' },
-      { value: 'web',      label: 'Sitio web propio',   sub: 'Pedidos online directos',            icon: 'language' },
-      { value: 'all',      label: 'Todos los canales',  sub: 'Omnicanal o quiero serlo',           icon: 'hub' },
+      { value: 'paper',          label: 'Papel y Excel',             sub: 'Procesos 100% manuales',      icon: 'edit_note' },
+      { value: 'pos_basic',      label: 'POS básico',                sub: 'Solo registra ventas',         icon: 'point_of_sale' },
+      { value: 'multiple_tools', label: 'Varias herramientas sueltas',sub: 'Sin integración entre sí',   icon: 'settings_suggest' },
+      { value: 'integrated',     label: 'Sistema integrado',         sub: 'Pero quiero optimizar más',   icon: 'hub' },
     ],
   },
   {
-    id: 'tech',
-    step: '05',
-    text: '¿Cómo describirías la relación de tu equipo con la tecnología?',
+    id: 'goals',
+    multi: false,
+    text: '¿Cuál es tu principal objetivo este año?',
+    sub: 'Priorizamos los módulos según tu meta.',
     options: [
-      { value: 'digital',  label: 'Muy digital',          sub: 'Adoptamos herramientas sin problema', icon: 'devices' },
-      { value: 'basic',    label: 'Básica pero funcional', sub: 'Usamos lo necesario',               icon: 'smartphone' },
-      { value: 'low',      label: 'Poca experiencia',      sub: 'Necesitamos algo muy intuitivo',    icon: 'touch_app' },
-      { value: 'paper',    label: 'Papel y pluma',         sub: 'Todo es manual por ahora',          icon: 'edit_note' },
+      { value: 'reduce_costs',      label: 'Reducir costos',       sub: 'Márgenes y operación eficiente', icon: 'savings' },
+      { value: 'grow_sales',        label: 'Crecer ventas',        sub: 'Más clientes y ticket promedio', icon: 'trending_up' },
+      { value: 'open_branches',     label: 'Abrir sucursales',     sub: 'Escalar la operación',           icon: 'add_business' },
+      { value: 'better_experience', label: 'Mejorar experiencia',  sub: 'Fidelizar y retener clientes',  icon: 'star' },
     ],
   },
 ];
@@ -69,19 +75,16 @@ const questions = [
 >
 
 <!-- ═══════════════════════════════════════════════
-     STAGE 1 · HERO
+     HERO
 ═══════════════════════════════════════════════ -->
 <section id="stage-hero" class="relative min-h-[90vh] flex items-center pt-8 pb-24 overflow-hidden" style="background: linear-gradient(135deg, #0f1729 0%, #141d3d 50%, #1a2450 100%);">
-  <!-- Decorative glows -->
   <div class="absolute -top-32 -right-32 w-[600px] h-[600px] rounded-full opacity-20 pointer-events-none" style="background: radial-gradient(circle, #2b49f3 0%, transparent 70%);"></div>
   <div class="absolute -bottom-24 -left-24 w-[400px] h-[400px] rounded-full opacity-10 pointer-events-none" style="background: radial-gradient(circle, #2b49f3 0%, transparent 70%);"></div>
 
   <div class="max-w-7xl mx-auto px-6 lg:px-8 w-full relative z-10">
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
 
-      <!-- Text -->
       <div class="lg:col-span-7 space-y-8">
-        <!-- Badge chip -->
         <div data-animate="fade-up" class="inline-flex items-center gap-2 bg-white/10 border border-white/20 px-4 py-2 rounded-full">
           <span class="material-symbols-outlined text-[#b0beff] text-base leading-none">bolt</span>
           <span class="text-sm font-label font-medium text-white/90">Diseñado para la nueva generación de fundadores gastronómicos.</span>
@@ -100,10 +103,8 @@ const questions = [
         </p>
 
         <div data-animate="fade-up" style="transition-delay:0.3s" class="flex flex-col sm:flex-row gap-4 pt-2">
-          <button
-            id="btn-start"
-            class="bg-primary text-on-primary px-8 py-4 rounded-lg font-label font-semibold text-lg shadow-[0_8px_32px_rgba(43,73,243,0.4)] hover:brightness-110 hover:-translate-y-px transition-all duration-200 flex items-center justify-center gap-2"
-          >
+          <button id="btn-start"
+            class="bg-primary text-on-primary px-8 py-4 rounded-lg font-label font-semibold text-lg shadow-[0_8px_32px_rgba(43,73,243,0.4)] hover:brightness-110 hover:-translate-y-px transition-all duration-200 flex items-center justify-center gap-2">
             Inicia tu Diagnóstico de Eficiencia
             <span class="material-symbols-outlined text-xl leading-none">arrow_forward</span>
           </button>
@@ -114,17 +115,13 @@ const questions = [
         </div>
       </div>
 
-      <!-- Mascot image -->
       <div class="lg:col-span-5 relative flex justify-center" data-animate="slide-left" style="transition-delay:0.2s">
         <div class="relative w-72 h-72 lg:w-96 lg:h-96">
-          <!-- Glowing circle background -->
           <div class="absolute inset-0 rounded-full opacity-30" style="background: radial-gradient(circle, #2b49f3 0%, transparent 70%);"></div>
           <div class="absolute inset-4 rounded-full bg-white/5 border border-white/10 flex items-center justify-center">
             <img src="/EZ eat (7).png" alt="EzEat mascot" class="w-full h-full object-contain p-6 drop-shadow-2xl" loading="eager" />
           </div>
         </div>
-
-        <!-- Floating stat card -->
         <div class="animate-float absolute -bottom-6 -left-4 lg:-left-10 w-56 p-5 bg-white rounded-xl shadow-[0_16px_40px_rgba(0,0,0,0.3)] hidden lg:block">
           <div class="flex items-center gap-3 mb-2">
             <span class="material-symbols-outlined text-primary text-2xl fill leading-none">speed</span>
@@ -132,8 +129,6 @@ const questions = [
           </div>
           <p class="text-xs font-body text-on-surface-variant leading-snug">Reducción promedio en costos laborales con EzEat</p>
         </div>
-
-        <!-- Verified badge -->
         <div class="absolute -top-4 -right-4 px-4 py-2 bg-white rounded-xl shadow-lg hidden lg:flex items-center gap-2">
           <span class="material-symbols-outlined text-primary text-sm leading-none fill">verified</span>
           <span class="text-on-surface text-xs font-label font-semibold">500+ restaurantes</span>
@@ -149,10 +144,10 @@ const questions = [
   <div class="max-w-7xl mx-auto px-6 lg:px-8">
     <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center" data-stagger>
       {[
-        { value: '500+',  label: 'Restaurantes activos' },
-        { value: '<1s',   label: 'Velocidad de transacción' },
-        { value: '40%',   label: 'Reducción costos laborales' },
-        { value: '24/7',  label: 'Soporte empresarial' },
+        { value: '500+', label: 'Restaurantes activos' },
+        { value: '<1s',  label: 'Velocidad de transacción' },
+        { value: '40%',  label: 'Reducción costos laborales' },
+        { value: '24/7', label: 'Soporte empresarial' },
       ].map(s => (
         <div>
           <div class="text-3xl font-headline font-extrabold text-on-primary">{s.value}</div>
@@ -165,59 +160,97 @@ const questions = [
 
 
 <!-- ═══════════════════════════════════════════════
-     STAGE 2 · QUIZ
+     QUIZ
 ═══════════════════════════════════════════════ -->
-<section id="stage-quiz" class="hidden min-h-screen bg-surface py-16">
-  <div class="max-w-2xl mx-auto px-6">
+<section id="stage-quiz" class="hidden py-20 bg-[#f5f6fa]">
+  <div class="max-w-3xl mx-auto px-6">
 
-    <!-- Progress -->
-    <div class="mb-10">
-      <div class="flex justify-between items-center mb-3">
-        <span class="text-sm font-label font-medium text-on-surface-variant" id="question-counter">Paso 1 de 5</span>
-        <button id="btn-quiz-close" class="text-on-surface-variant hover:text-on-surface transition-colors p-1 rounded">
-          <span class="material-symbols-outlined text-xl leading-none">close</span>
-        </button>
+    <!-- Section header -->
+    <div class="text-center mb-10">
+      <div class="inline-flex items-center gap-2 bg-white border border-outline-variant/20 px-4 py-2 rounded-full mb-6 shadow-sm">
+        <span class="material-symbols-outlined text-primary text-base leading-none">psychology</span>
+        <span class="text-sm font-label font-medium text-on-surface">Diagnóstico interactivo</span>
       </div>
-      <div class="w-full h-1.5 bg-surface-container-highest rounded-full overflow-hidden">
-        <div id="progress-bar" class="h-full bg-primary rounded-full transition-all duration-500 ease-out" style="width:20%"></div>
+      <h2 class="font-headline text-4xl md:text-5xl font-extrabold text-on-background leading-tight mb-4">
+        Descubre tu <span class="text-primary">Puntaje de<br/>Eficiencia Tecnológica</span>
+      </h2>
+      <p class="text-on-surface-variant font-body text-base max-w-lg mx-auto">
+        Responde 5 preguntas y te diremos exactamente qué módulos necesitas para llevar tu negocio al siguiente nivel.
+      </p>
+    </div>
+
+    <!-- Quiz card -->
+    <div class="bg-white rounded-2xl shadow-[0_4px_24px_rgba(26,27,36,0.08)] overflow-hidden">
+      <!-- Card header: nav + progress -->
+      <div class="px-8 pt-7 pb-5 border-b border-outline-variant/10">
+        <div class="flex items-center justify-between mb-4">
+          <button id="btn-back"
+            class="hidden items-center gap-1 text-on-surface-variant hover:text-on-surface font-body text-sm transition-colors">
+            <span class="material-symbols-outlined text-lg leading-none">arrow_back</span>
+            Atrás
+          </button>
+          <div id="back-placeholder" class="w-0"></div>
+          <span id="question-counter" class="text-sm font-body text-on-surface-variant">Pregunta 1 de 5</span>
+        </div>
+        <div class="w-full h-1.5 bg-surface-container-highest rounded-full overflow-hidden">
+          <div id="progress-bar" class="h-full bg-primary rounded-full transition-all duration-500 ease-out" style="width:20%"></div>
+        </div>
+      </div>
+
+      <!-- Questions -->
+      <div class="px-8 py-8">
+        {questions.map((q, qi) => (
+          <div data-question={qi} class={qi === 0 ? 'quiz-question' : 'quiz-question hidden'}>
+            <h3 class="font-headline text-2xl md:text-3xl font-bold text-on-background mb-1 leading-tight">
+              {q.text}
+            </h3>
+            <p class="font-body text-on-surface-variant text-sm mb-7">{q.sub}</p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              {q.options.map(opt => (
+                <button
+                  data-q={q.id}
+                  data-v={opt.value}
+                  data-multi={q.multi ? 'true' : 'false'}
+                  class="quiz-option relative flex items-center gap-4 p-4 bg-white rounded-xl border border-outline-variant/25 hover:border-primary/40 hover:bg-primary/[0.03] transition-all duration-200 text-left w-full group"
+                >
+                  <!-- Checkmark (hidden until selected) -->
+                  <div class="option-check absolute top-3 right-3 w-5 h-5 rounded-full bg-primary hidden items-center justify-center shrink-0">
+                    <span class="material-symbols-outlined text-white leading-none" style="font-size:13px">check</span>
+                  </div>
+                  <!-- Icon -->
+                  <div class="option-icon w-11 h-11 rounded-xl bg-primary/8 flex items-center justify-center text-primary shrink-0 transition-all duration-200">
+                    <span class="material-symbols-outlined text-xl leading-none">{opt.icon}</span>
+                  </div>
+                  <!-- Text -->
+                  <div class="min-w-0">
+                    <span class="font-label font-semibold text-on-background text-sm block leading-snug">{opt.label}</span>
+                    <span class="font-body text-on-surface-variant text-xs block mt-0.5 leading-snug">{opt.sub}</span>
+                  </div>
+                </button>
+              ))}
+            </div>
+
+            <!-- Continuar button (only for multi-select) -->
+            {q.multi && (
+              <div class="mt-6 flex justify-end">
+                <button
+                  id={`btn-continue-${qi}`}
+                  class="quiz-continue hidden items-center gap-2 bg-primary text-white px-7 py-3 rounded-xl font-label font-semibold text-sm shadow-[0_4px_16px_rgba(43,73,243,0.3)] hover:brightness-110 transition-all duration-200">
+                  Continuar
+                  <span class="material-symbols-outlined text-base leading-none">arrow_forward</span>
+                </button>
+              </div>
+            )}
+          </div>
+        ))}
       </div>
     </div>
 
-    {questions.map((q, qi) => (
-      <div data-question={qi} class={qi === 0 ? 'quiz-question' : 'quiz-question hidden'}>
-        <div class="inline-flex items-center gap-2 mb-4">
-          <span class="text-xs font-label font-bold text-primary bg-primary/8 px-2.5 py-1 rounded-full uppercase tracking-wider">Paso {q.step}</span>
-        </div>
-        <h2 class="font-headline text-3xl md:text-4xl font-extrabold text-on-background mb-2 leading-tight">
-          {q.text}
-        </h2>
-        <p class="text-on-surface-variant font-body mb-8 text-base">Selecciona la opción que mejor describe tu operación.</p>
-
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          {q.options.map(opt => (
-            <button
-              data-q={q.id}
-              data-v={opt.value}
-              class="quiz-option group flex items-start gap-4 p-5 bg-surface-container-lowest rounded-xl border border-outline-variant/15 hover:border-primary/40 hover:bg-surface-container-low hover:shadow-[0_8px_24px_rgba(0,44,163,0.08)] transition-all duration-200 text-left w-full"
-            >
-              <div class="w-11 h-11 bg-primary/8 rounded-lg flex items-center justify-center text-primary shrink-0 group-hover:bg-primary/15 transition-colors mt-0.5">
-                <span class="material-symbols-outlined text-xl leading-none">{opt.icon}</span>
-              </div>
-              <div>
-                <span class="font-body font-semibold text-on-surface text-sm block leading-snug">{opt.label}</span>
-                <span class="font-body text-on-surface-variant text-xs mt-0.5 block leading-snug">{opt.sub}</span>
-              </div>
-            </button>
-          ))}
-        </div>
-      </div>
-    ))}
-
-    <!-- Back button -->
-    <div class="mt-10 flex items-center gap-4">
-      <button id="btn-back" class="hidden flex items-center gap-2 text-on-surface-variant font-label font-medium hover:text-on-surface transition-colors py-2">
-        <span class="material-symbols-outlined text-xl leading-none">arrow_back</span>
-        Anterior
+    <!-- Close link -->
+    <div class="text-center mt-6">
+      <button id="btn-quiz-close" class="text-on-surface-variant hover:text-on-surface text-sm font-body transition-colors">
+        Cancelar diagnóstico
       </button>
     </div>
 
@@ -226,32 +259,25 @@ const questions = [
 
 
 <!-- ═══════════════════════════════════════════════
-     STAGE 3 · RESULTS
+     RESULTS
 ═══════════════════════════════════════════════ -->
 <section id="stage-results" class="hidden min-h-screen bg-surface py-20">
   <div class="max-w-4xl mx-auto px-6">
 
-    <!-- Efficiency Score gauge -->
     <div class="text-center mb-12" data-animate="fade-up">
       <div class="inline-flex items-center gap-2 bg-surface-container-highest px-4 py-2 rounded-full mb-8">
         <span class="material-symbols-outlined text-primary text-base leading-none fill">check_circle</span>
         <span class="text-sm font-label font-medium text-on-surface">Diagnóstico completado</span>
       </div>
 
-      <!-- Radial gauge -->
       <div class="flex flex-col items-center mb-6">
         <div class="relative w-48 h-48">
           <svg class="w-full h-full -rotate-90" viewBox="0 0 120 120">
             <circle cx="60" cy="60" r="52" fill="none" stroke="currentColor" stroke-width="8" class="text-surface-container-highest"/>
-            <circle
-              id="gauge-circle"
-              cx="60" cy="60" r="52" fill="none"
-              stroke="currentColor" stroke-width="8"
-              stroke-linecap="round"
-              stroke-dasharray="326.73"
-              stroke-dashoffset="326.73"
-              class="text-primary transition-all duration-1000 ease-out"
-            />
+            <circle id="gauge-circle" cx="60" cy="60" r="52" fill="none"
+              stroke="currentColor" stroke-width="8" stroke-linecap="round"
+              stroke-dasharray="326.73" stroke-dashoffset="326.73"
+              class="text-primary transition-all duration-1000 ease-out"/>
           </svg>
           <div class="absolute inset-0 flex flex-col items-center justify-center">
             <span id="score-display" class="font-headline font-extrabold text-4xl text-on-background">0%</span>
@@ -263,24 +289,22 @@ const questions = [
       <h2 class="font-headline text-3xl md:text-4xl font-extrabold text-on-background mb-3 leading-tight">
         Tu operación está al <span id="score-headline" class="text-primary">—%</span> de su potencial.
       </h2>
-      <p id="score-hook" class="text-on-surface-variant font-body text-lg max-w-xl mx-auto mb-2">
+      <p class="text-on-surface-variant font-body text-lg max-w-xl mx-auto mb-2">
         Con EzEat, puedes llegar al <span class="font-bold text-primary">95%</span>.
       </p>
       <p id="pain-text" class="text-on-surface-variant font-body text-base max-w-xl mx-auto"></p>
     </div>
 
-    <!-- Result cards -->
     <div id="result-cards" class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-14"></div>
 
-    <!-- CTAs -->
     <div class="flex flex-col sm:flex-row justify-center gap-4">
       <a href="/contact"
-        class="bg-primary text-on-primary px-8 py-4 rounded-lg font-label font-semibold text-base shadow-[0_8px_32px_rgba(0,44,163,0.2)] hover:bg-primary-container hover:-translate-y-px transition-all duration-200 flex items-center justify-center gap-2">
+        class="bg-primary text-on-primary px-8 py-4 rounded-lg font-label font-semibold text-base shadow-[0_8px_32px_rgba(0,44,163,0.2)] hover:brightness-110 hover:-translate-y-px transition-all duration-200 flex items-center justify-center gap-2">
         Agendar demo gratuita
         <span class="material-symbols-outlined text-xl leading-none">calendar_month</span>
       </a>
       <button id="btn-restart"
-        class="border border-outline-variant/30 text-on-surface px-8 py-4 rounded-lg font-label font-medium text-base hover:bg-surface-container-low hover:border-primary/30 transition-all duration-200">
+        class="border border-outline-variant/30 text-on-surface px-8 py-4 rounded-lg font-label font-medium text-base hover:bg-surface-container-low transition-all duration-200">
         Repetir diagnóstico
       </button>
     </div>
@@ -290,7 +314,7 @@ const questions = [
 
 
 <!-- ═══════════════════════════════════════════════
-     TRES PILARES DE VALOR
+     TRES PILARES
 ═══════════════════════════════════════════════ -->
 <section class="py-24 bg-surface-container-low">
   <div class="max-w-7xl mx-auto px-6 lg:px-8">
@@ -302,21 +326,9 @@ const questions = [
     </div>
     <div class="grid md:grid-cols-3 gap-8" data-stagger>
       {[
-        {
-          icon: 'auto_awesome',
-          title: 'Inteligencia de Datos',
-          body: 'De datos brutos a Estados Financieros con IA en segundos. Deja de tomar decisiones "a ojo".',
-        },
-        {
-          icon: 'extension',
-          title: 'Modularidad Total',
-          body: 'Paga solo por lo que usas. Escala funciones conforme abres sucursales. Sin ataduras.',
-        },
-        {
-          icon: 'hub',
-          title: 'Omnicanalidad',
-          body: 'Tu local, tu web y tus apps de delivery en una sola pantalla. Un cerebro digital, todos tus canales.',
-        },
+        { icon: 'auto_awesome', title: 'Inteligencia de Datos', body: 'De datos brutos a Estados Financieros con IA en segundos. Deja de tomar decisiones "a ojo".' },
+        { icon: 'extension',    title: 'Modularidad Total',     body: 'Paga solo por lo que usas. Escala funciones conforme abres sucursales. Sin ataduras.' },
+        { icon: 'hub',          title: 'Omnicanalidad',         body: 'Tu local, tu web y tus apps de delivery en una sola pantalla. Un cerebro digital, todos tus canales.' },
       ].map(p => (
         <div class="bg-surface-container-lowest p-8 rounded-xl group shadow-[0_4px_16px_rgba(26,27,36,0.03)] hover:shadow-[0_12px_32px_rgba(26,27,36,0.07)] transition-all duration-300 hover:-translate-y-1 relative overflow-hidden">
           <div class="absolute top-0 left-0 w-1 h-full bg-primary origin-bottom scale-y-0 group-hover:scale-y-100 transition-transform duration-300 rounded-r"></div>
@@ -339,10 +351,10 @@ const questions = [
   <div class="max-w-7xl mx-auto px-6 lg:px-8">
     <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center" data-stagger>
       {[
-        { value: '+30%',  label: 'Aumento en ticket promedio' },
-        { value: '-45%',  label: 'Reducción de mermas' },
-        { value: '24/7',  label: 'Soporte humano' },
-        { value: '98%',   label: 'Satisfacción de clientes' },
+        { value: '+30%', label: 'Aumento en ticket promedio' },
+        { value: '-45%', label: 'Reducción de mermas' },
+        { value: '24/7', label: 'Soporte humano' },
+        { value: '98%',  label: 'Satisfacción de clientes' },
       ].map(s => (
         <div>
           <div class="font-headline font-extrabold text-4xl md:text-5xl text-on-primary mb-1">{s.value}</div>
@@ -367,21 +379,9 @@ const questions = [
     </div>
     <div class="grid md:grid-cols-3 gap-8" data-stagger>
       {[
-        {
-          icon: 'bolt',
-          title: 'Activa solo lo que necesitas',
-          body: 'Empieza con el módulo esencial y agrega funciones conforme tu operación escala. Sin paquetes inflados, sin pagar por lo que no usas.',
-        },
-        {
-          icon: 'shield',
-          title: 'Datos seguros y soberanos',
-          body: 'Encriptación end-to-end, backups automáticos y cumplimiento de normativas. Tu información nunca sale de tus manos.',
-        },
-        {
-          icon: 'trending_up',
-          title: 'Decisiones con IA',
-          body: 'Predicciones de demanda, alertas de inventario y reportes financieros automáticos. De datos brutos a insights accionables en segundos.',
-        },
+        { icon: 'bolt',      title: 'Activa solo lo que necesitas', body: 'Empieza con el módulo esencial y agrega funciones conforme tu operación escala. Sin paquetes inflados.' },
+        { icon: 'shield',    title: 'Datos seguros y soberanos',    body: 'Encriptación end-to-end, backups automáticos y cumplimiento de normativas. Tu información nunca sale de tus manos.' },
+        { icon: 'trending_up',title:'Decisiones con IA',            body: 'Predicciones de demanda, alertas de inventario y reportes financieros automáticos en segundos.' },
       ].map(b => (
         <div class="bg-surface-container-lowest p-8 rounded-xl border border-outline-variant/10 group hover:border-primary/25 hover:shadow-[0_12px_32px_rgba(43,73,243,0.08)] transition-all duration-300 hover:-translate-y-1">
           <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center text-primary mb-5 group-hover:bg-primary/20 transition-colors">
@@ -403,41 +403,19 @@ const questions = [
   <div class="max-w-7xl mx-auto px-6 lg:px-8">
     <div class="text-center max-w-2xl mx-auto mb-16" data-animate="fade-up">
       <span class="text-primary font-label text-sm font-bold uppercase tracking-wider mb-3 block">Lo que dicen nuestros clientes</span>
-      <h2 class="font-headline text-3xl md:text-4xl font-bold text-on-background">
-        Resultados reales, no promesas
-      </h2>
+      <h2 class="font-headline text-3xl md:text-4xl font-bold text-on-background">Resultados reales, no promesas</h2>
     </div>
     <div class="grid md:grid-cols-3 gap-8" data-stagger>
       {[
-        {
-          name: 'Carlos Mendoza',
-          role: 'Dueño',
-          business: 'Cadena de Fast Food — CDMX',
-          quote: 'Redujimos las mermas en un 38% el primer trimestre. El módulo de inventarios con IA fue un parteaguas para nuestra operación.',
-          initial: 'C',
-        },
-        {
-          name: 'Mariana Quintero',
-          role: 'Gerente de Operaciones',
-          business: 'Restaurante de Autor — Monterrey',
-          quote: 'El POS inteligente nos dio visibilidad total del negocio en tiempo real. Ahora tomamos decisiones con datos, no con corazonadas.',
-          initial: 'M',
-        },
-        {
-          name: 'Andrés Rivera',
-          role: 'Director',
-          business: 'Hotel Boutique — Guadalajara',
-          quote: 'El Room Service digital cambió la experiencia de nuestros huéspedes. Los pedidos son más rápidos y los errores prácticamente desaparecieron.',
-          initial: 'A',
-        },
+        { name: 'Carlos Mendoza',   role: 'Dueño',                  business: 'Cadena de Fast Food — CDMX',          quote: 'Redujimos las mermas en un 38% el primer trimestre. El módulo de inventarios con IA fue un parteaguas para nuestra operación.', initial: 'C' },
+        { name: 'Mariana Quintero', role: 'Gerente de Operaciones', business: 'Restaurante de Autor — Monterrey',    quote: 'El POS inteligente nos dio visibilidad total del negocio en tiempo real. Ahora tomamos decisiones con datos, no con corazonadas.', initial: 'M' },
+        { name: 'Andrés Rivera',    role: 'Director',               business: 'Hotel Boutique — Guadalajara',        quote: 'El Room Service digital cambió la experiencia de nuestros huéspedes. Los pedidos son más rápidos y los errores prácticamente desaparecieron.', initial: 'A' },
       ].map(t => (
         <div class="bg-surface-container-lowest p-8 rounded-xl border border-outline-variant/10 flex flex-col">
           <span class="material-symbols-outlined text-primary text-3xl leading-none mb-4 fill">format_quote</span>
           <p class="font-body text-on-surface-variant leading-relaxed text-sm flex-grow mb-6">"{t.quote}"</p>
           <div class="flex items-center gap-3 pt-4 border-t border-outline-variant/10">
-            <div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-on-primary font-headline font-bold text-sm shrink-0">
-              {t.initial}
-            </div>
+            <div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-on-primary font-headline font-bold text-sm shrink-0">{t.initial}</div>
             <div>
               <p class="font-headline font-semibold text-on-background text-sm">{t.name}</p>
               <p class="text-xs font-body text-on-surface-variant">{t.role} · {t.business}</p>
@@ -451,7 +429,7 @@ const questions = [
 
 
 <!-- ═══════════════════════════════════════════════
-     CONFIANZA / AUTORIDAD
+     BOTTOM CTA
 ═══════════════════════════════════════════════ -->
 <section class="py-24 bg-surface">
   <div class="max-w-4xl mx-auto px-6 lg:px-8 text-center" data-animate="scale-in">
@@ -467,8 +445,7 @@ const questions = [
     <div class="mt-10">
       <button
         onclick="document.getElementById('btn-start')?.click(); window.scrollTo({top:0,behavior:'smooth'});"
-        class="bg-primary text-on-primary px-8 py-4 rounded-lg font-label font-semibold text-lg shadow-[0_8px_32px_rgba(0,44,163,0.25)] hover:bg-primary-container hover:-translate-y-px transition-all duration-200 inline-flex items-center gap-2"
-      >
+        class="bg-primary text-on-primary px-8 py-4 rounded-lg font-label font-semibold text-lg shadow-[0_8px_32px_rgba(0,44,163,0.25)] hover:brightness-110 hover:-translate-y-px transition-all duration-200 inline-flex items-center gap-2">
         Inicia tu Diagnóstico de Eficiencia
         <span class="material-symbols-outlined text-xl leading-none">arrow_forward</span>
       </button>
@@ -479,85 +456,63 @@ const questions = [
 </Layout>
 
 <script>
-  type SolutionKey = 'kioscos' | 'analytics' | 'roomservice' | 'inventory' | 'delivery' | 'pos';
+  type SolutionKey = 'kioscos' | 'analytics' | 'roomservice' | 'inventory' | 'delivery' | 'pos' | 'loyalty' | 'kds';
 
   const SOLUTIONS: Record<SolutionKey, { icon: string; title: string; desc: string; href: string }> = {
-    kioscos: {
-      icon: 'point_of_sale',
-      title: 'Kioskos de Autoservicio',
-      desc: 'Reduce filas hasta un 60% y aumenta el ticket promedio. Tecnología que vende sola.',
-      href: '/services',
-    },
-    analytics: {
-      icon: 'monitoring',
-      title: 'Analítica Avanzada con IA',
-      desc: 'KPIs en tiempo real de todas tus sucursales. De datos brutos a decisiones financieras en segundos.',
-      href: '/services',
-    },
-    roomservice: {
-      icon: 'room_service',
-      title: 'Room Service Digital',
-      desc: 'Pedidos directos a la habitación desde el móvil del huésped. Sin llamadas, sin errores.',
-      href: '/services',
-    },
-    inventory: {
-      icon: 'inventory_2',
-      title: 'Inventarios con IA',
-      desc: 'Elimina mermas y robos hormiga. Alertas automáticas y pronósticos de compra inteligentes.',
-      href: '/services',
-    },
-    delivery: {
-      icon: 'delivery_dining',
-      title: 'Delivery Integrado',
-      desc: 'Un solo tablero para Rappi, Uber Eats y pedidos propios. Reduce comisiones con canal directo.',
-      href: '/services',
-    },
-    pos: {
-      icon: 'tablet_android',
-      title: 'POS Inteligente',
-      desc: 'El corazón digital de tu operación. Rápido, intuitivo y conectado con toda tu infraestructura.',
-      href: '/services',
-    },
+    kioscos:     { icon: 'smart_display',    title: 'Kioskos de Autoservicio',  desc: 'Reduce filas hasta un 60% y aumenta el ticket promedio. Tecnología que vende sola.',                                 href: '/services' },
+    analytics:   { icon: 'monitoring',       title: 'Analítica Avanzada con IA',desc: 'KPIs en tiempo real de todas tus sucursales. De datos brutos a decisiones financieras en segundos.',               href: '/services' },
+    roomservice: { icon: 'room_service',     title: 'Room Service Digital',     desc: 'Pedidos directos a la habitación desde el móvil del huésped. Sin llamadas, sin errores.',                           href: '/services' },
+    inventory:   { icon: 'inventory_2',      title: 'Inventarios con IA',       desc: 'Elimina mermas y robos hormiga. Alertas automáticas y pronósticos de compra inteligentes.',                          href: '/services' },
+    delivery:    { icon: 'delivery_dining',  title: 'Delivery Integrado',       desc: 'Un solo tablero para Rappi, Uber Eats y pedidos propios. Reduce comisiones con canal directo.',                     href: '/services' },
+    pos:         { icon: 'tablet_android',   title: 'POS Inteligente',          desc: 'El corazón digital de tu operación. Rápido, intuitivo y conectado con toda tu infraestructura.',                   href: '/services' },
+    loyalty:     { icon: 'favorite',         title: 'Sistema de Lealtad',       desc: 'Convierte visitantes en clientes recurrentes con cupones, niveles y promociones automáticas.',                      href: '/services' },
+    kds:         { icon: 'kitchen',          title: 'KDS — Pantallas de Cocina',desc: 'Sincroniza órdenes de POS, kioskos, comanda y delivery en una sola pantalla. El corazón del ecosistema EzEat.',    href: '/services' },
   };
 
-  const PAIN_LABELS: Record<string, string> = {
-    mermas: 'mermas e inventario',
-    commissions: 'comisiones de delivery',
-    queues: 'tiempos de espera y filas',
-    data: 'falta de datos para tomar decisiones',
-  };
+  function calcScore(answers: Record<string, string | string[]>): number {
+    let score = 90;
+    const tech = answers.current_tech as string;
+    const pain = answers.pain as string[];
+    const branches = answers.branches as string;
 
-  function calcScore(answers: Record<string, string>): number {
-    let score = 95;
-    if (answers.tech === 'paper') score -= 25;
-    if (answers.pain === 'commissions' || answers.pain === 'mermas') score -= 15;
-    const branches = answers.branches;
-    if ((branches === '2-5' || branches === '6-20' || branches === '20+') && answers.tech !== 'digital') score -= 10;
-    return Math.max(40, Math.min(85, score));
+    if (tech === 'paper') score -= 30;
+    else if (tech === 'pos_basic') score -= 20;
+    else if (tech === 'multiple_tools') score -= 10;
+
+    if (pain?.includes('inventory')) score -= 8;
+    if (pain?.includes('delivery'))  score -= 6;
+    if (pain?.length > 3)            score -= 5;
+
+    if ((branches === '6-15' || branches === '15+') && tech !== 'integrated') score -= 8;
+
+    return Math.max(38, Math.min(82, score));
   }
 
-  function getRecommendations(answers: Record<string, string>): SolutionKey[] {
+  function getRecommendations(answers: Record<string, string | string[]>): SolutionKey[] {
     const scores: Partial<Record<SolutionKey, number>> = {};
     const add = (k: SolutionKey, pts: number) => { scores[k] = (scores[k] ?? 0) + pts; };
+    const pain = answers.pain as string[];
+    const type = answers.type as string;
+    const tech = answers.current_tech as string;
+    const branches = answers.branches as string;
 
-    if (answers.type === 'hotel') { add('roomservice', 3); add('kioscos', 1); }
-    if (answers.type === 'fastfood') { add('kioscos', 3); add('pos', 1); }
-    if (answers.type === 'restaurant') { add('kioscos', 2); add('analytics', 1); }
-    if (answers.type === 'cafe') { add('pos', 2); add('analytics', 1); }
+    if (type === 'hotel')        { add('roomservice', 3); add('pos', 1); }
+    if (type === 'qsr')          { add('kioscos', 3); add('kds', 2); add('pos', 1); }
+    if (type === 'restaurante')  { add('kds', 2); add('pos', 2); add('analytics', 1); }
+    if (type === 'cafe')         { add('pos', 2); add('loyalty', 2); }
+    if (type === 'dark_kitchen') { add('delivery', 3); add('kds', 2); }
+    if (type === 'foodtruck')    { add('pos', 3); }
 
-    if (answers.pain === 'mermas') { add('inventory', 3); add('analytics', 1); }
-    if (answers.pain === 'commissions') { add('delivery', 3); add('kioscos', 1); }
-    if (answers.pain === 'queues') { add('kioscos', 3); }
-    if (answers.pain === 'data') { add('analytics', 3); }
+    if (pain?.includes('queues'))    { add('kioscos', 3); add('kds', 1); }
+    if (pain?.includes('inventory')) { add('inventory', 3); add('analytics', 1); }
+    if (pain?.includes('delivery'))  { add('delivery', 3); }
+    if (pain?.includes('retention')) { add('loyalty', 3); add('analytics', 1); }
+    if (pain?.includes('staff'))     { add('pos', 2); }
+    if (pain?.includes('noshows'))   { add('analytics', 2); }
 
-    if (answers.tech === 'paper') { add('pos', 3); }
-    if (answers.tech === 'low') { add('pos', 2); }
+    if (tech === 'paper' || tech === 'pos_basic') { add('pos', 3); }
 
-    if (answers.channel === 'apps') { add('delivery', 2); }
-    if (answers.channel === 'all') { add('delivery', 1); add('analytics', 1); }
-
-    const branches = answers.branches;
-    if (branches === '6-20' || branches === '20+') { add('analytics', 2); }
+    if (branches === '6-15' || branches === '15+') { add('analytics', 2); }
 
     return (Object.entries(scores) as [SolutionKey, number][])
       .sort(([, a], [, b]) => b - a)
@@ -565,12 +520,13 @@ const questions = [
       .map(([k]) => k);
   }
 
-  // ── State ─────────────────────────────────────────────────────────
+  // ── State ──────────────────────────────────────────────────────────
   let currentQ = 0;
-  const answers: Record<string, string> = {};
+  const answers: Record<string, string | string[]> = {};
+  const multiSelections: Record<number, Set<string>> = {};
   const TOTAL = 5;
 
-  // ── Elements ──────────────────────────────────────────────────────
+  // ── Elements ────────────────────────────────────────────────────────
   const stageHero    = document.getElementById('stage-hero')!;
   const stageStats   = document.getElementById('stage-hero-stats')!;
   const stageQuiz    = document.getElementById('stage-quiz')!;
@@ -595,8 +551,10 @@ const questions = [
   function updateProgress() {
     const pct = ((currentQ + 1) / TOTAL) * 100;
     progressBar.style.width = `${pct}%`;
-    questionCounter.textContent = `Paso ${currentQ + 1} de ${TOTAL}`;
-    (btnBack as HTMLButtonElement).classList.toggle('hidden', currentQ === 0);
+    questionCounter.textContent = `Pregunta ${currentQ + 1} de ${TOTAL}`;
+    const back = btnBack as HTMLButtonElement;
+    back.classList.toggle('hidden', currentQ === 0);
+    back.classList.toggle('flex', currentQ > 0);
   }
 
   function showQuestion(index: number) {
@@ -604,12 +562,36 @@ const questions = [
     updateProgress();
   }
 
+  function setOptionSelected(btn: HTMLElement, selected: boolean) {
+    const iconEl = btn.querySelector('.option-icon') as HTMLElement;
+    const checkEl = btn.querySelector('.option-check') as HTMLElement;
+    if (selected) {
+      btn.classList.add('border-primary', 'bg-primary/5');
+      btn.classList.remove('border-outline-variant/25');
+      iconEl?.classList.add('bg-primary', 'text-white');
+      iconEl?.classList.remove('bg-primary/8', 'text-primary');
+      checkEl?.classList.add('flex');
+      checkEl?.classList.remove('hidden');
+    } else {
+      btn.classList.remove('border-primary', 'bg-primary/5');
+      btn.classList.add('border-outline-variant/25');
+      iconEl?.classList.remove('bg-primary', 'text-white');
+      iconEl?.classList.add('bg-primary/8', 'text-primary');
+      checkEl?.classList.remove('flex');
+      checkEl?.classList.add('hidden');
+    }
+  }
+
+  function clearQuestionSelections(questionIndex: number) {
+    const qEl = allQuestions[questionIndex];
+    qEl?.querySelectorAll<HTMLElement>('.quiz-option').forEach(b => setOptionSelected(b, false));
+  }
+
   function animateScore(target: number) {
     const circumference = 326.73;
     const circle = document.getElementById('gauge-circle')!;
     const display = document.getElementById('score-display')!;
     const headline = document.getElementById('score-headline')!;
-
     let current = 0;
     const step = target / 60;
     const interval = setInterval(() => {
@@ -625,23 +607,21 @@ const questions = [
   function renderResults() {
     const score = calcScore(answers);
     const recs = getRecommendations(answers);
-    const painLabel = PAIN_LABELS[answers.pain] ?? 'operaciones manuales';
+    const pain = answers.pain as string[] ?? [];
+    const painLabels: Record<string, string> = {
+      queues: 'filas lentas', inventory: 'mermas e inventario',
+      retention: 'baja recompra', delivery: 'caos con delivery',
+      staff: 'desalineación de equipo', noshows: 'no-shows y mesas vacías',
+    };
+    const painText = pain.map(p => painLabels[p]).filter(Boolean).join(', ') || 'operaciones manuales';
+    const painEl = document.getElementById('pain-text')!;
+    painEl.textContent = `Detectamos áreas de mejora en: ${painText}. Con EzEat puedes llegar al 95%.`;
 
-    // Update hook text
-    const painText = document.getElementById('pain-text')!;
-    painText.textContent = `Estás perdiendo margen en ${painLabel}. Con EzEat, puedes llegar al 95%.`;
-
-    // Animate gauge after a short delay
     setTimeout(() => animateScore(score), 300);
 
-    // Save recommendations to localStorage for pricing page pre-selection
-    const recMap: Record<SolutionKey, string> = {
-      kioscos: 'kioscos', analytics: 'analytics', roomservice: 'roomservice',
-      inventory: 'inventory', delivery: 'delivery', pos: 'pos',
-    };
     try {
       localStorage.setItem('ezeat_recs', JSON.stringify(recs));
-      localStorage.setItem('ezeat_branches', answers.branches ?? '1');
+      localStorage.setItem('ezeat_branches', (answers.branches as string) ?? '1');
     } catch {}
 
     resultCards.innerHTML = recs.map((key, i) => {
@@ -649,15 +629,15 @@ const questions = [
       const isTop = i === 0;
       return `
         <div class="flex flex-col rounded-xl p-7 ${isTop
-          ? 'bg-primary shadow-[0_20px_48px_rgba(0,44,163,0.2)] md:-translate-y-3 relative'
-          : 'bg-surface-container-lowest border border-outline-variant/10 shadow-[0_4px_16px_rgba(26,27,36,0.04)]'}">
-          ${isTop ? '<div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-surface-container-lowest text-primary font-bold text-xs px-4 py-1.5 rounded-full shadow-sm uppercase tracking-wider">Recomendado #1</div>' : ''}
-          <div class="w-12 h-12 ${isTop ? 'bg-on-primary/15' : 'bg-primary/8'} rounded-lg flex items-center justify-center ${isTop ? 'text-on-primary' : 'text-primary'} mb-5">
+          ? 'bg-primary shadow-[0_20px_48px_rgba(43,73,243,0.25)] md:-translate-y-3 relative'
+          : 'bg-surface-container-lowest border border-outline-variant/10 shadow-sm'}">
+          ${isTop ? '<div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-white text-primary font-bold text-xs px-4 py-1.5 rounded-full shadow-sm uppercase tracking-wider border border-outline-variant/20">Recomendado #1</div>' : ''}
+          <div class="w-12 h-12 ${isTop ? 'bg-white/15' : 'bg-primary/8'} rounded-xl flex items-center justify-center ${isTop ? 'text-white' : 'text-primary'} mb-5">
             <span class="material-symbols-outlined text-2xl leading-none">${s.icon}</span>
           </div>
-          <h3 class="font-headline font-bold text-xl mb-2 ${isTop ? 'text-on-primary' : 'text-on-background'}">${s.title}</h3>
-          <p class="font-body text-sm leading-relaxed ${isTop ? 'text-on-primary/80' : 'text-on-surface-variant'} mb-6 flex-grow">${s.desc}</p>
-          <a href="${s.href}" class="inline-flex items-center gap-1.5 font-label font-semibold text-sm ${isTop ? 'text-on-primary' : 'text-primary'} hover:gap-3 transition-all">
+          <h3 class="font-headline font-bold text-xl mb-2 ${isTop ? 'text-white' : 'text-on-background'}">${s.title}</h3>
+          <p class="font-body text-sm leading-relaxed ${isTop ? 'text-white/80' : 'text-on-surface-variant'} mb-6 flex-grow">${s.desc}</p>
+          <a href="${s.href}" class="inline-flex items-center gap-1.5 font-label font-semibold text-sm ${isTop ? 'text-white' : 'text-primary'} hover:gap-3 transition-all">
             Ver más <span class="material-symbols-outlined text-sm leading-none">arrow_forward</span>
           </a>
         </div>
@@ -665,34 +645,41 @@ const questions = [
     }).join('');
   }
 
-  function clearSelections() {
-    document.querySelectorAll<HTMLElement>('.quiz-option').forEach(b => {
-      b.classList.remove('border-primary', 'bg-primary/5', 'shadow-[0_4px_16px_rgba(0,44,163,0.12)]');
-    });
+  function advanceOrFinish() {
+    if (currentQ < TOTAL - 1) {
+      currentQ++;
+      showQuestion(currentQ);
+    } else {
+      renderResults();
+      showStage('results');
+    }
   }
 
+  // ── Event listeners ─────────────────────────────────────────────────
   btnStart.addEventListener('click', () => {
     currentQ = 0;
-    clearSelections();
+    allQuestions.forEach((_, i) => clearQuestionSelections(i));
+    Object.keys(answers).forEach(k => delete answers[k]);
+    Object.keys(multiSelections).forEach(k => delete multiSelections[+k]);
     showStage('quiz');
     showQuestion(0);
   });
 
-  btnClose.addEventListener('click', () => showStage('hero'));
+  btnClose?.addEventListener('click', () => showStage('hero'));
 
   btnBack.addEventListener('click', () => {
     if (currentQ > 0) { currentQ--; showQuestion(currentQ); }
   });
 
   btnRestart.addEventListener('click', () => {
-    Object.keys(answers).forEach(k => delete answers[k]);
-    currentQ = 0;
-    clearSelections();
-    // Reset gauge
-    const circle = document.getElementById('gauge-circle');
-    if (circle) (circle as SVGCircleElement).style.strokeDashoffset = '326.73';
+    const circle = document.getElementById('gauge-circle') as SVGCircleElement;
     const display = document.getElementById('score-display');
+    if (circle) circle.style.strokeDashoffset = '326.73';
     if (display) display.textContent = '0%';
+    Object.keys(answers).forEach(k => delete answers[k]);
+    Object.keys(multiSelections).forEach(k => delete multiSelections[+k]);
+    currentQ = 0;
+    allQuestions.forEach((_, i) => clearQuestionSelections(i));
     showStage('hero');
   });
 
@@ -700,21 +687,39 @@ const questions = [
     btn.addEventListener('click', () => {
       const q = btn.dataset.q!;
       const v = btn.dataset.v!;
-      answers[q] = v;
+      const isMulti = btn.dataset.multi === 'true';
+      const qIndex = parseInt(btn.closest('[data-question]')?.getAttribute('data-question') ?? '0');
 
-      const siblings = btn.closest('.grid')?.querySelectorAll('.quiz-option');
-      siblings?.forEach(s => s.classList.remove('border-primary', 'bg-primary/5', 'shadow-[0_4px_16px_rgba(0,44,163,0.12)]'));
-      btn.classList.add('border-primary', 'bg-primary/5', 'shadow-[0_4px_16px_rgba(0,44,163,0.12)]');
-
-      setTimeout(() => {
-        if (currentQ < TOTAL - 1) {
-          currentQ++;
-          showQuestion(currentQ);
+      if (isMulti) {
+        if (!multiSelections[qIndex]) multiSelections[qIndex] = new Set();
+        const sel = multiSelections[qIndex];
+        if (sel.has(v)) {
+          sel.delete(v);
+          setOptionSelected(btn, false);
         } else {
-          renderResults();
-          showStage('results');
+          sel.add(v);
+          setOptionSelected(btn, true);
         }
-      }, 260);
+        answers[q] = Array.from(sel);
+        // Show/hide continue button
+        const continueBtn = document.getElementById(`btn-continue-${qIndex}`);
+        if (continueBtn) {
+          continueBtn.classList.toggle('hidden', sel.size === 0);
+          continueBtn.classList.toggle('flex', sel.size > 0);
+        }
+      } else {
+        // Single select: clear siblings, select this
+        const siblings = btn.closest('.grid')?.querySelectorAll<HTMLElement>('.quiz-option');
+        siblings?.forEach(s => setOptionSelected(s, false));
+        setOptionSelected(btn, true);
+        answers[q] = v;
+        setTimeout(() => advanceOrFinish(), 280);
+      }
     });
+  });
+
+  // Wire up continue buttons for multi-select questions
+  document.querySelectorAll<HTMLButtonElement>('.quiz-continue').forEach(btn => {
+    btn.addEventListener('click', () => advanceOrFinish());
   });
 </script>
