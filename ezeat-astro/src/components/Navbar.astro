@@ -63,7 +63,7 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
     id="mobile-menu"
     class="hidden md:hidden bg-surface-container-lowest border-t border-outline-variant/10 px-6 py-4 space-y-1"
   >
-    {navLinks.map(link => {
+    {navLinks.filter(link => link.href !== '/contact').map(link => {
       const isActive = currentPath === link.href || (link.href !== '/' && currentPath.startsWith(link.href));
       return (
         <a
@@ -80,9 +80,9 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
     })}
     <a
       href="/contact"
-      class="block mt-3 bg-primary text-on-primary font-label font-medium px-6 py-3 rounded-lg text-center hover:bg-primary-container transition-colors"
+      class="block mt-3 bg-primary text-on-primary font-label font-medium px-6 py-3 rounded-lg text-center hover:brightness-110 transition-all"
     >
-      Contacto
+      Agendar demo
     </a>
   </div>
 </nav>
