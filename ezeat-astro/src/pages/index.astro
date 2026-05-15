@@ -57,13 +57,13 @@ const questions = [
   {
     id: 'goals',
     multi: false,
-    text: '¿Cuál es tu principal objetivo este año?',
-    sub: 'Priorizamos los módulos según tu meta.',
+    text: '¿Cuál es tu prioridad en los próximos 6 meses?',
+    sub: '',
     options: [
-      { value: 'reduce_costs',      label: 'Reducir costos',       sub: 'Márgenes y operación eficiente', icon: 'savings' },
-      { value: 'grow_sales',        label: 'Crecer ventas',        sub: 'Más clientes y ticket promedio', icon: 'trending_up' },
-      { value: 'open_branches',     label: 'Abrir sucursales',     sub: 'Escalar la operación',           icon: 'add_business' },
-      { value: 'better_experience', label: 'Mejorar experiencia',  sub: 'Fidelizar y retener clientes',  icon: 'star' },
+      { value: 'open_branches',     label: 'Abrir más sucursales',      sub: 'Crecer sin perder control',      icon: 'domain' },
+      { value: 'grow_ticket',       label: 'Aumentar ticket promedio',  sub: 'Vender más por visita',          icon: 'trending_up' },
+      { value: 'digitize',          label: 'Digitalizar la experiencia',sub: 'Del cliente y el equipo',        icon: 'smartphone' },
+      { value: 'margins',           label: 'Mejorar márgenes',          sub: 'Reducir mermas y costos',        icon: 'bar_chart' },
     ],
   },
 ];
@@ -261,52 +261,97 @@ const questions = [
 <!-- ═══════════════════════════════════════════════
      RESULTS
 ═══════════════════════════════════════════════ -->
-<section id="stage-results" class="hidden min-h-screen bg-surface py-20">
-  <div class="max-w-4xl mx-auto px-6">
+<section id="stage-results" class="hidden py-16 bg-[#f5f6fa]">
+  <div class="max-w-3xl mx-auto px-6">
 
-    <div class="text-center mb-12" data-animate="fade-up">
-      <div class="inline-flex items-center gap-2 bg-surface-container-highest px-4 py-2 rounded-full mb-8">
-        <span class="material-symbols-outlined text-primary text-base leading-none fill">check_circle</span>
-        <span class="text-sm font-label font-medium text-on-surface">Diagnóstico completado</span>
+    <!-- Header -->
+    <div class="text-center mb-10">
+      <div class="inline-flex items-center gap-2 bg-white border border-outline-variant/20 px-4 py-2 rounded-full mb-6 shadow-sm">
+        <span class="material-symbols-outlined text-primary text-base leading-none">auto_awesome</span>
+        <span class="text-sm font-label font-medium text-on-surface">Tu diagnóstico está listo</span>
       </div>
+      <h2 class="font-headline text-4xl md:text-5xl font-extrabold text-on-background leading-tight mb-3">
+        Tu negocio opera al <span id="score-headline" class="text-primary">—%</span> de su capacidad
+      </h2>
+      <p id="score-subtitle" class="text-on-surface-variant font-body text-base max-w-lg mx-auto"></p>
+    </div>
 
-      <div class="flex flex-col items-center mb-6">
-        <div class="relative w-48 h-48">
-          <svg class="w-full h-full -rotate-90" viewBox="0 0 120 120">
-            <circle cx="60" cy="60" r="52" fill="none" stroke="currentColor" stroke-width="8" class="text-surface-container-highest"/>
-            <circle id="gauge-circle" cx="60" cy="60" r="52" fill="none"
-              stroke="currentColor" stroke-width="8" stroke-linecap="round"
-              stroke-dasharray="326.73" stroke-dashoffset="326.73"
-              class="text-primary transition-all duration-1000 ease-out"/>
-          </svg>
-          <div class="absolute inset-0 flex flex-col items-center justify-center">
-            <span id="score-display" class="font-headline font-extrabold text-4xl text-on-background">0%</span>
-            <span class="text-xs font-label text-on-surface-variant mt-1">eficiencia actual</span>
+    <!-- Score card -->
+    <div class="bg-white rounded-2xl shadow-[0_4px_24px_rgba(26,27,36,0.08)] p-8 mb-6">
+      <div class="flex flex-col md:flex-row items-center gap-10">
+        <!-- Gauge -->
+        <div class="flex flex-col items-center shrink-0">
+          <div class="relative w-44 h-44">
+            <svg class="w-full h-full -rotate-90" viewBox="0 0 120 120">
+              <circle cx="60" cy="60" r="52" fill="none" stroke="#e8eaf0" stroke-width="10"/>
+              <circle id="gauge-circle" cx="60" cy="60" r="52" fill="none"
+                stroke="#2b49f3" stroke-width="10" stroke-linecap="round"
+                stroke-dasharray="326.73" stroke-dashoffset="326.73"
+                class="transition-all duration-1000 ease-out"/>
+            </svg>
+            <div class="absolute inset-0 flex flex-col items-center justify-center">
+              <span class="text-[10px] font-label font-bold text-on-surface-variant uppercase tracking-widest mb-1">Eficiencia</span>
+              <span id="score-display" class="font-headline font-extrabold text-4xl text-primary leading-none">0%</span>
+              <span class="text-[11px] font-body text-on-surface-variant mt-1">Puntaje actual</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Comparison bars -->
+        <div class="flex-1 w-full space-y-5">
+          <div>
+            <p class="text-xs font-label text-on-surface-variant mb-2">Hoy</p>
+            <div class="w-full h-2.5 bg-surface-container-highest rounded-full overflow-hidden mb-1.5">
+              <div id="bar-today" class="h-full bg-on-surface-variant/30 rounded-full transition-all duration-1000" style="width:0%"></div>
+            </div>
+            <span id="bar-today-label" class="font-headline font-bold text-on-background text-lg">0%</span>
+          </div>
+
+          <div>
+            <p class="text-xs font-label text-primary flex items-center gap-1 mb-2">
+              <span class="material-symbols-outlined text-sm leading-none">trending_up</span>
+              Con EzEat
+            </p>
+            <div class="w-full h-2.5 bg-surface-container-highest rounded-full overflow-hidden mb-1.5">
+              <div class="h-full bg-primary rounded-full transition-all duration-1000 delay-500" style="width:95%"></div>
+            </div>
+            <span class="font-headline font-bold text-primary text-lg">95%</span>
+          </div>
+
+          <div class="pt-2 border-t border-outline-variant/10">
+            <p class="text-xs font-body text-on-surface-variant mb-0.5">Potencial de mejora</p>
+            <p id="improvement-label" class="font-headline font-extrabold text-2xl text-on-background"></p>
           </div>
         </div>
       </div>
-
-      <h2 class="font-headline text-3xl md:text-4xl font-extrabold text-on-background mb-3 leading-tight">
-        Tu operación está al <span id="score-headline" class="text-primary">—%</span> de su potencial.
-      </h2>
-      <p class="text-on-surface-variant font-body text-lg max-w-xl mx-auto mb-2">
-        Con EzEat, puedes llegar al <span class="font-bold text-primary">95%</span>.
-      </p>
-      <p id="pain-text" class="text-on-surface-variant font-body text-base max-w-xl mx-auto"></p>
     </div>
 
-    <div id="result-cards" class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-14"></div>
+    <!-- Recommended tools -->
+    <div class="mb-6">
+      <h3 class="font-headline font-bold text-2xl text-on-background text-center mb-1">Herramientas recomendadas</h3>
+      <p class="text-on-surface-variant font-body text-sm text-center mb-6">Seleccionadas específicamente para tu operación.</p>
+      <div id="result-cards" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+    </div>
 
-    <div class="flex flex-col sm:flex-row justify-center gap-4">
-      <a href="/contact"
-        class="bg-primary text-on-primary px-8 py-4 rounded-lg font-label font-semibold text-base shadow-[0_8px_32px_rgba(0,44,163,0.2)] hover:brightness-110 hover:-translate-y-px transition-all duration-200 flex items-center justify-center gap-2">
-        Agendar demo gratuita
-        <span class="material-symbols-outlined text-xl leading-none">calendar_month</span>
-      </a>
-      <button id="btn-restart"
-        class="border border-outline-variant/30 text-on-surface px-8 py-4 rounded-lg font-label font-medium text-base hover:bg-surface-container-low transition-all duration-200">
-        Repetir diagnóstico
-      </button>
+    <!-- CTA card -->
+    <div class="rounded-2xl px-8 py-10 text-center" style="background: linear-gradient(135deg, #0f1729 0%, #141d3d 60%, #1a2450 100%);">
+      <h3 class="font-headline font-bold text-2xl md:text-3xl text-white mb-3">
+        Llega al <span class="text-[#b0beff]">95%</span> de eficiencia
+      </h3>
+      <p class="text-white/70 font-body text-sm mb-8 max-w-md mx-auto">
+        Agenda una demo de 20 minutos y te mostramos exactamente cómo EzEat transforma tu operación.
+      </p>
+      <div class="flex flex-col sm:flex-row justify-center gap-3">
+        <a href="/contact"
+          class="bg-primary text-white px-7 py-3.5 rounded-xl font-label font-semibold text-sm shadow-[0_4px_16px_rgba(43,73,243,0.4)] hover:brightness-110 transition-all duration-200 flex items-center justify-center gap-2">
+          Agendar demo personalizada
+        </a>
+        <button id="btn-restart"
+          class="border border-white/30 text-white px-7 py-3.5 rounded-xl font-label font-medium text-sm hover:bg-white/10 transition-all duration-200 flex items-center justify-center gap-2">
+          <span class="material-symbols-outlined text-base leading-none">refresh</span>
+          Repetir diagnóstico
+        </button>
+      </div>
     </div>
 
   </div>
@@ -456,17 +501,21 @@ const questions = [
 </Layout>
 
 <script>
-  type SolutionKey = 'kioscos' | 'analytics' | 'roomservice' | 'inventory' | 'delivery' | 'pos' | 'loyalty' | 'kds';
+  type SolutionKey = 'pos_basic' | 'pos' | 'kioscos' | 'kds' | 'comanda' | 'analytics' | 'roomservice' | 'inventory' | 'delivery' | 'loyalty' | 'reservations' | 'online';
 
-  const SOLUTIONS: Record<SolutionKey, { icon: string; title: string; desc: string; href: string }> = {
-    kioscos:     { icon: 'smart_display',    title: 'Kioskos de Autoservicio',  desc: 'Reduce filas hasta un 60% y aumenta el ticket promedio. Tecnología que vende sola.',                                 href: '/services' },
-    analytics:   { icon: 'monitoring',       title: 'Analítica Avanzada con IA',desc: 'KPIs en tiempo real de todas tus sucursales. De datos brutos a decisiones financieras en segundos.',               href: '/services' },
-    roomservice: { icon: 'room_service',     title: 'Room Service Digital',     desc: 'Pedidos directos a la habitación desde el móvil del huésped. Sin llamadas, sin errores.',                           href: '/services' },
-    inventory:   { icon: 'inventory_2',      title: 'Inventarios con IA',       desc: 'Elimina mermas y robos hormiga. Alertas automáticas y pronósticos de compra inteligentes.',                          href: '/services' },
-    delivery:    { icon: 'delivery_dining',  title: 'Delivery Integrado',       desc: 'Un solo tablero para Rappi, Uber Eats y pedidos propios. Reduce comisiones con canal directo.',                     href: '/services' },
-    pos:         { icon: 'tablet_android',   title: 'POS Inteligente',          desc: 'El corazón digital de tu operación. Rápido, intuitivo y conectado con toda tu infraestructura.',                   href: '/services' },
-    loyalty:     { icon: 'favorite',         title: 'Sistema de Lealtad',       desc: 'Convierte visitantes en clientes recurrentes con cupones, niveles y promociones automáticas.',                      href: '/services' },
-    kds:         { icon: 'kitchen',          title: 'KDS — Pantallas de Cocina',desc: 'Sincroniza órdenes de POS, kioskos, comanda y delivery en una sola pantalla. El corazón del ecosistema EzEat.',    href: '/services' },
+  const SOLUTIONS: Record<SolutionKey, { icon: string; title: string; desc: string }> = {
+    pos_basic:    { icon: 'point_of_sale',   title: 'POS Básico',                  desc: 'Punto de venta sencillo para empezar tu negocio.' },
+    pos:          { icon: 'tablet_android',  title: 'POS Inteligente',             desc: 'Punto de venta centralizado para todas tus sucursales.' },
+    kioscos:      { icon: 'smart_display',   title: 'Kioskos de Autoservicio',     desc: 'Reduce filas y aumenta el ticket promedio.' },
+    kds:          { icon: 'kitchen',         title: 'KDS — Pantallas de Cocina',   desc: 'Adiós tickets de papel. Mide tiempos de preparación.' },
+    comanda:      { icon: 'stylus_note',     title: 'Comanda Digital de Meseros',  desc: 'Toma pedidos en mesa y envía directo al KDS.' },
+    analytics:    { icon: 'bar_chart',       title: 'Analítica Avanzada con IA',   desc: 'KPIs en tiempo real de todas tus sucursales.' },
+    roomservice:  { icon: 'room_service',    title: 'Room Service Hotelero',       desc: 'Pedidos y cargo a cuenta desde el móvil del huésped.' },
+    inventory:    { icon: 'inventory_2',     title: 'Control de Inventarios',      desc: 'Elimina mermas. Alertas automáticas y pronósticos.' },
+    delivery:     { icon: 'delivery_dining', title: 'Integración de Delivery',     desc: 'Un tablero para Rappi, Uber Eats y pedidos propios.' },
+    loyalty:      { icon: 'favorite',        title: 'Sistema de Lealtad',          desc: 'Cupones, niveles y promociones automáticas.' },
+    reservations: { icon: 'event',           title: 'Sistema de Reservaciones',    desc: 'Reservas en línea 24/7 y menos no-shows.' },
+    online:       { icon: 'language',        title: 'Pedidos en Línea',            desc: 'Tu menú digital propio. Sin comisiones a terceros.' },
   };
 
   function calcScore(answers: Record<string, string | string[]>): number {
@@ -491,32 +540,46 @@ const questions = [
   function getRecommendations(answers: Record<string, string | string[]>): SolutionKey[] {
     const scores: Partial<Record<SolutionKey, number>> = {};
     const add = (k: SolutionKey, pts: number) => { scores[k] = (scores[k] ?? 0) + pts; };
-    const pain = answers.pain as string[];
+    const pain = (answers.pain as string[]) ?? [];
     const type = answers.type as string;
     const tech = answers.current_tech as string;
     const branches = answers.branches as string;
+    const goals = answers.goals as string;
 
-    if (type === 'hotel')        { add('roomservice', 3); add('pos', 1); }
-    if (type === 'qsr')          { add('kioscos', 3); add('kds', 2); add('pos', 1); }
-    if (type === 'restaurante')  { add('kds', 2); add('pos', 2); add('analytics', 1); }
-    if (type === 'cafe')         { add('pos', 2); add('loyalty', 2); }
-    if (type === 'dark_kitchen') { add('delivery', 3); add('kds', 2); }
-    if (type === 'foodtruck')    { add('pos', 3); }
+    // By business type
+    if (type === 'hotel')        { add('roomservice', 4); add('pos', 2); add('kds', 2); }
+    if (type === 'qsr')          { add('kioscos', 4); add('kds', 3); add('pos', 2); }
+    if (type === 'restaurante')  { add('comanda', 3); add('kds', 3); add('pos_basic', 2); add('reservations', 2); }
+    if (type === 'cafe')         { add('pos_basic', 3); add('loyalty', 3); add('online', 2); }
+    if (type === 'dark_kitchen') { add('delivery', 4); add('kds', 3); add('inventory', 2); }
+    if (type === 'foodtruck')    { add('pos_basic', 4); add('online', 2); }
 
-    if (pain?.includes('queues'))    { add('kioscos', 3); add('kds', 1); }
-    if (pain?.includes('inventory')) { add('inventory', 3); add('analytics', 1); }
-    if (pain?.includes('delivery'))  { add('delivery', 3); }
-    if (pain?.includes('retention')) { add('loyalty', 3); add('analytics', 1); }
-    if (pain?.includes('staff'))     { add('pos', 2); }
-    if (pain?.includes('noshows'))   { add('analytics', 2); }
+    // By pain points
+    if (pain.includes('queues'))    { add('kioscos', 3); add('kds', 2); }
+    if (pain.includes('inventory')) { add('inventory', 4); add('analytics', 2); }
+    if (pain.includes('delivery'))  { add('delivery', 4); add('online', 2); }
+    if (pain.includes('retention')) { add('loyalty', 4); add('analytics', 2); }
+    if (pain.includes('staff'))     { add('comanda', 3); add('pos', 2); }
+    if (pain.includes('noshows'))   { add('reservations', 4); add('analytics', 2); }
 
-    if (tech === 'paper' || tech === 'pos_basic') { add('pos', 3); }
+    // By current tech
+    if (tech === 'paper')          { add('pos_basic', 4); add('kds', 2); }
+    if (tech === 'pos_basic')      { add('pos', 3); add('analytics', 2); }
+    if (tech === 'multiple_tools') { add('pos', 3); add('analytics', 3); }
+    if (tech === 'integrated')     { add('analytics', 4); add('inventory', 2); }
 
-    if (branches === '6-15' || branches === '15+') { add('analytics', 2); }
+    // By scale
+    if (branches === '6-15' || branches === '15+') { add('analytics', 3); add('pos', 2); }
+
+    // By goals
+    if (goals === 'open_branches')  { add('analytics', 3); add('pos', 2); }
+    if (goals === 'grow_ticket')    { add('kioscos', 3); add('loyalty', 3); }
+    if (goals === 'digitize')       { add('online', 3); add('comanda', 3); }
+    if (goals === 'margins')        { add('inventory', 3); add('analytics', 3); }
 
     return (Object.entries(scores) as [SolutionKey, number][])
       .sort(([, a], [, b]) => b - a)
-      .slice(0, 3)
+      .slice(0, 6)
       .map(([k]) => k);
   }
 
@@ -606,40 +669,42 @@ const questions = [
 
   function renderResults() {
     const score = calcScore(answers);
+    const improvement = 95 - score;
     const recs = getRecommendations(answers);
-    const pain = answers.pain as string[] ?? [];
-    const painLabels: Record<string, string> = {
-      queues: 'filas lentas', inventory: 'mermas e inventario',
-      retention: 'baja recompra', delivery: 'caos con delivery',
-      staff: 'desalineación de equipo', noshows: 'no-shows y mesas vacías',
-    };
-    const painText = pain.map(p => painLabels[p]).filter(Boolean).join(', ') || 'operaciones manuales';
-    const painEl = document.getElementById('pain-text')!;
-    painEl.textContent = `Detectamos áreas de mejora en: ${painText}. Con EzEat puedes llegar al 95%.`;
 
-    setTimeout(() => animateScore(score), 300);
+    // Subtitle based on score range
+    const subtitle = score < 50
+      ? 'Hay mucho potencial por desbloquear. Con las herramientas correctas puedes transformar tu operación.'
+      : score < 65
+      ? 'Vas por buen camino, pero hay oportunidades claras de optimización.'
+      : 'Tienes una operación sólida. Estos módulos la llevarán al siguiente nivel.';
+
+    document.getElementById('score-subtitle')!.textContent = subtitle;
+    document.getElementById('improvement-label')!.textContent = `+${improvement} puntos`;
+
+    setTimeout(() => {
+      animateScore(score);
+      const barToday = document.getElementById('bar-today')!;
+      barToday.style.width = `${score}%`;
+      document.getElementById('bar-today-label')!.textContent = `${score}%`;
+    }, 300);
 
     try {
       localStorage.setItem('ezeat_recs', JSON.stringify(recs));
       localStorage.setItem('ezeat_branches', (answers.branches as string) ?? '1');
     } catch {}
 
-    resultCards.innerHTML = recs.map((key, i) => {
+    resultCards.innerHTML = recs.map(key => {
       const s = SOLUTIONS[key];
-      const isTop = i === 0;
       return `
-        <div class="flex flex-col rounded-xl p-7 ${isTop
-          ? 'bg-primary shadow-[0_20px_48px_rgba(43,73,243,0.25)] md:-translate-y-3 relative'
-          : 'bg-surface-container-lowest border border-outline-variant/10 shadow-sm'}">
-          ${isTop ? '<div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-white text-primary font-bold text-xs px-4 py-1.5 rounded-full shadow-sm uppercase tracking-wider border border-outline-variant/20">Recomendado #1</div>' : ''}
-          <div class="w-12 h-12 ${isTop ? 'bg-white/15' : 'bg-primary/8'} rounded-xl flex items-center justify-center ${isTop ? 'text-white' : 'text-primary'} mb-5">
-            <span class="material-symbols-outlined text-2xl leading-none">${s.icon}</span>
+        <div class="bg-white rounded-xl border border-outline-variant/20 p-5 flex flex-col gap-3 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-200">
+          <div class="w-11 h-11 bg-primary rounded-xl flex items-center justify-center shrink-0">
+            <span class="material-symbols-outlined text-white text-xl leading-none">${s.icon}</span>
           </div>
-          <h3 class="font-headline font-bold text-xl mb-2 ${isTop ? 'text-white' : 'text-on-background'}">${s.title}</h3>
-          <p class="font-body text-sm leading-relaxed ${isTop ? 'text-white/80' : 'text-on-surface-variant'} mb-6 flex-grow">${s.desc}</p>
-          <a href="${s.href}" class="inline-flex items-center gap-1.5 font-label font-semibold text-sm ${isTop ? 'text-white' : 'text-primary'} hover:gap-3 transition-all">
-            Ver más <span class="material-symbols-outlined text-sm leading-none">arrow_forward</span>
-          </a>
+          <div>
+            <h4 class="font-headline font-bold text-on-background text-sm mb-1">${s.title}</h4>
+            <p class="font-body text-on-surface-variant text-xs leading-relaxed">${s.desc}</p>
+          </div>
         </div>
       `;
     }).join('');
