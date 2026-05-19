@@ -1,7 +1,6 @@
 ---
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
-import BetaBanner from '../components/BetaBanner.astro';
 
 interface Props {
   title: string;
@@ -97,7 +96,6 @@ const {
   </head>
 
   <body class="bg-background text-on-background font-body antialiased selection:bg-primary-container selection:text-on-primary-container">
-    <BetaBanner />
     <Navbar />
     <main class="pt-20">
       <slot />
