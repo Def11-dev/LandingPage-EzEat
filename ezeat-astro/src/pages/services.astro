@@ -51,7 +51,7 @@ const sections = [
       {
         icon: 'kitchen',
         name: 'KDS — Pantallas de Cocina',
-        desc: 'El corazón del ecosistema EzEat. Sincroniza órdenes de POS, kioskos, comanda digital y delivery en una sola pantalla.',
+        desc: 'El corazón del ecosistema EzEat. Sincroniza órdenes de PDV, kioskos, comanda digital y delivery en una sola pantalla.',
         price: 'Desde $349',
         priceNote: '+ hardware',
         status: 'listo', ia: false,
@@ -70,6 +70,14 @@ const sections = [
         desc: 'Menú digital del hotel, pago directo o cargo a cuenta y conexión al PMS.',
         price: 'Desde $2,899',
         priceNote: 'plan completo hotel',
+        status: 'beta', ia: false,
+      },
+      {
+        icon: 'local_offer',
+        name: 'Creador de Promociones y Cupones',
+        desc: 'Diseña y lanza promociones digitales desde EzEat: cupones por QR, descuentos por volumen, ofertas de tiempo limitado y campañas automáticas por fecha o evento. Sin papelería ni depender de terceros.',
+        price: 'Próximamente',
+        priceNote: null,
         status: 'beta', ia: false,
       },
     ],
@@ -284,7 +292,7 @@ const statusMeta: Record<string, { label: string; cls: string; icon: string }> =
                     <!-- Price + CTA -->
                     <div class="flex items-end justify-between mt-5 pt-4 border-t border-outline-variant/10">
                       <div>
-                        {mod.price === 'gratis' || mod.price === 'modelo por envío' ? (
+                        {mod.price === 'gratis' || mod.price === 'modelo por envío' || mod.price === 'Próximamente' ? (
                           <p class="text-sm font-headline font-bold text-on-background">{mod.price}</p>
                         ) : (
                           <p class="text-sm font-body text-on-surface">
