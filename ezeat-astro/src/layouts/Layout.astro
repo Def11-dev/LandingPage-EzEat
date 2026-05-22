@@ -103,6 +103,49 @@ const {
     </main>
     <Footer />
 
+    <!-- Floating diagnostic CTA widget -->
+    <div class="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-2 group">
+      <!-- Label bubble — always visible, pulses subtly -->
+      <a
+        id="diag-cta-btn"
+        href="/#diagnostico"
+        class="flex items-center gap-2 bg-primary text-on-primary text-xs font-label font-semibold px-4 py-2.5 rounded-xl shadow-[0_4px_20px_rgba(43,73,243,0.45)] whitespace-nowrap hover:brightness-110 transition-all duration-200"
+        style="animation: diag-pulse 3s ease-in-out infinite;"
+      >
+        <span class="material-symbols-outlined text-sm leading-none">insights</span>
+        Iniciar diagnóstico gratis
+        <span class="material-symbols-outlined text-sm leading-none">arrow_forward</span>
+      </a>
+
+      <!-- Mascot face button -->
+      <a
+        href="/#diagnostico"
+        aria-label="Iniciar diagnóstico de eficiencia"
+        class="w-16 h-16 rounded-full overflow-hidden shadow-[0_4px_24px_rgba(43,73,243,0.5)] border-[3px] border-primary hover:scale-110 hover:shadow-[0_6px_32px_rgba(43,73,243,0.65)] transition-all duration-200 block"
+        style="background: #ffffff url('/mascot.png') no-repeat 50% 15% / 360%;"
+      ></a>
+    </div>
+
+    <style>
+      @keyframes diag-pulse {
+        0%, 100% { box-shadow: 0 4px 20px rgba(43,73,243,0.45); }
+        50%       { box-shadow: 0 4px 28px rgba(43,73,243,0.75), 0 0 0 4px rgba(43,73,243,0.15); }
+      }
+    </style>
+
+    <script>
+      // If URL contains /#diagnostico, auto-trigger the quiz start button
+      if (window.location.hash === '#diagnostico') {
+        const btn = document.getElementById('btn-start');
+        if (btn) btn.click();
+      }
+      // Floating button: on home page click triggers quiz; elsewhere navigates home
+      document.getElementById('diag-cta-btn')?.addEventListener('click', (e) => {
+        const btn = document.getElementById('btn-start');
+        if (btn) { e.preventDefault(); btn.click(); }
+      });
+    </script>
+
     <!-- IntersectionObserver for scroll animations -->
     <script>
       const animateEls  = document.querySelectorAll('[data-animate]');

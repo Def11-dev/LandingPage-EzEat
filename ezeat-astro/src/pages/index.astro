@@ -115,11 +115,28 @@ const questions = [
         </div>
       </div>
 
-      <div class="lg:col-span-5 relative flex justify-center" data-animate="slide-left" style="transition-delay:0.2s">
-        <div class="relative w-72 h-72 lg:w-96 lg:h-96">
-          <div class="absolute inset-0 rounded-full opacity-30" style="background: radial-gradient(circle, #2b49f3 0%, transparent 70%);"></div>
-          <div class="absolute inset-4 rounded-full bg-white/5 border border-white/10 flex items-center justify-center">
-            <img src="/EZ eat (7).png" alt="EzEat mascot" class="w-full h-full object-contain p-6 drop-shadow-2xl" loading="eager" />
+      <div class="lg:col-span-5 relative flex justify-center items-center" data-animate="slide-left" style="transition-delay:0.2s">
+        <!-- Mascot animation: natural full-height, no circular clip -->
+        <div class="relative w-full" style="height:480px;">
+          <iframe
+            src="/mascot.html"
+            title="EzEat mascot"
+            class="absolute inset-0 w-full h-full"
+            style="border:none;"
+            loading="eager"
+            scrolling="no"
+          ></iframe>
+          <!-- Floating stat cards on top -->
+          <div class="animate-float absolute -bottom-6 -left-4 lg:-left-10 w-56 p-5 bg-white rounded-xl shadow-[0_16px_40px_rgba(0,0,0,0.3)] hidden lg:block">
+            <div class="flex items-center gap-3 mb-2">
+              <span class="material-symbols-outlined text-primary text-2xl fill leading-none">speed</span>
+              <span class="font-headline font-bold text-on-surface text-lg">40%</span>
+            </div>
+            <p class="text-xs font-body text-on-surface-variant leading-snug">Reducción promedio en costos laborales con EzEat</p>
+          </div>
+          <div class="absolute -top-4 -right-4 px-4 py-2 bg-white rounded-xl shadow-lg hidden lg:flex items-center gap-2">
+            <span class="material-symbols-outlined text-primary text-sm leading-none fill">verified</span>
+            <span class="text-on-surface text-xs font-label font-semibold">Capaz de apoyar a cientos de negocios</span>
           </div>
         </div>
         <div class="animate-float absolute -bottom-6 -left-4 lg:-left-10 w-56 p-5 bg-white rounded-xl shadow-[0_16px_40px_rgba(0,0,0,0.3)] hidden lg:block">
@@ -761,3 +778,77 @@ const questions = [
     btn.addEventListener('click', () => advanceOrFinish());
   });
 </script>
+
+<!-- Mascot iframe: set greeting mode + hide dev controls after animation mounts -->
+<script>
+  (function () {
+    const iframe = document.querySelector('iframe[src="/mascot.html"]');
+    if (!iframe) return;
+
+    // Sequence: [modeName, bubbleText | null, durationMs]
+    const sequence = [
+      ['Saludo', '¡Empieza tu diagnóstico!', 4000],
+      ['Idle',   null,                        2000],
+      ['Saludo', '¡Contáctanos!',             4000],
+      ['Salto',  null,                        2200],
+      ['Saludo', '¡Empieza tu diagnóstico!', 4000],
+      ['Baile',  null,                        2800],
+    ];
+    let seqIdx = 0;
+
+    function applyMode(doc, modeName) {
+      const btn = Array.from(doc.querySelectorAll('.mode-switcher button'))
+        .find(b => b.textContent.trim() === modeName);
+      if (btn) btn.click();
+    }
+
+    function setBubble(doc, text) {
+      const bubble = doc.querySelector('.bubble');
+      if (!bubble) return;
+      bubble.textContent = text || '';
+      bubble.style.visibility = text ? 'visible' : 'hidden';
+    }
+
+    function runStep(doc) {
+      const [mode, msg, dur] = sequence[seqIdx];
+      applyMode(doc, mode);
+      setBubble(doc, msg);
+      seqIdx = (seqIdx + 1) % sequence.length;
+      setTimeout(() => runStep(doc), dur);
+    }
+
+    const poll = setInterval(() => {
+      try {
+        const doc = iframe.contentDocument;
+        if (!doc || doc.getElementById('__bundler_thumbnail')) return;
+
+        // Hide dev controls & caption
+        const style = doc.createElement('style');
+        style.textContent = `
+          .mode-switcher { display: none !important; }
+          .caption { display: none !important; }
+          :root { --ez-bg: transparent !important; }
+          body, #app { background: transparent !important; }
+          .bubble {
+            font-size: 11px !important;
+            max-width: 140px !important;
+            white-space: normal !important;
+            text-align: center !important;
+            line-height: 1.3 !important;
+            padding: 8px 12px 26px !important;
+          }
+          .bubble::after {
+            top: auto !important;
+            bottom: -16px !important;
+          }
+        `;
+        doc.head.appendChild(style);
+
+        clearInterval(poll);
+        runStep(doc);
+
+      } catch (_) { clearInterval(poll); }
+    }, 100);
+  })();
+</script>
+
