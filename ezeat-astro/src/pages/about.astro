@@ -10,7 +10,12 @@ const promises = [
   {
     icon: 'auto_awesome',
     title: 'IA con propósito',
-    body: 'No usamos inteligencia artificial por moda. La usamos para que dejes de perder tiempo en hojas de cálculo.',
+    body: 'Predecimos la demanda antes de que abras la puerta: por clima, por eventos locales, por tu historial. Cada platillo que no se tira son $4–$7 en ventas que no necesitas generar para cubrir la pérdida.',
+  },
+  {
+    icon: 'eco',
+    title: 'Compromiso ambiental',
+    body: 'Reducir el desperdicio es bueno para tus márgenes y para el planeta. Lo logramos de dos formas: inventario predictivo y menús donde el comensal decide si quiere su guarnición.',
   },
   {
     icon: 'trending_up',
@@ -38,7 +43,7 @@ const promises = [
           <span class="text-[#b0beff]">restauranteros.</span>
         </h1>
         <p class="font-body text-lg text-white/70 max-w-lg leading-relaxed">
-          Entendemos el caos porque hemos estado ahí. EzEat nació de la frustración de ver cómo la tecnología, en lugar de ayudar, se convertía en un obstáculo. Decidimos dejar de usar sistemas desconectados para construir el primer cerebro digital que realmente entiende el ritmo de un HORECA.
+          Entendemos el caos porque hemos estado ahí. EzEat nació de una realidad brutal: el restaurante promedio pierde el 35% de sus insumos en mermas tangibles — comida tirada, sobrantes, errores de cocina — y otro tanto en pérdidas intangibles que casi nadie mide: mesas mal rotadas, turnos sobredimensionados, flujos de trabajo lentos. Decidimos construir el cerebro centralizado que conecta atención al cliente, cocina y cadena de suministro en un solo lugar para resolverlo de raíz.
         </p>
         <div class="flex gap-4 pt-2">
           <a href="/contact" class="bg-primary text-white px-6 py-3 rounded-lg font-label font-semibold shadow-[0_8px_24px_rgba(43,73,243,0.4)] hover:brightness-110 hover:-translate-y-px transition-all duration-200">
@@ -73,7 +78,7 @@ const promises = [
         El Diferenciador: Nacidos en la innovación.
       </h2>
       <p class="font-body text-white/70 text-lg leading-relaxed max-w-2xl mx-auto">
-        Nacido en el ecosistema de emprendimiento del <span class="font-bold text-white">Tecnológico de Monterrey</span>, EzEat combina la metodología de innovación más avanzada con la experiencia operativa del mundo real. No estamos construyendo un software para hoy; estamos diseñando la infraestructura para los negocios que dominarán la industria mañana.
+        Los restaurantes pierden, en promedio, $1 de cada $4 que gastan en insumos. Nacido en el ecosistema de emprendimiento del <span class="font-bold text-white">Tecnológico de Monterrey</span>, EzEat fue diseñado para resolver ese problema con tecnología real: IA predictiva nativa, operación completamente conectada y una infraestructura modular que crece contigo. No estamos construyendo un software para hoy; estamos diseñando el sistema que los negocios más rentables del sector usarán mañana.
       </p>
     </div>
   </section>
@@ -91,7 +96,7 @@ const promises = [
         </p>
       </div>
 
-      <div class="grid md:grid-cols-3 gap-8" data-stagger>
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8" data-stagger>
         {promises.map(p => (
           <div class="bg-white p-8 rounded-2xl border border-outline-variant/15 relative overflow-hidden group shadow-sm hover:shadow-[0_12px_32px_rgba(26,27,36,0.07)] transition-all duration-300 hover:-translate-y-1">
             <div class="absolute top-0 left-0 w-1 h-full bg-primary origin-bottom scale-y-0 group-hover:scale-y-100 transition-transform duration-300 rounded-r"></div>
@@ -125,7 +130,7 @@ const promises = [
           {
             icon: 'psychology',
             title: 'Futuro Basado en Datos',
-            body: 'IA que convierte datos brutos en decisiones financieras. Tus números, tu historial, tu ventaja competitiva.',
+            body: 'IA que predice cuánto vas a vender antes de que abras la puerta. Reduce mermas entre 25 y 30%, optimiza la ocupación de tus mesas y maximiza la rentabilidad por platillo.',
           },
           {
             icon: 'layers',
@@ -163,7 +168,7 @@ const promises = [
           {[
             { year: '2023', side: 'left', title: 'El Origen', body: 'Nace EzEat de la necesidad real: demasiados sistemas, poca integración. Un grupo de restauranteros y desarrolladores decide construir algo diferente.', future: false },
             { year: '2024', side: 'right', title: 'Primeros Clientes', body: 'Lanzamos el MVP con los primeros restaurantes en CDMX. Validamos el modelo modular y empezamos a construir el ecosistema.', future: false },
-            { year: '2025', side: 'left', title: 'Beta y Escalamiento', body: 'Lanzamiento de la versión inteligente de EzEat, enfocada en marcas establecidas y Quick Service Restaurants (QSR).', future: false },
+            { year: '2025', side: 'left', title: 'IA Predictiva Nativa', body: 'Lanzamos la primera versión de EzEat con inteligencia artificial integrada: predice demanda, optimiza inventarios y ayuda a eliminar pérdidas tangibles e intangibles antes de que ocurran.', future: false },
             { year: 'Futuro', side: 'right', title: 'Ecosistema EzEat', body: 'Evolución hacia un marketplace integral y un sistema de delivery local propio para reducir costos y devolverle el margen al restaurantero.', future: true },
           ].map(item => (
             <div class={`relative flex items-start gap-8 ${item.side === 'right' ? 'flex-row-reverse' : ''}`}>

@@ -6,12 +6,12 @@ const row1 = [
     id: 'foodtruck',
     name: 'Food Truck / Pop-ups',
     tagline: 'Operación ligera para negocios en movimiento.',
-    description: 'PDV móvil con modo offline (PWA) que sincroniza al recuperar señal. Ideal para festivales y eventos.',
+    description: 'Funciona sin internet y sincroniza automáticamente al recuperar señal. Ideal para festivales, mercados y eventos.',
     price: '$699',
     unit: 'MXN /mes',
-    includes: ['PDV Básico', 'Pedidos en Línea', 'KDS — Pantallas de Cocina'],
+    includes: ['PDV Básico', 'Pedidos en Línea', 'Pantallas de Cocina'],
     addons: ['Sistema de Lealtad', 'Kioskos de Autoservicio', 'Control de Inventarios', 'Integración de Delivery', 'Analítica Avanzada'],
-    note: 'Compatible con tarjetas SIM M2M/IoT desde $30–60 MXN al mes para tener internet siempre.',
+    note: 'Compatible con chips de datos especializados desde $30–60 MXN al mes: internet siempre disponible, aunque no haya WiFi en el lugar.',
     cta: 'Empezar',
     ctaHref: '/contact',
     popular: false,
@@ -20,12 +20,12 @@ const row1 = [
     id: 'emprendedor',
     name: 'Emprendedor',
     tagline: 'Tu primero de muchos restaurantes.',
-    description: 'Te ayudamos a operar como las grandes cadenas desde el día uno. Disponible en versión QSR (comida rápida) y Tradicional (mesas).',
+    description: 'Te ayudamos a operar como las grandes cadenas desde el día uno. Disponible para comida rápida y restaurante tradicional con mesas.',
     price: '$899',
     unit: 'MXN /mes',
-    includes: ['PDV Básico', 'Pedidos en Línea', 'Sistema de Lealtad', 'KDS — Pantallas de Cocina'],
+    includes: ['PDV Básico', 'Pedidos en Línea', 'Sistema de Lealtad', 'Pantallas de Cocina'],
     addons: ['Analítica Avanzada', 'Integración de Delivery', 'Sistema de Reservaciones'],
-    note: 'Otros sistemas te obligan a gastar miles en impresoras y papel. EzEat te regala el KDS al contratar plan anual.',
+    note: 'Otros sistemas te obligan a gastar miles en impresoras y papel. EzEat te regala las pantallas de cocina al contratar plan anual.',
     cta: 'Empezar',
     ctaHref: '/contact',
     popular: false,
@@ -37,7 +37,7 @@ const row1 = [
     description: 'Una sola pantalla para cocinar todo. Pensado para cocinas 100% delivery.',
     price: '$1,499',
     unit: 'MXN /mes',
-    includes: ['KDS — Pantallas de Cocina', 'Integración de Delivery', 'Control de Inventarios', 'Pedidos en Línea', 'PDV Básico'],
+    includes: ['Pantallas de Cocina', 'Integración de Delivery', 'Control de Inventarios', 'Pedidos en Línea', 'PDV Básico'],
     addons: ['Sistema de Lealtad', 'Analítica Avanzada', 'Pedidos por WhatsApp con IA'],
     note: null,
     cta: 'Empezar',
@@ -55,7 +55,7 @@ const row2 = [
     price: '$1,699',
     unit: 'MXN /mes',
     subprice: null,
-    includes: ['PDV Inteligente', 'Analítica Avanzada', 'Gestión de Personal', 'Integración de Delivery', 'Control de Inventarios', 'Pedidos en Línea', 'KDS — Pantallas de Cocina', 'Sistema de Lealtad'],
+    includes: ['PDV Inteligente', 'Analítica Avanzada', 'Gestión de Personal', 'Integración de Delivery', 'Control de Inventarios', 'Pedidos en Línea', 'Pantallas de Cocina', 'Sistema de Lealtad'],
     addons: ['Kioskos de Autoservicio', 'Comanda Digital de Meseros'],
     note: null,
     cta: 'Empezar',
@@ -66,10 +66,10 @@ const row2 = [
     id: 'hoteles',
     name: 'Hoteles y Moteles',
     tagline: 'Transforma el teléfono del huésped en tu mejor mesero.',
-    description: 'Pedidos desde la habitación vía QR o NFC, con cargo directo a la cuenta del hotel.',
+    description: 'El huésped pide desde su habitación escaneando un QR o acercando el teléfono, con cargo directo a su cuenta.',
     price: '$2,899',
     unit: 'MXN /mes',
-    includes: ['Room Service Hotelero', 'PDV Básico', 'KDS — Pantallas de Cocina', 'Facturación Electrónica', 'Control de Inventarios'],
+    includes: ['Room Service Hotelero', 'PDV Básico', 'Pantallas de Cocina', 'Facturación Electrónica', 'Control de Inventarios'],
     addons: ['Analítica Avanzada', 'Integración de Delivery'],
     note: null,
     cta: 'Empezar',
@@ -80,10 +80,10 @@ const row2 = [
     id: 'corporativo',
     name: 'Corporativo',
     tagline: 'Auditoría total en tiempo real.',
-    description: 'Si falta un peso, EzEat te dice dónde. Acceso a todas las features del ecosistema.',
+    description: 'Si falta un peso, EzEat te dice dónde. Acceso completo a todas las funciones del ecosistema.',
     price: null,
     unit: null,
-    includes: ['PDV Inteligente', 'KDS — Pantallas de Cocina', 'Kioskos de Autoservicio', 'Pedidos en Línea', 'Sistema de Lealtad', 'Comanda Digital de Meseros', 'Control de Inventarios', 'Compras y Proveedores', 'Analítica Avanzada', 'Gestión de Personal', 'Integración de Delivery', 'Facturación Electrónica', 'Estados Financieros con IA', 'Sistema de Reservaciones', 'Gestión de Colas', 'Pedidos por WhatsApp con IA', 'Pedidos por Llamada con IA'],
+    includes: ['PDV Inteligente', 'Pantallas de Cocina', 'Kioskos de Autoservicio', 'Pedidos en Línea', 'Sistema de Lealtad', 'Comanda Digital de Meseros', 'Control de Inventarios', 'Compras y Proveedores', 'Analítica Avanzada', 'Gestión de Personal', 'Integración de Delivery', 'Facturación Electrónica', 'Estados Financieros con IA', 'Sistema de Reservaciones', 'Gestión de Colas', 'Pedidos por WhatsApp con IA', 'Pedidos por Llamada con IA'],
     addons: [],
     note: null,
     cta: 'Solicitar cotización',
@@ -121,6 +121,29 @@ const row2 = [
           A la carta
         </a>
       </div>
+    </div>
+  </section>
+
+  <!-- ROI callout -->
+  <section class="py-10 bg-surface-container-low border-b border-outline-variant/10">
+    <div class="max-w-5xl mx-auto px-6 lg:px-8">
+      <div class="grid md:grid-cols-3 gap-0 divide-y md:divide-y-0 md:divide-x divide-outline-variant/15 text-center">
+        <div class="py-6 px-8">
+          <p class="font-headline text-3xl font-bold text-primary mb-2">35%</p>
+          <p class="font-body text-sm text-on-surface-variant leading-relaxed">de los insumos se pierden en mermas en el restaurante promedio cada mes</p>
+        </div>
+        <div class="py-6 px-8">
+          <p class="font-headline text-3xl font-bold text-primary mb-2">$4–$7</p>
+          <p class="font-body text-sm text-on-surface-variant leading-relaxed">en ventas necesitas generar para recuperar cada peso de comida tirada</p>
+        </div>
+        <div class="py-6 px-8">
+          <p class="font-headline text-3xl font-bold text-[#16a34a] mb-2">-25–30%</p>
+          <p class="font-body text-sm text-on-surface-variant leading-relaxed">de merma reducida con EzEat gracias a IA predictiva nativa desde el primer mes</p>
+        </div>
+      </div>
+      <p class="text-center font-body text-sm text-on-surface-variant mt-4 italic">
+        La pregunta no es cuánto cuesta EzEat. La pregunta es cuánto te está costando no tenerlo.
+      </p>
     </div>
   </section>
 

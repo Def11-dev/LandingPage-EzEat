@@ -4,226 +4,326 @@ import Layout from '../layouts/Layout.astro';
 const sections = [
   {
     num: '01',
-    id: 'operacion',
-    label: 'Operación',
-    title: 'Lo que sucede frente al cliente y en cocina.',
+    id: 'ventas',
+    emoji: '🛒',
+    label: 'Ventas y Fidelización',
+    title: 'Todo para atraer clientes y acelerar el servicio.',
+    subtitle: 'Diseñado para maximizar tus ingresos y ofrecer una experiencia impecable desde el primer contacto.',
     modules: [
       {
-        icon: 'point_of_sale',
-        name: 'PDV Básico',
-        desc: 'PDV (Punto de Venta): una interfaz limpia para cobrar y mandar órdenes a cocina. Ideal para el dueño que está ahí todo el día y solo quiere que el negocio camine.',
-        price: 'Desde $349',
-        priceNote: null,
-        status: 'listo', ia: false,
-      },
-      {
-        icon: 'tablet_android',
-        name: 'PDV Inteligente',
-        desc: 'Punto de Venta con permisos por usuario: el cajero solo cobra; el gerente hace descuentos, cancelaciones y ve el arqueo en vivo. Conectado con Inventarios y Analítica IA.',
-        price: 'Desde $989',
-        priceNote: null,
-        status: 'listo', ia: true,
-      },
-      {
-        icon: 'credit_card',
-        name: 'Integración de Pagos',
-        desc: 'Procesa cobros directamente desde el PDV sin terminales aparte ni conciliaciones manuales.',
-        price: '≈ 4% por transacción',
-        priceNote: null,
-        status: 'listo', ia: false,
-      },
-      {
-        icon: 'smart_display',
-        name: 'Kioskos de Autoservicio',
-        desc: 'Pedidos autogestionados por el cliente con upsell visual integrado.',
-        price: 'Desde $489',
-        priceNote: '+ hardware',
-        status: 'listo', ia: false,
-      },
-      {
         icon: 'language',
-        name: 'Pedidos en Línea',
-        desc: 'Menú digital, carrito y checkout propios. Todo lo que vendes se queda contigo.',
+        name: 'Tu propia tienda en línea',
+        desc: 'Permite que tus clientes vean el menú, armen su carrito y paguen de forma segura con tarjeta desde su celular, sin comisiones de aplicaciones terceras.',
         price: 'Desde $349',
         priceNote: null,
         status: 'listo', ia: false,
       },
       {
-        icon: 'kitchen',
-        name: 'KDS — Pantallas de Cocina',
-        desc: 'El corazón del ecosistema EzEat. Sincroniza órdenes de PDV, kioskos, comanda digital y delivery en una sola pantalla.',
+        icon: 'point_of_sale',
+        name: 'Punto de Venta ágil',
+        desc: 'Registra órdenes en caja en segundos con una interfaz intuitiva, ideal para mantener la fila en movimiento.',
         price: 'Desde $349',
-        priceNote: '+ hardware',
+        priceNote: null,
+        status: 'listo', ia: false,
+      },
+      {
+        icon: 'menu_book',
+        name: 'Menú digital 100% personalizable',
+        desc: 'Modifica tamaños, agrega extras, toppings o notas especiales y organiza tus categorías en tiempo real, sin depender de alguien técnico.',
+        price: 'Incluido',
+        priceNote: 'en Punto de Venta',
         status: 'listo', ia: false,
       },
       {
         icon: 'stylus_note',
-        name: 'Comanda Digital de Meseros',
-        desc: "Movilidad total para el equipo de piso. Al dar 'Enviar', la orden aparece instantáneamente en cocina.",
+        name: 'Comandero móvil para meseros',
+        desc: 'Tu equipo puede levantar órdenes directo en las mesas, agregar platillos al instante, cerrar la cuenta o dividirla fácilmente entre los clientes.',
         price: 'Desde $150',
         priceNote: null,
         status: 'beta', ia: false,
       },
       {
-        icon: 'room_service',
-        name: 'Room Service Hotelero',
-        desc: 'Menú digital del hotel, pago directo o cargo a cuenta y conexión al PMS.',
-        price: 'Desde $2,899',
-        priceNote: 'plan completo hotel',
-        status: 'beta', ia: false,
+        icon: 'smart_display',
+        name: 'Kiosco de auto-pedido',
+        desc: 'Coloca pantallas o tablets para que tus clientes exploren el menú, ordenen y paguen por sí mismos, reduciendo la carga de tu personal.',
+        price: 'Desde $489',
+        priceNote: '+ hardware',
+        status: 'listo', ia: false,
+      },
+      {
+        icon: 'install_mobile',
+        name: 'App móvil instantánea',
+        desc: 'Tus clientes y equipo pueden guardar la plataforma en la pantalla de su celular como una aplicación, sin necesidad de descargarla desde ninguna tienda ni ocupar espacio de almacenamiento.',
+        price: 'Incluido',
+        priceNote: null,
+        status: 'listo', ia: false,
+      },
+      {
+        icon: 'print',
+        name: 'Compatibilidad con impresoras térmicas',
+        desc: 'Conecta tus impresoras de tickets para comandas y recibos sin configuraciones complejas ni retrasos en la señal.',
+        price: 'Incluido',
+        priceNote: null,
+        status: 'listo', ia: false,
       },
       {
         icon: 'local_offer',
-        name: 'Creador de Promociones y Cupones',
-        desc: 'Diseña y lanza promociones digitales desde EzEat: cupones por QR, descuentos por volumen, ofertas de tiempo limitado y campañas automáticas por fecha o evento. Sin papelería ni depender de terceros.',
-        price: 'Próximamente',
+        name: 'Motor de ofertas y cupones',
+        desc: 'Diseña promociones atractivas como 2x1, descuentos en porcentaje, rebajas directas o productos de regalo para aumentar el ticket promedio.',
+        price: 'Desde $349',
         priceNote: null,
         status: 'beta', ia: false,
+      },
+      {
+        icon: 'favorite',
+        name: 'Programa de Lealtad y Recompensas',
+        desc: 'Motiva a tus clientes a regresar creando un sistema de acumulación de puntos y niveles de beneficios exclusivos que pueden redimir en sus próximas compras.',
+        price: '$300',
+        priceNote: 'módulo adicional',
+        status: 'listo', ia: false,
       },
     ],
   },
   {
     num: '02',
-    id: 'control',
-    label: 'Control',
-    title: 'Lo que protege tus márgenes y procesos.',
+    id: 'cocina',
+    emoji: '🍳',
+    label: 'Producción y Flujo en Cocina',
+    title: 'Operación sin errores.',
+    subtitle: 'Adiós a los papeles perdidos y los retrasos. Conecta el comedor directamente con la línea de preparación.',
     modules: [
       {
-        icon: 'inventory_2',
-        name: 'Control de Inventarios',
-        desc: 'Predice mermas, sugiere recetas y optimiza tu costo de venta. Incluye Compras y Proveedores.',
-        price: 'Desde $749',
-        priceNote: 'incluye Compras',
-        status: 'beta', ia: true,
+        icon: 'kitchen',
+        name: 'Pantallas digitales de producción',
+        desc: 'Despídete de los tickets de papel. Tu cocina recibe las órdenes al instante, organiza el historial de pedidos y mide los tiempos de preparación para garantizar un servicio rápido.',
+        price: 'Desde $349',
+        priceNote: '+ hardware',
+        status: 'listo', ia: false,
       },
       {
-        icon: 'shopping_cart',
-        name: 'Compras y Proveedores',
-        desc: 'Órdenes automáticas, comparación de precios y kardex digital. Empaquetado junto a Inventarios.',
-        price: 'Desde $749',
-        priceNote: 'incluye Inventarios',
-        status: 'beta', ia: true,
+        icon: 'call_split',
+        name: 'Organización automática por estaciones',
+        desc: 'El sistema distribuye automáticamente cada platillo a su área correspondiente (bebidas a la barra, cortes a la parrilla) para que cada quien se enfoque en lo suyo.',
+        price: 'Incluido',
+        priceNote: 'en Pantallas de Cocina',
+        status: 'listo', ia: false,
       },
       {
-        icon: 'bar_chart',
-        name: 'Analítica Avanzada',
-        desc: 'Alertas inteligentes, comparativas y forecast con IA por canal de venta.',
-        price: 'Desde $449',
-        priceNote: null,
-        status: 'beta', ia: true,
-      },
-      {
-        icon: 'people',
-        name: 'Gestión de Personal',
-        desc: 'Asesoramiento 24/7 para resolver dudas y operar el sistema en cualquier sucursal.',
-        price: 'Desde $49',
-        priceNote: 'varía por sucursal',
-        status: 'beta', ia: false,
-      },
-      {
-        icon: 'receipt_long',
-        name: 'Facturación Electrónica',
-        desc: 'Resuelve uno de los grandes dolores de la industria con facturación 100% automatizada.',
+        icon: 'event',
+        name: 'Reservaciones y control de mesas',
+        desc: 'Administra tus mesas de forma visual y organiza las reservas de tus clientes desde un calendario centralizado para evitar sobrecupos.',
         price: 'Desde $329',
         priceNote: null,
         status: 'roadmap', ia: false,
       },
       {
-        icon: 'description',
-        name: 'Estados Financieros con IA',
-        desc: 'Genera estados financieros a partir de datos en bruto, con explicaciones automáticas por línea.',
-        price: 'Desde $1,150',
+        icon: 'notifications_active',
+        name: 'Avisos automáticos al cliente',
+        desc: 'El sistema envía correos de confirmación o cancelación de manera automática para mantener a tus clientes informados sobre el estado de su pedido o reservación.',
+        price: 'Incluido',
         priceNote: null,
-        status: 'roadmap', ia: true,
+        status: 'listo', ia: false,
       },
     ],
   },
   {
     num: '03',
-    id: 'crecimiento',
-    label: 'Crecimiento',
-    title: 'Lo que impulsa tus ventas y la lealtad.',
+    id: 'inventarios',
+    emoji: '📦',
+    label: 'Inventarios y Finanzas Claros',
+    title: 'Cuida cada centavo.',
+    subtitle: 'El restaurante promedio pierde el 35% de sus insumos en mermas. Con IA predictiva y descuento automático por receta, EzEat lo reduce entre un 25 y 30% desde el primer mes. Menos desperdicio, mayor margen — y un impacto positivo en el medio ambiente.',
     modules: [
       {
-        icon: 'favorite',
-        name: 'Sistema de Lealtad',
-        desc: 'Convierte visitantes en clientes recurrentes con cupones, niveles y promociones automáticas.',
-        price: 'Desde $345',
-        priceNote: null,
-        status: 'listo', ia: false,
+        icon: 'inventory_2',
+        name: 'Control estricto de inventario',
+        desc: 'Monitorea el stock de tus insumos en tiempo real y recibe alertas automáticas cuando te quede poca cantidad de algún ingrediente crítico.',
+        price: 'Desde $749',
+        priceNote: 'incluye Compras',
+        status: 'beta', ia: true,
       },
       {
-        icon: 'delivery_dining',
-        name: 'Integración de Delivery',
-        desc: 'Centraliza todas tus apps de delivery sin pagar comisiones extra de software.',
-        price: 'Desde $549',
-        priceNote: null,
+        icon: 'receipt',
+        name: 'Descuento automático por receta',
+        desc: 'Cada vez que vendes un platillo, el sistema resta del inventario los ingredientes exactos que lleva, permitiéndote calcular tus costos con precisión.',
+        price: 'Incluido',
+        priceNote: 'en Inventarios',
+        status: 'beta', ia: true,
+      },
+      {
+        icon: 'account_balance_wallet',
+        name: 'Rastreador de gastos operativos',
+        desc: 'Registra y clasifica todas las salidas de dinero y compras de tu negocio para mantener tus cuentas completamente claras.',
+        price: 'Incluido',
+        priceNote: 'en Inventarios',
         status: 'beta', ia: false,
       },
       {
-        icon: 'chat',
-        name: 'Pedidos por WhatsApp con IA',
-        desc: 'Chatbot conversacional que toma pedidos completos por WhatsApp y los envía a cocina.',
-        price: 'Desde $949',
-        priceNote: 'o por conversión',
-        status: 'roadmap', ia: true,
-      },
-      {
-        icon: 'event',
-        name: 'Sistema de Reservaciones',
-        desc: 'Optimiza la rotación de mesas y reduce ausencias con confirmaciones automáticas.',
-        price: 'Desde $329',
+        icon: 'bar_chart',
+        name: 'Gráficos financieros y de ventas',
+        desc: 'Conoce al instante tus ingresos, egresos y cuáles son tus productos más vendidos del día a través de paneles visuales y fáciles de entender.',
+        price: 'Desde $449',
         priceNote: null,
-        status: 'roadmap', ia: false,
-      },
-      {
-        icon: 'format_list_numbered',
-        name: 'Gestión de Colas',
-        desc: 'Cuando no hay mesas disponibles, el cliente se anota y le avisas cuando es su turno.',
-        price: 'Desde $349',
-        priceNote: 'hasta cierto volumen',
-        status: 'roadmap', ia: false,
-      },
-      {
-        icon: 'call',
-        name: 'Pedidos por Llamada con IA',
-        desc: 'Los pedidos llegan automáticamente al KDS sin que tu equipo levante el teléfono.',
-        price: 'Desde $889',
-        priceNote: null,
-        status: 'roadmap', ia: true,
+        status: 'beta', ia: true,
       },
     ],
   },
   {
     num: '04',
-    id: 'proximamente',
-    label: 'Próximamente',
-    title: 'El futuro del ecosistema EzEat.',
+    id: 'multisucursal',
+    emoji: '👥',
+    label: 'Control Multi-sucursal y Personal',
+    title: 'Tu negocio bajo control.',
+    subtitle: 'La estructura ideal para supervisar tu equipo y expandir tu marca con seguridad.',
     modules: [
       {
-        icon: 'smartphone',
-        name: 'EzEat App (Marketplace)',
-        desc: 'Nuestro destino final: una app única donde tus clientes descubren tu negocio.',
-        price: 'gratis',
+        icon: 'corporate_fare',
+        name: 'Control total multi-sucursal',
+        desc: 'Administra múltiples ubicaciones desde una sola cuenta y compara el rendimiento de todas tus sucursales en un tablero unificado.',
+        price: 'Incluido',
+        priceNote: 'en PDV Inteligente',
+        status: 'listo', ia: false,
+      },
+      {
+        icon: 'tablet_android',
+        name: 'Seguridad y permisos por empleado',
+        desc: 'Protege tu información asignando roles específicos (administrador, cajero, mesero, cocina) para controlar exactamente qué puede ver y hacer cada miembro del equipo según su sucursal.',
+        price: 'Desde $989',
         priceNote: null,
+        status: 'listo', ia: true,
+      },
+      {
+        icon: 'people',
+        name: 'Registro de asistencia digital',
+        desc: 'Tus empleados pueden registrar su entrada y salida directamente en el sistema, generándote reportes automáticos de horas laboradas.',
+        price: 'Desde $49',
+        priceNote: 'varía por sucursal',
+        status: 'beta', ia: false,
+      },
+      {
+        icon: 'delivery_dining',
+        name: 'Gestión inteligente de repartos',
+        desc: 'Define con precisión tus zonas de entrega a domicilio, tarifas personalizadas por distancia y horarios específicos de servicio.',
+        price: 'Desde $549',
+        priceNote: null,
+        status: 'beta', ia: false,
+      },
+    ],
+  },
+  {
+    num: '05',
+    id: 'proximamente',
+    emoji: '🔮',
+    label: 'Próximos Lanzamientos',
+    title: 'Creciendo contigo.',
+    subtitle: 'Funcionalidades avanzadas de administración que estarán integradas muy pronto.',
+    modules: [
+      {
+        icon: 'receipt_long',
+        name: 'Facturación Electrónica SAT',
+        desc: 'Emite facturas fiscales CFDI directamente desde el sistema de forma rápida y sin complicaciones. Listo para CFDI 4.0.',
+        price: 'Desde $329',
+        priceNote: 'próximamente',
         status: 'roadmap', ia: false,
       },
       {
-        icon: 'pedal_bike',
-        name: 'EzEat Delivery',
-        desc: 'Los repartidores cobran 100% del envío, calibrado por calificación. Conectado a EzEat App, con visión a Last Mile Delivery.',
-        price: 'modelo por envío',
-        priceNote: null,
+        icon: 'format_list_numbered',
+        name: 'Control de filas de espera',
+        desc: 'Administra el flujo de clientes esperando mesa mediante turnos digitales. El cliente recibe un aviso automático cuando su mesa está lista, sin filas físicas.',
+        price: 'Desde $349',
+        priceNote: 'próximamente',
         status: 'roadmap', ia: false,
+      },
+      {
+        icon: 'shopping_cart',
+        name: 'Directorio inteligente de proveedores',
+        desc: 'Centraliza el contacto de quienes te surten y envíales mensajes de pedido directamente a su WhatsApp con un solo clic.',
+        price: 'Desde $749',
+        priceNote: 'incluye Inventarios',
+        status: 'roadmap', ia: true,
+      },
+      {
+        icon: 'description',
+        name: 'Reportes contables descargables',
+        desc: 'Exporta tus balances financieros en formatos oficiales listos para entregar a tu contador. Generados automáticamente, sin hojas de cálculo.',
+        price: 'Desde $1,150',
+        priceNote: 'próximamente',
+        status: 'roadmap', ia: true,
+      },
+    ],
+  },
+  {
+    num: '06',
+    id: 'ia',
+    emoji: '🤖',
+    label: 'Módulo EzEat AI',
+    title: 'La Inteligencia Artificial a tu servicio.',
+    subtitle: 'La IA de EzEat actúa en cuatro frentes: predice la demanda antes de que llegues al servicio, optimiza la capacidad de tu negocio, programa a tu personal con base en historial real y analiza la rentabilidad de cada platillo. No es inteligencia artificial por moda — es la que recupera tus márgenes.',
+    modules: [
+      {
+        icon: 'mic',
+        name: 'Comandero por voz para meseros',
+        desc: 'Tu personal de piso puede dictar las órdenes hablando de forma natural y el sistema las interpretará y registrará automáticamente en la pantalla.',
+        price: 'Próximamente',
+        priceNote: null,
+        status: 'roadmap', ia: true,
+      },
+      {
+        icon: 'chat',
+        name: 'Atención automática por WhatsApp y llamadas',
+        desc: 'Una Inteligencia Artificial atiende, toma la orden y procesa el pedido de tus clientes de forma autónoma por mensaje o por teléfono, las 24 horas.',
+        price: 'Desde $949',
+        priceNote: null,
+        status: 'roadmap', ia: true,
+      },
+      {
+        icon: 'forum',
+        name: 'Asistente virtual de consulta',
+        desc: 'Pregúntale a tu sistema en lenguaje natural: "¿Cuánto vendimos hoy vs. el martes pasado?" y obtén la respuesta al instante en un chat.',
+        price: 'Próximamente',
+        priceNote: null,
+        status: 'roadmap', ia: true,
+      },
+      {
+        icon: 'mark_email_read',
+        name: 'Resúmenes diarios en tu correo',
+        desc: 'Recibe todas las mañanas un reporte automatizado con los datos más importantes y el rendimiento de tu restaurante del día anterior.',
+        price: 'Próximamente',
+        priceNote: null,
+        status: 'roadmap', ia: true,
+      },
+      {
+        icon: 'auto_mode',
+        name: 'Asesor de negocios y piloto automático',
+        desc: 'Analiza el comportamiento de tus finanzas para sugerirte acciones estratégicas (ajustar precios, lanzar promos, comprar stock). Activa el modo automático para que el sistema ejecute estas reglas por ti.',
+        price: 'Próximamente',
+        priceNote: null,
+        status: 'roadmap', ia: true,
+      },
+      {
+        icon: 'store_mall_directory',
+        name: 'Estudio de competencia local',
+        desc: 'Analiza de manera inteligente el entorno de tu restaurante para sugerirte ventajas comerciales frente a otros negocios de tu zona.',
+        price: 'Próximamente',
+        priceNote: null,
+        status: 'roadmap', ia: true,
+      },
+      {
+        icon: 'document_scanner',
+        name: 'Creador instantáneo de menús con IA',
+        desc: 'Sube una foto de tu menú impreso y el sistema leerá la imagen para crear digitalmente todos tus productos en cuestión de segundos.',
+        price: 'Próximamente',
+        priceNote: null,
+        status: 'roadmap', ia: true,
       },
     ],
   },
 ];
 
 const statusMeta: Record<string, { label: string; cls: string; icon: string }> = {
-  listo:   { label: 'Listo',        cls: 'bg-[#dcfce7] text-[#16a34a]',  icon: 'check_circle' },
-  beta:    { label: 'Beta / Pronto', cls: 'bg-[#fff7ed] text-[#ea580c]', icon: 'schedule' },
-  roadmap: { label: 'Roadmap',      cls: 'bg-[#eff6ff] text-[#2563eb]',  icon: 'rocket_launch' },
+  listo:   { label: 'Listo',          cls: 'bg-[#dcfce7] text-[#16a34a]', icon: 'check_circle' },
+  beta:    { label: 'Beta / Pronto',  cls: 'bg-[#fff7ed] text-[#ea580c]', icon: 'schedule'     },
+  roadmap: { label: 'Próximamente',   cls: 'bg-[#eff6ff] text-[#2563eb]', icon: 'rocket_launch' },
 };
 ---
 
@@ -237,13 +337,13 @@ const statusMeta: Record<string, { label: string; cls: string; icon: string }> =
     <div class="max-w-3xl mx-auto px-6 text-center" data-animate="fade-up">
       <div class="inline-flex items-center gap-2 bg-white/10 border border-white/20 px-4 py-2 rounded-full mb-6">
         <span class="material-symbols-outlined text-[#b0beff] text-base leading-none">auto_awesome</span>
-        <span class="text-sm font-label font-medium text-white/90">Catálogo modular</span>
+        <span class="text-sm font-label font-medium text-white/90">Catálogo de funcionalidades</span>
       </div>
       <h1 class="font-headline text-5xl md:text-6xl font-extrabold tracking-tight text-white leading-[1.05] mb-5">
         Una solución para cada <span class="text-[#b0beff]">momento de tu operación</span>
       </h1>
       <p class="text-lg text-white/70 font-body max-w-xl mx-auto">
-        Operación, control y crecimiento. Activa módulos individualmente y combínalos como tu negocio lo necesite.
+        Activa solo lo que necesitas hoy y agrega más conforme tu negocio crece. Cada módulo está diseñado para eliminar pérdidas tangibles — mermas, sobrantes, errores — e intangibles — mesas mal rotadas, flujos lentos, turnos sobredimensionados.
       </p>
     </div>
   </section>
@@ -251,67 +351,71 @@ const statusMeta: Record<string, { label: string; cls: string; icon: string }> =
   <!-- Sections -->
   <section class="pb-24 bg-surface-container-low">
     <div class="max-w-7xl mx-auto px-6 lg:px-8 pt-16 space-y-20">
-      {sections.map(sec => {
-        return (
-          <div id={sec.id} data-animate="fade-up">
-            <!-- Section header -->
-            <div class="mb-8">
-              <p class="text-primary font-label font-bold text-sm tracking-widest uppercase mb-2">{sec.num} · {sec.label.toUpperCase()}</p>
-              <h2 class="font-headline text-3xl md:text-4xl font-bold text-on-background">{sec.title}</h2>
-            </div>
+      {sections.map(sec => (
+        <div id={sec.id} data-animate="fade-up">
+          <!-- Section header -->
+          <div class="mb-10">
+            <p class="text-primary font-label font-bold text-sm tracking-widest uppercase mb-2">
+              {sec.num} · {sec.label.toUpperCase()}
+            </p>
+            <h2 class="font-headline text-3xl md:text-4xl font-bold text-on-background">{sec.title}</h2>
+            {sec.subtitle && (
+              <p class="font-body text-on-surface-variant mt-3 text-base max-w-2xl">{sec.subtitle}</p>
+            )}
+          </div>
 
-            <!-- Module cards -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5" data-stagger>
-              {sec.modules.map(mod => {
-                const sm = statusMeta[mod.status];
-                return (
-                  <div class="bg-white rounded-2xl border border-outline-variant/15 p-6 flex flex-col hover:shadow-[0_8px_32px_rgba(26,27,36,0.08)] hover:-translate-y-1 transition-all duration-300">
-                    <!-- Top: icon + badges -->
-                    <div class="flex items-start justify-between mb-4">
-                      <div class="w-12 h-12 bg-primary rounded-xl flex items-center justify-center shrink-0">
-                        <span class="material-symbols-outlined text-white text-2xl leading-none">{mod.icon}</span>
-                      </div>
-                      <div class="flex flex-col items-end gap-1.5">
-                        <span class={`inline-flex items-center gap-1 text-[11px] font-label font-semibold px-2.5 py-1 rounded-full ${sm.cls}`}>
-                          <span class="material-symbols-outlined text-[11px] leading-none">{sm.icon}</span>
-                          {sm.label}
-                        </span>
-                        {mod.ia && (
-                          <span class="inline-flex items-center gap-1 text-[11px] font-label font-semibold px-2.5 py-1 rounded-full bg-[#eff6ff] text-primary">
-                            <span class="material-symbols-outlined text-[11px] leading-none">auto_awesome</span>
-                            IA
-                          </span>
-                        )}
-                      </div>
+          <!-- Module cards -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5" data-stagger>
+            {sec.modules.map(mod => {
+              const sm = statusMeta[mod.status];
+              const isFreeText = ['Incluido', 'Próximamente', 'gratis', 'modelo por envío'].includes(mod.price);
+              return (
+                <div class="bg-white rounded-2xl border border-outline-variant/15 p-6 flex flex-col hover:shadow-[0_8px_32px_rgba(26,27,36,0.08)] hover:-translate-y-1 transition-all duration-300">
+                  <!-- Top: icon + badges -->
+                  <div class="flex items-start justify-between mb-4">
+                    <div class="w-12 h-12 bg-primary rounded-xl flex items-center justify-center shrink-0">
+                      <span class="material-symbols-outlined text-white text-2xl leading-none">{mod.icon}</span>
                     </div>
-
-                    <!-- Name + desc -->
-                    <h3 class="font-headline font-bold text-on-background text-lg mb-2">{mod.name}</h3>
-                    <p class="font-body text-on-surface-variant text-sm leading-relaxed flex-1">{mod.desc}</p>
-
-                    <!-- Price + CTA -->
-                    <div class="flex items-end justify-between mt-5 pt-4 border-t border-outline-variant/10">
-                      <div>
-                        {mod.price === 'gratis' || mod.price === 'modelo por envío' || mod.price === 'Próximamente' ? (
-                          <p class="text-sm font-headline font-bold text-on-background">{mod.price}</p>
-                        ) : (
-                          <p class="text-sm font-body text-on-surface">
-                            Desde <span class="font-headline font-bold text-on-background">{mod.price}</span> <span class="text-on-surface-variant">/mes</span>
-                          </p>
-                        )}
-                        {mod.priceNote && <p class="text-xs text-on-surface-variant font-body mt-0.5">{mod.priceNote}</p>}
-                      </div>
-                      <a href="/contact" class="text-sm font-label font-semibold text-primary hover:gap-2 flex items-center gap-1 transition-all">
-                        Cotizar <span class="material-symbols-outlined text-base leading-none">arrow_forward</span>
-                      </a>
+                    <div class="flex flex-col items-end gap-1.5">
+                      <span class={`inline-flex items-center gap-1 text-[11px] font-label font-semibold px-2.5 py-1 rounded-full ${sm.cls}`}>
+                        <span class="material-symbols-outlined text-[11px] leading-none">{sm.icon}</span>
+                        {sm.label}
+                      </span>
+                      {mod.ia && (
+                        <span class="inline-flex items-center gap-1 text-[11px] font-label font-semibold px-2.5 py-1 rounded-full bg-[#eff6ff] text-primary">
+                          <span class="material-symbols-outlined text-[11px] leading-none">auto_awesome</span>
+                          IA
+                        </span>
+                      )}
                     </div>
                   </div>
-                );
-              })}
-            </div>
+
+                  <!-- Name + desc -->
+                  <h3 class="font-headline font-bold text-on-background text-lg mb-2">{mod.name}</h3>
+                  <p class="font-body text-on-surface-variant text-sm leading-relaxed flex-1">{mod.desc}</p>
+
+                  <!-- Price + CTA -->
+                  <div class="flex items-end justify-between mt-5 pt-4 border-t border-outline-variant/10">
+                    <div>
+                      {isFreeText ? (
+                        <p class={`text-sm font-headline font-bold ${mod.price === 'Incluido' ? 'text-[#16a34a]' : 'text-on-background'}`}>{mod.price}</p>
+                      ) : (
+                        <p class="text-sm font-body text-on-surface">
+                          Desde <span class="font-headline font-bold text-on-background">{mod.price}</span> <span class="text-on-surface-variant">/mes</span>
+                        </p>
+                      )}
+                      {mod.priceNote && <p class="text-xs text-on-surface-variant font-body mt-0.5">{mod.priceNote}</p>}
+                    </div>
+                    <a href="/contact" class="text-sm font-label font-semibold text-primary hover:gap-2 flex items-center gap-1 transition-all">
+                      Cotizar <span class="material-symbols-outlined text-base leading-none">arrow_forward</span>
+                    </a>
+                  </div>
+                </div>
+              );
+            })}
           </div>
-        );
-      })}
+        </div>
+      ))}
     </div>
   </section>
 
@@ -323,7 +427,7 @@ const statusMeta: Record<string, { label: string; cls: string; icon: string }> =
           ¿No sabes por dónde empezar?
         </h2>
         <p class="text-white/60 font-body mb-8 text-base max-w-md mx-auto">
-          Te ayudamos a armar tu stack ideal en una sesión sin costo.
+          Te ayudamos a armar la combinación ideal de módulos para tu operación, en una sesión sin costo.
         </p>
         <a href="/contact" class="inline-flex items-center gap-2 bg-primary text-white px-8 py-4 rounded-xl font-label font-semibold text-base shadow-[0_8px_24px_rgba(43,73,243,0.4)] hover:brightness-110 hover:-translate-y-px transition-all duration-200">
           Hablar con un experto
