@@ -1,0 +1,28 @@
+---
+import Layout from '../../layouts/Layout.astro';
+const slug = Astro.url.searchParams.get('slug') || '';
+const tenantUrl = slug ? `https://${slug}.ezeat.com.mx` : '';
+---
+
+<Layout title="¡Listo! — EzEat">
+  <main class="min-h-screen pt-28 pb-20 px-4 bg-surface-dim flex items-center justify-center">
+    <div class="max-w-lg w-full bg-surface rounded-2xl border border-outline-variant/30 shadow-sm p-8 text-center">
+      <div class="w-16 h-16 rounded-full bg-green-50 flex items-center justify-center mx-auto mb-5">
+        <span class="material-symbols-outlined text-green-600 text-4xl">check_circle</span>
+      </div>
+      <h1 class="font-display text-2xl font-extrabold text-secondary mb-2">¡Pago confirmado!</h1>
+      <p class="text-on-surface-variant mb-6">Tu restaurante se está creando. En unos segundos recibirás un correo con tus credenciales de acceso.</p>
+
+      {tenantUrl && (
+        <a href={tenantUrl} class="inline-flex items-center gap-2 bg-primary text-on-primary font-label font-bold px-6 py-3 rounded-xl hover:brightness-110 transition-all shadow-[0_4px_16px_rgba(43,73,243,0.25)]">
+          Ir a mi sitio
+          <span class="material-symbols-outlined">arrow_forward</span>
+        </a>
+      )}
+
+      <p class="text-xs text-on-surface-variant mt-6">
+        ¿No llegó el correo? Revisa spam o escríbenos. Tu sitio: <span class="font-mono text-primary">{slug}.ezeat.com.mx</span>
+      </p>
+    </div>
+  </main>
+</Layout>
