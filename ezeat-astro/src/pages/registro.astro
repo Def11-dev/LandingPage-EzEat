@@ -23,12 +23,16 @@ const API_URL = import.meta.env.PUBLIC_API_URL || 'https://api.ezeat.com.mx';
             <input name="name" id="name" required placeholder="Tacos El Rey" class="w-full px-4 py-3 rounded-xl border border-outline-variant/50 focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary" />
           </div>
           <div>
-            <label class="block text-xs font-semibold uppercase tracking-wide text-on-surface-variant mb-1.5">Subdominio</label>
+            <label class="block text-xs font-semibold uppercase tracking-wide text-on-surface-variant mb-1.5">Tu subdominio (se genera solo)</label>
             <div class="flex items-center">
-              <input name="slug" id="slug" required pattern="[a-z0-9\-]+" placeholder="tacoselrey" class="w-full px-4 py-3 rounded-l-xl border border-outline-variant/50 focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary lowercase" />
+              <input name="slug" id="slug" required readonly tabindex="-1" placeholder="tunegocio" class="w-full px-4 py-3 rounded-l-xl border border-outline-variant/50 bg-surface-dim text-on-surface font-semibold cursor-default lowercase" />
               <span class="px-3 py-3 border border-l-0 border-outline-variant/50 rounded-r-xl bg-surface-dim text-on-surface-variant text-sm whitespace-nowrap">.ezeat.com.mx</span>
             </div>
             <p id="slug-status" class="text-xs mt-1.5 h-4"></p>
+            <div id="slug-alts" class="hidden mt-1">
+              <p class="text-xs text-on-surface-variant mb-1.5">Ese ya existe. Elige otro:</p>
+              <div id="slug-alts-list" class="flex flex-wrap gap-2"></div>
+            </div>
           </div>
         </div>
 
@@ -104,37 +108,72 @@ const API_URL = import.meta.env.PUBLIC_API_URL || 'https://api.ezeat.com.mx';
       });
     });
 
-    // Slugify + disponibilidad
+    // El subdominio se GENERA del nombre (no editable). Si existe, ofrece alternativas.
     const nameInput = document.getElementById('name');
+    const altsBox = document.getElementById('slug-alts');
+    const altsList = document.getElementById('slug-alts-list');
     const slugify = (s) => s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 40);
     let slugTimer;
-    let slugTouched = false; // true cuando el usuario edita el subdominio a mano
 
-    const checkSlug = (v) => {
-      slugStatus.textContent = '';
-      clearTimeout(slugTimer);
-      if (!v) return;
-      slugTimer = setTimeout(async () => {
-        try {
-          const res = await fetch(`${API_URL}/api/signup/check-slug?slug=${encodeURIComponent(v)}`);
-          const d = await res.json();
-          if (d.available) { slugStatus.textContent = '✓ Disponible'; slugStatus.className = 'text-xs mt-1.5 h-4 text-green-600'; }
-          else { slugStatus.textContent = d.reason || 'No disponible'; slugStatus.className = 'text-xs mt-1.5 h-4 text-red-600'; }
-        } catch { /* ignore */ }
-      }, 400);
+    const isFree = async (v) => {
+      try {
+        const res = await fetch(`${API_URL}/api/signup/check-slug?slug=${encodeURIComponent(v)}`);
+        const d = await res.json();
+        return d.available === true;
+      } catch { return false; }
     };
 
-    // Autocompleta el subdominio con el nombre (hasta que el usuario lo edite manualmente)
-    nameInput.addEventListener('input', () => {
-      if (slugTouched) return;
-      slugInput.value = slugify(nameInput.value);
-      checkSlug(slugInput.value);
-    });
+    const setSlug = (v) => {
+      slugInput.value = v;
+      slugStatus.textContent = '✓ Disponible: ' + v + '.ezeat.com.mx';
+      slugStatus.className = 'text-xs mt-1.5 h-4 text-green-600';
+    };
 
-    slugInput.addEventListener('input', () => {
-      slugTouched = true;
-      slugInput.value = slugify(slugInput.value);
-      checkSlug(slugInput.value);
+    const buildCandidates = (base) => {
+      const out = [];
+      for (let i = 2; i <= 4; i++) out.push(`${base}-${i}`);
+      out.push(`${base}-mx`, `${base}-cdmx`, `${base}-oficial`);
+      return out;
+    };
+
+    const styleChip = (el, active) => {
+      el.className = 'px-3 py-1.5 rounded-full text-sm border transition-colors ' + (active ? 'border-primary bg-primary/10 text-primary font-semibold' : 'border-outline-variant/50 text-on-surface hover:border-primary');
+    };
+
+    const resolveSlug = async (base) => {
+      altsList.replaceChildren();
+      altsBox.classList.add('hidden');
+      if (!base) { slugInput.value = ''; slugStatus.textContent = ''; return; }
+      slugStatus.textContent = 'Verificando…'; slugStatus.className = 'text-xs mt-1.5 h-4 text-on-surface-variant';
+      if (await isFree(base)) { setSlug(base); return; }
+
+      // Ocupado → busca alternativas libres
+      slugInput.value = '';
+      slugStatus.textContent = '“' + base + '” ya existe';
+      slugStatus.className = 'text-xs mt-1.5 h-4 text-red-600';
+      const candidates = buildCandidates(base);
+      const checks = await Promise.all(candidates.map(async c => ({ c, free: await isFree(c) })));
+      const free = checks.filter(x => x.free).map(x => x.c).slice(0, 4);
+      if (!free.length) return;
+      setSlug(free[0]); // preselecciona la primera libre
+      free.forEach((c, i) => {
+        const b = document.createElement('button');
+        b.type = 'button';
+        b.textContent = c;
+        styleChip(b, i === 0);
+        b.addEventListener('click', () => {
+          setSlug(c);
+          [...altsList.children].forEach(el => styleChip(el, el === b));
+        });
+        altsList.appendChild(b);
+      });
+      altsBox.classList.remove('hidden');
+    };
+
+    nameInput.addEventListener('input', () => {
+      const base = slugify(nameInput.value);
+      clearTimeout(slugTimer);
+      slugTimer = setTimeout(() => resolveSlug(base), 450);
     });
 
     form.addEventListener('submit', async (e) => {
