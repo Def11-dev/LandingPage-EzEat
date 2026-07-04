@@ -104,12 +104,13 @@ const API_URL = import.meta.env.PUBLIC_API_URL || 'https://api.ezeat.com.mx';
       });
     });
 
-    // Slugify + availability check
-    const slugify = (s) => s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+    // Slugify + disponibilidad
+    const nameInput = document.getElementById('name');
+    const slugify = (s) => s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 40);
     let slugTimer;
-    slugInput.addEventListener('input', () => {
-      slugInput.value = slugify(slugInput.value);
-      const v = slugInput.value;
+    let slugTouched = false; // true cuando el usuario edita el subdominio a mano
+
+    const checkSlug = (v) => {
       slugStatus.textContent = '';
       clearTimeout(slugTimer);
       if (!v) return;
@@ -121,6 +122,19 @@ const API_URL = import.meta.env.PUBLIC_API_URL || 'https://api.ezeat.com.mx';
           else { slugStatus.textContent = d.reason || 'No disponible'; slugStatus.className = 'text-xs mt-1.5 h-4 text-red-600'; }
         } catch { /* ignore */ }
       }, 400);
+    };
+
+    // Autocompleta el subdominio con el nombre (hasta que el usuario lo edite manualmente)
+    nameInput.addEventListener('input', () => {
+      if (slugTouched) return;
+      slugInput.value = slugify(nameInput.value);
+      checkSlug(slugInput.value);
+    });
+
+    slugInput.addEventListener('input', () => {
+      slugTouched = true;
+      slugInput.value = slugify(slugInput.value);
+      checkSlug(slugInput.value);
     });
 
     form.addEventListener('submit', async (e) => {
