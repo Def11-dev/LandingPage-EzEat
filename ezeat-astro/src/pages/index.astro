@@ -72,6 +72,7 @@ const questions = [
 <Layout
   title="EzEat · El sistema operativo inteligente para HORECA"
   description="EzEat: el primer sistema operativo inteligente para HORECA (Hoteles, Restaurantes y Cafeterías). Diagnóstico gratuito en 60 segundos."
+  ctaAccent
 >
 
 <!-- ═══════════════════════════════════════════════
@@ -103,7 +104,7 @@ const questions = [
 
         <div data-animate="fade-up" style="transition-delay:0.3s" class="flex flex-col sm:flex-row gap-4 pt-2">
           <button id="btn-start"
-            class="bg-primary text-on-primary px-8 py-4 rounded-lg font-label font-semibold text-lg shadow-[0_8px_32px_rgba(43,73,243,0.4)] hover:brightness-110 hover:-translate-y-px transition-all duration-200 flex items-center justify-center gap-2">
+            class="bg-accent text-on-accent px-8 py-4 rounded-lg font-label font-semibold text-lg shadow-[0_8px_32px_rgba(230,82,0,0.4)] hover:brightness-110 hover:-translate-y-px transition-all duration-200 flex items-center justify-center gap-2">
             Inicia tu Diagnóstico de Eficiencia
             <span class="material-symbols-outlined text-xl leading-none">arrow_forward</span>
           </button>
@@ -128,8 +129,8 @@ const questions = [
           <!-- Floating stat cards on top -->
           <div class="animate-float absolute -bottom-6 -left-4 lg:-left-10 w-56 p-5 bg-white rounded-xl shadow-[0_16px_40px_rgba(0,0,0,0.3)] hidden lg:block">
             <div class="flex items-center gap-3 mb-2">
-              <span class="material-symbols-outlined text-primary text-2xl fill leading-none">speed</span>
-              <span class="font-headline font-bold text-on-surface text-lg">40%</span>
+              <span class="material-symbols-outlined text-accent text-2xl fill leading-none">trending_down</span>
+              <span class="font-headline font-bold text-accent text-lg">-30%</span>
             </div>
             <p class="text-xs font-body text-on-surface-variant leading-snug">Reducción de desperdicio de insumos con IA predictiva</p>
           </div>
@@ -137,17 +138,6 @@ const questions = [
             <span class="material-symbols-outlined text-primary text-sm leading-none fill">eco</span>
             <span class="text-on-surface text-xs font-label font-semibold">Operación más verde y rentable</span>
           </div>
-        </div>
-        <div class="animate-float absolute -bottom-6 -left-4 lg:-left-10 w-56 p-5 bg-white rounded-xl shadow-[0_16px_40px_rgba(0,0,0,0.3)] hidden lg:block">
-          <div class="flex items-center gap-3 mb-2">
-            <span class="material-symbols-outlined text-primary text-2xl fill leading-none">trending_down</span>
-            <span class="font-headline font-bold text-on-surface text-lg">-30%</span>
-          </div>
-          <p class="text-xs font-body text-on-surface-variant leading-snug">Reducción de desperdicio de insumos con IA predictiva</p>
-        </div>
-        <div class="absolute -top-4 -right-4 px-4 py-2 bg-white rounded-xl shadow-lg hidden lg:flex items-center gap-2">
-          <span class="material-symbols-outlined text-primary text-sm leading-none fill">eco</span>
-          <span class="text-on-surface text-xs font-label font-semibold">Operación más verde y rentable</span>
         </div>
       </div>
 
@@ -431,6 +421,114 @@ const questions = [
 
 
 <!-- ═══════════════════════════════════════════════
+     PLANO INTERACTIVO
+═══════════════════════════════════════════════ -->
+<section class="py-24 bg-surface overflow-hidden">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="text-center max-w-2xl mx-auto mb-16" data-animate="fade-up">
+      <span class="text-primary font-label text-sm font-bold uppercase tracking-wider mb-3 block">Explora tu restaurante</span>
+      <h2 class="font-headline text-3xl md:text-4xl font-bold text-on-background">
+        El plano interactivo de tu restaurante
+      </h2>
+      <p class="font-body text-on-surface-variant mt-4 text-base leading-relaxed">
+        Pasa el cursor o toca cada zona y descubre, en el contexto real de tu día a día, cómo trabaja EzEat ahí.
+      </p>
+    </div>
+
+    <div class="grid lg:grid-cols-5 gap-8 lg:gap-10 items-center" data-animate="scale-in">
+
+      <!-- Floor plan -->
+      <div class="lg:col-span-3 relative select-none" id="floorplan-wrap">
+        <svg viewBox="0 0 640 520" class="w-full h-auto block" role="img" aria-label="Plano del restaurante dividido en cuatro zonas: oficina, cocina, comedor y exterior">
+          <defs>
+            <pattern id="blueprint-grid" width="20" height="20" patternUnits="userSpaceOnUse">
+              <circle cx="1" cy="1" r="1" class="fill-outline-variant/50" />
+            </pattern>
+          </defs>
+
+          <rect x="0" y="0" width="640" height="520" fill="url(#blueprint-grid)" />
+
+          <!-- Building outline -->
+          <rect x="16" y="16" width="608" height="488" rx="16" class="fill-white stroke-outline-variant" stroke-width="2" />
+
+          <!-- Zone: Oficina -->
+          <rect data-zone="oficina" class="zone-rect transition-colors duration-300 fill-surface-container-low stroke-outline-variant stroke-1" x="32" y="32" width="280" height="176" rx="10" />
+          <rect x="56" y="150" width="80" height="34" rx="4" class="fill-outline-variant/40 pointer-events-none" />
+          <rect x="66" y="132" width="28" height="20" rx="2" class="fill-outline-variant/40 pointer-events-none" />
+
+          <!-- Zone: Cocina -->
+          <rect data-zone="cocina" class="zone-rect transition-colors duration-300 fill-surface-container-low stroke-outline-variant stroke-1" x="328" y="32" width="280" height="176" rx="10" />
+          <rect x="352" y="150" width="36" height="36" rx="4" class="fill-outline-variant/40 pointer-events-none" />
+          <rect x="398" y="150" width="36" height="36" rx="4" class="fill-outline-variant/40 pointer-events-none" />
+          <rect x="444" y="150" width="36" height="36" rx="4" class="fill-outline-variant/40 pointer-events-none" />
+
+          <!-- Zone: Comedor -->
+          <rect data-zone="comedor" class="zone-rect transition-colors duration-300 fill-surface-container-low stroke-outline-variant stroke-1" x="32" y="224" width="576" height="176" rx="10" />
+          <circle cx="100" cy="270" r="13" class="fill-outline-variant/30 pointer-events-none" />
+          <circle cx="220" cy="270" r="13" class="fill-outline-variant/30 pointer-events-none" />
+          <circle cx="420" cy="270" r="13" class="fill-outline-variant/30 pointer-events-none" />
+          <circle cx="540" cy="270" r="13" class="fill-outline-variant/30 pointer-events-none" />
+          <circle cx="100" cy="360" r="13" class="fill-outline-variant/30 pointer-events-none" />
+          <circle cx="220" cy="360" r="13" class="fill-outline-variant/30 pointer-events-none" />
+          <circle cx="420" cy="360" r="13" class="fill-outline-variant/30 pointer-events-none" />
+          <circle cx="540" cy="360" r="13" class="fill-outline-variant/30 pointer-events-none" />
+
+          <!-- Zone: Exterior -->
+          <rect data-zone="exterior" class="zone-rect transition-colors duration-300 fill-surface-container-low stroke-outline-variant stroke-1" x="32" y="416" width="576" height="72" rx="10" />
+          <line x1="48" y1="452" x2="592" y2="452" stroke-dasharray="14 10" class="stroke-outline-variant/50 pointer-events-none" stroke-width="3" />
+        </svg>
+
+        <!-- Interactive overlays -->
+        <button type="button" data-zone="oficina" aria-pressed="false"
+          class="zone-btn cursor-pointer absolute left-[5%] top-[6.154%] w-[43.75%] h-[33.846%] flex flex-col items-center justify-center gap-2 rounded-xl transition-colors duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/50">
+          <span class="zone-icon material-symbols-outlined text-on-surface-variant text-3xl md:text-4xl leading-none transition-colors duration-300">psychology</span>
+          <span class="zone-label font-headline font-extrabold text-on-surface-variant text-[11px] md:text-sm tracking-wide uppercase transition-colors duration-300">Oficina</span>
+        </button>
+
+        <button type="button" data-zone="cocina" aria-pressed="false"
+          class="zone-btn cursor-pointer absolute left-[51.25%] top-[6.154%] w-[43.75%] h-[33.846%] flex flex-col items-center justify-center gap-2 rounded-xl transition-colors duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/50">
+          <span class="zone-icon material-symbols-outlined text-on-surface-variant text-3xl md:text-4xl leading-none transition-colors duration-300">kitchen</span>
+          <span class="zone-label font-headline font-extrabold text-on-surface-variant text-[11px] md:text-sm tracking-wide uppercase transition-colors duration-300">Cocina</span>
+        </button>
+
+        <button type="button" data-zone="comedor" aria-pressed="false"
+          class="zone-btn cursor-pointer absolute left-[5%] top-[43.077%] w-[90%] h-[33.846%] flex flex-col items-center justify-center gap-2 rounded-xl transition-colors duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/50">
+          <span class="zone-icon material-symbols-outlined text-on-surface-variant text-3xl md:text-4xl leading-none transition-colors duration-300">table_restaurant</span>
+          <span class="zone-label font-headline font-extrabold text-on-surface-variant text-[11px] md:text-sm tracking-wide uppercase transition-colors duration-300">Comedor</span>
+        </button>
+
+        <button type="button" data-zone="exterior" aria-pressed="false"
+          class="zone-btn cursor-pointer absolute left-[5%] top-[80%] w-[90%] h-[13.846%] flex flex-row items-center justify-center gap-3 rounded-xl transition-colors duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/50">
+          <span class="zone-icon material-symbols-outlined text-on-surface-variant text-2xl md:text-3xl leading-none transition-colors duration-300">moped</span>
+          <span class="zone-label font-headline font-extrabold text-on-surface-variant text-[11px] md:text-sm tracking-wide uppercase transition-colors duration-300">Exterior</span>
+        </button>
+      </div>
+
+      <!-- Details panel -->
+      <div class="lg:col-span-2 bg-white rounded-2xl border border-outline-variant/15 p-8 md:p-9 shadow-[0_4px_24px_rgba(26,27,36,0.06)] min-h-[360px] flex flex-col">
+        <div class="flex items-center gap-3 mb-1">
+          <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center text-primary shrink-0">
+            <span id="zone-panel-icon" class="material-symbols-outlined text-2xl leading-none">kitchen</span>
+          </div>
+          <div>
+            <p id="zone-panel-eyebrow" class="text-[10px] font-label font-semibold tracking-widest text-primary uppercase">La Cocina</p>
+            <h3 id="zone-panel-title" class="font-headline text-xl font-bold text-on-background leading-tight">Cero errores, cero papel</h3>
+          </div>
+        </div>
+        <p id="zone-panel-tagline" class="font-body text-on-surface-variant text-sm mt-3 mb-6">El comedor y la línea de producción, siempre sincronizados.</p>
+        <ul id="zone-panel-list" class="space-y-3 flex-1"></ul>
+        <a href="/services" class="mt-6 inline-flex items-center gap-1.5 text-sm font-label font-semibold text-primary hover:gap-2.5 transition-all self-start">
+          Ver todas las soluciones
+          <span class="material-symbols-outlined text-base leading-none">arrow_forward</span>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════
      BENEFICIOS
 ═══════════════════════════════════════════════ -->
 <section class="py-24 bg-surface-container-low">
@@ -479,7 +577,7 @@ const questions = [
     <div class="mt-10">
       <button
         onclick="document.getElementById('btn-start')?.click(); window.scrollTo({top:0,behavior:'smooth'});"
-        class="bg-primary text-on-primary px-8 py-4 rounded-lg font-label font-semibold text-lg shadow-[0_8px_32px_rgba(0,44,163,0.25)] hover:brightness-110 hover:-translate-y-px transition-all duration-200 inline-flex items-center gap-2">
+        class="bg-accent text-on-accent px-8 py-4 rounded-lg font-label font-semibold text-lg shadow-[0_8px_32px_rgba(230,82,0,0.25)] hover:brightness-110 hover:-translate-y-px transition-all duration-200 inline-flex items-center gap-2">
         Inicia tu Diagnóstico de Eficiencia
         <span class="material-symbols-outlined text-xl leading-none">arrow_forward</span>
       </button>
@@ -849,5 +947,119 @@ const questions = [
       } catch (_) { clearInterval(poll); }
     }, 100);
   })();
+</script>
+
+<!-- Plano interactivo: zone selector logic -->
+<script>
+  type ZoneId = 'oficina' | 'cocina' | 'comedor' | 'exterior';
+
+  const ZONES: Record<ZoneId, { icon: string; eyebrow: string; title: string; tagline: string; items: string[] }> = {
+    oficina: {
+      icon: 'psychology',
+      eyebrow: 'La Oficina',
+      title: 'El cerebro de tu negocio',
+      tagline: 'Todos tus números, en un solo lugar, sin tener que buscarlos.',
+      items: [
+        'Control de inventario en tiempo real con alertas automáticas',
+        'Gráficos financieros y de ventas al instante',
+        'Listo para Facturación Electrónica SAT (Próximamente)',
+        'Control multi-sucursal desde un solo panel',
+      ],
+    },
+    cocina: {
+      icon: 'kitchen',
+      eyebrow: 'La Cocina',
+      title: 'Cero errores, cero papel',
+      tagline: 'El comedor y la línea de producción, siempre sincronizados.',
+      items: [
+        'Pantallas digitales de producción, sin tickets de papel',
+        'Organización automática por estaciones (parrilla, barra, etc.)',
+        'Descuento automático de inventario por receta',
+        'Tiempos de preparación medidos en tiempo real',
+      ],
+    },
+    comedor: {
+      icon: 'table_restaurant',
+      eyebrow: 'El Comedor',
+      title: 'Servicio más rápido',
+      tagline: 'Tu equipo de piso, más ágil en cada mesa.',
+      items: [
+        'Comandero móvil para meseros, directo en la mesa',
+        'Punto de Venta (POS) ágil en caja',
+        'Reservaciones y control de mesas',
+        'Kiosco de auto-pedido para reducir filas',
+      ],
+    },
+    exterior: {
+      icon: 'moped',
+      eyebrow: 'El Exterior',
+      title: 'Ventas sin límites',
+      tagline: 'Todo lo que pasa fuera de tus cuatro paredes, bajo control.',
+      items: [
+        'Tu propia tienda en línea, sin comisiones de terceros',
+        'Gestión inteligente de repartos (zonas, tarifas, horarios)',
+        'Atención automática de pedidos por WhatsApp con IA',
+        'Pagos seguros con tarjeta desde el celular',
+      ],
+    },
+  };
+
+  const zoneButtons = document.querySelectorAll<HTMLButtonElement>('.zone-btn');
+  const zoneRects   = document.querySelectorAll<SVGRectElement>('.zone-rect');
+  const panelIcon    = document.getElementById('zone-panel-icon');
+  const panelEyebrow = document.getElementById('zone-panel-eyebrow');
+  const panelTitle   = document.getElementById('zone-panel-title');
+  const panelTagline = document.getElementById('zone-panel-tagline');
+  const panelList    = document.getElementById('zone-panel-list');
+
+  function setButtonActive(btn: HTMLButtonElement, active: boolean) {
+    const icon  = btn.querySelector('.zone-icon');
+    const label = btn.querySelector('.zone-label');
+    [icon, label].forEach(el => {
+      if (!el) return;
+      el.classList.toggle('text-primary', active);
+      el.classList.toggle('text-on-surface-variant', !active);
+    });
+    btn.classList.toggle('bg-primary/5', active);
+    btn.setAttribute('aria-pressed', String(active));
+  }
+
+  function setRectActive(rect: SVGRectElement, active: boolean) {
+    rect.classList.toggle('fill-primary/10', active);
+    rect.classList.toggle('fill-surface-container-low', !active);
+    rect.classList.toggle('stroke-primary', active);
+    rect.classList.toggle('stroke-outline-variant', !active);
+    rect.classList.toggle('stroke-2', active);
+    rect.classList.toggle('stroke-1', !active);
+  }
+
+  function selectZone(id: string) {
+    const zone = ZONES[id as ZoneId];
+    if (!zone || !panelIcon || !panelEyebrow || !panelTitle || !panelTagline || !panelList) return;
+
+    zoneButtons.forEach(btn => setButtonActive(btn, btn.dataset.zone === id));
+    zoneRects.forEach(rect => setRectActive(rect, rect.dataset.zone === id));
+
+    panelIcon.textContent = zone.icon;
+    panelEyebrow.textContent = zone.eyebrow;
+    panelTitle.textContent = zone.title;
+    panelTagline.textContent = zone.tagline;
+    panelList.innerHTML = zone.items.map(item => `
+      <li class="flex items-start gap-2.5 text-sm font-body text-on-surface leading-snug">
+        <span class="material-symbols-outlined text-primary text-base leading-none fill mt-0.5 shrink-0">check_circle</span>
+        <span>${item}</span>
+      </li>
+    `).join('');
+  }
+
+  zoneButtons.forEach(btn => {
+    const id = btn.dataset.zone;
+    if (!id) return;
+    btn.addEventListener('mouseenter', () => selectZone(id));
+    btn.addEventListener('click', () => selectZone(id));
+    btn.addEventListener('focus', () => selectZone(id));
+  });
+
+  selectZone('cocina');
 </script>
 

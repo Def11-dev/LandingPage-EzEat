@@ -65,6 +65,12 @@ export default {
         'on-error':                 '#ffffff',
         'on-error-container':       '#410002',
         'warning':                  '#e65200',
+
+        /* ── Accent: action orange (reuses the warning hue as a CTA/conversion color) ── */
+        'accent':                   '#e65200',
+        'accent-container':         '#ffddc2',
+        'on-accent':                '#ffffff',
+        'on-accent-container':      '#5c2100',
       },
       borderRadius: {
         DEFAULT: '0.125rem',

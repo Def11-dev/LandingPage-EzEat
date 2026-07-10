@@ -5,11 +5,13 @@ import Footer from '../components/Footer.astro';
 interface Props {
   title: string;
   description?: string;
+  ctaAccent?: boolean;
 }
 
 const {
   title,
   description = 'EzEat — El primer sistema operativo inteligente para Hoteles, Restaurantes y Cafeterías (HORECA). PDV, Inventarios con IA, Kioskos de Autoservicio y más.',
+  ctaAccent = false,
 } = Astro.props;
 ---
 
@@ -109,8 +111,8 @@ const {
       <a
         id="diag-cta-btn"
         href="/#diagnostico"
-        class="flex items-center gap-2 bg-primary text-on-primary text-xs font-label font-semibold px-4 py-2.5 rounded-xl shadow-[0_4px_20px_rgba(43,73,243,0.45)] whitespace-nowrap hover:brightness-110 transition-all duration-200"
-        style="animation: diag-pulse 3s ease-in-out infinite;"
+        class={`flex items-center gap-2 ${ctaAccent ? 'bg-accent text-on-accent' : 'bg-primary text-on-primary'} text-xs font-label font-semibold px-4 py-2.5 rounded-xl ${ctaAccent ? 'shadow-[0_4px_20px_rgba(230,82,0,0.45)]' : 'shadow-[0_4px_20px_rgba(43,73,243,0.45)]'} whitespace-nowrap hover:brightness-110 transition-all duration-200`}
+        style={`animation: ${ctaAccent ? 'diag-pulse-accent' : 'diag-pulse'} 3s ease-in-out infinite;`}
       >
         <span class="material-symbols-outlined text-sm leading-none">insights</span>
         Iniciar diagnóstico gratis
@@ -121,7 +123,7 @@ const {
       <a
         href="/#diagnostico"
         aria-label="Iniciar diagnóstico de eficiencia"
-        class="w-16 h-16 rounded-full overflow-hidden shadow-[0_4px_24px_rgba(43,73,243,0.5)] border-[3px] border-primary hover:scale-110 hover:shadow-[0_6px_32px_rgba(43,73,243,0.65)] transition-all duration-200 block"
+        class={`w-16 h-16 rounded-full overflow-hidden border-[3px] hover:scale-110 transition-all duration-200 block ${ctaAccent ? 'border-accent shadow-[0_4px_24px_rgba(230,82,0,0.5)] hover:shadow-[0_6px_32px_rgba(230,82,0,0.65)]' : 'border-primary shadow-[0_4px_24px_rgba(43,73,243,0.5)] hover:shadow-[0_6px_32px_rgba(43,73,243,0.65)]'}`}
         style="background: #ffffff url('/mascot.png') no-repeat 50% 15% / 360%;"
       ></a>
     </div>
@@ -130,6 +132,10 @@ const {
       @keyframes diag-pulse {
         0%, 100% { box-shadow: 0 4px 20px rgba(43,73,243,0.45); }
         50%       { box-shadow: 0 4px 28px rgba(43,73,243,0.75), 0 0 0 4px rgba(43,73,243,0.15); }
+      }
+      @keyframes diag-pulse-accent {
+        0%, 100% { box-shadow: 0 4px 20px rgba(230,82,0,0.45); }
+        50%       { box-shadow: 0 4px 28px rgba(230,82,0,0.75), 0 0 0 4px rgba(230,82,0,0.15); }
       }
     </style>
 
