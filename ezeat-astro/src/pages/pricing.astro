@@ -1,94 +1,93 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-const row1 = [
+const tiers = [
   {
-    id: 'foodtruck',
-    name: 'Food Truck / Pop-ups',
-    tagline: 'Operación ligera para negocios en movimiento.',
-    description: 'Funciona sin internet y sincroniza automáticamente al recuperar señal. Ideal para festivales, mercados y eventos.',
-    price: '$699',
+    id: 'operacion',
+    name: 'Operación Inteligente',
+    tagline: 'El cerebro completo de tu restaurante.',
+    description: 'Ventas, cocina, inventarios, equipo y finanzas conectados en un solo sistema.',
+    price: '$1,849',
     unit: 'MXN /mes',
-    includes: ['PDV Básico', 'Pedidos en Línea', 'Pantallas de Cocina'],
-    addons: ['Sistema de Lealtad', 'Kioskos de Autoservicio', 'Control de Inventarios', 'Integración de Delivery', 'Analítica Avanzada'],
-    note: 'Compatible con chips de datos especializados desde $30–60 MXN al mes: internet siempre disponible, aunque no haya WiFi en el lugar.',
-    cta: 'Empezar',
-    ctaHref: '/contact',
     popular: false,
+    includesFrom: null,
+    groups: [
+      {
+        label: 'Ventas y atención al cliente',
+        items: [
+          'Tu propia tienda en línea con pagos seguros con tarjeta',
+          'Punto de Venta (POS) ágil',
+          'Menú digital 100% personalizable (categorías, tamaños, extras)',
+          'Kiosco de auto-pedido',
+          'App instalable en el celular, sin tiendas de aplicaciones',
+          'Motor de ofertas y cupones (2x1, descuentos, regalos)',
+          'Programa de Lealtad y Recompensas',
+        ],
+      },
+      {
+        label: 'Cocina y servicio',
+        items: [
+          'Pantallas digitales de cocina con historial y tiempos de preparación',
+          'Organización automática por estaciones (parrilla, barra, etc.)',
+          'Comandero móvil para meseros, con división de cuenta',
+          'Reservaciones y control de mesas',
+          'Avisos automáticos al cliente por correo',
+        ],
+      },
+      {
+        label: 'Inventarios y finanzas',
+        items: [
+          'Control estricto de inventario con alertas de stock mínimo',
+          'Descuento automático por receta',
+          'Rastreador de gastos operativos',
+          'Gráficos financieros y de ventas',
+          'Listo para Facturación Electrónica SAT (Próximamente)',
+        ],
+      },
+      {
+        label: 'Equipo y sucursales',
+        items: [
+          'Control multi-sucursal con dashboard comparativo',
+          'Roles y permisos por empleado (inicio de sesión con correo o Google)',
+          'Registro de asistencia digital',
+          'Gestión inteligente de repartos (zonas, tarifas, horarios)',
+          'Compatibilidad nativa con impresoras térmicas',
+        ],
+      },
+    ],
+    cta: 'Empezar con Operación Inteligente',
+    ctaHref: '/contact',
   },
   {
-    id: 'emprendedor',
-    name: 'Emprendedor',
-    tagline: 'Tu primero de muchos restaurantes.',
-    description: 'Te ayudamos a operar como las grandes cadenas desde el día uno. Disponible para comida rápida y restaurante tradicional con mesas.',
-    price: '$899',
+    id: 'inteligencia',
+    name: 'Inteligencia Total',
+    tagline: 'Todo lo de Operación Inteligente, más la IA que predice, automatiza y decide por ti.',
+    description: 'Para negocios listos para dejar que la Inteligencia Artificial tome el control operativo del día a día.',
+    price: '$4,999',
     unit: 'MXN /mes',
-    includes: ['PDV Básico', 'Pedidos en Línea', 'Sistema de Lealtad', 'Pantallas de Cocina'],
-    addons: ['Analítica Avanzada', 'Integración de Delivery', 'Sistema de Reservaciones'],
-    note: 'Otros sistemas te obligan a gastar miles en impresoras y papel. EzEat te regala las pantallas de cocina al contratar plan anual.',
-    cta: 'Empezar',
-    ctaHref: '/contact',
-    popular: false,
-  },
-  {
-    id: 'darkkitchen',
-    name: 'Dark Kitchen',
-    tagline: 'No más tablets sonando.',
-    description: 'Una sola pantalla para cocinar todo. Pensado para cocinas 100% delivery.',
-    price: '$1,499',
-    unit: 'MXN /mes',
-    includes: ['Pantallas de Cocina', 'Integración de Delivery', 'Control de Inventarios', 'Pedidos en Línea', 'PDV Básico'],
-    addons: ['Sistema de Lealtad', 'Analítica Avanzada', 'Pedidos por WhatsApp con IA'],
-    note: null,
-    cta: 'Empezar',
-    ctaHref: '/contact',
-    popular: false,
-  },
-];
-
-const row2 = [
-  {
-    id: 'escalamiento',
-    name: 'Escalamiento',
-    tagline: 'De emprendedor a empresario.',
-    description: 'Control total sin estar ahí. Si creces, crecemos juntos.',
-    price: '$1,699',
-    unit: 'MXN /mes',
-    subprice: null,
-    includes: ['PDV Inteligente', 'Analítica Avanzada', 'Gestión de Personal', 'Integración de Delivery', 'Control de Inventarios', 'Pedidos en Línea', 'Pantallas de Cocina', 'Sistema de Lealtad'],
-    addons: ['Kioskos de Autoservicio', 'Comanda Digital de Meseros'],
-    note: null,
-    cta: 'Empezar',
-    ctaHref: '/contact',
     popular: true,
-  },
-  {
-    id: 'hoteles',
-    name: 'Hoteles y Moteles',
-    tagline: 'Transforma el teléfono del huésped en tu mejor mesero.',
-    description: 'El huésped pide desde su habitación escaneando un QR o acercando el teléfono, con cargo directo a su cuenta.',
-    price: '$2,899',
-    unit: 'MXN /mes',
-    includes: ['Room Service Hotelero', 'PDV Básico', 'Pantallas de Cocina', 'Facturación Electrónica', 'Control de Inventarios'],
-    addons: ['Analítica Avanzada', 'Integración de Delivery'],
-    note: null,
-    cta: 'Empezar',
+    includesFrom: 'Operación Inteligente',
+    groups: [
+      {
+        label: 'Inteligencia Artificial y automatización',
+        items: [
+          'Control de filas de espera',
+          'Directorio inteligente de proveedores',
+          'Reportes contables descargables',
+          'Comandero por voz para meseros',
+          'Atención automática de pedidos por WhatsApp y llamadas',
+          'Asesor financiero con IA',
+          'Asistente virtual de consulta',
+          'Resúmenes diarios en tu correo',
+          'Feed de decisiones: sugerencias automáticas para vender más',
+          'Piloto automático: el sistema ejecuta las reglas por ti',
+          'Estudio de competencia local',
+          'Creador instantáneo de menús con una foto',
+        ],
+      },
+    ],
+    cta: 'Empezar con Inteligencia Total',
     ctaHref: '/contact',
-    popular: false,
-  },
-  {
-    id: 'corporativo',
-    name: 'Corporativo',
-    tagline: 'Auditoría total en tiempo real.',
-    description: 'Si falta un peso, EzEat te dice dónde. Acceso completo a todas las funciones del ecosistema.',
-    price: null,
-    unit: null,
-    includes: ['PDV Inteligente', 'Pantallas de Cocina', 'Kioskos de Autoservicio', 'Pedidos en Línea', 'Sistema de Lealtad', 'Comanda Digital de Meseros', 'Control de Inventarios', 'Compras y Proveedores', 'Analítica Avanzada', 'Gestión de Personal', 'Integración de Delivery', 'Facturación Electrónica', 'Estados Financieros con IA', 'Sistema de Reservaciones', 'Gestión de Colas', 'Pedidos por WhatsApp con IA', 'Pedidos por Llamada con IA'],
-    addons: [],
-    note: null,
-    cta: 'Solicitar cotización',
-    ctaHref: '/contact',
-    popular: false,
   },
 ];
 ---
@@ -106,10 +105,10 @@ const row2 = [
         <span class="text-sm font-label font-medium text-white/90">Precios transparentes</span>
       </div>
       <h1 class="font-headline text-5xl md:text-6xl font-bold tracking-tight text-white leading-[1.05] mb-5">
-        Elige un plan o <span class="text-[#b0beff]">arma el tuyo</span>
+        Dos planes. <span class="text-[#b0beff]">Todo lo que necesitas.</span>
       </h1>
       <p class="font-body text-lg text-white/70 max-w-xl mx-auto mb-8">
-        Planes pensados para cada tipo de negocio. Si prefieres, configura módulos uno por uno.
+        Empieza con la operación completa de tu restaurante, o súmale la Inteligencia Artificial que predice, automatiza y decide por ti.
       </p>
       <!-- Tab switcher -->
       <div class="inline-flex items-center bg-white/10 border border-white/15 rounded-full p-1 gap-1">
@@ -149,152 +148,71 @@ const row2 = [
 
   <!-- Plans -->
   <section class="pb-24 bg-surface">
-    <div class="max-w-7xl mx-auto px-6 lg:px-8 space-y-8">
+    <div class="max-w-6xl mx-auto px-6 lg:px-8">
+      <div class="grid md:grid-cols-2 gap-8 items-start" data-stagger>
+        {tiers.map(tier => (
+          <div class={`relative bg-white rounded-2xl border flex flex-col overflow-hidden shadow-sm ${tier.popular ? 'border-primary shadow-[0_0_0_2px_#2b49f3]' : 'border-outline-variant/20'}`}>
 
-      <!-- Row 1 -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6" data-stagger>
-        {row1.map(plan => (
-          <div class="relative bg-white rounded-2xl border border-outline-variant/20 shadow-sm flex flex-col overflow-hidden">
-            <div class="p-7 flex-1 flex flex-col">
-              <!-- Header -->
-              <h2 class="font-headline text-2xl font-bold text-on-background">{plan.name}</h2>
-              <p class="text-primary font-body text-sm font-medium mt-1">{plan.tagline}</p>
-              <p class="text-on-surface-variant font-body text-sm mt-3 leading-relaxed">{plan.description}</p>
-
-              <!-- Price -->
-              <div class="mt-6 mb-5">
-                <span class="font-headline font-extrabold text-5xl text-on-background">{plan.price}</span>
-                <span class="text-on-surface-variant font-body text-sm ml-1">{plan.unit}</span>
-              </div>
-
-              <!-- Includes -->
-              <p class="text-[10px] font-label font-semibold tracking-widest text-on-surface-variant uppercase mb-3">Incluye</p>
-              <ul class="space-y-2 mb-6">
-                {plan.includes.map(item => (
-                  <li class="flex items-center gap-2 text-sm font-body text-on-surface">
-                    <span class="material-symbols-outlined text-primary text-base leading-none fill">check_circle</span>
-                    {item}
-                  </li>
-                ))}
-              </ul>
-
-              <!-- Add-ons -->
-              {plan.addons.length > 0 && (
-                <>
-                  <p class="text-[10px] font-label font-semibold tracking-widest text-on-surface-variant uppercase mb-3">Add-ons disponibles</p>
-                  <ul class="space-y-2 mb-6">
-                    {plan.addons.map(item => (
-                      <li class="flex items-center gap-2 text-sm font-body text-on-surface-variant">
-                        <span class="material-symbols-outlined text-outline text-base leading-none">add</span>
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                </>
-              )}
-
-              <!-- Note -->
-              {plan.note && (
-                <div class="mt-auto mb-5 bg-surface-container-low rounded-lg px-4 py-3 text-xs font-body text-on-surface-variant leading-relaxed">
-                  {plan.note}
-                </div>
-              )}
-
-              <div class="mt-auto"></div>
-            </div>
-
-            <!-- CTA -->
-            <div class="px-7 pb-7">
-              <a
-                href={plan.ctaHref}
-                class="w-full border border-outline-variant/30 text-on-surface font-label font-medium py-3 rounded-lg flex items-center justify-center gap-2 hover:border-primary/40 hover:text-primary transition-all duration-200 text-sm"
-              >
-                {plan.cta}
-                <span class="material-symbols-outlined text-base leading-none">arrow_forward</span>
-              </a>
-            </div>
-          </div>
-        ))}
-      </div>
-
-      <!-- Row 2 -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6" data-stagger>
-        {row2.map(plan => (
-          <div class={`relative bg-white rounded-2xl border flex flex-col overflow-hidden shadow-sm ${plan.popular ? 'border-primary shadow-[0_0_0_2px_#2b49f3]' : 'border-outline-variant/20'}`}>
-
-            {plan.popular && (
+            {tier.popular && (
               <div class="flex justify-center -mt-px">
                 <div class="inline-flex items-center gap-1.5 bg-primary text-on-primary text-xs font-label font-semibold px-4 py-1.5 rounded-b-xl">
-                  <span class="material-symbols-outlined text-sm leading-none fill">star</span>
-                  Más popular
+                  <span class="material-symbols-outlined text-sm leading-none fill">auto_awesome</span>
+                  Con Inteligencia Artificial
                 </div>
               </div>
             )}
 
-            <div class="p-7 flex-1 flex flex-col">
+            <div class="p-8 md:p-10 flex-1 flex flex-col">
               <!-- Header -->
-              <h2 class="font-headline text-2xl font-bold text-on-background">{plan.name}</h2>
-              <p class="text-primary font-body text-sm font-medium mt-1">{plan.tagline}</p>
-              <p class="text-on-surface-variant font-body text-sm mt-3 leading-relaxed">{plan.description}</p>
+              <h2 class="font-headline text-2xl font-bold text-on-background">{tier.name}</h2>
+              <p class="text-primary font-body text-sm font-medium mt-1">{tier.tagline}</p>
+              <p class="text-on-surface-variant font-body text-sm mt-3 leading-relaxed">{tier.description}</p>
 
               <!-- Price -->
-              <div class="mt-6 mb-1">
-                {plan.price ? (
-                  <>
-                    <span class="font-headline font-extrabold text-5xl text-on-background">{plan.price}</span>
-                    <span class="text-on-surface-variant font-body text-sm ml-1">{plan.unit}</span>
-                  </>
-                ) : (
-                  <span class="font-headline font-extrabold text-4xl text-primary">Cotización a medida</span>
-                )}
+              <div class="mt-6 mb-6">
+                <span class="font-headline font-extrabold text-5xl text-on-background">{tier.price}</span>
+                <span class="text-on-surface-variant font-body text-sm ml-1">{tier.unit}</span>
               </div>
-              {'subprice' in plan && plan.subprice && (
-                <p class="text-on-surface-variant font-body text-xs mb-4">{plan.subprice}</p>
+
+              <!-- Includes-from banner -->
+              {tier.includesFrom && (
+                <div class="flex items-center gap-2 mb-6 bg-primary/5 border border-primary/15 rounded-lg px-4 py-3">
+                  <span class="material-symbols-outlined text-primary text-lg leading-none">check_circle</span>
+                  <p class="text-sm font-body text-on-background font-medium">Incluye todo lo de {tier.includesFrom}, más:</p>
+                </div>
               )}
 
-              <!-- Includes -->
-              <p class="text-[10px] font-label font-semibold tracking-widest text-on-surface-variant uppercase mb-3 mt-4">Incluye</p>
-              <ul class="space-y-2 mb-6">
-                {plan.includes.map(item => (
-                  <li class="flex items-center gap-2 text-sm font-body text-on-surface">
-                    <span class="material-symbols-outlined text-primary text-base leading-none fill">check_circle</span>
-                    {item}
-                  </li>
+              <!-- Feature groups -->
+              <div class="space-y-6 flex-1">
+                {tier.groups.map(group => (
+                  <div>
+                    <p class="text-[10px] font-label font-semibold tracking-widest text-primary uppercase mb-3">{group.label}</p>
+                    <ul class="grid sm:grid-cols-2 gap-x-4 gap-y-2.5">
+                      {group.items.map(item => (
+                        <li class="flex items-start gap-2 text-sm font-body text-on-surface leading-snug">
+                          <span class="material-symbols-outlined text-primary text-base leading-none fill mt-0.5 shrink-0">check_circle</span>
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 ))}
-              </ul>
-
-              <!-- Add-ons -->
-              {plan.addons.length > 0 && (
-                <>
-                  <p class="text-[10px] font-label font-semibold tracking-widest text-on-surface-variant uppercase mb-3">Add-ons disponibles</p>
-                  <ul class="space-y-2 mb-6">
-                    {plan.addons.map(item => (
-                      <li class="flex items-center gap-2 text-sm font-body text-on-surface-variant">
-                        <span class="material-symbols-outlined text-outline text-base leading-none">add</span>
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                </>
-              )}
-
-              <div class="mt-auto"></div>
+              </div>
             </div>
 
             <!-- CTA -->
-            <div class="px-7 pb-7">
+            <div class="px-8 md:px-10 pb-8 md:pb-10">
               <a
-                href={plan.ctaHref}
-                class={`w-full font-label font-medium py-3 rounded-lg flex items-center justify-center gap-2 transition-all duration-200 text-sm ${plan.popular ? 'bg-primary text-on-primary hover:brightness-110' : 'border border-outline-variant/30 text-on-surface hover:border-primary/40 hover:text-primary'}`}
+                href={tier.ctaHref}
+                class={`w-full font-label font-medium py-3.5 rounded-lg flex items-center justify-center gap-2 transition-all duration-200 text-sm ${tier.popular ? 'bg-primary text-on-primary hover:brightness-110' : 'border border-outline-variant/30 text-on-surface hover:border-primary/40 hover:text-primary'}`}
               >
-                {plan.cta}
+                {tier.cta}
                 <span class="material-symbols-outlined text-base leading-none">arrow_forward</span>
               </a>
             </div>
           </div>
         ))}
       </div>
-
     </div>
   </section>
 
